@@ -190,9 +190,218 @@
 \tsThe{Convexity via First Derivative}{
     $f$ is convex iff $f'$ is increasing.
 }
+\\
 \tsCor{Convexity via Second Derivative}{
     If $f$ is twice differentiable:
     \[
         f''(x) \ge 0 \iff f \text{ is convex}.
     \]
+    \[f''(x) \leq 0 \Longleftrightarrow f \text{ is concave}\]
+}
+\tsThe{Second Derivative Test}{
+Let $f$ be twice differentiable near $x_0$ and suppose
+\(
+f'(x_0)=0.
+\)
+\\
+Then:
+\(
+f''(x_0)>0
+\quad \Rightarrow \quad
+x_0 \text{ is a local minimum},
+\)
+\\
+and
+\(
+f''(x_0)<0
+\quad \Rightarrow \quad
+x_0 \text{ is a local maximum}.
+\)
+}
+\subsection{Taylor Approximation and Power Series}
+\tsIdea{Local Approximation by Polynomials}{
+In a sufficiently small neighborhood of a point $x_0$, the graph of a differentiable function $f$ behaves almost like its tangent at $x_0$. Hence, the function can locally be approximated by its tangent.
+}
+\tsDef{Linear Approximation / Tangent Approximation}{
+If $f$ is differentiable at $x_0$, then
+\[
+f(x)
+\approx
+f(x_0) + f'(x_0)(x-x_0).
+\]
+The expression
+\[
+P_1(x)
+=
+f(x_0) + f'(x_0)(x-x_0)
+\]
+is called the \emph{linearization}, \emph{tangent approximation}, or \emph{first Taylor polynomial} of $f$ at $x_0$.
+}
+\\
+\tsThe{Taylor's Theorem}{
+Let $f$ be infinitely differentiable on an open interval $I$ containing $x_0$.
+Then for every $x \in I$,
+\[
+f(x)
+=
+f(x_0)
++
+f'(x_0)(x-x_0)
++\cdots+
+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n,
+\]
+for some $c$ between $x_0$ and $x$.
+Equivalently,
+\[
+f(x)
+=
+\sum_{k=0}^{n}
+\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k
++
+R_n(x),
+\]
+where
+\[
+R_n(x)
+=
+\frac{1}{(n+1)!}
+f^{(n+1)}(c)(x-x_0)^{n+1}.
+\]
+The polynomial
+\[
+P_n(x)
+=
+\sum_{k=0}^{n}
+\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k
+\]
+is called the \emph{$n$-th Taylor polynomial}.
+}
+\\
+\tsIdea{Taylor Approximation and Power Series}{
+Taylor polynomials provide increasingly accurate approximations of many functions.
+For many functions, taking infinitely many terms recovers the original function.
+}
+\\
+\tsDef{Taylor Series}{
+For a function $f$, the series
+\[
+\sum_{k=0}^{\infty}
+\frac{f^{(k)}(a)}{k!}(x-a)^k
+\]
+is called the \emph{Taylor series} (or Taylor expansion) of $f$ around the point $a$.
+}
+\\
+\tsThe{Important Taylor Series}{
+The following series converge for all $x$:
+\[
+\sin(x)
+=
+\sum_{n=0}^{\infty}
+(-1)^n
+\frac{x^{2n+1}}{(2n+1)!}
+=
+x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+\]
+\[
+\cos(x)
+=
+\sum_{n=0}^{\infty}
+(-1)^n
+\frac{x^{2n}}{(2n)!}
+=
+1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+\]
+\[
+e^x
+=
+\sum_{n=0}^{\infty}
+\frac{x^n}{n!}
+=
+1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+\]
+}
+\tsThe{Further Important Power Series}{
+The following series converge for
+\(
+-1 < x < 1.
+\)
+\[
+\ln(1+x)
+=
+\sum_{n=1}^{\infty}
+(-1)^{n-1}
+\frac{x^n}{n}
+=
+x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
+\]
+\[
+\frac{1}{1-x}
+=
+\sum_{n=0}^{\infty} x^n
+=
+1 + x + x^2 + x^3 + \cdots
+\]
+\[
+(1+x)^p
+=
+\sum_{n=0}^{\infty}
+\binom{p}{n}x^n
+=
+1 + px + \frac{p(p-1)}{2!}x^2 + \cdots
+\]
+}
+\tsIdea{Operations on Taylor Series}{
+New Taylor series can be constructed from known ones using:
+\begin{itemize}[noitemsep]
+\item substitution
+\item multiplication
+\item differentiation
+\item integration
+\end{itemize}
+}
+\tsThe{Multiplication of Power Series}{
+Let
+\[
+f(x)=\sum_{n=0}^{\infty} a_nx^n,
+\qquad
+g(x)=\sum_{n=0}^{\infty} b_nx^n,
+\]
+with $x$ inside both convergence intervals.
+Then
+\[
+f(x)g(x)
+=
+\sum_{n=0}^{\infty}
+\left(
+\sum_{k=0}^{n} a_k b_{n-k}
+\right)x^n.
+\]
+}
+\\
+\tsThe{Termwise Differentiation}{
+Let
+\[
+f(x)=\sum_{n=0}^{\infty} a_nx^n
+\]
+inside its convergence interval. Then $f$ is differentiable and
+\[
+f'(x)
+=
+\sum_{n=1}^{\infty}
+n a_n x^{n-1}.
+\]
+}
+\\
+\tsThe{Termwise Integration}{
+Let
+\[
+f(x)=\sum_{n=0}^{\infty} a_nx^n
+\]
+inside its convergence interval $I$. Then for every interval $[a,b]\subseteq I$,
+\[
+\int_a^b f(x)\,dx
+=
+\sum_{n=0}^{\infty}
+\int_a^b a_nx^n\,dx.
+\]
 }

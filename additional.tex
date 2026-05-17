@@ -63,3 +63,72 @@
     \end{tabular}
     \caption{Important limits}
 \end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \multicolumn{2}{|c|}{$f(x)$} & \multicolumn{2}{c|}{$g(x)$} & \multicolumn{2}{c|}{$h(x)$}                              \\
+        \hline
+        $f(x)$                       & $f'(x)$                     & $g(x)$                      & $g'(x)$ & $h(x)$ & $h'(x)$ \\
+        \hline
+        $\sin(x)$                    & $\cos(x)$
+                                     & $\tan(x)$                   & $\frac{1}{\cos^2(x)}$
+                                     & $\arcsin(x)$                & $\frac{1}{\sqrt{1-x^2}}$                                 \\
+
+        $\cot(x)$                    & $-\frac{1}{\sin^2(x)}$
+                                     & $mx+b$                      & $m$
+                                     & $\arccos(x)$                & $-\frac{1}{\sqrt{1-x^2}}$                                \\
+
+        $\cos(x)$                    & $-\sin(x)$
+                                     & $r\cdot g(x)$               & $r\cdot g'(x)$
+                                     & $\arctan(x)$                & $\frac{1}{1+x^2}$                                        \\
+
+        $x^n$                        & $n x^{n-1}$
+                                     & $e^x$                       & $e^x$
+                                     & $\mathrm{arccot}(x)$        & $-\frac{1}{1+x^2}$                                       \\
+
+        $\ln(x)$                     & $\frac{1}{x}$
+                                     & $a^x$                       & $a^x \ln(a)$
+                                     & $\mathrm{arsinh}(x)$        & $\frac{1}{\sqrt{1+x^2}}$                                 \\
+
+        $\log_a(x)$                  & $\frac{1}{x\ln(a)}$
+                                     & $\sinh(x)$                  & $\cosh(x)$
+                                     & $\mathrm{arcosh}(x)$        & $\frac{1}{\sqrt{x^2-1}}$                                 \\
+
+        $\tanh(x)$                   & $\frac{1}{\cosh^2(x)}$
+                                     & $\cosh(x)$                  & $\sinh(x)$
+                                     & $\mathrm{artanh}(x)$        & $\frac{1}{1-x^2}$                                        \\
+
+        $\tan(x)$                    & $1+\tan^2(x)$
+                                     &                             &
+                                     &                             &                                                          \\
+
+        \hline
+    \end{tabular}
+    \caption{Classic derivatives}
+\end{table}
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|l|}
+        \hline
+        Nr. & Regel                                                                                    \\
+        \hline
+        1   & $(f + g)'(x) = f'(x) + g'(x)$                                                            \\
+
+        2   & $(f \cdot g)'(x) = f'(x)\,g(x) + f(x)\,g'(x)$                                            \\
+
+        3   & $(g \circ f)'(x) = g'(f(x)) \cdot f'(x)$                                                 \\
+
+        4   & $\left(\frac{f}{g}\right)'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}$                    \\
+
+        5   & $(f^{-1})'(y_0) = \frac{1}{f'(x_0)}, \quad \text{mit } y_0 = f(x_0)$                     \\
+
+        \hline
+        \multicolumn{2}{|l|}{\textbf{Note:} This holds only if $f^{-1}$ exists and $f$ is continuous.} \\
+        \hline
+    \end{tabular}
+    \caption{Calculation rules of derivatives}
+\end{table}
