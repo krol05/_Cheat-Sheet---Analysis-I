@@ -7,32 +7,88 @@
 \begin{multicols*}{3}
 
 \subsection*{Important Limits}
-\[
-\begin{array}{ll}
-\lim_{x\to\infty}\frac1x=0 &
-\lim_{x\to0}\frac{\sin x}{x}=1\\
-\lim_{x\to\infty}e^x=\infty &
-\lim_{x\to-\infty}e^x=0\\
-\lim_{x\to\infty}e^{-x}=0 &
-\lim_{x\to-\infty}e^{-x}=\infty\\
-\lim_{x\to\infty}\ln x=\infty &
-\lim_{x\to0}\ln x=-\infty\\
-\lim_{x\to0}\frac{e^x-1}{x}=1 &
-\lim_{x\to0}\frac{\ln(1+x)}x=1\\
-\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12 &
-\lim_{x\to0}\frac{\cos x-1}{x}=0\\
-\lim_{x\to\infty}\frac{\ln x}{x}=0 &
-\lim_{x\to\infty}\frac{\sin x}{x}=0\\
-\lim_{x\to0^+}x\ln x=0 &
-\lim_{x\to\infty}n^{1/n}=1\\
-\lim_{x\to\pm\infty}\left(1+\frac1x\right)^x=e &
-\lim_{x\to\infty}\left(1-\frac1x\right)^x=\frac1e\\
-\lim_{x\to\pm\infty}\left(1+\frac{k}{x}\right)^{mx}=e^{km} &
-\lim_{x\to\infty}x^a q^x=0
-\end{array}
-\]
+% \[
+% \begin{array}{ll}
+% \lim_{x\to\infty}\frac1x=0 &
+% \lim_{x\to0}\frac{\sin x}{x}=1\\
+% \lim_{x\to\infty}e^x=\infty &
+% \lim_{x\to-\infty}e^x=0\\
+% \lim_{x\to\infty}e^{-x}=0 &
+% \lim_{x\to-\infty}e^{-x}=\infty\\
+% \lim_{x\to\infty}\ln x=\infty &
+% \lim_{x\to0}\ln x=-\infty\\
+% \lim_{x\to0}\frac{e^x-1}{x}=1 &
+% \lim_{x\to0}\frac{\ln(1+x)}x=1\\
+% \lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12 &
+% \lim_{x\to0}\frac{\cos x-1}{x}=0\\
+% \lim_{x\to\infty}\frac{\ln x}{x}=0 &
+% \lim_{x\to\infty}\frac{\sin x}{x}=0\\
+% \lim_{x\to0^+}x\ln x=0 &
+% \lim_{x\to\infty}n^{1/n}=1\\
+% \lim_{x\to\pm\infty}\left(1+\frac1x\right)^x=e &
+% \lim_{x\to\infty}\left(1-\frac1x\right)^x=\frac1e\\
+% \lim_{x\to\pm\infty}\left(1+\frac{k}{x}\right)^{mx}=e^{km} &
+% \lim_{x\to\infty}x^a q^x=0
+% \end{array}
+% \]
 
-\subsection*{Rules of derivation}
+\begin{multicols}{2}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
+\item $\lim_{x\to\infty}\frac1x=0$
+\item $\lim_{x\to\infty}\left(1+\frac1x\right)=1$
+\item $\lim_{x\to0}\frac{\log(1-x)}x=-1$
+\item $\lim_{x\to0}x\log x=0$
+
+\item $\lim_{x\to\infty}e^x=\infty$
+\item $\lim_{x\to-\infty}e^x=0$
+\item $\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12$
+\item $\lim_{x\to0}\frac{e^x-1}{x}=1$
+
+\item $\lim_{x\to\infty}e^{-x}=0$
+\item $\lim_{x\to-\infty}e^{-x}=\infty$
+\item $\lim_{x\to0}\frac{x}{\arctan x}=1$
+\item $\lim_{x\to\infty}\arctan x=\frac\pi2$
+
+\item $\lim_{x\to\infty}\frac{e^x}{x^m}=\infty$
+\item $\lim_{x\to-\infty}xe^x=0$
+\item $\lim_{x\to\infty}\left(\frac{x}{x+k}\right)^x=e^{-k}$
+
+\item $\lim_{x\to\infty}\ln x=\infty$
+\item $\lim_{x\to0}\ln x=-\infty$
+\item $\lim_{x\to0}\frac{a^x-1}{x}=\ln(a)$
+\item $\lim_{x\to0}\frac{e^{ax}-1}{x}=a$
+
+\item $\lim_{x\to\infty}(1+x)^{1/x}=1$
+\item $\lim_{x\to0}(1+x)^{1/x}=e$
+\item $\lim_{x\to0}\frac{\ln(1+x)}x=1$
+\item $\lim_{x\to1}\frac{\ln x}{x-1}=1$
+
+\item $\lim_{x\to\infty}\frac{\ln x}{x}=0$
+\item $\lim_{x\to\infty}\frac{\log x}{x^\alpha}=0$
+
+\item $\lim_{x\to\infty}x^aq^x=0,\;0\le q<1$
+\item $\lim_{x\to\infty}n^{1/n}=1$
+\item $\lim_{x\to\infty}\sqrt[x]{x}=1$
+\item $\lim_{x\to\infty}\frac{2x}{2^x}=0$
+
+\item $\lim_{x\to\pm\infty}\left(1+\frac1x\right)^x=e$
+\item $\lim_{x\to\infty}\left(1-\frac1x\right)^x=\frac1e$
+
+\item $\lim_{x\to\pm\infty}\left(1+\frac{k}{x}\right)^{mx}=e^{km}$
+
+\item $\lim_{x\to0}\frac{\sin x}{x}=1$
+\item $\lim_{x\to\infty}\frac{\sin x}{x}=0$
+\item $\lim_{x\to0^+}x\ln x=0$
+
+\item $\lim_{x\to(\pi/2)^-}\tan x=+\infty$
+\item $\lim_{x\to(\pi/2)^+}\tan x=-\infty$
+
+\item $\lim_{x\to0}\frac1{\cos x}=1$
+\item $\lim_{x\to0}\frac{\cos x-1}{x}=0$
+\end{itemize}
+\end{multicols}
+
+\subsection*{Rules of derivation (holds only if $f^{-1}$ exists and $f$ continuous.)}
 \begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
 \item \textbf{Sum:}
 \(
@@ -95,67 +151,6 @@
 \item \textbf{Reflection at $\pi/2$:} $\cos(\pi-x)=-\cos(x)$ and $\sin(\pi-x)=\sin(x)$
 \end{itemize}
 
-\subsection*{Hyperbolic}
-\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
-\item \textbf{Hyperbolic sine:} $\sinh(x):=\frac{e^x-e^{-x}}{2}:\mathbb{R}\to\mathbb{R}$
-\item \textbf{Hyperbolic cosine:} $\cosh(x):=\frac{e^x+e^{-x}}{2}:\mathbb{R}\to[1,\infty)$
-\item \textbf{Hyperbolic tangent:} $\tanh(x):=\frac{\sinh(x)}{\cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}:\mathbb{R}\to(-1,1)$
-\item \textbf{Inverse hyperbolic sine:} $\operatorname{arsinh}x=\ln(x+\sqrt{x^2+1})$
-\item \textbf{Inverse hyperbolic cosine:} $\operatorname{arcosh}x=\ln(x+\sqrt{x^2-1})$
-\item \textbf{Inverse hyperbolic tangent:} $\operatorname{artanh}x=\frac12\ln\frac{1+x}{1-x}$
-\end{itemize}
-
-% \subsection*{Tricks}
-% \(
-% \sqrt a-\sqrt b=\frac{a-b}{\sqrt a+\sqrt b}
-% \)
-% If integration by parts gives the same integral again, move it to the other side and solve algebraically.
-
-\subsection*{Complement trick}
-\[
-\sqrt{ax+b}-\sqrt{cx+d}
-=
-\frac{ax+b-(cx+d)}
-{\sqrt{ax+b}+\sqrt{cx+d}}
-\]
-
-\subsection*{Derivatives and Antiderivatives}
-
-\[
-\begin{array}{lll}
-\textbf{Antiderivative} & \textbf{Function} & \textbf{Derivative}\\
-\hline
-\frac{x^{n+1}}{n+1} & x^n & nx^{n-1}\\[0.1cm]
-\ln|x| & \frac1x=x^{-1} & -x^{-2}=-\frac1{x^2}\\[0.1cm]
-\frac23 x^{3/2} & \sqrt{x}=x^{1/2} & \frac1{2\sqrt{x}}\\[0.1cm]
-\frac{n}{n+1}x^{1/n+1} & \sqrt[n]{x}=x^{1/n} & \frac1n x^{1/n-1}\\
-\hline
-e^x & e^x & e^x\\
-\exp(x) & \exp(x) & \exp(x)\\
-\frac{1}{a(n+1)}(ax+b)^{n+1} & (ax+b)^n & n(ax+b)^{n-1}a\\
-x(\ln|x|-1) & \ln(x) & \frac1x\\
-\frac1{\ln(a)}a^x & a^x & a^x\ln(a)\\
-\frac{x}{\ln(a)}(\ln|x|-1) & \log_a|x| & \frac1{x\ln(a)}\\
-\hline
--\cos(x) & \sin(x) & \cos(x)\\
-\sin(x) & \cos(x) & -\sin(x)\\
--\ln|\cos(x)| & \tan(x) & \frac1{\cos^2(x)}\\
-\ln|\sin(x)| & \cot(x) & -\frac1{\sin^2(x)}\\
-x\arcsin(x)+\sqrt{1-x^2} & \arcsin(x) & \frac1{\sqrt{1-x^2}}\\
-x\arccos(x)-\sqrt{1-x^2} & \arccos(x) & -\frac1{\sqrt{1-x^2}}\\
-x\arctan(x)-\frac12\ln(x^2+1) & \arctan(x) & \frac1{x^2+1}\\
-\ln|\sin(x)| & \cot(x) & -\frac1{\sin^2(x)}\\
-\cosh(x) & \sinh(x) & \cosh(x)\\
-\sinh(x) & \cosh(x) & \sinh(x)\\
-\ln|\cosh(x)| & \tanh(x) & \frac1{\cosh^2(x)}\\
-& \operatorname{arcsinh}(x) & \frac1{\sqrt{1+x^2}}\\
-& \operatorname{arccosh}(x) & \frac1{\sqrt{x^2-1}}\\
-& \operatorname{arctanh}(x) & \frac1{1-x^2}
-\end{array}
-\]
-
-
-
 \subsection*{Special Trigonometric Values}
 \[
 \begin{array}{c|c|c|c|c}
@@ -173,43 +168,100 @@ x\arctan(x)-\frac12\ln(x^2+1) & \arctan(x) & \frac1{x^2+1}\\
 \end{array}
 \]
 
-\subsection*{Further Derivatives}
+\subsection*{Hyperbolic}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
+\item \textbf{Hyperbolic sine:} $\sinh(x):=\frac{e^x-e^{-x}}{2}:\mathbb{R}\to\mathbb{R}$
+\item \textbf{Hyperbolic cosine:} $\cosh(x):=\frac{e^x+e^{-x}}{2}:\mathbb{R}\to[1,\infty)$
+\item \textbf{Hyperbolic tangent:} $\tanh(x):=\frac{\sinh(x)}{\cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}:\mathbb{R}\to(-1,1)$
+\item \textbf{Inverse hyperbolic sine:} $\operatorname{arsinh}x=\ln(x+\sqrt{x^2+1})$
+\item \textbf{Inverse hyperbolic cosine:} $\operatorname{arcosh}x=\ln(x+\sqrt{x^2-1})$
+\item \textbf{Inverse hyperbolic tangent:} $\operatorname{artanh}x=\frac12\ln\frac{1+x}{1-x}$
+\end{itemize}
+
+\subsection*{Complement trick}
+\[
+\sqrt{ax+b}-\sqrt{cx+d}
+=
+\frac{ax+b-(cx+d)}
+{\sqrt{ax+b}+\sqrt{cx+d}}
+\]
+
+\subsection*{Integration by parts}
+Should we get unavoidable cycle, where we have to integrate the same thing again, we may simply add the integral to both sides, and we thus have $2$ times the integral on the left side and then finish the integration by parts on the right hand side and in the end divide by the factor up front to get the result.
+
+\subsection*{Derivatives and Antiderivatives}
+\renewcommand{\arraystretch}{0.75}
+\[
+\begin{array}{lll}
+\textbf{Antiderivative} & \textbf{Function} & \textbf{Derivative}\\
+\hline
+\frac{x^{n+1}}{n+1} & x^n & nx^{n-1}\\[0.01cm]
+\ln|x| & \frac1x=x^{-1} & -x^{-2}=-\frac1{x^2}\\[0.01cm]
+\frac23 x^{3/2} & \sqrt{x}=x^{1/2} & \frac1{2\sqrt{x}}\\[0.01cm]
+\frac{n}{n+1}x^{1/n+1} & \sqrt[n]{x}=x^{1/n} & \frac1n x^{1/n-1}\\ [0.1cm]
+\hline
+e^x & e^x & e^x\\
+\exp(x) & \exp(x) & \exp(x)\\
+\frac{1}{a(n+1)}(ax+b)^{n+1} & (ax+b)^n & n(ax+b)^{n-1}a\\
+x(\ln|x|-1) & \ln(x) & \frac1x\\
+\frac1{\ln(a)}a^x & a^x & a^x\ln(a)\\
+\frac{x}{\ln(a)}(\ln|x|-1) & \log_a|x| & \frac1{x\ln(a)}\\ [0.1cm]
+\hline 
+-\cos(x) & \sin(x) & \cos(x)\\
+\sin(x) & \cos(x) & -\sin(x)\\
+-\ln|\cos(x)| & \tan(x) & \frac1{\cos^2(x)}\\
+\ln|\sin(x)| & \cot(x) & -\frac1{\sin^2(x)}\\
+x\arcsin(x)+\sqrt{1-x^2} & \arcsin(x) & \frac1{\sqrt{1-x^2}}\\
+x\arccos(x)-\sqrt{1-x^2} & \arccos(x) & -\frac1{\sqrt{1-x^2}}\\
+x\arctan(x)-\frac12\ln(x^2+1) & \arctan(x) & \frac1{x^2+1}\\
+\ln|\sin(x)| & \cot(x) & -\frac1{\sin^2(x)}\\
+\cosh(x) & \sinh(x) & \cosh(x)\\
+\sinh(x) & \cosh(x) & \sinh(x)\\
+\ln|\cosh(x)| & \tanh(x) & \frac1{\cosh^2(x)}\\
+\end{array}
+\]
+
+% \subsection*{Further Derivatives}
+\renewcommand{\arraystretch}{0.9}
+\setlength{\arraycolsep}{3pt}
 \begin{multicols}{2}
 \[
 \begin{array}{c|c}
-F(x) & f(x)=F'(x)\\
+F(x) \  (\textbf{further derivatives} \Rightarrow) & f(x)=F'(x)\\
 \hline
-\frac1a\ln|ax+b| & \frac1{ax+b}\\[1mm]
+\frac1a\ln|ax+b| & \frac1{ax+b}\\
 \frac{ax}{c}-\frac{ad-bc}{c^2}\ln|cx+d| &
-\frac{a(cx+d)-c(ax+b)}{(cx+d)^2}\\[1mm]
+\frac{a(cx+d)-c(ax+b)}{(cx+d)^2}\\
 \frac{x}{2}\sqrt{a^2+x^2}+\frac{a^2}{2}\ln|x+\sqrt{a^2+x^2}| &
-\sqrt{a^2+x^2}\\[1mm]
+\sqrt{a^2+x^2}\\
 \frac{x}{2}\sqrt{a^2-x^2}+\frac{a^2}{2}\arcsin\!\left(\frac{x}{|a|}\right) &
-\sqrt{a^2-x^2}\\[1mm]
+\sqrt{a^2-x^2}\\
 \frac{x}{2}\sqrt{x^2-a^2}-\frac{a^2}{2}\ln|x+\sqrt{x^2-a^2}| &
-\sqrt{x^2-a^2}\\[1mm]
+\sqrt{x^2-a^2}\\
 \ln|x+\sqrt{x^2\pm a^2}| &
-\frac1{\sqrt{x^2\pm a^2}}\\[1mm]
+\frac1{\sqrt{x^2\pm a^2}}\\
 \arcsin\!\left(\frac{x}{|a|}\right) &
-\frac1{\sqrt{a^2-x^2}}\\[1mm]
+\frac1{\sqrt{a^2-x^2}}\\
 \frac1a\arctan\!\left(\frac{x}{a}\right) &
 \frac1{a^2+x^2}\\
 \hline
--\frac1a\cos(ax+b) & \sin(ax+b)\\[1mm]
+-\frac1a\cos(ax+b) & \sin(ax+b)\\
 \frac1a\sin(ax+b) & \cos(ax+b)\\
 \hline
-x^x & x^x(1+\ln|x|)\\[1mm]
-(x^x)^x & (x^x)^x(x+2x\ln|x|)\\[1mm]
+x^x & x^x(1+\ln|x|)\\
+(x^x)^x & (x^x)^x(x+2x\ln|x|)\\
 x^{x^x} &
 x^{x^x}\!\left(x^{x-1}+x^x(1+\ln|x|)\ln|x|\right)\\
 \hline
-\frac12\left(x-\frac12\sin(2x)\right) & \sin^2(x)\\[1mm]
-\frac12\left(x+\frac12\sin(2x)\right) & \cos^2(x)
+\frac12\left(x-\frac12\sin(2x)\right) & \sin^2(x)\\
+\frac12\left(x+\frac12\sin(2x)\right) & \cos^2(x)\\
+\hline
+\operatorname{arsinh}(x) & \frac1{\sqrt{1+x^2}}\\
+\operatorname{arcosh}(x) & \frac1{\sqrt{x^2-1}}\\
+\operatorname{artanh}(x) & \frac1{1-x^2}\\
 \end{array}
 \]
 \end{multicols}
 
-\subsection*{Integration by parts}
-Should we get unavoidable cycle, where we have to integrate the same thing again, we may simply add the integral to both sides, and we thus have $2$ times the integral on the left side and then finish the integration by parts on the right hand side and in the end divide by the factor up front to get the result.
 
 \end{multicols*}
