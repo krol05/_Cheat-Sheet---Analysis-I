@@ -2,6 +2,8 @@
 
 \usepackage{enumerate, amsmath, amsthm, amssymb, cancel, mathtools}
 
+\usepackage{lscape}
+
 \usepackage[a4paper, left=0.7cm, right=0.7cm, top=0.7cm, bottom=0.7cm, landscape]{geometry}
 
 \usepackage{algorithm}
@@ -26,6 +28,12 @@
 
 \usepackage{anyfontsize}
 
+\newenvironment{tables}[2]{%
+\begin{tabular}{#1}
+#2\\
+}{%
+\end{tabular}
+}
 
 
 \titleformat{\section}

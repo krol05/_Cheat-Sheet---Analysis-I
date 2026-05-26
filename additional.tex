@@ -1,134 +1,212 @@
 \section{Additional}
 
-\begin{table}[h]
-    \centering
-    \renewcommand{\arraystretch}{1.4}
-    \begin{tabular}{ll|ll}
-        \hline
-        $\displaystyle \lim_{x\to\infty}\frac{1}{x}=0$                             &
-        $\displaystyle \lim_{x\to\infty}\left(1+\frac{1}{x}\right)=1$              &
-        $\displaystyle \lim_{x\to0}\frac{\log(1-x)}{x}=-1$                         &
-        $\displaystyle \lim_{x\to0}x\log x=0$                                        \\
+% \scriptsize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.04}
 
-        $\displaystyle \lim_{x\to\infty}e^x=\infty$                                &
-        $\displaystyle \lim_{x\to-\infty}e^x=0$                                    &
-        $\displaystyle \lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12$                   &
-        $\displaystyle \lim_{x\to0}\frac{e^x-1}{x}=1$                                \\
+\begin{multicols*}{3}
 
-        $\displaystyle \lim_{x\to\infty}e^{-x}=0$                                  &
-        $\displaystyle \lim_{x\to-\infty}e^{-x}=\infty$                            &
-        $\displaystyle \lim_{x\to0}\frac{x}{\arctan x}=1$                          &
-        $\displaystyle \lim_{x\to\infty}\arctan x=\frac{\pi}{2}$                     \\
+\subsection*{Important Limits}
+\[
+\begin{array}{ll}
+\lim_{x\to\infty}\frac1x=0 &
+\lim_{x\to0}\frac{\sin x}{x}=1\\
+\lim_{x\to\infty}e^x=\infty &
+\lim_{x\to-\infty}e^x=0\\
+\lim_{x\to\infty}e^{-x}=0 &
+\lim_{x\to-\infty}e^{-x}=\infty\\
+\lim_{x\to\infty}\ln x=\infty &
+\lim_{x\to0}\ln x=-\infty\\
+\lim_{x\to0}\frac{e^x-1}{x}=1 &
+\lim_{x\to0}\frac{\ln(1+x)}x=1\\
+\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12 &
+\lim_{x\to0}\frac{\cos x-1}{x}=0\\
+\lim_{x\to\infty}\frac{\ln x}{x}=0 &
+\lim_{x\to\infty}\frac{\sin x}{x}=0\\
+\lim_{x\to0^+}x\ln x=0 &
+\lim_{x\to\infty}n^{1/n}=1\\
+\lim_{x\to\pm\infty}\left(1+\frac1x\right)^x=e &
+\lim_{x\to\infty}\left(1-\frac1x\right)^x=\frac1e\\
+\lim_{x\to\pm\infty}\left(1+\frac{k}{x}\right)^{mx}=e^{km} &
+\lim_{x\to\infty}x^a q^x=0
+\end{array}
+\]
 
-        $\displaystyle \lim_{x\to\infty}\frac{e^x}{x^m}=\infty$                    &
-        $\displaystyle \lim_{x\to-\infty}x e^x=0$                                  &
-        $\displaystyle \lim_{x\to\infty}\left(\frac{x}{x+k}\right)^x=e^{-k}$       &
-        $\displaystyle \lim_{x\to0}\frac{e^x-1}{x}=1$                                \\
-
-        $\displaystyle \lim_{x\to\infty}\ln x=\infty$                              &
-        $\displaystyle \lim_{x\to0}\ln x=-\infty$                                  &
-        $\displaystyle \lim_{x\to0}\frac{a^x-1}{x}=\ln(a),\; a>0$                  &
-        $\displaystyle \lim_{x\to0}\frac{e^{ax}-1}{x}=a$                             \\
-
-        $\displaystyle \lim_{x\to\infty}(1+x)^{1/x}=1$                             &
-        $\displaystyle \lim_{x\to0}(1+x)^{1/x}=e$                                  &
-        $\displaystyle \lim_{x\to0}\frac{\ln(1+x)}{x}=1$                           &
-        $\displaystyle \lim_{x\to1}\frac{\ln x}{x-1}=1$                              \\
-
-        $\displaystyle \lim_{x\to\infty}\left(1+\frac{1}{x}\right)^b=1$            &
-        $\displaystyle \lim_{x\to\infty}\left(1+\frac{1}{x}\right)^b=1$            &
-        $\displaystyle \lim_{x\to\infty}\frac{\ln x}{x}=0$                         &
-        $\displaystyle \lim_{x\to\infty}\frac{\log x}{x^\alpha}=0$                   \\
-
-        $\displaystyle \lim_{x\to\infty}x^a q^x=0,\;0\le q<1$                      &
-        $\displaystyle \lim_{x\to\infty}n^{1/n}=1$                                 &
-        $\displaystyle \lim_{x\to\infty}\sqrt[x]{x}=1$                             &
-        $\displaystyle \lim_{x\to\infty}\frac{2x}{2^x}=0$                            \\
-
-        $\displaystyle \lim_{x\to\pm\infty}\left(1+\frac{1}{x}\right)^x=e$         &
-        $\displaystyle \lim_{x\to\infty}\left(1-\frac{1}{x}\right)^x=\frac{1}{e}$  &
-        $\displaystyle \lim_{x\to(\pi/2)^-}\tan x=+\infty$                         &
-        $\displaystyle \lim_{x\to(\pi/2)^+}\tan x=-\infty$                           \\
-
-        $\displaystyle \lim_{x\to\pm\infty}\left(1+\frac{k}{x}\right)^{mx}=e^{km}$ &
-        $\displaystyle \lim_{x\to0}\frac{\sin x}{x}=1$                             &
-        $\displaystyle \lim_{x\to\infty}\frac{\sin x}{x}=0$                        &
-        $\displaystyle \lim_{x\to0^+}x\ln x=0$                                       \\
-
-        $\displaystyle \lim_{x\to0}\frac{1}{\cos x}=1$                             &
-        $\displaystyle \lim_{x\to0}\frac{\cos x-1}{x}=0$                           &
-                                                                                   & \\
-
-        \hline
-    \end{tabular}
-    \caption{Important limits}
-\end{table}
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|c|c|c|c|c|c|}
-        \hline
-        \multicolumn{2}{|c|}{$f(x)$} & \multicolumn{2}{c|}{$g(x)$} & \multicolumn{2}{c|}{$h(x)$}                              \\
-        \hline
-        $f(x)$                       & $f'(x)$                     & $g(x)$                      & $g'(x)$ & $h(x)$ & $h'(x)$ \\
-        \hline
-        $\sin(x)$                    & $\cos(x)$
-                                     & $\tan(x)$                   & $\frac{1}{\cos^2(x)}$
-                                     & $\arcsin(x)$                & $\frac{1}{\sqrt{1-x^2}}$                                 \\
-
-        $\cot(x)$                    & $-\frac{1}{\sin^2(x)}$
-                                     & $mx+b$                      & $m$
-                                     & $\arccos(x)$                & $-\frac{1}{\sqrt{1-x^2}}$                                \\
-
-        $\cos(x)$                    & $-\sin(x)$
-                                     & $r\cdot g(x)$               & $r\cdot g'(x)$
-                                     & $\arctan(x)$                & $\frac{1}{1+x^2}$                                        \\
-
-        $x^n$                        & $n x^{n-1}$
-                                     & $e^x$                       & $e^x$
-                                     & $\mathrm{arccot}(x)$        & $-\frac{1}{1+x^2}$                                       \\
-
-        $\ln(x)$                     & $\frac{1}{x}$
-                                     & $a^x$                       & $a^x \ln(a)$
-                                     & $\mathrm{arsinh}(x)$        & $\frac{1}{\sqrt{1+x^2}}$                                 \\
-
-        $\log_a(x)$                  & $\frac{1}{x\ln(a)}$
-                                     & $\sinh(x)$                  & $\cosh(x)$
-                                     & $\mathrm{arcosh}(x)$        & $\frac{1}{\sqrt{x^2-1}}$                                 \\
-
-        $\tanh(x)$                   & $\frac{1}{\cosh^2(x)}$
-                                     & $\cosh(x)$                  & $\sinh(x)$
-                                     & $\mathrm{artanh}(x)$        & $\frac{1}{1-x^2}$                                        \\
-
-        $\tan(x)$                    & $1+\tan^2(x)$
-                                     &                             &
-                                     &                             &                                                          \\
-
-        \hline
-    \end{tabular}
-    \caption{Classic derivatives}
-\end{table}
+\subsection*{Rules of derivation}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
+\item \textbf{Sum:}
+\(
+(f+g)'=f'+g'
+\)
+\item \textbf{Product:}
+\(
+(fg)'=f'g+fg'
+\)
+\item \textbf{Chain:}
+\(
+(g\circ f)'=g'(f)f'
+\)
+\item \textbf{Quotient:}
+\(
+\left(\frac fg\right)'=\frac{f'g-fg'}{g^2}
+\)
+\item \textbf{Derivative of the Inverse:}
+\(
+(f^{-1})'(y_0)=\frac1{f'(x_0)},\quad y_0=f(x_0)
+\)
+\end{itemize}
 
 
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|c|l|}
-        \hline
-        Nr. & Regel                                                                                    \\
-        \hline
-        1   & $(f + g)'(x) = f'(x) + g'(x)$                                                            \\
+\subsection*{Rules of integration}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
+\item \textbf{Linearity of Integration:}
+\(
+\int(f+g)=\int f+\int g,\qquad
+\int cf=c\int f
+\)
+\item \textbf{Integration by Parts:}
+\(
+\int f'g=fg-\int fg'
+\)
+\item \textbf{Substitution:}
+\(
+\int g(f(x))f'(x)\,dx=\int g(y)\,dy
+\)
+\end{itemize}
 
-        2   & $(f \cdot g)'(x) = f'(x)\,g(x) + f(x)\,g'(x)$                                            \\
+\subsection*{Logarithms}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
+\item \textbf{Change of base:} $\log_a x=\frac{\ln x}{\ln a}$
+\item \textbf{Power rule:} $\log_a(x^y)=y\log_a x$
+\item \textbf{Product rule:} $\log_a(xy)=\log_a x+\log_a y$
+\item \textbf{Quotient rule:} $\log_a\left(\frac xy\right)=\log_a x-\log_a y$
+\item \textbf{Logarithm 1:} $\log_a\left(1\right)=0 \ \forall a \in \mathbb{N}$ (negative undefined)
+\end{itemize}
 
-        3   & $(g \circ f)'(x) = g'(f(x)) \cdot f'(x)$                                                 \\
+\subsection*{Trigonometry}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
+\item \textbf{Tangent and cotangent:} $\tan x=\frac{\sin x}{\cos x},\quad \cot x=\frac{\cos x}{\sin x}$
+\item \textbf{Pythagorean identity:} $\sin^2x+\cos^2x=1$
+\item \textbf{Double-angle sine:} $\sin(2x)=2\sin x\cos x$
+\item \textbf{Double-angle cosine:} $\cos(2x)=\cos^2x-\sin^2x$
+\item \textbf{Angle addition sine:} $\sin(x+y)=\sin x\cos y+\cos x\sin y$
+\item \textbf{Angle addition cosine:} $\cos(x+y)=\cos x\cos y-\sin x\sin y$
+\item \textbf{Even/Odd symmetry:} $\cos(x)=\cos(-x)$ and $\sin(-x)=-\sin(x)$
+\item \textbf{Reflection at $\pi/2$:} $\cos(\pi-x)=-\cos(x)$ and $\sin(\pi-x)=\sin(x)$
+\end{itemize}
 
-        4   & $\left(\frac{f}{g}\right)'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}$                    \\
+\subsection*{Hyperbolic}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
+\item \textbf{Hyperbolic sine:} $\sinh(x):=\frac{e^x-e^{-x}}{2}:\mathbb{R}\to\mathbb{R}$
+\item \textbf{Hyperbolic cosine:} $\cosh(x):=\frac{e^x+e^{-x}}{2}:\mathbb{R}\to[1,\infty)$
+\item \textbf{Hyperbolic tangent:} $\tanh(x):=\frac{\sinh(x)}{\cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}:\mathbb{R}\to(-1,1)$
+\item \textbf{Inverse hyperbolic sine:} $\operatorname{arsinh}x=\ln(x+\sqrt{x^2+1})$
+\item \textbf{Inverse hyperbolic cosine:} $\operatorname{arcosh}x=\ln(x+\sqrt{x^2-1})$
+\item \textbf{Inverse hyperbolic tangent:} $\operatorname{artanh}x=\frac12\ln\frac{1+x}{1-x}$
+\end{itemize}
 
-        5   & $(f^{-1})'(y_0) = \frac{1}{f'(x_0)}, \quad \text{mit } y_0 = f(x_0)$                     \\
+% \subsection*{Tricks}
+% \(
+% \sqrt a-\sqrt b=\frac{a-b}{\sqrt a+\sqrt b}
+% \)
+% If integration by parts gives the same integral again, move it to the other side and solve algebraically.
 
-        \hline
-        \multicolumn{2}{|l|}{\textbf{Note:} This holds only if $f^{-1}$ exists and $f$ is continuous.} \\
-        \hline
-    \end{tabular}
-    \caption{Calculation rules of derivatives}
-\end{table}
+\subsection*{Complement trick}
+\[
+\sqrt{ax+b}-\sqrt{cx+d}
+=
+\frac{ax+b-(cx+d)}
+{\sqrt{ax+b}+\sqrt{cx+d}}
+\]
+
+\subsection*{Derivatives and Antiderivatives}
+
+\[
+\begin{array}{lll}
+\textbf{Antiderivative} & \textbf{Function} & \textbf{Derivative}\\
+\hline
+\frac{x^{n+1}}{n+1} & x^n & nx^{n-1}\\[0.1cm]
+\ln|x| & \frac1x=x^{-1} & -x^{-2}=-\frac1{x^2}\\[0.1cm]
+\frac23 x^{3/2} & \sqrt{x}=x^{1/2} & \frac1{2\sqrt{x}}\\[0.1cm]
+\frac{n}{n+1}x^{1/n+1} & \sqrt[n]{x}=x^{1/n} & \frac1n x^{1/n-1}\\
+\hline
+e^x & e^x & e^x\\
+\exp(x) & \exp(x) & \exp(x)\\
+\frac{1}{a(n+1)}(ax+b)^{n+1} & (ax+b)^n & n(ax+b)^{n-1}a\\
+x(\ln|x|-1) & \ln(x) & \frac1x\\
+\frac1{\ln(a)}a^x & a^x & a^x\ln(a)\\
+\frac{x}{\ln(a)}(\ln|x|-1) & \log_a|x| & \frac1{x\ln(a)}\\
+\hline
+-\cos(x) & \sin(x) & \cos(x)\\
+\sin(x) & \cos(x) & -\sin(x)\\
+-\ln|\cos(x)| & \tan(x) & \frac1{\cos^2(x)}\\
+\ln|\sin(x)| & \cot(x) & -\frac1{\sin^2(x)}\\
+x\arcsin(x)+\sqrt{1-x^2} & \arcsin(x) & \frac1{\sqrt{1-x^2}}\\
+x\arccos(x)-\sqrt{1-x^2} & \arccos(x) & -\frac1{\sqrt{1-x^2}}\\
+x\arctan(x)-\frac12\ln(x^2+1) & \arctan(x) & \frac1{x^2+1}\\
+\ln|\sin(x)| & \cot(x) & -\frac1{\sin^2(x)}\\
+\cosh(x) & \sinh(x) & \cosh(x)\\
+\sinh(x) & \cosh(x) & \sinh(x)\\
+\ln|\cosh(x)| & \tanh(x) & \frac1{\cosh^2(x)}\\
+& \operatorname{arcsinh}(x) & \frac1{\sqrt{1+x^2}}\\
+& \operatorname{arccosh}(x) & \frac1{\sqrt{x^2-1}}\\
+& \operatorname{arctanh}(x) & \frac1{1-x^2}
+\end{array}
+\]
+
+
+
+\subsection*{Special Trigonometric Values}
+\[
+\begin{array}{c|c|c|c|c}
+^\circ & \mathrm{rad} & \sin(\xi) & \cos(\xi) & \tan(\xi)\\
+\hline
+0^\circ & 0 & 0 & 1 & 0\\
+30^\circ & \frac{\pi}{6} & \frac12 & \frac{\sqrt3}{2} & \frac{\sqrt3}{3}\\
+45^\circ & \frac{\pi}{4} & \frac{\sqrt2}{2} & \frac{\sqrt2}{2} & 1\\
+60^\circ & \frac{\pi}{3} & \frac{\sqrt3}{2} & \frac12 & \sqrt3\\
+90^\circ & \frac{\pi}{2} & 1 & 0 & \varnothing\\
+120^\circ & \frac{2\pi}{3} & \frac{\sqrt3}{2} & -\frac12 & -\sqrt3\\
+135^\circ & \frac{3\pi}{4} & \frac{\sqrt2}{2} & -\frac{\sqrt2}{2} & -1\\
+150^\circ & \frac{5\pi}{6} & \frac12 & -\frac{\sqrt3}{2} & -\frac{\sqrt3}{3}\\
+180^\circ & \pi & 0 & -1 & 0
+\end{array}
+\]
+
+\subsection*{Further Derivatives}
+\begin{multicols}{2}
+\[
+\begin{array}{c|c}
+F(x) & f(x)=F'(x)\\
+\hline
+\frac1a\ln|ax+b| & \frac1{ax+b}\\[1mm]
+\frac{ax}{c}-\frac{ad-bc}{c^2}\ln|cx+d| &
+\frac{a(cx+d)-c(ax+b)}{(cx+d)^2}\\[1mm]
+\frac{x}{2}\sqrt{a^2+x^2}+\frac{a^2}{2}\ln|x+\sqrt{a^2+x^2}| &
+\sqrt{a^2+x^2}\\[1mm]
+\frac{x}{2}\sqrt{a^2-x^2}+\frac{a^2}{2}\arcsin\!\left(\frac{x}{|a|}\right) &
+\sqrt{a^2-x^2}\\[1mm]
+\frac{x}{2}\sqrt{x^2-a^2}-\frac{a^2}{2}\ln|x+\sqrt{x^2-a^2}| &
+\sqrt{x^2-a^2}\\[1mm]
+\ln|x+\sqrt{x^2\pm a^2}| &
+\frac1{\sqrt{x^2\pm a^2}}\\[1mm]
+\arcsin\!\left(\frac{x}{|a|}\right) &
+\frac1{\sqrt{a^2-x^2}}\\[1mm]
+\frac1a\arctan\!\left(\frac{x}{a}\right) &
+\frac1{a^2+x^2}
+\hline
+-\frac1a\cos(ax+b) & \sin(ax+b)\\[1mm]
+\frac1a\sin(ax+b) & \cos(ax+b)\\
+\hline
+x^x & x^x(1+\ln|x|)\\[1mm]
+(x^x)^x & (x^x)^x(x+2x\ln|x|)\\[1mm]
+x^{x^x} &
+x^{x^x}\!\left(x^{x-1}+x^x(1+\ln|x|)\ln|x|\right)\\
+\hline
+\frac12\left(x-\frac12\sin(2x)\right) & \sin^2(x)\\[1mm]
+\frac12\left(x+\frac12\sin(2x)\right) & \cos^2(x)
+\end{array}
+\]
+\end{multicols}
+
+\end{multicols*}
