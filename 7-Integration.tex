@@ -1,19 +1,19 @@
-\section{Integration}
+\section{Integration Part 1}
 \tsDef{Antiderivative / Indefinite Integral}{
 Let $I\subseteq\mathbb{R}$ be an interval and let
-\[
+\(
 f:I\to\mathbb{R}
-\]
+\)
 be a function.
 A differentiable function
-\[
+\(
 F:I\to\mathbb{R}
-\]
+\)
 satisfying
-\[
+\(
 F'(x)=f(x)
 \quad \forall x\in I
-\]
+\)
 is called an \emph{antiderivative} of $f$ on $I$.
 Determining $F$ from $f$ is called \emph{indefinite integration}.
 }
@@ -21,9 +21,9 @@ Determining $F$ from $f$ is called \emph{indefinite integration}.
 \tsIdea{Non-Uniqueness of Antiderivatives}{
 An antiderivative is not unique.
 If $F(x)$ is an antiderivative of $f(x)$, then
-\[
+\(
 F(x)+C
-\]
+\)
 is also an antiderivative for every constant $C\in\mathbb{R}$.
 Hence a function possesses an entire family of antiderivatives.
 This family is called the \emph{indefinite integral} and is written as
@@ -53,7 +53,7 @@ where $s$ is a constant.
 \\
 \tsThe{Basic Integration Rules}{
 Rules:
-\begin{itemize}
+\begin{itemize}[noitemsep]
     \item \(
     \int k\,dx = kx + C
     \)
@@ -100,45 +100,27 @@ Rules:
     \)
 \end{itemize}
 }
-\tsIdea{Differentiation Rules vs. Integration Rules}{
-Recall the two fundamental differentiation rules:
-\[
-\frac{d}{dx}f(g(x))
-=
-f'(g(x))\cdot g'(x)
-\]
-(chain rule)
-and
-\[
-\frac{d}{dx}(f(x)g(x))
-=
-f'(x)g(x)+f(x)g'(x)
-\]
-(product rule).
-The goal is to derive and apply the corresponding rules in integration theory.
-}
-\\
 \tsThe{Integration by Parts}{
 Using the product rule:
-\[
+\(
 \frac{d}{dx}(f(x)g(x))
 =
 f'(x)g(x)+f(x)g'(x),
-\]
+\)
 we obtain
-\[
+\(
 \int \frac{d}{dx}(f(x)g(x))\,dx
 =
 (fg)(x).
-\]
+\)
 Therefore,
-\[
+\(
 (fg)(x)
 =
 \int f'(x)g(x)\,dx
 +
 \int f(x)g'(x)\,dx.
-\]
+\)
 Rearranging gives the formula for \emph{integration by parts}:
 \[
 \boxed{
@@ -153,27 +135,27 @@ f(x)g(x)
 \\
 \tsThe{Integration by Substitution}{
 Using the chain rule:
-\[
+\(
 \frac{d}{dx}f(g(x))
 =
 f'(g(x))g'(x),
-\]
+\)
 we obtain
-\[
+\(
 \int f'(g(x))g'(x)\,dx
 =
 f(g(x))+C.
-\]
+\)
 With the substitution
-\[
+\(
 y=g(x),
-\]
+\)
 this becomes
-\[
+\(
 \int f'(g(x))g'(x)\,dx
 =
 \int \frac{df}{dy}\,dy.
-\]
+\)
 Hence the substitution rule is
 \[
 \boxed{
@@ -184,13 +166,13 @@ f(g(x))+C
 \]
 }
 \section{Integration Part 2}
-\tsIdea{Motivation}{
-Given a velocity function $v(t)$ describing one-dimensional motion, natural questions are:
-\begin{itemize}
-\item What is the total distance traveled?
-\item What is the change in position?
-\end{itemize}
-}
+% \tsIdea{Motivation}{
+% Given a velocity function $v(t)$ describing one-dimensional motion, natural questions are:
+% \begin{itemize}
+% \item What is the total distance traveled?
+% \item What is the change in position?
+% \end{itemize}
+% }
 \tsDef{Partition of an Interval}{
 Let $[a,b]\subseteq\mathbb{R}$ be a compact interval.
 A \emph{partition} of $[a,b]$ is a finite set of points
@@ -203,40 +185,40 @@ A partition
 a=y_0<y_1<\cdots<y_m=b
 \]
 is called a \emph{refinement} of
-\[
+\(
 a=x_0<x_1<\cdots<x_n=b
-\]
+\)
 if
-\[
+\(
 \{x_0,\dots,x_n\}\subseteq\{y_0,\dots,y_m\}.
-\]
+\)
 }
 \\
 \tsDef{Step Function}{
 A function
-\[
+\(
 f:[a,b]\to\mathbb{R}
-\]
+\)
 is called a \emph{step function} if there exists a partition
-\[
+\(
 a=x_0<x_1<\cdots<x_n=b
-\]
+\)
 such that for every $k=1,\dots,n$, the restriction
-\[
+\(
 f|_{(x_{k-1},x_k)}
-\]
+\)
 is constant.
 }
 \\
 \tsDef{Integral of a Step Function}{
 Let
-\[
+\(
 f:[a,b]\to\mathbb{R}
-\]
+\)
 be a step function with respect to the partition
-\[
+\(
 a=x_0<x_1<\cdots<x_n=b.
-\]
+\)
 Then the integral of $f$ over $[a,b]$ is defined by
 \[
 \int_a^b f(x)\,dx
@@ -277,9 +259,9 @@ where $TF$ denotes the set of step functions.
 \\
 \tsDef{Riemann Integral}{
 A bounded function
-\[
+\(
 f:[a,b]\to\mathbb{R}
-\]
+\)
 is called \emph{Riemann integrable} if
 \[
 \sup L(f)=\inf U(f).
@@ -294,138 +276,139 @@ The numbers $a,b$ are called the lower and upper limits of integration, and $f$ 
 }
 \\
 \tsThe{Properties of the Riemann Integral}{
-\begin{itemize}
-\item[(i)] (Linearity)
-If $f,g:[a,b]\to\mathbb{R}$ are integrable and $\alpha,\beta\in\mathbb{R}$, then
-\[
-\int_a^b (\alpha f+\beta g)(x)\,dx
-=
-\alpha\int_a^b f(x)\,dx
-+
-\beta\int_a^b g(x)\,dx.
-\]
+    Properties of the Riemann Integral:
+    \begin{itemize}
+        \item[(i)] (Linearity)
+        If $f,g:[a,b]\to\mathbb{R}$ are integrable and $\alpha,\beta\in\mathbb{R}$, then
+        \[
+        \int_a^b (\alpha f+\beta g)(x)\,dx
+        =
+        \alpha\int_a^b f(x)\,dx
+        +
+        \beta\int_a^b g(x)\,dx.
+        \]
 
-\item[(ii)] (Monotonicity)
-If
-\[
-f(x)\le g(x)
-\]
-for all $x$, then
-\[
-\int_a^b f(x)\,dx
-\le
-\int_a^b g(x)\,dx.
-\]
+        \item[(ii)] (Monotonicity)
+        If
+        \(
+        f(x)\le g(x)
+        \)
+        for all $x$, then
+        \[
+        \int_a^b f(x)\,dx
+        \le
+        \int_a^b g(x)\,dx.
+        \]
 
-\item[(iii)] (Triangle Inequality)
-\[
-\left|
-\int_a^b f(x)\,dx
-\right|
-\le
-\int_a^b |f(x)|\,dx.
-\]
+        \item[(iii)] (Triangle Inequality)
+        \[
+        \left|
+        \int_a^b f(x)\,dx
+        \right|
+        \le
+        \int_a^b |f(x)|\,dx.
+        \]
 
-\item[(iv)] (Reversal of Integration Limits)
-\[
-\int_a^b f(x)\,dx
-=
--\int_b^a f(x)\,dx.
-\]
+        \item[(iv)] (Reversal of Integration Limits)
+        \[
+        \int_a^b f(x)\,dx
+        =
+        -\int_b^a f(x)\,dx.
+        \]
 
-\item[(v)] (Splitting the Interval)
-For $a\le c\le b$:
-\[
-\int_a^b f(x)\,dx
-=
-\int_a^c f(x)\,dx
-+
-\int_c^b f(x)\,dx.
-\]
-\end{itemize}
+        \item[(v)] (Splitting the Interval)
+        For $a\le c\le b$:
+        \[
+        \int_a^b f(x)\,dx
+        =
+        \int_a^c f(x)\,dx
+        +
+        \int_c^b f(x)\,dx.
+        \]
+    \end{itemize}
 }
 
 \tsThe{Monotone Functions are Integrable}{
 Every monotone function
-\[
+\(
 f:[a,b]\to\mathbb{R}
-\]
+\)
 is Riemann integrable.
 }
 \\
 \tsThe{Continuous Functions are Integrable}{
 Every continuous function
-\[
+\(
 f:[a,b]\to\mathbb{R}
-\]
+\)
 is Riemann integrable.
 }
 \\
 \tsDef{Pointwise Convergence of Functions}{
 Let
-\[
+\(
 (f_n)_{n\in\mathbb{N}_0}
-\]
+\)
 be a sequence of functions
-\[
+\(
 f_n:D\to\mathbb{R},
-\]
+\)
 and let
-\[
+\(
 f:D\to\mathbb{R}.
-\]
+\)
 The sequence $(f_n)$ converges \emph{pointwise} to $f$ if for every $x\in D$, the sequence
-\[
+\(
 (f_n(x))_{n\in\mathbb{N}_0}
-\]
+\)
 converges to $f(x)$.
 }
 \\
 \tsDef{Uniform Convergence}{
 The sequence $(f_n)$ converges \emph{uniformly} to $f$ if
-\[
+\(
 \forall \varepsilon>0\ \exists N
-\]
+\)
 such that for all
-\[
+\(
 n\ge N
-\quad\text{and all }x\in D,
-\]
+\ \text{and all }x\in D,
+\)
 we have
-\[
+\(
 |f_n(x)-f(x)|<\varepsilon.
-\]
+\)
 }
 \\
 \tsThe{Uniform Limit of Continuous Functions}{
 Let
-\[
+\(
 (f_n)_{n\in\mathbb{N}_0}
-\]
+\)
 be a sequence of continuous functions
-\[
+\(
 f_n:D\to\mathbb{R}
-\]
+\)
 converging uniformly to
-\[
+\(
 f:D\to\mathbb{R}.
-\]
+\)
 Then $f$ is continuous.
 }
 \\
 \tsThe{Uniform Limit and Integration}{
 Let
-\[
+\(
 (f_n)_{n\in\mathbb{N}_0}
-\]
+\)
 be a sequence of integrable functions
-\[
+\(
 f_n:[a,b]\to\mathbb{R}
-\]
+\)
 converging uniformly to
-\[
+\(
 f:[a,b]\to\mathbb{R}.
-\]
+\)
 Then $f$ is integrable and
 \[
 \int_a^b f(x)\,dx
@@ -437,20 +420,20 @@ Then $f$ is integrable and
 \\
 \tsThe{Mean Value Theorem for Integrals}{
 If
-\[
+\(
 f:[a,b]\to\mathbb{R}
-\]
+\)
 is continuous, then there exists
-\[
+\(
 c\in[a,b]
-\]
+\)
 such that
-\[
+\(
 f(c)
 =
 \frac{1}{b-a}
 \int_a^b f(x)\,dx.
-\]
+\)
 The quantity
 \[
 \frac{1}{b-a}
@@ -461,9 +444,9 @@ is called the \emph{average value} of $f$ on $[a,b]$.
 \\
 \tsThe{Fundamental Theorem of Calculus}{
 Let
-\[
+\(
 f:[a,b]\to\mathbb{R}
-\]
+\)
 be continuous.
 Then for every constant $C\in\mathbb{R}$, the function
 \[
@@ -477,9 +460,9 @@ Moreover, every antiderivative of $f$ is of this form.
 \\
 \tsCor{Integral Representation}{
 Let
-\[
+\(
 F:[a,b]\to\mathbb{R}
-\]
+\)
 be continuously differentiable.
 Then
 \[
@@ -493,9 +476,9 @@ F(a)
 \\
 \tsCor{Newton--Leibniz Formula}{
 Let
-\[
+\(
 f:[a,b]\to\mathbb{R}
-\]
+\)
 be continuous and let $F$ be an antiderivative of $f$.
 Then
 \[
@@ -507,9 +490,9 @@ F(b)-F(a).
 \\
 \tsThe{Integration by Parts}{
 Let
-\[
+\(
 f,g:[a,b]\to\mathbb{R}
-\]
+\)
 be continuously differentiable.
 Then
 \[
@@ -523,18 +506,18 @@ f(x)g(x)\Big|_a^b
 \\
 \tsThe{Substitution Rule (Version 1)}{
 Let
-\[
+\(
 f:I\to J
-\]
+\)
 be continuously differentiable and
-\[
+\(
 g:J\to\mathbb{R}
-\]
+\)
 continuous.
 Then for every
-\[
+\(
 [a,b]\subseteq I,
-\]
+\)
 \[
 \int_a^b g(f(x))f'(x)\,dx
 =
@@ -544,23 +527,23 @@ Then for every
 \\
 \tsThe{Substitution Rule (Version 2)}{
 Let
-\[
+\(
 f:I\to J
-\]
+\)
 be continuously differentiable and
-\[
+\(
 g:J\to\mathbb{R}
-\]
+\)
 continuous.
 Assume
-\[
+\(
 f'(x)\neq 0
 \quad\forall x\in[a,b]
-\]
+\)
 and let
-\[
+\(
 f^{-1}:[f(a),f(b)]\to\mathbb{R}
-\]
+\)
 denote the inverse of $f|_{[a,b]}$.
 Then
 \[
