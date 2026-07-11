@@ -1,18 +1,16 @@
 \subsection{Complex Numbers}
 \tsDef{(Complex number)}{
     A complex number is
-
-    \[
+    \(
         z=a+ib,\quad a,b\in\mathbb{R}
-    \]
+    \)
 }
 \\
 \tsDef{(set of complex numbers)}{
     The set of complex numbers is
-
-    \[
+    \(
         \mathbb{C}=\{a+ib\mid a,b\in\mathbb{R}\}
-    \]
+    \)
 }
 \\
 \tsDef{(Terminology of complex numbers)}{
@@ -24,38 +22,16 @@
         \item If $a=0$, the number is purely imaginary
     \end{itemize}
 }
-\tsDef{(Complex numbers Addition and Subtraction)}{
+\tsDef{(Complex numbers operations)}{
     Let $z_1=x_1+iy_1$, $z_2=x_2+iy_2$.
-    \[
-        z_1+z_2=(x_1+x_2)+i(y_1+y_2)
-    \]
-
-    \[
-        z_1-z_2=(x_1-x_2)+i(y_1-y_2)
-    \]
+    \begin{itemize} [noitemsep]
+        \item \textbf{addition:} $z_1+z_2=(x_1+x_2)+i(y_1+y_2)$
+        \item \textbf{subtraction:} $z_1-z_2=(x_1-x_2)+i(y_1-y_2)$
+        \item \textbf{multiplication:} $z_1z_2=x_1x_2-y_1y_2+i(x_1y_2+y_1x_2)$
+        \item \textbf{division:} $\frac{z}{w}=\frac{z\overline{w}}{w\overline{w}}=\frac{z\overline{w}}{|w|^2}$
+        \item \textbf{conjugate:} $\overline{z} = \overline{x + iy} = x - iy$
+    \end{itemize}
 }
-\\
-\tsDef{(Complex numbers Multiplication)}{
-    Let $z_1=x_1+iy_1$, $z_2=x_2+iy_2$.
-    \[
-        z_1z_2=x_1x_2-y_1y_2+i(x_1y_2+y_1x_2)
-    \]
-}
-\\
-\tsDef{(Complex conjugate)}{
-    For a complex number $z = x + iy$, the complex conjugate of $z$ is given by
-    \[
-        \overline{z} = \overline{x + iy} = x - iy.
-    \]
-}
-\\
-\tsDef{(Complex numbers Division)}{
-    To divide numbers we use conjugate:
-    \[
-        \frac{z}{w}=\frac{z\overline{w}}{w\overline{w}}=\frac{z\overline{w}}{|w|^2}
-    \]
-}
-\\
 \tsDef{(Properties of the Conjugate)}{
     Properties are:
     \begin{itemize} [noitemsep]
@@ -69,37 +45,32 @@
     \end{itemize}
 }
 \tsDef{(Modulus)}{
-    The magnitude $|z|$ of a complex number $z = a + ib$ is the length of the corresponding vector.
-    \[
+    The \textbf{magnitude} $|z|$ of a complex number $z = a + ib$ is the length of the corresponding vector:
+    \(
         |z|=\sqrt{a^2+b^2}
-    \]
-    The distance between two complex numbers z1 and z2 is
-    \[
+    \)
+    \(\tsPoint\) The \textbf{distance} between two complex numbers:
+    \(
         d(z_1,z_2)=|z_2-z_1|
-    \]
-    Triangle inequality works also for complex numbers:
-    \[
+    \)
+    \(\tsPoint\) \textbf{Triangle inequality}:
+    \(
         |z+w|\le |z|+|w|
-    \]
+    \)
 }
 \\
 \tsDef{(Euler's Formula)}{
-    The exponential function can be represented by a series expansion
-    as
+    The exponential function can be represented by a \textbf{series expansion}
     \[
         e^x=\sum_{k=0}^{\infty}\frac{x^k}{k!}
     \]
-    If we substitute $x = it$ into this formula, we obtain Euler's formula.
+    If we substitute $x = it$ into this formula, we obtain \textbf{Euler's formula}.
     \[
         e^{it}=\cos t+i\sin t
     \]
-    We can write $sin(t)$ and $cos(t)$ using complex
-    exponential functions.
+    We can \textbf{rewrite} $sin(t)$ and $cos(t)$ using complex exponential functions:
     \[
-        \cos (t)=\frac{e^{it}+e^{-it}}{2}
-    \]
-
-    \[
+        \cos (t)=\frac{e^{it}+e^{-it}}{2}, \
         \sin (t)=\frac{e^{it}-e^{-it}}{2i}
     \]
 }
@@ -113,7 +84,7 @@
     \end{itemize}
 }
 \tsDef{(Polar Form)}{
-    A complex number can also be described by specifying the distance from the origin and by specifying a suitable angle (\textbf{polar form}):
+    A complex number can also be described by specifying the distance from the origin and by specifying a suitable angle:
     \(
     z=re^{i\varphi}.
     \)
@@ -125,27 +96,21 @@
     \end{itemize}
 }
 \tsDef{(Polar to Cartesian conversion)}{
-    Polar to Cartesian conversion is:
-    \begin{itemize} [noitemsep]
-        \item $x=r\cos\varphi$
-        \item \(y=r\sin\varphi\)
-    \end{itemize}
+    $\boxed{x=r\cos\varphi \ |\  y=r\sin\varphi}$.
 }
+\\
 \tsDef{(Cartesian to Polar conversion)}{
-    Cartesian to Polar conversion is:
-    \begin{itemize} [noitemsep]
-        \item \(r=\sqrt{x^2+y^2}\)
-        \item \(\varphi=\arctan\frac{y}{x}\)
-    \end{itemize}
-    If $x=0$:
-    \[
+    $\boxed{r=\sqrt{x^2+y^2} \ |\  \varphi=\arctan\frac{y}{x}}$.
+    \(\tsPoint\) If $x=0$:
+    \(
         \arg(iy)=
         \begin{cases}
             \frac{\pi}{2},  & y>0 \\
             -\frac{\pi}{2}, & y<0
         \end{cases}
-    \]
+    \)
 }
+\\
 \tsDef{(Powers of Complex Numbers)}{
     The following rules must be observed:
 
@@ -162,24 +127,24 @@
 \\
 \tsDef{(Quadratic Equations)}{
     For the quadratic equation
-    \[
+    \(
         az^2+bz+c=0,
-    \]
+    \)
     in complex numbers the solution is still
-    \[
+    \(
         z_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.
-    \]
+    \)
 }
 \\
 \tsDef{(Fundamental Theorem of Algebra)}{
     Each polynom
-    \[
+    \(
         p(z)=\sum_{k=0}^n a_k z^k,\quad a_k\in\mathbb{C}
-    \]
+    \)
     can be factored into linear factors, i.e. written as
-    \[
+    \(
         p(z)=a_n(z-z_1)(z-z_2)\dots(z-z_n)
-    \]
+    \)
     The numbers $z_k$ are therefore precisely the zero points of $p(z)$ (with \textbf{multiplicity}).
 }
 \\

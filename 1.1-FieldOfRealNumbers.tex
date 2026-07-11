@@ -1,56 +1,28 @@
 \subsection{Real Numbers, Eulidean Spaces}
-% \tsThe{1.1.1 Lindemann, 1882}{
-%     There is no equation of the form
-%     \[
-%         x^n + a_{n-1}x^{n-1} + \cdots + a_0 = 0,
-%         \qquad a_i \in \mathbb{Q},
-%     \]
-%     for which $x = \pi$ is a solution.
-% }
-% \\
-% \tsIdea{R 1.1.3}{
-%     In A3 the element $y$ is uniquely determined and is denoted by $-x$.
-% }
-% \\
-\tsIdea{Axioms of Addition}{
-    \textbf{Axioms:}
+\tsIdea{Axioms}{
+    \textbf{Axioms of addition:}
     \begin{align*}
-        \textbf{A1 (Associativity)} \quad   & x + (y + z) = (x + y) + z &  & \forall x,y,z \in \mathbb{R}                           \\
-        \textbf{A2 (Neutral element)} \quad & x + 0 = x                 &  & \forall x \in \mathbb{R}                               \\
-        \textbf{A3 (Inverse element)} \quad & x + (-x) = 0              &  & \forall x \in \mathbb{R}\ \exists (-x)  \in \mathbb{R} \\
-        \textbf{A4 (Commutativity)} \quad   & x + y = y + x             &  & \forall x,y \in \mathbb{R}
+        \textbf{A1 (Assoc.)} \quad   & x + (y + z) = (x + y) + z &  & \forall x,y,z \in \mathbb{R}                           \\
+        \textbf{A2 (Neutral el.)} \quad & x + 0 = x                 &  & \forall x \in \mathbb{R}                               \\
+        \textbf{A3 (Inverse el.)} \quad & x + (-x) = 0              &  & \forall x \in \mathbb{R}\ \exists (-x)  \in \mathbb{R} \\
+        \textbf{A4 (Commut.)} \quad   & x + y = y + x             &  & \forall x,y \in \mathbb{R}
     \end{align*}
-}
-\tsIdea{Axioms of Multiplication}{
-    \textbf{Axioms:}
+    \textbf{Axioms of Multiplication:}
     \begin{align*}
-        \textbf{M1 (Associativity)} \quad   & x\cdot(y\cdot z) = (x\cdot y)\cdot z &  & \forall x,y,z \in \mathbb{R}                                            \\
-        \textbf{M2 (Neutral element)} \quad & x\cdot 1 = x                         &  & \forall x \in \mathbb{R}                                                \\
-        \textbf{M3 (Inverse element)} \quad & x\cdot x^{-1} = 1                    &  & \forall x \in \mathbb{R}\setminus \{0\} \ \exists x^{-1} \in \mathbb{R} \\
-        \textbf{M4 (Commutativity)} \quad   & x\cdot z = z\cdot x                  &  & \forall x,z \in \mathbb{R}
+        \textbf{M1 (Assoc.)} \quad   & x\cdot(y\cdot z) = (x\cdot y)\cdot z &  & \forall x,y,z \in \mathbb{R}                                            \\
+        \textbf{M2 (Neutral el.)} \quad & x\cdot 1 = x                         &  & \forall x \in \mathbb{R}                                                \\
+        \textbf{M3 (Inverse el.)} \quad & x\cdot x^{-1} = 1                    &  & \forall x \in \mathbb{R}\setminus \{0\} \ \exists x^{-1} \in \mathbb{R} \\
+        \textbf{M4 (Commut.)} \quad   & x\cdot z = z\cdot x                  &  & \forall x,z \in \mathbb{R}
     \end{align*}
-}
-% \tsIdea{R 1.1.4}{
-%     In M3 the element $y$ is uniquely determined and is denoted by $x^{-1}$.
-% }
-\\
-\tsIdea{Distributivity (Compatibility of addition and mult.)}{
-    \textbf{Axiom:}
-    \[
-        \textbf{D}\qquad x\cdot(y+z) = xy + xz = (y+z)\cdot x \qquad \forall x,y,z \in \mathbb{R}
-    \]
-}
-\tsIdea{Order Axioms}{
-    \textbf{Axioms:}
+    \textbf{Order Axioms:}
     \begin{align*}
         \textbf{O1 (Reflexivity)} \quad  & x \le x                                                   &  & \forall x \in \mathbb{R} \\
         \textbf{O2 (Transitivity)} \quad & (x \le y \land y \le z) \Rightarrow x \le z                                             \\
         \textbf{O3 (Antisymmetry)} \quad & (x \le y \land y \le x) \Rightarrow x = y                                               \\
         \textbf{O4 (Totality)} \quad     & \forall x,y \in \mathbb{R}:\ x \le y \ \text{or}\ y \le x
     \end{align*}
-}
-\tsIdea{Compatibility (Consistency with addition and mult.)}{
-    \textbf{Axioms:}
+    \textbf{Distributivity Axiom:} $$x\cdot(y+z) = xy + xz = (y+z)\cdot x \qquad \forall x,y,z \in \mathbb{R}$$
+    \textbf{Compatibility Axioms:}
     \begin{align*}
         \textbf{K1} \quad & x \le y \Rightarrow x+z \le y+z        &  & \forall x,y,z \in \mathbb{R} \\
         \textbf{K2} \quad & x \ge 0,\ y \ge 0 \Rightarrow xy \ge 0 &  & \forall x,y \in \mathbb{R}
@@ -61,14 +33,15 @@
 }
 \tsIdea{V (Completeness axiom)}{
     The set \(\mathbb{R}\) is \textbf{order complete}: For any two nonempty sets \(A, B \subset \mathbb{R}\) such that
-    \[
+    \(
         a \le b \quad \text{for all } a \in A,\; b \in B,
-    \]
+    \)
     there exists a number \(c \in \mathbb{R}\) satisfying
-    \[
+    \(
         a \le c \le b \quad \forall a \in A,\; b \in B.
-    \]
+    \)
 }
+\\
 \tsCor{1.1.6}{
     \textbf{The consequences of above axioms are:}
     \begin{enumerate}[noitemsep]
@@ -86,15 +59,15 @@
 }
 \tsCor{1.1.7 (Archimedean Principle)}{
     1. For \(x \in \mathbb{R}\) and \(y > 0\) there exists \(n \in \mathbb{N}\) such that
-    \[
+    \(
         ny > x.
-    \]
-
-    2. For every \(\varepsilon > 0\) there exists \(n \in \mathbb{N}\) such that
-    \[
+    \)
+    $\tsPoint$ 2. For every \(\varepsilon > 0\) there exists \(n \in \mathbb{N}\) such that
+    \(
         \frac{1}{n} < \varepsilon.
-    \]
+    \)
 }
+\\
 \tsThe{1.1.8}{
     For every $t \ge 0$, $t \in \mathbb{R}$, the equation
     \(x^2 = t\)
@@ -103,45 +76,36 @@
 \\
 \tsDef{(Bounded set - upper/lower bounded)}{
     A set $A \in \mathbb{R}$ is called upper bounded if
-    $$
-        \exists b \in R \ \ \forall a \in A: a \leq b.
-    $$
+    $\exists b \in R \ \ \forall a \in A: a \leq b.$
     Each such $b$ is called an upper bound for $A$. (Similarly for lower bound.)
 }
 \\
-\tsThe{(Supremum Infimum)}{
+\tsThe{(Supremum/Infimum)}{
     1. Maximum and minimum (if exists) are unique \\
     2. Every non-empty subset bounded below (above) has a unique infimum (supremum). \\
-    3. $S=\sup(X) \Leftrightarrow$
-    $$(\large \forall x\in X: x\le S) \land (\large \forall\varepsilon>0\ \exists x\in X: \quad x>S-\varepsilon)$$
-    4. $I=\inf(X) \Leftrightarrow$
-    $$\large (\forall x\in X: x\ge I) \land (\forall\varepsilon>0\ \exists x\in X: \quad x<I+\varepsilon)$$
+    3. $\sup(X) \Leftrightarrow (\large \forall x\in X: x\le S) \land (\large \forall\varepsilon>0\ \exists x\in X: \ x>S-\varepsilon)$
+    4. $\inf(X) \Leftrightarrow \large (\forall x\in X: x\ge I) \land (\forall\varepsilon>0\ \exists x\in X: \ x<I+\varepsilon)$
 }
-\tsDef{(Maximum)}{
-    Maximum is:
-    \[
+\tsDef{(Maximum/Minimum)}{
+    \(
         \max\{x,y\}:=
         \begin{cases}
             x, & \text{if } y \le x, \\
             y, & \text{if } x \le y.
         \end{cases}
-    \]
-}
-\\
-\tsDef{(Minimum)}{
-    Minimum is:
-    \[
+    \), 
+    \(
         \min\{x,y\}:=
         \begin{cases}
             y, & \text{if } y \le x, \\
             x, & \text{if } x \le y.
         \end{cases}
-    \]
+    \)
 }
 \\
 \tsThe{(Properties of the absolute value)}{
     Properties:
-    \begin{enumerate}
+    \begin{enumerate}[noitemsep]
         \item $|x| \ge 0$.
 
         \item $|x+y| \le |x| + |y| \qquad$ (triangle inequality).
@@ -151,7 +115,7 @@
 }
 \tsThe{(Young's inequality)}{
     For every $\varepsilon > 0$ and all $x,y \in \mathbb{R}$ it holds:
-    \[
+    \(
         2|xy| \le \varepsilon x^2 + \frac{1}{\varepsilon} y^2.
-    \]
+    \)
 }

@@ -3,10 +3,10 @@ A \emph{differential equation} is an equation involving an unknown function toge
 \[
 u'(t)=r(a-u(t))(b-u(t))
 \]
-where $r,a,b$ are constants, another example
-\[
+where $r,a,b$ are constants, another example:
+\(
 y^{(4)}(x)-4y^{(3)}(x)+5y''(x)-4y'(x)+4y(x)=0.
-\]
+\)
 The variables $t,x$ are called \emph{independent variables}, while $u,y$ are called \emph{dependent variables}.
 }
 \\
@@ -24,8 +24,7 @@ a_0(x)y(x)
 s(x)
 \]
 is called a \emph{linear differential equation} with coefficients $a_i(x)$.
-
-The \emph{order} of the differential equation is the highest order derivative appearing in the equation. The function $s(x)$ is called the \emph{forcing term}.
+\(\tsPoint\) The \emph{order} of the differential equation is the highest order derivative appearing in the equation. The function $s(x)$ is called the \emph{forcing term}.
 \\
 If
 \(
@@ -40,11 +39,11 @@ If all coefficient functions $a_i(x)$ are constant functions, the equation is ca
 \\
 \tsThe{Superposition Principle}{
 If $y_1(x)$ and $y_2(x)$ are solutions of a linear homogeneous differential equation, then
-\[
-y(x)=C_1y_1(x)+C_2y_2(x),
-\qquad
-C_1,C_2\in\mathbb{R},
-\]
+\(
+y(x)=C_1y_1(x)+C_2y_2(x)
+\
+(C_1,C_2\in\mathbb{R}),
+\)
 is also a solution of the same differential equation.
 }
 \\
@@ -81,20 +80,8 @@ Using the ansatz
 \(
 u(x)=e^{\lambda x}
 \)
-(Euler ansatz), we obtain the \emph{characteristic equation}
-\[
-a_n\lambda^n
-+
-a_{n-1}\lambda^{n-1}
-+\cdots+
-a_1\lambda
-+
-a_0
-=
-0.
-\]
-We get the \emph{characteristic polynomial}:
-\[
+(Euler ansatz), we get the \emph{characteristic polynomial}:
+\(
 p(\lambda)
 =
 a_n\lambda^n
@@ -104,56 +91,67 @@ a_{n-1}\lambda^{n-1}
 a_1\lambda
 +
 a_0
-\]
+\)
 }
 \\
 \tsThe{Solution of Linear Homogeneous Differential Equations}{
-Consider the differential equation
+Consider the linear homogeneous differential equation with constant coefficients
+\(
+a_n u^{(n)}(x) + a_{n-1}u^{(n-1)}(x) + \cdots + a_1u'(x) + a_0u(x) = 0,
+\ a_i \in \mathbb{R}.
+\)
+Its characteristic polynomial is
+\(
+a_n\lambda^n + a_{n-1}\lambda^{n-1} + \cdots + a_1\lambda + a_0 = 0.
+\)
+If all roots \(\lambda_i\) are real and have multiplicities \(m_i\), then the general solution is
 \[
-a_nu^{(n)}(x)
-+
-a_{n-1}u^{(n-1)}(x)
-+\cdots+
-a_1u'(x)
-+
-a_0u(x)
-=
-0,
-\qquad a_i\in\mathbb{R}.
-\]
-If all roots $\lambda_i$ of the characteristic polynomial are real and have multiplicities $m_i$, then
-\(
 u(x)
 =
 \sum_{i=1}^{r}
 \left(
 \sum_{p=0}^{m_i-1}
-C_{ip}x^p e^{\lambda_i x}
+C_{ip} x^p e^{\lambda_i x}
 \right).
-\)
-\\
-If there are additionally complex conjugate roots
+\]
+If, in addition, there are complex conjugate roots
 \(
-a_j \pm ib_j
+\alpha_j \pm i\beta_j
 \)
-with multiplicities $m_j$, then
-\(
+with multiplicities \(m_j\), then the corresponding real-valued part of the solution is
+\[
+\sum_{j=1}^{s}
+\left(
+\sum_{q=0}^{m_j-1}
+x^q e^{\alpha_j x}
+\left[
+A_{jq}\cos(\beta_j x)
++
+B_{jq}\sin(\beta_j x)
+\right]
+\right).
+\]
+Therefore, in the general case, the solution is \\
+\[
 u(x)
 =
 \sum_{i=1}^{r}
 \left(
 \sum_{p=0}^{m_i-1}
-C_{ip}x^p e^{\lambda_i x}
+C_{ip} x^p e^{\lambda_i x}
 \right)
 +
 \sum_{j=1}^{s}
 \left(
 \sum_{q=0}^{m_j-1}
-A_{jq}x^q e^{a_jx}\sin(b_jx)
+x^q e^{\alpha_j x}
+\left[
+A_{jq}\cos(\beta_j x)
 +
-B_{jq}x^q e^{a_jx}\cos(b_jx)
+B_{jq}\sin(\beta_j x)
+\right]
 \right).
-\)
+\]
 }
 \tsIdea{Constants in the General Solution}{
 The general solution of a differential equation of order $n$ contains $n$ constants. Therefore, in order to determine a unique solution, one must specify $n$ additional conditions.

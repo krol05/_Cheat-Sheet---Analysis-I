@@ -24,32 +24,32 @@
 \\
 \tsDef{Bounded Functions}{
     Let $f : D(f) \to \mathbb{R}$.
-    \begin{itemize}
-        \item $f$ is \emph{bounded above} if there exists $M \in \mathbb{R}$ such that
-              \[
+    \begin{itemize}[noitemsep]
+        \item $f$ is \emph{bounded above} if $\exists M \in \mathbb{R}$ such that
+              \(
                   f(x) \le M \quad \forall x \in D(f).
-              \]
-        \item $f$ is \emph{bounded below} if there exists $M \in \mathbb{R}$ such that
-              \[
+              \)
+        \item $f$ is \emph{bounded below} if $\exists M \in \mathbb{R}$ such that
+              \(
                   f(x) \ge M \quad \forall x \in D(f).
-              \]
-        \item $f$ is \emph{bounded} if there exists $M \in \mathbb{R}$ such that
-              \[
+              \)
+        \item $f$ is \emph{bounded} if $\exists M \in \mathbb{R}$ such that
+              \(
                   |f(x)| \le M \quad \forall x \in D(f).
-              \]
+              \)
     \end{itemize}
 }
 \tsDef{Injective, Surjective, Bijective}{
     Let $f : X \to Y$.
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item $f$ is \emph{injective} if
-              \[
+              \(
                   f(x_1) = f(x_2) \Rightarrow x_1 = x_2.
-              \]
+              \)
         \item $f$ is \emph{surjective} if
-              \[
+              \(
                   \forall y \in Y \; \exists x \in X : f(x) = y.
-              \]
+              \)
         \item $f$ is \emph{bijective} if it is both injective and surjective.
     \end{itemize}
 }
@@ -64,41 +64,41 @@
 }
 \tsDef{Identity and Inverse}{
     For a set $X$, the identity function is defined by
-    \[
-        \mathrm{id}_X(x) = x \quad \forall x \in X.
-    \]
+    \(
+        \mathrm{id}_X(x) = x \ (\forall x \in X).
+    \)
     If $f : X \to Y$ is bijective, then there exists a unique function
-    \[
+    \(
         f^{-1} : Y \to X
-    \]
+    \)
     such that
-    \[
+    \(
         f^{-1} \circ f = \mathrm{id}_X,
-        \quad
+        \
         f \circ f^{-1} = \mathrm{id}_Y.
-    \]
+    \)
     This function is called the \emph{inverse} of $f$.
 }
 \\
 \tsDef{Monotonicity}{
     Let $f : D(f) \subseteq \mathbb{R} \to \mathbb{R}$.
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item $f$ is \emph{monotonically increasing} if
-              \[
+              \(
                   x_1 < x_2 \Rightarrow f(x_1) \le f(x_2).
-              \]
+              \)
         \item $f$ is \emph{strictly increasing} if
-              \[
+              \(
                   x_1 < x_2 \Rightarrow f(x_1) < f(x_2).
-              \]
+              \)
         \item $f$ is \emph{monotonically decreasing} if
-              \[
+              \(
                   x_1 < x_2 \Rightarrow f(x_1) \ge f(x_2).
-              \]
+              \)
         \item $f$ is \emph{strictly decreasing} if
-              \[
+              \(
                   x_1 < x_2 \Rightarrow f(x_1) > f(x_2).
-              \]
+              \)
     \end{itemize}
 }
 \tsThe{Strict Monotonicity Implies Injectivity}{
@@ -107,20 +107,20 @@
 \\
 \tsDef{Even and Odd Functions}{
     Let $f : \mathbb{R} \to \mathbb{R}$.
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item $f$ is \emph{even} if
-              \[
+              \(
                   f(-x) = f(x).
-              \]
+              \)
         \item $f$ is \emph{odd} if
-              \[
+              \(
                   f(-x) = -f(x).
-              \]
+              \)
     \end{itemize}
 }
 \tsDef{Convexity and Concavity (Geometric)}{
     The graph of a function is called
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item \emph{convex} if it bends to the left when moving from left to right,
         \item \emph{concave} if it bends to the right when moving from left to right.
     \end{itemize}
@@ -141,20 +141,20 @@
 \\
 \tsDef{One-Sided Limits}{
     One-Sided Limits
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item Right-hand limit:
-              \[
+              \(
                   \lim_{x \to x_0^+} f(x) = L
-              \]
+              \)
         \item Left-hand limit:
-              \[
+              \(
                   \lim_{x \to x_0^-} f(x) = L
-              \]
+              \)
     \end{itemize}
 }
 \tsDef{Limits at Infinity}{
     Limits at Infinity
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item
               \(
               \lim_{x \to \infty} f(x) = L
@@ -167,7 +167,7 @@
 }
 \tsDef{Infinite Limits}{
     Infinite Limits
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item
               \(
               \lim_{x \to c} f(x) = \infty
@@ -188,7 +188,7 @@
         K,L \neq \pm\infty.
     \]
     Then:
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item
               \(
               \lim_{x \to c} (f+g) = K+L
@@ -211,7 +211,7 @@
               \)
     \end{itemize}
 }
-\subsection{Continuity}
+\subsection{Continuity of functions}
 \tsDef{Continuity}{
     Let $f : D \to \mathbb{R}$ and $x_0 \in D$. The function $f$ is called \emph{continuous at $x_0$} if
     \[
@@ -223,27 +223,27 @@
 \\
 \tsDef{One-Sided Continuity}{
     Let $f : D(f) \to \mathbb{R}$ and $x_0 \in D(f)$.
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item $f$ is \emph{right-continuous} at $x_0$ if
-              \[
+              \(
                   \lim_{x \to x_0^+} f(x) = f(x_0).
-              \]
+              \)
         \item $f$ is \emph{left-continuous} at $x_0$ if
-              \[
+              \(
                   \lim_{x \to x_0^-} f(x) = f(x_0).
-              \]
+              \)
     \end{itemize}
 }
 \tsThe{Sequential Characterization of Continuity}{
     Let $f : D \subseteq \mathbb{R} \to \mathbb{R}$ and $x_0 \in D$.
     Then $f$ is continuous at $x_0$ if and only if for every sequence $(x_n)$ with $x_n \to x_0$ we have
-    \[
+    \(
         f(x_n) \to f(x_0).
-    \]
+    \)
 }
 \tsThe{Algebra of Continuous Functions}{
     Let $f,g : D \subseteq \mathbb{R} \to \mathbb{R}$ be continuous. Then:
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item $f+g$ is continuous
         \item $f-g$ is continuous
         \item $c f$ is continuous for any constant $c \in \mathbb{R}$
@@ -254,9 +254,9 @@
 \tsThe{Continuity of Composition}{
     Let $f : I \to \mathrm{image}(f)$ and $g : \mathrm{image}(f) \to \mathbb{R}$ be continuous.
     Then the composition
-    \[
+    \(
         g \circ f
-    \]
+    \)
     is continuous and
     \[
         \lim_{x \to x_0} g(f(x)) = g\!\left( \lim_{x \to x_0} f(x) \right).
@@ -265,18 +265,18 @@
 \tsThe{Continuity of the Inverse}{
     Let $I$ be an interval and let $f : I \to J$ be continuous and bijective.
     Then $J$ is also an interval and the inverse function
-    \[
+    \(
         f^{-1} : J \to I
-    \]
+    \)
     is continuous.
 }
 \\
 \tsThe{Intermediate Value Theorem}{
 Let $f : [a,b] \to \mathbb{R}$ be continuous and let $c$ be a value between $f(a)$ and $f(b)$.
 Then there exists $x \in [a,b]$ such that
-\[
+\(
     f(x) = c.
-\]
+\)
 }
 \tsCor{Zero of a Continuous Function (Bolzano theorem)}{
     Let $f : I \subseteq \mathbb{R} \to \mathbb{R}$ be continuous and suppose
@@ -294,22 +294,22 @@ Then there exists $x \in [a,b]$ such that
 \tsLem{Bolzano--Weierstrass for Intervals}{
     Let $(x_n)$ be a sequence in a compact interval $[a,b]$.
     Then there exists a subsequence $(x_{n_k})$ such that
-    \[
+    \(
         x_{n_k} \to x_0
         \quad \text{with } x_0 \in [a,b].
-    \]
+    \)
 }
 \tsDef{Local Extrema}{
     Let $f : D \subseteq \mathbb{R} \to \mathbb{R}$.
-    \begin{itemize}
+    \begin{itemize}[noitemsep]
         \item $x_0$ is a \emph{local maximum} if
-              \[
+              \(
                   f(x_0) \ge f(x) \quad \forall x \in D.
-              \]
+              \)
         \item $x_0$ is a \emph{local minimum} if
-              \[
+              \(
                   f(x_0) \le f(x) \quad \forall x \in D.
-              \]
+              \)
         \item Local maxima and minima are called \emph{local extrema}.
     \end{itemize}
 }
@@ -317,8 +317,8 @@ Then there exists $x \in [a,b]$ such that
     Let $f : I \subseteq \mathbb{R} \to \mathbb{R}$ be continuous and let $I$ be compact.
     Then $f$ is bounded and attains its maximum and minimum on $I$, i.e.,
     there exist $x_{\min}, x_{\max} \in I$ such that
-    \[
+    \(
         f(x_{\min}) \le f(x) \le f(x_{\max})
-        \quad \forall x \in I.
-    \]
+        \ (\forall x \in I).
+    \)
 }
