@@ -8,7 +8,6 @@ The idea is to move all terms involving the independent variable
 to one side and all terms involving the dependent variable to the
 other side, and then integrate both sides.
 }
-\\
 \tsDef{Linear Substitution}{
 A differential equation of the form
 \[
@@ -21,7 +20,6 @@ variables by the substitution:
 u=ax+by+c.
 \)
 }
-\\
 \tsIdea{Autonomous Equation}{
 After the substitution
 \(
@@ -68,8 +66,7 @@ a_n(x)y^{(n)}(x)+\cdots+a_0(x)y(x)=0
 \)
 is called the associated homogeneous differential equation.
 }
-\\
-\tsThe{General Solution of a Linear Inhomogeneous ODE}{
+\tsThe{General Solution = Homogeneous + Particular (Superposition)}{
 Let
 \(
 y_p(x)
@@ -86,13 +83,11 @@ y(x)=y_h(x)+y_p(x)
 is the general solution of the linear inhomogeneous differential
 equation.
 }
-\\
 \tsDef{Variation of Constants}{
 Consider a first-order linear inhomogeneous differential equation. A particular solution can be obtained by replacing the constant
 appearing in the general solution of the associated homogeneous
 equation by a function of the independent variable. This method is called \emph{variation of constants}.
 }
-\\
 \tsEx{Variation of Constants Example}{
 Given
 \[
@@ -111,7 +106,7 @@ The variation-of-constants ansatz is therefore
 y_p(x)=K(x)e^x.
 \]
 }
-\tsThe{Standard Ans\"atze for Particular Solutions}{
+\tsThe{Method of Undetermined Coefficients (Standard Ans\"atze)}{
 For a linear inhomogeneous ODE $L(y)=s(t)$:
 \[
 \begin{array}{|c|c|}
@@ -142,8 +137,7 @@ k \leadsto t^m, \
 i\omega \leadsto t^m.
 \)
 }
-\\
-\tsThe{Picard--Lindel\"of--Peano (First Order)}{
+\tsThe{Picard--Lindel\"of Theorem (Existence \& Uniqueness, First Order)}{
 The initial value problem
 \[
 y'=f(x,y),
@@ -156,7 +150,7 @@ x\mapsto y(x),\ x\in I,
 \)
 where the interval $I$ may depend on $x_0$ and $y_0$. 
 }
-\tsThe{Picard--Lindel\"of--Peano (Higher Order)}{
+\tsThe{Picard--Lindel\"of Theorem (Existence \& Uniqueness, Higher Order)}{
 The initial value problem
 \[
 y^{(n)}

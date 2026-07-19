@@ -17,7 +17,6 @@ F'(x)=f(x)
 is called an \emph{antiderivative} of $f$ on $I$.
 Determining $F$ from $f$ is called \emph{indefinite integration}.
 }
-\\
 \tsIdea{Non-Uniqueness of Antiderivatives}{
 An antiderivative is not unique.
 If $F(x)$ is an antiderivative of $f(x)$, then
@@ -32,7 +31,6 @@ This family is called the \emph{indefinite integral} and is written as
 \]
 The function $f$ is called the \emph{integrand}.
 }
-\\
 \tsThe{Linearity of the Indefinite Integral}{
 For indefinite integrals:
 \[
@@ -50,7 +48,6 @@ s\int f(x)\,dx,
 \]
 where $s$ is a constant.
 }
-\\
 \tsThe{Basic Integration Rules}{
 Rules:
 \begin{itemize}[noitemsep]
@@ -132,7 +129,6 @@ f(x)g(x)
 }
 \]
 }
-\\
 \tsThe{Integration by Substitution}{
 Using the chain rule:
 \(
@@ -193,7 +189,6 @@ if
 \{x_0,\dots,x_n\}\subseteq\{y_0,\dots,y_m\}.
 \)
 }
-\\
 \tsDef{Step Function}{
 A function
 \(
@@ -209,7 +204,6 @@ f|_{(x_{k-1},x_k)}
 \)
 is constant.
 }
-\\
 \tsDef{Integral of a Step Function}{
 Let
 \(
@@ -228,7 +222,6 @@ c_k(x_k-x_{k-1}),
 \]
 where $c_k$ denotes the constant value of $f$ on $(x_{k-1},x_k)$.
 }
-\\
 \tsDef{Upper and Lower Sums}{
 Let
 \[
@@ -256,8 +249,7 @@ s\in TF,\ s\le f
 \]
 where $TF$ denotes the set of step functions.
 }
-\\
-\tsDef{Riemann Integral}{
+\tsDef{Riemann Integral (Darboux Definition)}{
 A bounded function
 \(
 f:[a,b]\to\mathbb{R}
@@ -274,7 +266,6 @@ In this case, the common value is called the \emph{Riemann integral} and is deno
 \]
 The numbers $a,b$ are called the lower and upper limits of integration, and $f$ is called the integrand.
 }
-\\
 \tsThe{Properties of the Riemann Integral}{
     Properties of the Riemann Integral:
     \begin{itemize}
@@ -335,7 +326,6 @@ f:[a,b]\to\mathbb{R}
 \)
 is Riemann integrable.
 }
-\\
 \tsThe{Continuous Functions are Integrable}{
 Every continuous function
 \(
@@ -343,7 +333,6 @@ f:[a,b]\to\mathbb{R}
 \)
 is Riemann integrable.
 }
-\\
 \tsDef{Pointwise Convergence of Functions}{
 Let
 \(
@@ -363,7 +352,6 @@ The sequence $(f_n)$ converges \emph{pointwise} to $f$ if for every $x\in D$, th
 \)
 converges to $f(x)$.
 }
-\\
 \tsDef{Uniform Convergence}{
 The sequence $(f_n)$ converges \emph{uniformly} to $f$ if
 \(
@@ -379,8 +367,7 @@ we have
 |f_n(x)-f(x)|<\varepsilon.
 \)
 }
-\\
-\tsThe{Uniform Limit of Continuous Functions}{
+\tsThe{Uniform Limit Theorem (Continuity)}{
 Let
 \(
 (f_n)_{n\in\mathbb{N}_0}
@@ -395,8 +382,7 @@ f:D\to\mathbb{R}.
 \)
 Then $f$ is continuous.
 }
-\\
-\tsThe{Uniform Limit and Integration}{
+\tsThe{Uniform Convergence and Integration (Interchange of Limit and Integral)}{
 Let
 \(
 (f_n)_{n\in\mathbb{N}_0}
@@ -417,7 +403,6 @@ Then $f$ is integrable and
 \int_a^b f_n(x)\,dx.
 \]
 }
-\\
 \tsThe{Mean Value Theorem for Integrals}{
 If
 \(
@@ -441,7 +426,6 @@ The quantity
 \]
 is called the \emph{average value} of $f$ on $[a,b]$.
 }
-\\
 \tsThe{Fundamental Theorem of Calculus}{
 Let
 \(
@@ -457,7 +441,6 @@ F(x)
 is an antiderivative of $f$.
 Moreover, every antiderivative of $f$ is of this form.
 }
-\\
 \tsCor{Integral Representation}{
 Let
 \(
@@ -473,7 +456,6 @@ F(a)
 \int_a^x F'(t)\,dt.
 \]
 }
-\\
 \tsCor{Newton--Leibniz Formula}{
 Let
 \(
@@ -487,7 +469,6 @@ Then
 F(b)-F(a).
 \]
 }
-\\
 \tsThe{Integration by Parts}{
 Let
 \(
@@ -503,8 +484,7 @@ f(x)g(x)\Big|_a^b
 \int_a^b f'(x)g(x)\,dx.
 \]
 }
-\\
-\tsThe{Substitution Rule (Version 1)}{
+\tsThe{Substitution Rule / Change of Variables (Version 1)}{
 Let
 \(
 f:I\to J
@@ -524,7 +504,6 @@ Then for every
 \int_{f(a)}^{f(b)} g(y)\,dy.
 \]
 }
-\\
 \tsThe{Substitution Rule (Version 2)}{
 Let
 \(

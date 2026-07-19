@@ -14,14 +14,12 @@
     \)
     Otherwise, the series is called \emph{divergent}.
 }
-\\
-\tsThe{(Necessary Condition for Convergence)}{
+\tsThe{(Divergence Test / Necessary Condition for Convergence)}{
     If the series $\sum_{n=0}^{\infty} a_n$ converges, then necessarily
     \(
         \lim_{n\to\infty} a_n = 0.
     \)
 }
-\\
 \tsLem{(Linearity of Series)}{
     Let $\sum_{n=0}^{\infty} a_n$ and $\sum_{n=0}^{\infty} b_n$ be convergent series. Then:
 
@@ -37,7 +35,6 @@
         \quad (C \in \mathbb{R}).
     \]
 }
-\\
 \tsLem{(Tail of a Series)}{
     Let $\sum_{n=0}^{\infty} a_n$ be a series. For any $N \in \mathbb{N}_0$:
     \(
@@ -54,16 +51,14 @@
         \sum_{n=N}^{\infty} a_n.
     \]
 }
-\\
-\tsThe{(Series with Non-Negative Terms)}{
+\tsThe{(Monotone Convergence for Series / Non-Negative Terms)}{
     Let $a_n \ge 0$ for all $n$. Then the sequence of partial sums
     \(
         s_n = \sum_{k=0}^{n} a_k
     \)
     is monotonically increasing. If $(s_n)$ is bounded, then the series $\sum_{n=0}^{\infty} a_n$ converges; otherwise, it diverges.
 }
-\\
-\tsThe{(Comparison Test)}{
+\tsThe{(Comparison Test / Majorant--Minorant Criterion)}{
     Let $\sum a_n$, $\sum b_n$, $\sum c_n$ be series with non-negative terms and suppose that for some $N$:
     \(
         c_n \le b_n \le a_n \quad \text{for all } n \ge N.
@@ -79,9 +74,8 @@
     \(
     \sum |a_n| \text{ converges}.
     \)
-    $\tsPoint$ It is called \emph{conditionally convergent} if $\sum a_n$ converges but $\sum |a_n|$ does not.
+    \tsPoint It is called \emph{conditionally convergent} if $\sum a_n$ converges but $\sum |a_n|$ does not.
 }
-\\
 \tsThe{(Riemann Rearrangement Theorem)}{
     Let $\sum a_n$ be a conditionally convergent series of real numbers, $L \in \mathbb{R}$. 
     Then there exists a bijection $\varphi : \mathbb{N}_0 \to \mathbb{N}_0$ such that
@@ -89,7 +83,7 @@
         \sum_{n=0}^{\infty} a_{\varphi(n)} = L.
     \)
 }
-\tsThe{(Rearrangement of Absolutely Convergent Series)}{
+\tsThe{(Dirichlet's Rearrangement Theorem)}{
     Let $\sum a_n$ be absolutely convergent and let $\varphi : \mathbb{N}_0 \to \mathbb{N}_0$ be a bijection. Then
     \(
         \sum_{n=0}^{\infty} a_{\varphi(n)}
@@ -101,7 +95,7 @@
         \sum_{n=0}^{\infty} a_{\varphi(n)}.
     \)
 }
-\tsThe{(Leibniz Criterion)}{
+\tsThe{(Leibniz Alternating Series Test)}{
     Let $(a_n)$ be a monotonically decreasing sequence of non-negative real numbers with
     \[
         \lim_{n\to\infty} a_n = 0.
@@ -125,7 +119,7 @@
         \left| \sum_{k=m+1}^{n} a_k \right| \le \varepsilon.
     \]
 }
-\tsThe{(Absolute Convergence Implies Convergence)}{
+\tsThe{(Absolute Convergence $\Rightarrow$ Convergence)}{
     Every absolutely convergent series converges, and
     \[
         \left| \sum_{n=0}^{\infty} a_n \right|
@@ -133,19 +127,18 @@
         \sum_{n=0}^{\infty} |a_n|.
     \]
 }
-\tsThe{(Root Test)}{
+\tsThe{(Cauchy Root Test)}{
     Let $(a_n)$ be a sequence and define
     \(
         \rho = \limsup_{n\to\infty} |a_n|^{1/n}.
     \)
-    \\
     Then:
     \begin{itemize}[noitemsep]
         \item If $\rho < 1$, the series $\sum a_n$ converges absolutely.
         \item If $\rho > 1$, the series $\sum a_n$ diverges.
     \end{itemize}
 }
-\tsThe{(Ratio Test)}{
+\tsThe{(d'Alembert Ratio Test)}{
     Let $(a_n)$ with $a_n \neq 0$ and define
     \(
         \rho = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|.
@@ -156,7 +149,7 @@
         \item If $\rho > 1$, the series $\sum a_n$ diverges.
     \end{itemize}
 }
-\tsThe{(Cauchy Product)}{
+\tsThe{(Cauchy Product / Mertens' Theorem)}{
     Let $\sum a_n$ and $\sum b_n$ be absolutely convergent. Then
     \[
         \left( \sum_{n=0}^{\infty} a_n \right)
@@ -166,7 +159,6 @@
     \]
     and the series on the right converges absolutely.
 }
-\\
 \tsDef{(Power Series)}{
     A series of the form
     \(
@@ -174,7 +166,6 @@
     \)
     is called a \emph{power series} centered at $a$ with coefficients $c_k$.
 }
-\\
 \tsDef{(Convergence of a Power Series)}{
     For fixed $x$, if the sequence of partial sums
     \(
@@ -182,8 +173,7 @@
     \)
     converges, then the power series is said to converge at $x$.
 }
-\\
-\tsThe{(Radius of Convergence)}{
+\tsThe{(Cauchy--Hadamard Theorem / Radius of Convergence)}{
     Every power series has a radius of convergence $R$ such that:
     \begin{itemize}[noitemsep]
         \item The series converges for $|x-a| < R$,

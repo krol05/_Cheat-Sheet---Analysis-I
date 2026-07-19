@@ -4,7 +4,7 @@
 \setlength{\tabcolsep}{2pt}
 \renewcommand{\arraystretch}{1.04}
 
-\begin{multicols*}{3}
+\begin{multicols}{3}
 
 \subsection*{Important Limits}
 % \[
@@ -203,6 +203,12 @@
 
 \subsection*{Derivatives and Antiderivatives}
 \renewcommand{\arraystretch}{0.75}
+\begin{tcolorbox}[
+  colframe=secRule, colback=blue!3,
+  boxrule=0.55pt, leftrule=2pt, arc=2pt,
+  left=2pt, right=2pt, top=1pt, bottom=1pt, boxsep=1pt,
+  before skip=2pt, after skip=2pt
+]
 \[
 \begin{array}{lll}
 \textbf{Antiderivative} & \textbf{Function} & \textbf{Derivative}\\
@@ -232,48 +238,42 @@ x\arctan(x)-\frac12\ln(x^2+1) & \arctan(x) & \frac1{x^2+1}\\
 \ln|\cosh(x)| & \tanh(x) & \frac1{\cosh^2(x)}\\
 \end{array}
 \]
+\end{tcolorbox}
 
-% \subsection*{Further Derivatives}
-\renewcommand{\arraystretch}{0.9}
-\setlength{\arraycolsep}{3pt}
-\begin{multicols}{2}
-\[
-\begin{array}{c|c}
-F(x) \  (\textbf{further derivatives} \Rightarrow) & f(x)=F'(x)\\
-\hline
-\frac1a\ln|ax+b| & \frac1{ax+b}\\
-\frac{ax}{c}-\frac{ad-bc}{c^2}\ln|cx+d| &
-\frac{a(cx+d)-c(ax+b)}{(cx+d)^2}\\
-\frac{x}{2}\sqrt{a^2+x^2}+\frac{a^2}{2}\ln|x+\sqrt{a^2+x^2}| &
-\sqrt{a^2+x^2}\\
-\frac{x}{2}\sqrt{a^2-x^2}+\frac{a^2}{2}\arcsin\!\left(\frac{x}{|a|}\right) &
-\sqrt{a^2-x^2}\\
-\frac{x}{2}\sqrt{x^2-a^2}-\frac{a^2}{2}\ln|x+\sqrt{x^2-a^2}| &
-\sqrt{x^2-a^2}\\
-\ln|x+\sqrt{x^2\pm a^2}| &
-\frac1{\sqrt{x^2\pm a^2}}\\
-\arcsin\!\left(\frac{x}{|a|}\right) &
-\frac1{\sqrt{a^2-x^2}}\\
-\frac1a\arctan\!\left(\frac{x}{a}\right) &
-\frac1{a^2+x^2}\\
-\hline
--\frac1a\cos(ax+b) & \sin(ax+b)\\
-\frac1a\sin(ax+b) & \cos(ax+b)\\
-\hline
-x^x & x^x(1+\ln|x|)\\
-(x^x)^x & (x^x)^x(x+2x\ln|x|)\\
-x^{x^x} &
-x^{x^x}\!\left(x^{x-1}+x^x(1+\ln|x|)\ln|x|\right)\\
-\hline
-\frac12\left(x-\frac12\sin(2x)\right) & \sin^2(x)\\
-\frac12\left(x+\frac12\sin(2x)\right) & \cos^2(x)\\
-\hline
-\operatorname{arsinh}(x) & \frac1{\sqrt{1+x^2}}\\
-\operatorname{arcosh}(x) & \frac1{\sqrt{x^2-1}}\\
-\operatorname{artanh}(x) & \frac1{1-x^2}\\
-\end{array}
-\]
 \end{multicols}
 
-
-\end{multicols*}
+% Further Derivatives — full page width table
+\vspace{2pt}
+{\small
+\renewcommand{\arraystretch}{0.8}
+\setlength{\tabcolsep}{4pt}
+\begin{center}
+\textbf{Further Derivatives}\\[2pt]
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.45\textwidth}|>{\raggedright\arraybackslash}p{0.45\textwidth}}
+$F(x)$ & $f(x)=F'(x)$\\
+\hline
+$\frac1a\ln|ax+b|$ & $\frac1{ax+b}$\\[2pt]
+$\frac{ax}{c}-\frac{ad-bc}{c^2}\ln|cx+d|$ & $\frac{a(cx+d)-c(ax+b)}{(cx+d)^2}$\\[2pt]
+$\frac{x}{2}\sqrt{a^2+x^2}+\frac{a^2}{2}\ln|x+\sqrt{a^2+x^2}|$ & $\sqrt{a^2+x^2}$\\[2pt]
+$\frac{x}{2}\sqrt{a^2-x^2}+\frac{a^2}{2}\arcsin\!\left(\frac{x}{|a|}\right)$ & $\sqrt{a^2-x^2}$\\[2pt]
+$\frac{x}{2}\sqrt{x^2-a^2}-\frac{a^2}{2}\ln|x+\sqrt{x^2-a^2}|$ & $\sqrt{x^2-a^2}$\\[2pt]
+$\ln|x+\sqrt{x^2\pm a^2}|$ & $\frac1{\sqrt{x^2\pm a^2}}$\\[2pt]
+$\arcsin\!\left(\frac{x}{|a|}\right)$ & $\frac1{\sqrt{a^2-x^2}}$\\[2pt]
+$\frac1a\arctan\!\left(\frac{x}{a}\right)$ & $\frac1{a^2+x^2}$\\[2pt]
+\hline
+$-\frac1a\cos(ax+b)$ & $\sin(ax+b)$\\[2pt]
+$\frac1a\sin(ax+b)$ & $\cos(ax+b)$\\[2pt]
+\hline
+$x^x$ & $x^x(1+\ln|x|)$\\[2pt]
+$(x^x)^x$ & $(x^x)^x(x+2x\ln|x|)$\\[2pt]
+$x^{x^x}$ & $x^{x^x}\!\left(x^{x-1}+x^x(1+\ln|x|)\ln|x|\right)$\\[2pt]
+\hline
+$\frac12\left(x-\frac12\sin(2x)\right)$ & $\sin^2(x)$\\[2pt]
+$\frac12\left(x+\frac12\sin(2x)\right)$ & $\cos^2(x)$\\[2pt]
+\hline
+$\operatorname{arsinh}(x)$ & $\frac1{\sqrt{1+x^2}}$\\[2pt]
+$\operatorname{arcosh}(x)$ & $\frac1{\sqrt{x^2-1}}$\\[2pt]
+$\operatorname{artanh}(x)$ & $\frac1{1-x^2}$\\
+\end{tabular}
+\end{center}
+}

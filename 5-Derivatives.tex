@@ -29,11 +29,9 @@
 \tsDef{Differentiability}{
     A function $f$ is \emph{differentiable at $x$} if $f'(x)$ exists.If this holds for all $x$ in the domain, $f$ is called differentiable.
 }
-\\
 \tsLem{Differentiability Implies Continuity}{
     If $f$ is differentiable at $x_0$, then $f$ is continuous at $x_0$.
 }
-\\
 \tsDef{One-Sided Derivatives}{
     Derivatives
     \begin{itemize}[noitemsep]
@@ -57,7 +55,6 @@
     \)
     called \emph{smooth functions}.
 }
-\\
 \tsThe{Basic Derivatives}{
     Basic Derivatives, more in the end*
     \begin{itemize}[noitemsep]
@@ -120,13 +117,12 @@
         \]
     \end{itemize}
 }
-\tsThe{Necessary Condition for Extremum}{
+\tsThe{Fermat's Theorem (Necessary Condition for Extremum)}{
     If $x_0$ is a local extremum and $f$ is differentiable at $x_0$, then
     \(
         f'(x_0) = 0.
     \)
 }
-\\
 \tsThe{Characterization of Local Extrema}{
     If $x_0$ is a local extremum, then at least one holds:
     \begin{itemize}[noitemsep]
@@ -141,7 +137,7 @@
         f'(\xi) = 0.
     \)
 }
-\tsThe{Mean Value Theorem}{
+\tsThe{Mean Value Theorem (Lagrange)}{
     Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$.Then there exists $\xi \in (a,b)$ such that
     \[
         f'(\xi) = \frac{f(b)-f(a)}{b-a}.
@@ -189,23 +185,20 @@
         \lim_{x\to\infty} \frac{f(x)}{g(x)} = L.
     \]
 }
-\tsThe{Monotonicity via Derivative}{
+\tsThe{Monotonicity Criterion (First Derivative Test)}{
     \(
         f'(x) \ge 0 \iff f \text{ is increasing}
     \)
 }
-\\
 \tsCor{Constant Functions}{
     $f$ is constant iff
     \(
         f'(x) = 0 \quad \forall x.
     \)
 }
-\\
 \tsThe{Convexity via First Derivative}{
     $f$ is convex iff $f'$ is increasing.
 }
-\\
 \tsCor{Convexity via Second Derivative}{
     If $f$ is twice differentiable:
     \begin{itemize}[noitemsep]
@@ -218,14 +211,12 @@ Let $f$ be twice differentiable near $x_0$ and suppose
 \(
 f'(x_0)=0.
 \)
-\\
 Then:
 \(
 f''(x_0)>0
 \quad \Rightarrow \quad
 x_0 \text{ is a local minimum},
 \)
-\\
 and
 \(
 f''(x_0)<0
@@ -252,8 +243,7 @@ f(x_0) + f'(x_0)(x-x_0)
 \)
 is called the \emph{linearization}, \emph{tangent approximation}, or \emph{first Taylor polynomial} of $f$ at $x_0$.
 }
-\\
-\tsThe{Taylor's Theorem}{
+\tsThe{Taylor's Theorem (with Lagrange Remainder)}{
 Let $f$ be infinitely differentiable on an open interval $I$ containing $x_0$.
 Then for every $x \in I$,
 \[
@@ -291,12 +281,10 @@ P_n(x)
 \]
 is called the \emph{$n$-th Taylor polynomial}.
 }
-\\
 \tsIdea{Taylor Approximation and Power Series}{
 Taylor polynomials provide increasingly accurate approximations of many functions.
 For many functions, taking infinitely many terms recovers the original function.
 }
-\\
 \tsDef{Taylor Series}{
 For a function $f$, the series
 \(
@@ -305,7 +293,6 @@ For a function $f$, the series
 \)
 is called the \emph{Taylor series} (or Taylor expansion) of $f$ around the point $a$.
 }
-\\
 \tsThe{Important Taylor Series}{
 The following series converge for all $x$:
 \[
@@ -335,7 +322,7 @@ e^x
 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
 \]
 }
-\tsThe{Further Important Power Series}{
+\tsThe{Further Important Power Series (Geometric, Binomial)}{
 The following series converge for
 \(
 -1 < x < 1.
@@ -368,7 +355,7 @@ x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
 \tsIdea{Operations on Taylor Series}{
 New Taylor series can be constructed from known ones using substitution, multiplication, differentiation, integration.
 }
-\tsThe{Multiplication of Power Series}{
+\tsThe{Cauchy Product of Power Series}{
 Let
 \[
 f(x)=\sum_{n=0}^{\infty} a_nx^n,
@@ -386,7 +373,6 @@ f(x)g(x)
 \right)x^n.
 \]
 }
-\\
 \tsThe{Termwise Differentiation}{
 Let
 \(
@@ -400,7 +386,6 @@ f'(x)
 n a_n x^{n-1}.
 \]
 }
-\\
 \tsThe{Termwise Integration}{
 Let
 \(

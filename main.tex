@@ -4,10 +4,10 @@
 
 \usepackage{lscape}
 
-\usepackage[a4paper, left=0.7cm, right=0.7cm, top=0.7cm, bottom=0.7cm, landscape]{geometry}
+\usepackage[a4paper, left=0.65cm, right=0.65cm, top=0.6cm, bottom=0.6cm, landscape]{geometry}
 
 \usepackage{algorithm}
-\usepackage{booktabs} 
+\usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{array}
 \usepackage{svg}
@@ -25,8 +25,26 @@
 \usepackage{mathrsfs}
 \usepackage{soul}
 \usepackage{amsmath}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
 
-\usepackage{anyfontsize}
+% ---------- Palette ----------
+\definecolor{defFrame}{HTML}{C96A20}
+\definecolor{defBack}{HTML}{FFF4E8}
+\definecolor{thmFrame}{HTML}{A67C00}
+\definecolor{thmBack}{HTML}{FFF8D6}
+\definecolor{lemFrame}{HTML}{2F6FBF}
+\definecolor{lemBack}{HTML}{EAF2FC}
+\definecolor{corFrame}{HTML}{2E8B57}
+\definecolor{corBack}{HTML}{E8F6EE}
+\definecolor{propFrame}{HTML}{2E7C93}
+\definecolor{propBack}{HTML}{E7F5F8}
+\definecolor{ideaFrame}{HTML}{C04545}
+\definecolor{ideaBack}{HTML}{FCECEC}
+\definecolor{exFrame}{HTML}{5B6BC0}
+\definecolor{exBack}{HTML}{EEF0FA}
+\definecolor{secRule}{HTML}{3D4F66}
+\definecolor{subRule}{HTML}{7A8B9E}
 
 \newenvironment{tables}[2]{%
 \begin{tabular}{#1}
@@ -35,138 +53,108 @@
 \end{tabular}
 }
 
-
 \titleformat{\section}
-  {\fontsize{9pt}{11pt}\selectfont\bfseries}
-  {\thesection}{1em}{}
+  {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{secRule}}
+  {\thesection}{0.6em}{}
+  [\vspace{1pt}{\color{secRule}\titlerule[1.1pt]}\vspace{1pt}]
 
 \titleformat{\subsection}
-  {\fontsize{8pt}{10pt}\selectfont\bfseries}
-  {\thesubsection}{1em}{}
+  {\fontsize{8pt}{9.5pt}\selectfont\bfseries\color{subRule}}
+  {\thesubsection}{0.5em}{}
+  [\vspace{0.5pt}{\color{subRule}\titlerule[0.5pt]}\vspace{0.5pt}]
 
-% \titlespacing*{\section}
-%   {0pt}{1.5ex}{0.8ex}
+\titleformat{\subsubsection}
+  {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{subRule}}
+  {\thesubsubsection}{0.4em}{}
 
-% \titlespacing*{\subsection}
-%   {0pt}{1.2ex}{0.6ex}
-
-
-\usepackage{tcolorbox}
-
+\titlespacing*{\section}{0pt}{1.1ex}{0.5ex}
+\titlespacing*{\subsection}{0pt}{0.9ex}{0.4ex}
 
 \author{Timofey Shatnyy}
 
-\linespread{1.3}
+\linespread{1.12}
+\setlength{\columnsep}{0.45cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\multicolsep}{2pt}
+\raggedcolumns
+\setlist{nosep, leftmargin=1.2em}
 
-\newtcbox{\tsLabelYellow}{
-    on line,
-    colback=yellow!100,
-    colframe=yellow!0,
-    arc=3pt,
-    boxrule=0pt,
-    left=0pt,right=0pt,top=-1pt,bottom=-1pt
+% Compact entry box style
+\tcbset{
+  tsbase/.style={
+    enhanced,
+    unbreakable,
+    sharp corners=southwest,
+    arc=2.2pt,
+    boxrule=0.55pt,
+    leftrule=2.4pt,
+    left=3pt,
+    right=3pt,
+    top=1.2pt,
+    bottom=1.2pt,
+    boxsep=1pt,
+    before skip=2pt plus 1pt,
+    after skip=2pt plus 1pt,
+    fonttitle=\sffamily\bfseries\fontsize{7.2pt}{8.5pt}\selectfont,
+    coltitle=white,
+    toptitle=0.8pt,
+    bottomtitle=0.8pt,
+    lefttitle=2pt,
+    righttitle=2pt,
+    titlerule=0pt,
+  }
 }
 
-\newtcbox{\tsLabelOrange}{
-    on line,
-    colback=orange!55,
-    colframe=orange!0,
-    arc=3pt,
-    boxrule=0pt,
-    left=0pt,right=0pt,top=-1pt,bottom=-1pt
+\newcommand{\tsEntry}[4]{%
+  \begin{tcolorbox}[
+    unbreakable,		  
+    tsbase,
+    colback=#3,
+    colframe=#2,
+    colbacktitle=#2,
+    title={#1}
+  ]
+  #4
+  \end{tcolorbox}%
 }
 
-\newtcbox{\tsLabelBlue}{
-    on line,
-    colback=blue!45,
-    colframe=blue!0,
-    arc=3pt,
-    boxrule=0pt,
-    left=0pt,right=0pt,top=-1pt,bottom=-1pt
+\newcommand{\tsV}[1]{\mathbf{#1}}
+\newcommand{\tsVec}[1]{\mathbf{#1}}
+\newcommand{\tsB}[1]{\{#1\}}
+\newcommand{\tsS}[1]{\mathbb{#1}}
+
+\newcommand{\tsPoint}{%
+  \par\vspace{0.6pt}\noindent\(\bullet\)\hspace{0.3em}\ignorespaces
 }
 
-\newtcbox{\tsLabelLightBlue}{
-    on line,
-    colback=blue!25,
-    colframe=blue!0,
-    arc=3pt,
-    boxrule=0pt,
-    left=0pt,right=0pt,top=-1pt,bottom=-1pt
+\newcommand{\tsEx}[2]{\tsEntry{Ex.\ #1}{exFrame}{exBack}{#2}}
+\newcommand{\tsIdea}[2]{\tsEntry{#1}{ideaFrame}{ideaBack}{#2}}
+\newcommand{\tsThe}[2]{\tsEntry{T\ #1}{thmFrame}{thmBack}{#2}}
+\newcommand{\tsDef}[2]{\tsEntry{D\ #1}{defFrame}{defBack}{#2}}
+\newcommand{\tsLem}[2]{\tsEntry{L\ #1}{lemFrame}{lemBack}{#2}}
+\newcommand{\tsCor}[2]{\tsEntry{C\ #1}{corFrame}{corBack}{#2}}
+\newcommand{\tsProp}[2]{\tsEntry{P\ #1}{propFrame}{propBack}{#2}}
+
+\newcommand{\tsLegend}{%
+  \begingroup
+  \fontsize{6.5pt}{8pt}\selectfont
+  \noindent
+  {\colorbox{defFrame}{\color{white}\tiny\sffamily\bfseries\,D\,}}\ Definition\quad
+  {\colorbox{thmFrame}{\color{white}\tiny\sffamily\bfseries\,T\,}}\ Theorem\quad
+  {\colorbox{lemFrame}{\color{white}\tiny\sffamily\bfseries\,L\,}}\ Lemma\quad
+  {\colorbox{corFrame}{\color{white}\tiny\sffamily\bfseries\,C\,}}\ Corollary\quad
+  {\colorbox{propFrame}{\color{white}\tiny\sffamily\bfseries\,P\,}}\ Prop.\quad
+  {\colorbox{exFrame}{\color{white}\tiny\sffamily\bfseries\,Ex\,}}\ Example\quad
+  {\colorbox{ideaFrame}{\color{white}\tiny\sffamily\bfseries\,!\,}}\ Idea/Remark
+  \par\vspace{2pt}
+  \endgroup
 }
-
-\newtcbox{\tsLabelGreen}{
-    on line,
-    colback=green!55,
-    colframe=green!0,
-    arc=3pt,
-    boxrule=0pt,
-    left=0pt,right=0pt,top=-1pt,bottom=-1pt
-}
-
-\newtcbox{\tsLabelRed}{
-    on line,
-    colback=red!55,
-    colframe=red!0,
-    arc=3pt,
-    boxrule=0pt,
-    left=0pt,right=0pt,top=-1pt,bottom=-1pt
-}
-
-\newcommand{\tsV}[1]{
-    \mathbf{#1}
-}
-
-
-\newcommand{\tsVec}[1]{
-    \mathbf{#1}
-}
-
-\newcommand{\tsB}[1]{
-    \{#1\}
-}
-
-
-\newcommand{\tsS}[1]{
-    \mathbb{#1}
-}
-
-\newcommand{\tsEx}[2]{
-    \tsLabelLightBlue{\textbf{#1:}} \(\tsPoint\)#2
-}
-
-\newcommand{\tsIdea}[2]{
-    \tsLabelRed{\textbf{#1:}} \(\tsPoint\)#2
-}
-
-\newcommand{\tsThe}[2]{
-    \tsLabelYellow{\textbf{T #1:}} \(\tsPoint\)#2
-}
-
-\newcommand{\tsDef}[2]{
-    \tsLabelOrange{\textbf{D #1:}} \(\tsPoint\)#2
-}
-
-\newcommand{\tsLem}[2]{
-    \tsLabelBlue{\textbf{L #1:}}  \(\tsPoint\)#2
-}
-
-\newcommand{\tsCor}[2]{
-    \tsLabelGreen{\textbf{C #1:}}  \(\tsPoint\)#2
-}
-
-\newcommand{\tsProp}[2]{
-    \tsLabelLightBlue{\textbf{P #1:}}  \(\tsPoint\)#2
-}
-
-\newcommand{\tsPoint}[0]{
-    \\ \bullet
-}
-
 
 \begin{document}
-% \setcounter{section}{1}
 \begin{multicols}{3}
-    % {\fontsize{7}{7}\selectfont
+\allowdisplaybreaks
+    \tsLegend
     \section{Fundamentals: Logic, sets, numbers and vectors}
     \input{1.1-FieldOfRealNumbers}
     \input{1.2-VectorsVectorSpaces}
@@ -184,8 +172,6 @@
     \input{7-Integration}
     \section{Differential equations - 2}
     \input{8-DifferentialEquations-2}
-    % }
 \end{multicols}
-\newpage
 \input{additional.tex}
 \end{document}

@@ -41,7 +41,6 @@
         a \le c \le b \quad \forall a \in A,\; b \in B.
     \)
 }
-\\
 \tsCor{1.1.6}{
     \textbf{The consequences of above axioms are:}
     \begin{enumerate}[noitemsep]
@@ -54,7 +53,7 @@
         \item If $0 \le x \le y$ and $0 \le u$, then $xu \le yu$.
     \end{enumerate}
 }
-\tsThe{(Completeness of the real numbers)}{
+\tsThe{(Completeness of $\mathbb{R}$ -- Dedekind completeness)}{
     $\mathbb{R}$ is a commutative ordered field that is order-complete.
 }
 \tsCor{1.1.7 (Archimedean Principle)}{
@@ -62,29 +61,26 @@
     \(
         ny > x.
     \)
-    $\tsPoint$ 2. For every \(\varepsilon > 0\) there exists \(n \in \mathbb{N}\) such that
+    \tsPoint 2. For every \(\varepsilon > 0\) there exists \(n \in \mathbb{N}\) such that
     \(
         \frac{1}{n} < \varepsilon.
     \)
 }
-\\
-\tsThe{1.1.8}{
+\tsThe{1.1.8 (Existence of Square Roots)}{
     For every $t \ge 0$, $t \in \mathbb{R}$, the equation
     \(x^2 = t\)
     has a solution in $\mathbb{R}$.
 }
-\\
 \tsDef{(Bounded set - upper/lower bounded)}{
     A set $A \in \mathbb{R}$ is called upper bounded if
     $\exists b \in R \ \ \forall a \in A: a \leq b.$
     Each such $b$ is called an upper bound for $A$. (Similarly for lower bound.)
 }
-\\
-\tsThe{(Supremum/Infimum)}{
+\tsThe{(Supremum/Infimum -- Least Upper Bound Property)}{
     1. Maximum and minimum (if exists) are unique \\
     2. Every non-empty subset bounded below (above) has a unique infimum (supremum). \\
-    3. $\sup(X) \Leftrightarrow (\large \forall x\in X: x\le S) \land (\large \forall\varepsilon>0\ \exists x\in X: \ x>S-\varepsilon)$
-    4. $\inf(X) \Leftrightarrow \large (\forall x\in X: x\ge I) \land (\forall\varepsilon>0\ \exists x\in X: \ x<I+\varepsilon)$
+    3. {\large $\sup(X) \Leftrightarrow (\forall x\in X: x\le S) \land (\forall\varepsilon>0\ \exists x\in X: \ x>S-\varepsilon)$}
+    4. {\large $\inf(X) \Leftrightarrow (\forall x\in X: x\ge I) \land (\forall\varepsilon>0\ \exists x\in X: \ x<I+\varepsilon)$}
 }
 \tsDef{(Maximum/Minimum)}{
     \(
@@ -102,7 +98,6 @@
         \end{cases}
     \)
 }
-\\
 \tsThe{(Properties of the absolute value)}{
     Properties:
     \begin{enumerate}[noitemsep]

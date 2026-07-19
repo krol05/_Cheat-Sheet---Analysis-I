@@ -9,7 +9,6 @@ y^{(4)}(x)-4y^{(3)}(x)+5y''(x)-4y'(x)+4y(x)=0.
 \)
 The variables $t,x$ are called \emph{independent variables}, while $u,y$ are called \emph{dependent variables}.
 }
-\\
 \tsDef{Linear Differential Equation}{
 A differential equation of the form
 \[
@@ -24,20 +23,17 @@ a_0(x)y(x)
 s(x)
 \]
 is called a \emph{linear differential equation} with coefficients $a_i(x)$.
-\(\tsPoint\) The \emph{order} of the differential equation is the highest order derivative appearing in the equation. The function $s(x)$ is called the \emph{forcing term}.
-\\
+\tsPoint The \emph{order} of the differential equation is the highest order derivative appearing in the equation. The function $s(x)$ is called the \emph{forcing term}.
 If
 \(
 s(x)=0,
 \)
 the equation is called \emph{homogeneous}; otherwise it is called \emph{inhomogeneous}.
 }
-\\
 \tsDef{Differential Equation with Constant Coefficients}{
 If all coefficient functions $a_i(x)$ are constant functions, the equation is called a \emph{differential equation with constant coefficients}.
 }
-\\
-\tsThe{Superposition Principle}{
+\tsThe{Superposition Principle (Linearity of Solutions)}{
 If $y_1(x)$ and $y_2(x)$ are solutions of a linear homogeneous differential equation, then
 \(
 y(x)=C_1y_1(x)+C_2y_2(x)
@@ -46,7 +42,6 @@ y(x)=C_1y_1(x)+C_2y_2(x)
 \)
 is also a solution of the same differential equation.
 }
-\\
 \tsThe{Fundamental Solutions}{
 A linear homogeneous differential equation of order $n$ possesses $n$ solutions
 \(
@@ -62,8 +57,7 @@ C_1,\dots,C_n\in\mathbb{R}.
 \]
 These solutions are called \emph{fundamental solutions}.
 }
-\\
-\tsIdea{Characteristic Polynomial}{
+\tsIdea{Characteristic Polynomial (Euler Ansatz)}{
 Consider the differential equation
 \[
 a_nu^{(n)}(x)
@@ -93,7 +87,6 @@ a_1\lambda
 a_0
 \)
 }
-\\
 \tsThe{Solution of Linear Homogeneous Differential Equations}{
 Consider the linear homogeneous differential equation with constant coefficients
 \(
@@ -131,7 +124,7 @@ B_{jq}\sin(\beta_j x)
 \right]
 \right).
 \]
-Therefore, in the general case, the solution is \\
+Therefore, in the general case, the solution is
 \[
 u(x)
 =
@@ -156,10 +149,8 @@ B_{jq}\sin(\beta_j x)
 \tsIdea{Constants in the General Solution}{
 The general solution of a differential equation of order $n$ contains $n$ constants. Therefore, in order to determine a unique solution, one must specify $n$ additional conditions.
 }
-\\
 \tsDef{Boundary Value Problem}{
 Conditions imposed at different points, e.g. for $n=2$: 
-\\
 \(
 u(t_0)=u_0,
 \qquad
@@ -167,18 +158,14 @@ u(t_1)=u_1,
 \qquad
 t_0\neq t_1,
 \)
-\\
 define a \emph{boundary value problem}.
 }
-\\
 \tsDef{Initial Value Problem}{
 Conditions imposed at a single point, e.g. for $n=2$:
-\\
 \(
 u(t_0)=u_0,
 \qquad
 u'(t_0)=v_0,
 \)
-\\
 define an \emph{initial value problem}.
 }

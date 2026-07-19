@@ -12,7 +12,6 @@
     f(n) = a_n.
     \)
 }
-\\
 \tsDef{(Ways to Describe a Sequence)}{
     One way to describe a sequence is by giving an explicit formula for each term:
     \(
@@ -25,7 +24,6 @@
     \)
     The functions $f$ and $g$ are called the \emph{rule of formation} of the sequence.
 }
-\\
 \tsDef{(Convergence/Divergence)}{
     A sequence $(a_n)_{n \in \mathbb{N}_0} \subset \mathbb{R}$ is called \emph{convergent}
     if there exists a number $L \in \mathbb{R}$ such that
@@ -39,11 +37,9 @@
     \]
     If no such $L$ exists, the sequence is called \emph{divergent}.
 }
-\\
 \tsThe{(Uniqueness of the Limit)}{
     A convergent sequence has exactly one unique limit.
 }
-\\
 \tsDef{(Divergence to infinity)}{
     Let $(a_n)_{n \in \mathbb{N}_0}$ be a sequence.
 
@@ -79,12 +75,10 @@
         n_{k+1} > n_k \ \text{for all } k \in \mathbb{N}_0.
     \)
 }
-\\
 \tsLem{(Limit of a sequence and its subsequence)}{
     Let $(a_n)_{n \in \mathbb{N}_0}$ be a convergent sequence with limit $L \in \mathbb{R}$.
     Then every subsequence $(a_{n_k})_{k \in \mathbb{N}_0}$ also converges to the same limit $L$.
 }
-\\
 \tsDef{(Accumulation Point)}{
     Let $(a_n)_{n\in\mathbb{N}_0}$ be a sequence in $\mathbb{R}$.
     A number $A\in\mathbb{R}$ is called an accumulation point of the sequence if
@@ -93,7 +87,6 @@
     \]
     Intuitively, every interval $(A-\varepsilon,A+\varepsilon)$ contains terms $a_n$ for infinitely many indices $n$.
 }
-\\
 \tsThe{(Characterization of Accumulation Points)}{
     Let $(a_n)_{n\in\mathbb{N}_0}$ be a sequence in $\mathbb{R}$.
     A number $A\in\mathbb{R}$ is an accumulation point of the sequence if and only if there exists a convergent subsequence $(a_{n_k})_{k\in\mathbb{N}_0}$ such that
@@ -101,11 +94,9 @@
         \lim_{k\to\infty} a_{n_k}=A.
     \)
 }
-\\
 \tsCor{(Accumulation Point of a Convergent Sequence)}{
     Every convergent sequence $(a_n)_{n\in\mathbb{N}_0}$ in $\mathbb{R}$ has exactly one accumulation point, which coincides with its limit.
 }
-\\
 \tsCor{(Infinite Occurrence Near an Accumulation Point)}{
     Let $A$ be an accumulation point of the sequence $(a_n)_{n\in\mathbb{N}_0}$.
     Then for every $\varepsilon>0$ there exist infinitely many terms of the sequence lying in the interval
@@ -113,8 +104,7 @@
     (A-\varepsilon,A+\varepsilon).
     \)
 }
-\\
-\tsThe{(Algebra of Limits)}{
+\tsThe{(Algebra of Limits / Limit Laws)}{
     Assume
     \[
         \lim_{n\to\infty} a_n = K, \qquad
@@ -134,8 +124,7 @@
     If $K<L$ then there exists $N$ such that $a_n<b_n$ for all $n\ge N$.\\
     If there exists $N$ such that $a_n\le b_n$ for all $n\ge N$, then $K\le L$.
 }
-\\
-\tsThe{(Important Limits)}{
+\tsThe{(Standard Limits)}{
     More on the last page*
     \begin{itemize}[noitemsep]
         \item
@@ -168,7 +157,7 @@
         \)
     \end{itemize}
 }
-\tsThe{(Sandwich Theorem)}{
+\tsThe{(Squeeze Theorem / Sandwich Theorem)}{
     Let $(a_n)_{n\in\mathbb{N}_0}$ and $(c_n)_{n\in\mathbb{N}_0}$ be convergent sequences with
     \[
         \lim_{n\to\infty}a_n=L, \qquad
@@ -183,7 +172,6 @@
         \lim_{n\to\infty}b_n=L.
     \)
 }
-\\
 \tsDef{(Bounded Sequence)}{
     A sequence $(a_n)_{n\in\mathbb{N}_0}$ is called bounded below or bounded above if the set
     \(
@@ -192,7 +180,6 @@
     has a lower bound or an upper bound respectively.
     A sequence that is bounded both above and below is called a bounded sequence.
 }
-\\
 \tsDef{(Monotone Sequence)}{
     A sequence $(a_n)_{n\in\mathbb{N}_0}$ is called:
     \begin{itemize}[noitemsep]
@@ -217,14 +204,12 @@
         \)
     \end{itemize}
 }
-\tsThe{(Monotone Convergence Theorem)}{
+\tsThe{(Monotone Convergence Theorem / Weierstrass)}{
     Every bounded and monotone sequence converges.
 }
-\\
 \tsLem{(Convergent sequence = bounded)}{
     Every convergent sequence is bounded.
 }
-\\
 \tsThe{(Monotone Convergence)}{
     Let $(a_n)_{n\in\mathbb{N}_0}$ be a sequence of real numbers.
     \begin{itemize}[noitemsep]
@@ -308,11 +293,9 @@
 
     An analogous statement holds for the limit inferior.
 }
-\\
-\tsCor{(Subsequence of a Bounded Sequence)}{
+\tsCor{(Bolzano--Weierstrass Theorem)}{
     Every bounded sequence of real numbers has at least one accumulation point and admits a convergent subsequence.
 }
-\\
 \tsDef{(Cauchy Sequence)}{
     A sequence $(a_n)_{n\in\mathbb{N}_0} \subset \mathbb{R}$ is called a \emph{Cauchy sequence} if
 
@@ -324,7 +307,6 @@
 \tsLem{(Cauchy Sequences are Bounded)}{
     Every Cauchy sequence is bounded.
 }
-\\
 \tsThe{(Cauchy Criterion)}{
     A sequence of real numbers converges if and only if it is a Cauchy sequence.
 }
