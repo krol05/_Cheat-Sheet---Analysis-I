@@ -4,7 +4,11 @@
 
 \usepackage{lscape}
 
-\usepackage[a4paper, left=0.65cm, right=0.65cm, top=0.6cm, bottom=0.6cm, landscape]{geometry}
+\usepackage[a4paper, left=0.65cm, right=0.65cm, top=0.6cm, bottom=0.6cm, landscape,
+  footskip=0.34cm, headheight=0pt, headsep=0pt]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{refcount}
 
 \usepackage{algorithm}
 \usepackage{booktabs}
@@ -45,6 +49,7 @@
 \definecolor{exBack}{HTML}{EEF0FA}
 \definecolor{secRule}{HTML}{3D4F66}
 \definecolor{subRule}{HTML}{7A8B9E}
+\definecolor{subText}{HTML}{2E4759}
 
 \newenvironment{tables}[2]{%
 \begin{tabular}{#1}
@@ -53,22 +58,81 @@
 \end{tabular}
 }
 
-\titleformat{\section}
-  {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{secRule}}
-  {\thesection}{0.6em}{}
-  [\vspace{1pt}{\color{secRule}\titlerule[1.1pt]}\vspace{1pt}]
+% Section = full-width solid banner: the strongest, unmistakable "new topic" cue.
+% (Implemented as a standalone command rather than \titleformat, so the
+%  colored banner can safely span the whole title without brace-splitting
+%  tricks against titlesec's internals.)
+\newcommand{\sectionbanner}[1]{%
+  \par\vspace{1.4ex}%
+  \refstepcounter{section}%
+  \label{sec:\arabic{section}}%
+  \noindent\colorbox{secRule}{\parbox[c][3.2ex][c]{\dimexpr\linewidth-2\fboxsep\relax}{\color{white}\bfseries\sffamily\fontsize{10.5pt}{12.5pt}\selectfont\thesection\quad #1}}%
+  \par\vspace{0.9ex}%
+}
+\renewcommand{\section}{\sectionbanner}
 
+% Running footer: current section (left) + page number (right) for fast wayfinding.
+% Built from \pageref, not TeX marks: multicol's column-splitting delivers marks
+% out of page order, so \leftmark/\rightmark cannot be trusted here.
+\newcommand{\tsCheckCarry}[2]{\ifnum\getpagerefnumber{sec:#1}<\value{page}\relax\gdef\tsCarry{#1\quad #2}\fi}
+\newcommand{\tsCheckLast}[2]{\ifnum\getpagerefnumber{sec:#1}>\value{page}\relax\else\gdef\tsLast{#1\quad #2}\fi}
+\newcommand{\tsSectionFooter}{%
+  \gdef\tsCarry{1\quad Fundamentals}%
+  \gdef\tsLast{1\quad Fundamentals}%
+  \tsCheckCarry{2}{Sequences}\tsCheckLast{2}{Sequences}%
+  \tsCheckCarry{3}{Series}\tsCheckLast{3}{Series}%
+  \tsCheckCarry{4}{Functions}\tsCheckLast{4}{Functions}%
+  \tsCheckCarry{5}{Derivatives}\tsCheckLast{5}{Derivatives}%
+  \tsCheckCarry{6}{Differential equations}\tsCheckLast{6}{Differential equations}%
+  \tsCheckCarry{7}{Integration Part 1}\tsCheckLast{7}{Integration Part 1}%
+  \tsCheckCarry{8}{Integration Part 2}\tsCheckLast{8}{Integration Part 2}%
+  \tsCheckCarry{9}{Differential equations 2}\tsCheckLast{9}{Differential equations 2}%
+  \tsCheckCarry{10}{Additional}\tsCheckLast{10}{Additional}%
+  \ifx\tsCarry\tsLast \tsLast\else \tsCarry\ --\ \tsLast\fi
+}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\fancyfootoffset{0pt}
+\fancyfoot[L]{\fontsize{6pt}{7pt}\selectfont\sffamily\bfseries\color{secRule}\tsSectionFooter}
+\fancyfoot[R]{\fontsize{6pt}{7pt}\selectfont\sffamily\bfseries\color{secRule}p.\thepage\ /\ \pageref{LastPage}}
+
+% Compact top-of-document index: section name + page, for quick lookup mid-exam.
+\newcommand{\tsToc}{%
+  \begingroup
+  \centering
+  \fontsize{6.6pt}{8pt}\selectfont\sffamily\color{secRule}
+  1~Fundamentals~(\pageref{sec:1})\quad\textbullet\quad
+  2~Sequences~(\pageref{sec:2})\quad\textbullet\quad
+  3~Series~(\pageref{sec:3})\quad\textbullet\quad
+  4~Functions~(\pageref{sec:4})\quad\textbullet\quad
+  5~Derivatives~(\pageref{sec:5})\quad\textbullet\quad
+  6~Diff.\ Equations~(\pageref{sec:6})\quad\textbullet\quad
+  7~Integration~1~(\pageref{sec:7})\quad\textbullet\quad
+  8~Integration~2~(\pageref{sec:8})\quad\textbullet\quad
+  9~Diff.\ Equations~2~(\pageref{sec:9})\quad\textbullet\quad
+  10~Additional~(\pageref{sec:10})
+  \par
+  \endgroup
+  \vspace{1pt}
+}
+
+% Subsection = colored number badge + bold dark text + thick rule: clearly a tier down.
 \titleformat{\subsection}
-  {\fontsize{8pt}{9.5pt}\selectfont\bfseries\color{subRule}}
-  {\thesubsection}{0.5em}{}
-  [\vspace{0.5pt}{\color{subRule}\titlerule[0.5pt]}\vspace{0.5pt}]
+  {\bfseries\sffamily\fontsize{8.8pt}{10.5pt}\selectfont\color{subText}}
+  {\tcbox[enhanced,colback=subRule,colframe=subRule,coltext=white,
+    boxrule=0pt,arc=1.3pt,boxsep=0pt,left=2.6pt,right=2.6pt,top=0.6pt,bottom=0.6pt,
+    fontupper=\bfseries\sffamily\fontsize{7.8pt}{9pt}\selectfont]{\thesubsection}}
+  {0.6em}{}
+  [\vspace{1pt}{\color{subRule}\titlerule[1.3pt]}\vspace{1pt}]
 
 \titleformat{\subsubsection}
-  {\fontsize{7.5pt}{9pt}\selectfont\bfseries\color{subRule}}
+  {\bfseries\sffamily\fontsize{8pt}{9.5pt}\selectfont\color{subText}}
   {\thesubsubsection}{0.4em}{}
+  [{\color{subRule}\titlerule[0.7pt]}]
 
-\titlespacing*{\section}{0pt}{1.1ex}{0.5ex}
-\titlespacing*{\subsection}{0pt}{0.9ex}{0.4ex}
+\titlespacing*{\subsection}{0pt}{1.1ex}{0.5ex}
 
 \author{Timofey Shatnyy}
 
@@ -152,6 +216,7 @@
 }
 
 \begin{document}
+\tsToc
 \begin{multicols}{3}
 \allowdisplaybreaks
     \tsLegend
@@ -159,8 +224,10 @@
     \input{1.1-FieldOfRealNumbers}
     \input{1.2-VectorsVectorSpaces}
     \input{1.3-ComplexNumbers}
+    \columnbreak
     \section{Sequences}
     \input{2-Sequences}
+    \columnbreak
     \section{Series}
     \input{3-Series}
     \section{Functions}
@@ -170,6 +237,7 @@
     \section{Differential equations}
     \input{6-DifferentialEquations}
     \input{7-Integration}
+    \columnbreak
     \section{Differential equations - 2}
     \input{8-DifferentialEquations-2}
 \end{multicols}

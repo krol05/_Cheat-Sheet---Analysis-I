@@ -201,9 +201,16 @@
 % \subsection*{Integration by parts}
 % Should we get unavoidable cycle, where we have to integrate the same thing again, we may simply add the integral to both sides, and we thus have $2$ times the integral on the left side and then finish the integration by parts on the right hand side and in the end divide by the factor up front to get the result.
 
-\subsection*{Derivatives and Antiderivatives}
+\end{multicols}
+
+\begin{center}
+\begin{minipage}{0.42\linewidth}
+\centering
+\label{tab:derivatives}
+{\bfseries\sffamily\color{subText}\fontsize{8.8pt}{10.5pt}\selectfont Derivatives and Antiderivatives}\\[3pt]
 \renewcommand{\arraystretch}{0.75}
 \begin{tcolorbox}[
+  width=\linewidth,
   colframe=secRule, colback=blue!3,
   boxrule=0.55pt, leftrule=2pt, arc=2pt,
   left=2pt, right=2pt, top=1pt, bottom=1pt, boxsep=1pt,
@@ -224,7 +231,7 @@ e^x & e^x & e^x\\
 x(\ln|x|-1) & \ln(x) & \frac1x\\
 \frac1{\ln(a)}a^x & a^x & a^x\ln(a)\\
 \frac{x}{\ln(a)}(\ln|x|-1) & \log_a|x| & \frac1{x\ln(a)}\\ [0.1cm]
-\hline 
+\hline
 -\cos(x) & \sin(x) & \cos(x)\\
 \sin(x) & \cos(x) & -\sin(x)\\
 -\ln|\cos(x)| & \tan(x) & \frac1{\cos^2(x)}\\
@@ -232,15 +239,14 @@ x(\ln|x|-1) & \ln(x) & \frac1x\\
 x\arcsin(x)+\sqrt{1-x^2} & \arcsin(x) & \frac1{\sqrt{1-x^2}}\\
 x\arccos(x)-\sqrt{1-x^2} & \arccos(x) & -\frac1{\sqrt{1-x^2}}\\
 x\arctan(x)-\frac12\ln(x^2+1) & \arctan(x) & \frac1{x^2+1}\\
-\ln|\sin(x)| & \cot(x) & -\frac1{\sin^2(x)}\\
 \cosh(x) & \sinh(x) & \cosh(x)\\
 \sinh(x) & \cosh(x) & \sinh(x)\\
 \ln|\cosh(x)| & \tanh(x) & \frac1{\cosh^2(x)}\\
 \end{array}
 \]
 \end{tcolorbox}
-
-\end{multicols}
+\end{minipage}
+\end{center}
 
 % Further Derivatives — full page width table
 \vspace{2pt}
