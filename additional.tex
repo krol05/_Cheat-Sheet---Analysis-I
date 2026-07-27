@@ -301,3 +301,52 @@ $\operatorname{artanh}(x)$ & $\frac1{1-x^2}$\\
 \end{tabular}
 \end{center}
 }
+
+\vspace{6pt}
+\begin{center}
+\begin{minipage}[t]{0.56\linewidth}
+\centering
+{\bfseries\sffamily\color{subText}\fontsize{7.7pt}{9.14pt}\selectfont Schnellreferenz: Welches Werkzeug f\"ur welche Situation?}\\[3pt]
+{\fontsize{6.3pt}{7.6pt}\selectfont
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.52\linewidth}>{\raggedright\arraybackslash}p{0.42\linewidth}}
+\textbf{Du brauchst\ldots} & \textbf{Greif zu\ldots}\\
+\hline
+Konvergenz einer Folge zeigen, ohne den Grenzwert zu kennen & Monotoniekonvergenzsatz oder Cauchy-Kriterium\\
+Zeigen, dass ein Wert irgendwo angenommen wird & Zwischenwertsatz oder Satz vom Max/Min (Weierstra\ss)\\
+Existenz einer Nullstelle/eines Fixpunkts zeigen & Zwischenwertsatz (Bolzano) auf $f(x)-x$ anwenden\\
+Eindeutigkeit einer Nullstelle zeigen & Strenge Monotonie oder Satz von Rolle\\
+Kritischen Punkt klassifizieren (Min/Max/Sattel) & 2. Ableitungstest; bei $f''=0$ Vorzeichenwechsel pr\"ufen\\
+Kniffligen $0/0$- oder $\infty/\infty$-Grenzwert auswerten & l'Hospital (ggf.\ mehrfach) oder Taylorreihe\\
+Andere unbestimmte Form ($0\cdot\infty,\ \infty-\infty,\ 0^0,\dots$) & Erst umschreiben (s.\ Ideenbox bei l'Hospital), dann l'Hospital\\
+Uneigentliches Integral: konvergiert es? & Vergleich mit $\int x^{-p}\,dx$\\
+Wurzelausdruck integrieren ($\sqrt{a^2\pm x^2}$) & Trigonometrische Substitution\\
+Gebrochen-rationale Funktion integrieren & Partialbruchzerlegung\\
+Erzwungene lineare DGL l\"osen & Homogene + partikul\"are L\"osung, Resonanzfall beachten\\
+Nichtlineare DGL 1.\ Ordnung & Trennung d.\ Var., Substitution ($u=y/x$, linear, Bernoulli) oder int.\ Faktor\\
+\end{tabular}
+}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\linewidth}
+\centering
+{\bfseries\sffamily\color{subText}\fontsize{7.7pt}{9.14pt}\selectfont Reihenkonvergenz: Entscheidungshilfe}\\[3pt]
+{\fontsize{6.3pt}{7.6pt}\selectfont
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.5\linewidth}>{\raggedright\arraybackslash}p{0.44\linewidth}}
+\textbf{Reihe sieht so aus\ldots} & \textbf{Nimm\ldots}\\
+\hline
+$\sum \frac1{n^p}$ oder $\sum r^n$ & p-Reihe / geom.\ Reihe: Bedingung direkt ablesen\\
+$\lim a_n\neq0$ & Trivialkriterium: divergiert sofort\\
+Alternierend, $a_n\downarrow0$ & Leibniz-Kriterium\\
+$a_n$ enth\"alt $n$-te Potenzen ($a_n=b_n^n$) & Wurzelkriterium (Cauchy)\\
+$a_n$ enth\"alt Fakult\"aten & Quotientenkriterium (d'Alembert)\\
+Vergleich mit bekannter Reihe m\"oglich & Majoranten-/Minorantenkriterium\\
+Konvergenzradius einer Potenzreihe gesucht & Cauchy-Hadamard-Formel\\
+Bedingt konvergent, Umordnung gefragt & Riemannscher Umordnungssatz (Reihenfolge z\"ahlt!)\\
+\end{tabular}
+}
+\end{minipage}
+\end{center}
