@@ -1,0 +1,196 @@
+\subsection{True/false scan index}\label{sub:tfindex}
+% Verdict column: T = true, F = false. Third column = reason or counterexample.
+\T{sequences and series}{
+{\fontsize{5.9pt}{7.0pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}c>{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+Statement & & Reason / counterexample\\
+\midrule
+bounded \ra\ convergent & \no & $(-1)^n$\\
+monotone \ra\ convergent & \no & $a_n=n$\\
+monotone $+$ bounded \ra\ convergent & \yes & monotone conv.\ thm\\
+$|a_{n+1}-a_n|\to0$ \ra\ convergent & \no & $\sqrt n$, $\sum_{k\le n}\frac1k$\\
+Cauchy \ra\ convergent (in $\Rl$) & \yes & completeness\\
+convergent \ra\ bounded & \yes & $\eps=1$ argument\\
+monotone \ra\ has an accumulation point & \no & $a_n=n$ has none\\
+monotone \ra\ has $\ge2$ accumulation points & \no & never more than one\\
+bounded \ra\ has an accumulation point & \yes & Bolzano--Weierstrass\\
+$\min M$ is an accumulation point & \no & $x_0=0$, $x_n=1+\frac1n$\\
+$\inf M=\sup M$ \ra\ converges & \yes & the sequence is constant\\
+$\sup M$ always exists in $\Rl$ & \no & unbounded set\\
+$a_n<b_n\ \forall n$ \ra\ $\lim a_n<\lim b_n$ & \no & only $\le$ survives\\
+$a_n\to0$ \ra\ $\sum a_n$ converges & \no & $\sum\frac1n$\\
+$\sum a_n$ conv.\ \ra\ $a_n\to0$ & \yes & divergence test\\
+abs.\ conv.\ \ra\ conv. & \yes & Cauchy criterion\\
+conv.\ \ra\ abs.\ conv. & \no & $\sum\frac{(-1)^n}n$\\
+ratio $=1$ \ra\ diverges & \no & no information at $q=1$\\
+$\sum a_n,\sum b_n$ conv.\ \ra\ $\sum a_nb_n$ conv. & \no & $a_n=b_n=\frac{(-1)^n}{\sqrt n}$\\
+reordering never changes the sum & \no & Riemann, if only conditional\\
+\end{tsTabular}}
+}
+\T{functions, continuity, derivatives}{
+{\fontsize{5.9pt}{7.0pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}c>{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+Statement & & Reason / counterexample\\
+\midrule
+continuous \ra\ differentiable & \no & $|x|$ at $0$\\
+differentiable \ra\ continuous & \yes & difference quotient\\
+differentiable \ra\ $C^1$ & \no & $x^2\sin\frac1x$\\
+$f-f(x_0)=O(|x-x_0|)$ \ra\ differentiable & \no & $|x|$ satisfies it\\
+$f-f(x_0)-K(x-x_0)=o(|x-x_0|)$ \ra\ diff. & \yes & that is the definition\\
+one-sided difference quotient exists \ra\ diff. & \no & need both sides\\
+$f'(x_0)=0$ \ra\ extremum & \no & $x^3$ at $0$\\
+interior extremum $+$ diff.\ \ra\ $f'(x_0)=0$ & \yes & Fermat\\
+$f''(x_0)=0$ \ra\ inflection point & \no & $x^4$ at $0$\\
+continuous on $\Rl$ \ra\ unif.\ continuous & \no & $x^2$, $\sin(x^2)$\\
+continuous on compact \ra\ unif.\ continuous & \yes & Heine\\
+unbounded $f'$ \ra\ not unif.\ continuous & \no & $\sqrt x$ on $[0,1]$\\
+Lipschitz \ra\ unif.\ continuous & \yes & $\delta=\eps/L$\\
+continuous on $(0,1]$ \ra\ attains its max & \no & $\frac1x$, not compact\\
+IVT applies on any interval & \no & needs continuity $+$ compact\\
+convex, interior critical pt \ra\ global min & \yes & $f'$ increasing\\
+convex \ra\ global min only on the boundary & \no & it may be interior\\
+convex \ra\ global max on the boundary & \yes & chord above graph\\
+convex diff.\ \ra\ several isolated crit.\ pts & \no & critical set is an interval\\
+$\deg p=5$ \ra\ 5 distinct roots in $\Cx$ & \no & multiplicity ($z^5$)\\
+$\deg p=5$ \ra\ 5 roots with multiplicity & \yes & fund.\ thm.\ of algebra\\
+non-real roots come in conjugate pairs & \no & only for \emph{real} coefficients\\
+$\deg p$ odd \ra\ a real root & \no & only for real coefficients\\
+\end{tsTabular}}
+}
+\T{integration and function sequences}{
+{\fontsize{5.9pt}{7.0pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}c>{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+Statement & & Reason / counterexample\\
+\midrule
+differentiable on $[a,b]$ \ra\ integrable & \yes & diff.\ \ra\ cont.\ \ra\ integrable\\
+integrable \ra\ no discontinuities & \no & jumps are fine\\
+integrable \ra\ differentiable & \no & step function\\
+finitely many \emph{values} \ra\ integrable & \no & Dirichlet $1_\Q$\\
+finitely many \emph{discontinuities} $+$ bdd \ra\ integrable & \yes & Lebesgue criterion\\
+monotone on $[a,b]$ \ra\ integrable & \yes & telescoping $U-L$\\
+continuous on $[a,b]$ \ra\ integrable & \yes & uniform continuity\\
+unbounded $f$ can be Riemann integrable & \no & that is improper\\
+pointwise \ra\ uniform & \no & $x^n$ on $[0,1]$\\
+uniform \ra\ pointwise & \yes & same $N$ works\\
+pointwise, all $f_n$ cont.\ \ra\ $f$ cont. & \no & $x^n$ on $[0,1]$\\
+uniform, all $f_n$ cont.\ \ra\ $f$ cont. & \yes & $\frac\eps3$-argument\\
+uniform, $f_n$ cont.\ \ra\ $f$ integrable & \yes & $f$ is continuous\\
+$f_n\rightrightarrows f$ \ra\ $f_n'\to f'$ & \no & $\frac{\sin(nx)}n$\\
+pointwise \ra\ $\int f_n\to\int f$ & \no & $n^2xe^{-nx}$ on $[0,1]$\\
+$\sup|f_n|\ge\frac1{2n}$ \ra\ cannot conv.\ unif.\ to $0$ & \no & $\frac1{2n}\to0$ anyway\\
+max at a different $x_n$ each $n$ \ra\ not uniform & \no & only the value matters\\
+$\int_0^\infty f$ conv.\ \ra\ check only $\infty$ & \no & $\frac{\sin t}{t^3}$ blows up at $0$\\
+$f>0$, $\int_1^\infty f<\infty$ \ra\ $f\to0$ & \no & thin spikes of height 1\\
+$y'=f(x,y)$, $f$ continuous \ra\ unique solution & \no & $y'=\sqrt{|y|}$, $y(0)=0$\\
+\end{tsTabular}}
+}
+
+\T{power series, Taylor, ODE}{
+{\fontsize{5.9pt}{7.0pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}c>{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+Statement & & Reason / counterexample\\
+\midrule
+$R$ is determined by $a_n$ alone & \yes & Cauchy--Hadamard\\
+convergence on $|x-x_0|<R$ is absolute & \yes & root test with $q<1$\\
+convergence is uniform on $|x-x_0|<R$ & \no & only on closed $[x_0-r,x_0+r]$, $r<R$\\
+the two endpoints behave the same & \no & $\sum\frac{x^n}n$: $-1$ conv., $1$ div.\\
+inside $R$ you may differentiate termwise & \yes & and $R$ is unchanged\\
+$C^\infty$ \ra\ equal to its Taylor series & \no & needs $R_n\to0$\\
+Taylor coefficients are unique & \yes & $a_n=\frac{f^{(n)}(x_0)}{n!}$\\
+$T_n$ error $\le\frac{\max|f^{(n+1)}|}{(n+1)!}|x-x_0|^{n+1}$ & \yes & Lagrange remainder\\
+order $n$ ODE \ra\ $n$ free constants & \yes & fundamental system\\
+IVP for a linear ODE always uniquely solvable & \yes & continuous coefficients\\
+BVP always uniquely solvable & \no & $0$, $1$ or $\infty$ many\\
+$\mu=$ root of char.\ poly.\ \ra\ ansatz needs $x^m$ & \yes & resonance\\
+$g=\cos\omega x$ \ra\ ansatz $A\cos\omega x$ suffices & \no & need $A\cos+B\sin$\\
+separable ODE: constant solutions can be skipped & \no & they are solutions too\\
+$y'=f(x,y)$, $f$ Lipschitz in $y$ \ra\ unique & \yes & Picard--Lindel\"of\\
+autonomous: solutions can cross an equilibrium & \no & uniqueness forbids it\\
+\end{tsTabular}}
+}
+
+\subsection{Exam-day checklist}\label{sub:checklist}
+\X{mistakes that cost marks in written proofs}{
+\begin{bul}
+\item Using a theorem without checking its hypotheses --- above all \emph{compactness} for IVT/Weierstrass/Heine, and \emph{monotonicity} for Leibniz.
+\item Applying l'Hospital without first verifying the form is $\frac00$ or $\frac\infty\infty$.
+\item Writing $\lim$ of a product/quotient as the product/quotient of limits when one of them does not exist.
+\item Choosing $N$ or $\delta$ that secretly depends on the wrong variable --- in a \emph{uniform} statement, $\delta$ may not depend on the point.
+\item Proving one direction of an ``$\iff$'' and stopping.
+\item Concluding ``$<$'' from a limit: $a_n<b_n$ only gives $\lim a_n\le\lim b_n$.
+\item Dividing by something that can vanish (e.g.\ $g(y)$ in a separable ODE) without treating that case.
+\item Forgetting the constant solutions, the $+C$, or the second endpoint of an improper integral.
+\item Asserting a sup/max exists without invoking completeness or Weierstrass.
+\item Doing algebra instead of stating the argument: name the theorem, that is where the marks are.
+\end{bul}
+}
+\X{read this in the first minute}{
+\begin{bul}
+\item \hd{Integral asked, options given?} Differentiate the options instead of integrating.
+\item \hd{Limit as $x\to0$?} Taylor beats l'Hospital almost always.
+\item \hd{Improper integral?} Split first, check \emph{both} endpoints.
+\item \hd{Separable ODE?} Write down the constant solutions $g(y)=0$.
+\item \hd{Forced linear ODE?} Resonance check \emph{before} the ansatz.
+\item \hd{``Zeigen Sie, dass es konvergiert''?} Name the theorem (monotone $+$ bounded / Cauchy / comparison). Naming earns marks.
+\item \hd{``Begr\"unden Sie''?} One sentence per step, and quote the hypotheses of every theorem you cite.
+\item \hd{Substitution finished?} Differentiate the result; the chain-rule factor must reappear.
+\item \hd{Uniform convergence?} Compute $\sup|f_n-f|$ explicitly; a maximiser $x_n$ is already a complete answer for ``no''.
+\item \hd{Stuck on a proof?} Write out the definition of everything given and everything to be shown. Often half the marks.
+\item \hd{Multiple choice, no negative marking:} never leave a box empty.
+\end{bul}
+}
+
+\subsection{Model solutions for the open questions}\label{sub:model}
+\E{``Untersuchen Sie $f_n(x)=\frac x{1+nx^2}$ auf $\Rl$'' (9 P)}{
+\hd{a) Gleichm\"assige Stetigkeit.} For $n=0$, $f_0(x)=x$ is Lipschitz with constant $1$, hence uniformly continuous. For $n\ge1$, $f_n$ is differentiable on $\Rl$ with
+$f_n'(x)=\frac{1-nx^2}{(1+nx^2)^2}$, so
+$|f_n'(x)|\le\frac{1+nx^2}{(1+nx^2)^2}=\frac1{1+nx^2}\le1$.
+By the mean value theorem $|f_n(x)-f_n(y)|\le|x-y|$ for all $x,y$, so $\delta:=\eps$ satisfies the definition. Hence \emph{every} $f_n$ is uniformly continuous.\\
+\hd{b) Punktweiser Grenzwert.} Fix $x$. For $x=0$, $f_n(0)=0$ for all $n$. For $x\ne0$,
+$|f_n(x)|=\frac{|x|}{1+nx^2}\le\frac{|x|}{nx^2}=\frac1{n|x|}\to0$. Hence $f_n\to f\equiv0$ pointwise on $\Rl$.\\
+\hd{c) Gleichm\"assige Konvergenz.} $\|f_n-f\|_\infty=\sup_x|f_n(x)|$. From $f_n'(x)=0$ we get $x=\pm\frac1{\sqrt n}$, with $f_n\!\left(\frac1{\sqrt n}\right)=\frac1{2\sqrt n}$, and $f_n(x)\to0$ as $|x|\to\infty$. Therefore
+$\|f_n\|_\infty=\frac1{2\sqrt n}\to0$, i.e.\ $f_n\rightrightarrows0$ \textbf{uniformly on all of $\Rl$}. $\square$
+}
+\E{``$f(x)=\frac{\sin x}{1+x^2}$: Fixpunkt und Rekursion'' (9 P)}{
+\hd{a) Unique fixed point, and $|f(x)|<|x|$ for $x\ne0$.} $f(0)=0$, so $0$ is a fixed point. For $x\ne0$ use the strict inequality $|\sin x|<|x|$ together with $1+x^2\ge1$:
+\[|f(x)|=\frac{|\sin x|}{1+x^2}\le|\sin x|<|x|.\]
+If $x^*\ne0$ were another fixed point then $|x^*|=|f(x^*)|<|x^*|$, a contradiction. So $x^*=0$ is the \textbf{unique} fixed point.\\
+\hd{b) Behaviour of $x_{n+1}=f(x_n)$, $x_0\in(0,1)$.}
+\emph{Positivity:} for $x\in(0,1)$ we have $\sin x>0$, so $f(x)\in(0,x)\subseteq(0,1)$; by induction $x_n\in(0,1)$ for all $n$.
+\emph{Monotonicity:} by part a), $x_{n+1}=f(x_n)<x_n$, so $(x_n)$ is strictly decreasing.
+\emph{Conclusion:} decreasing and bounded below by $0$, hence convergent by the monotone convergence theorem; let $L:=\lim x_n\ge0$. Since $f$ is continuous,
+$L=\lim x_{n+1}=\lim f(x_n)=f(L)$, so $L$ is a fixed point, and by a) $L=0$.
+Thus $x_n\to0$ for every $x_0\in(0,1)$. $\square$
+}
+\E{box answers (3 P each, only the result is marked)}{
+\hd{Limit.} $\lim_{x\to0}\frac{\sin x-x+x^3/6}{x^5}$: insert $\sin x=x-\frac{x^3}6+\frac{x^5}{120}-\dots$ \ra\ numerator $=\frac{x^5}{120}+O(x^7)$ \ra\ $\frac1{120}$.\\
+\hd{ODE.} $y''-y=e^x$: $\lambda=\pm1$; $\mu=1$ is a simple root \ra\ resonance \ra\ $y_p=Axe^x$, $y_p''-y_p=2Ae^x$ \ra\ $A=\frac12$ \ra\ $y=C_1e^x+C_2e^{-x}+\frac12xe^x$.\\
+\hd{Integral.} $\int\frac{\dx}{1+\cos x}$: $1+\cos x=2\cos^2\frac x2$, then $u=\frac x2$, $\dx=2\du$ \ra\ $\int\frac{\du}{\cos^2u}=\tan u$ \ra\ $\tan\frac x2+C$.\\
+\hd{Radius.} $\sum\frac{n^n(x-2)^n}{(2n)!}$: coefficient ratio $\to0$ \ra\ $R=\infty$ \ra\ converges for all $x\in\Rl$.\\
+\hd{Improper.} $\int_1^\infty\frac{\cos t}t\dt$ conv.; $\int_1^\infty\frac{\cos^2t}t\dt$ div.; $\int_0^\infty\frac{\sin t}{t^3}\dt$ div.\ (at $t=0$).
+}
+\E{``F\"ur welche $x$ konvergiert die Reihe?'' (radius $+$ endpoints)}{
+For $\displaystyle\sum_{n\ge1}\frac{(x-3)^n}{n\,2^n}$: the centre is $x_0=3$ and $a_n=\frac1{n2^n}$.\\
+\emph{Radius:} $\left|\frac{a_{n+1}}{a_n}\right|=\frac{n2^n}{(n+1)2^{n+1}}=\frac n{2(n+1)}\to\frac12$, hence $R=2$. By Cauchy--Hadamard the series converges absolutely for $|x-3|<2$ and diverges for $|x-3|>2$.\\
+\emph{Endpoint $x=5$:} the series becomes $\sum\frac{2^n}{n2^n}=\sum\frac1n$, the harmonic series, which \textbf{diverges}.\\
+\emph{Endpoint $x=1$:} it becomes $\sum\frac{(-2)^n}{n2^n}=\sum\frac{(-1)^n}n$, which \textbf{converges} by the Leibniz criterion ($\frac1n$ decreases monotonically to $0$), though not absolutely.\\
+\emph{Answer:} the series converges exactly for $x\in[1,5)$. $\square$\\
+\warn Always test the two endpoints \emph{separately}; they need not agree.
+}
+\E{``Konvergiert das uneigentliche Integral?'' (write-up)}{
+For $\displaystyle\int_0^\infty\frac{\dx}{\sqrt x\,(1+x)}$ there are \emph{two} problem points, so we split:
+$\int_0^\infty=\int_0^1+\int_1^\infty$, and both pieces must converge.\\
+\emph{At $x\to0^+$:} $\frac1{\sqrt x(1+x)}\sim\frac1{\sqrt x}=x^{-1/2}$, and $\int_0^1x^{-p}\dx$ converges for $p<1$; here $p=\frac12<1$, so $\int_0^1$ \textbf{converges}.\\
+\emph{At $x\to\infty$:} $\frac1{\sqrt x(1+x)}\sim x^{-3/2}$, and $\int_1^\infty x^{-p}\dx$ converges for $p>1$; here $p=\frac32>1$, so $\int_1^\infty$ \textbf{converges}.\\
+Both pieces converge, hence the integral converges. (Its value is $\pi$, via $x=t^2$.) $\square$\\
+\warn The exponent threshold \emph{reverses} between the two ends: mild singularity allowed at $0$, fast decay required at $\infty$.
+}
+\E{``Bestimmen Sie Extrema und Wendepunkte'' (curve discussion write-up)}{
+For $f(x)=\frac x{1+x^2}$: \emph{Domain} $\Rl$, $f$ is odd and continuous as a quotient of continuous functions with denominator $\ne0$.
+\emph{First derivative} $f'(x)=\frac{1-x^2}{(1+x^2)^2}$, so $f'(x)=0\iff x=\pm1$.
+\emph{Second derivative} $f''(x)=\frac{2x(x^2-3)}{(1+x^2)^3}$; $f''(1)=-\frac12<0$, hence $x=1$ is a local maximum with $f(1)=\frac12$, and $f''(-1)=\frac12>0$, hence $x=-1$ is a local minimum with $f(-1)=-\frac12$.
+\emph{Monotonicity} $f'>0$ on $(-1,1)$ and $f'<0$ outside, so $f$ increases on $[-1,1]$ and decreases on $(-\infty,-1]$ and $[1,\infty)$.
+\emph{Inflection points} $f''$ changes sign at $x=0,\pm\sqrt3$.
+\emph{Asymptote} $\lim_{x\to\pm\infty}f(x)=0$, so $y=0$.
+Since $f\to0$ at $\pm\infty$ and the only candidates are $\pm1$, the local extrema are also \emph{global}: $\max f=\frac12$, $\min f=-\frac12$, both attained. $\square$
+}

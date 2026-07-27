@@ -1,0 +1,94 @@
+\subsection{Quantifiers: read them, negate them}\label{sub:quant}
+\R{negate any definition mechanically}{
+Swap $\forall\leftrightarrow\exists$ left to right, keep the order, negate the final inequality ($<$ becomes $\ge$).
+\begin{bul}
+\item \hd{$a_n\not\to a$:} $\exists\eps>0\ \forall N\ \exists n\ge N:\ |a_n-a|\ge\eps$.
+\item \hd{not Cauchy:} $\exists\eps>0\ \forall N\ \exists m,n\ge N:\ |a_n-a_m|\ge\eps$.
+\item \hd{$f$ not continuous at $x_0$:} $\exists\eps>0\ \forall\delta>0\ \exists x:|x-x_0|<\delta$ \emph{and} $|f(x)-f(x_0)|\ge\eps$.
+\item \hd{$f$ not uniformly continuous:} $\exists\eps>0\ \forall\delta>0\ \exists x,y:|x-y|<\delta$ and $|f(x)-f(y)|\ge\eps$.
+\item \hd{$f_n\not\rightrightarrows f$:} $\exists\eps>0\ \forall N\ \exists n\ge N\ \exists x:|f_n(x)-f(x)|\ge\eps$.
+\end{bul}
+\hd{In practice} the last two become: build $x_n,y_n$ resp.\ $x_n$ and show the gap does not vanish.
+}
+\X{order of quantifiers is the whole content}{
+$\forall x\,\exists\delta$ (continuity: $\delta$ may depend on $x$) versus $\exists\delta\,\forall x$ (uniform: one $\delta$ for all $x$). Same words, different theorem. Whenever a statement feels obvious, check whether you read the quantifiers in the right order.
+}
+
+\subsection{sup / inf / max / min \de{Supremum, Infimum}}\label{sub:supinf}
+\D{the four words}{
+$M\subseteq\Rl$ nonempty. \hd{upper bound} $s$: $x\le s\ \forall x\in M$.
+\hd{$\sup M$} = least upper bound. \hd{$\max M$} = $\sup M$ \emph{only if} $\sup M\in M$. Mirrored for $\inf/\min$.\\
+\hd{Completeness axiom:} every nonempty $M$ bounded above has $\sup M\in\Rl$. This is the one property $\Q$ lacks and the engine behind IVT, Bolzano--Weierstrass and monotone convergence.
+}
+\F{$\eps$-characterisation (use it in every sup proof)}{
+$s=\sup M\iff$ (i) $x\le s\ \forall x\in M$, \ and (ii) $\forall\eps>0\ \exists x\in M:\ x>s-\eps$.\\
+For a function: $\sup_{x\in D}f(x)$ is the sup of the image set $f(D)$; it is a $\max$ iff attained.
+}
+\R{find $\sup/\inf$ and prove it}{
+\begin{rcp}
+\item Guess $s$ (the largest/smallest value the formula can approach).
+\item \hd{Bound:} show $x\le s$ for all $x\in M$ by algebra.
+\item \hd{Least:} given $\eps>0$ produce $x\in M$ with $x>s-\eps$ (usually choose $n>1/\eps$).
+\item Attained? $s\in M$ \ra\ $\max=s$; otherwise $\max$ does not exist.
+\end{rcp}
+}
+\F{Archimedes and density}{
+\hd{Archimedean:} $\forall x\in\Rl\ \exists n\in\N:n>x$; equivalently $\frac1n\to0$. $\N$ is unbounded in $\Rl$.\\
+\hd{$\Q$ dense:} between any $a<b$ there is a rational \emph{and} an irrational. Used to build the Dirichlet counterexamples.
+}
+\X{sup/inf in multiple choice}{
+\begin{bul}
+\item $\sup$ exists as a \emph{real number} only for a bounded-above set. Unbounded \ra\ write $\sup=+\infty$, i.e.\ no real sup.
+\item $\min M$ need \textbf{not} be an accumulation point of the sequence: $x_0=0$, $x_n=1+\frac1n$ attains its min once.
+\item $\inf M=\sup M$ \ra\ $M$ is a single point \ra\ the sequence is constant \ra\ converges. \yes
+\item monotone \emph{and bounded} \ra\ converges to $\sup$ (incr.) / $\inf$ (decr.). Monotone alone may run to $\pm\infty$.
+\end{bul}
+}
+
+\subsection{Absolute value and inequalities}\label{sub:ineq}
+\R{solve $|\cdot|$ inequalities}{
+$|x-a|<r\iff x\in(a-r,a+r)$;\quad $|x-a|>r\iff x<a-r$ or $x>a+r$.\\
+$|f(x)|<g(x)\iff -g(x)<f(x)<g(x)$ (and $g>0$).\\
+General: split at every zero of the inside, solve on each piece, intersect with that piece.
+}
+\F{the inequalities you actually use}{
+\begin{bul}
+\item \hd{Triangle:} $|a+b|\le|a|+|b|$; \hd{reverse:} $\big||a|-|b|\big|\le|a-b|$.
+\item \hd{Bernoulli:} $(1+x)^n\ge1+nx$ for $x\ge-1$.
+\item \hd{AM--GM:} $\sqrt{ab}\le\frac{a+b}2$ $(a,b\ge0)$.
+\item \hd{Young:} $ab\le\frac{a^2}2+\frac{b^2}2$, sharper $ab\le\frac{\eps a^2}{2}+\frac{b^2}{2\eps}$.
+\item \hd{Cauchy--Schwarz:} $|\langle x,y\rangle|\le\|x\|\|y\|$.
+\end{bul}
+\hd{Always available:} $|\sin t|\le1$, $|\sin t|\le|t|$ (strict for $t\ne0$), $|\cos t|\le1$, $e^t\ge1+t$, $\ln t\le t-1$.
+}
+\R{estimate without panic}{
+Target is always $|\text{expr}|\le(\text{something}\to0)$.
+\begin{bul}
+\item Numerator: make it \emph{bigger} (drop negative terms, bound $\sin/\cos$ by 1).
+\item Denominator: make it \emph{smaller} (drop positive terms). Never the reverse.
+\item Roots: conjugate, $\sqrt A-\sqrt B=\frac{A-B}{\sqrt A+\sqrt B}$.
+\item Sums: bound every term by the largest, then multiply by the count.
+\end{bul}
+}
+
+\subsection{Induction \de{vollst\"andige Induktion}}\label{sub:induction}
+\R{proof by induction}{
+\begin{rcp}
+\item \hd{Base:} verify $n=n_0$ explicitly.
+\item \hd{Hypothesis:} assume $A(n)$ for one fixed $n\ge n_0$.
+\item \hd{Step:} write the $n{+}1$ statement, isolate the $n$ part, substitute the hypothesis, then estimate to the target. Say where you used it.
+\end{rcp}
+\hd{Helpers:} $\sum_{k=1}^nk=\frac{n(n+1)}2$, $\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}6$, $\sum_{k=0}^nq^k=\frac{1-q^{n+1}}{1-q}$, $(1+x)^n\ge1+nx$.
+}
+
+\subsection{Vectors, inner product, norms in $\Rl^n$}\label{sub:vectors}
+\D{inner product, norm, distance}{
+$\langle x,y\rangle=x\cdot y=\sum_{i=1}^nx_iy_i$;\quad
+$\|x\|=\sqrt{\langle x,x\rangle}=\sqrt{\sum x_i^2}$;\quad
+$d(x,y)=\|x-y\|=\sqrt{\sum(x_i-y_i)^2}$.
+}
+\F{Cauchy--Schwarz and the norm axioms}{
+$|\langle x,y\rangle|\le\|x\|\,\|y\|$, with \textbf{equality iff $x,y$ are linearly dependent}. This is exactly what makes the triangle inequality true.\\
+A \hd{norm} satisfies: $\|x\|\ge0$ and $\|x\|=0\iff x=0$; $\|cx\|=|c|\|x\|$; $\|x+y\|\le\|x\|+\|y\|$.\\
+Hence $\|x-z\|\le\|x-y\|+\|y-z\|$ for all $x,y,z$.
+}

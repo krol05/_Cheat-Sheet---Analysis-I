@@ -1,0 +1,175 @@
+\subsection{Which method? Match the integrand}\label{sub:integraltree}
+\R{take the first match, then go to that subsection}{
+\begin{rcp}
+\item \hd{Already in the table (\S\ref{sub:tableuse})?} \ra\ read it off. Inner function $ax+b$ \ra\ multiply by $\frac1a$, nothing else may be inner.
+\item \hd{The inner derivative appears as a factor,} $\int g(f(x))f'(x)\dx$ \ra\ \textbf{substitution} $u=f(x)$, \S\ref{sub:subst}.
+\item \hd{Product of two unrelated types} (poly $\times$ $e^x$/$\sin$/$\ln$/$\arctan$) \ra\ \textbf{by parts}, \S\ref{sub:parts}.
+\item \hd{Rational function $\frac pq$} \ra\ division if $\deg p\ge\deg q$, then \textbf{partial fractions}, \S\ref{sub:pfrac}.
+\item \hd{Rational in $\sin,\cos$} \ra\ half-angle identities first, else $t=\tan\frac x2$, \S\ref{sub:trigrat}.
+\item \hd{$\sqrt{a^2-x^2}$, $\sqrt{a^2+x^2}$, $\sqrt{x^2-a^2}$} \ra\ \textbf{trig substitution} $x=a\sin\theta$ / $a\tan\theta$ / $a\sec\theta$.
+\item \hd{$\sqrt[n]{ax+b}$} \ra\ substitute $u=\sqrt[n]{ax+b}$; the root disappears completely.
+\item \hd{$\sin^mx\cos^nx$} \ra\ one odd power: peel a factor off and substitute the other. Both even: half-angle.
+\item \hd{$\sin^nx$, $\cos^nx$, $x^ne^x$ with large $n$} \ra\ \textbf{reduction formula}, \S\ref{sub:parts}.
+\item \hd{Nothing works} \ra\ symmetry (\S\ref{sub:ftc}), or the answer legitimately contains $\int\frac{\sin x}x\dx$, which is non-elementary and allowed in a multiple-choice option.
+\end{rcp}
+\hd{Always differentiate your result at the end.} Under time pressure it is the only check that matters.
+}
+
+\subsection{Substitution}\label{sub:subst}
+\R{step by step}{
+\begin{rcp}
+\item Choose $u=g(x)$, usually the inner function of a composition.
+\item $\du=g'(x)\dx$ \ra\ solve for $\dx$ and make \emph{every} $x$ disappear.
+\item \hd{Definite:} convert the bounds $a\mapsto g(a)$, $b\mapsto g(b)$ --- then do \emph{not} substitute back.
+\item \hd{Indefinite:} integrate in $u$, then \textbf{substitute $u=g(x)$ back}.
+\item \warn Differentiate the result: the chain-rule factor $g'(x)$ must cancel. This is where most marks are lost.
+\end{rcp}
+\hd{Reverse direction} ($x=\varphi(t)$, $\varphi$ bijective and $C^1$): $\int f(x)\dx=\int f(\varphi(t))\varphi'(t)\dt$, back via $t=\varphi^{-1}(x)$.
+}
+\F{the three substitution patterns worth memorising}{
+$\displaystyle\int\frac{f'}f\dx=\ln|f|+C$;\quad
+$\displaystyle\int f^nf'\dx=\frac{f^{n+1}}{n+1}+C$;\quad
+$\displaystyle\int f'e^f\dx=e^f+C$.\\
+\hd{Ex.} $\int\frac x{1+x^2}\dx$: $u=1+x^2$, $\du=2x\dx$ \ra\ $\frac12\int\frac{\du}u=\frac12\ln(1+x^2)+C$.
+}
+\E{trig substitution done properly}{
+$\int\sqrt{1-x^2}\dx$: put $x=\sin\theta$, $\dx=\cos\theta\,d\theta$ \ra\ $\int\cos^2\theta\,d\theta=\frac\theta2+\frac{\sin2\theta}4$.\\
+Back-substitute with $\theta=\arcsin x$ \emph{and} $\sin2\theta=2\sin\theta\cos\theta=2x\sqrt{1-x^2}$:
+\[\int\sqrt{1-x^2}\dx=\tfrac12\arcsin x+\tfrac12x\sqrt{1-x^2}+C.\]
+\warn Back-substitution needs the identity, not just $\theta=\arcsin x$.
+}
+
+\subsection{Integration by parts \de{partielle Integration}}\label{sub:parts}
+\R{$\int uv'\dx=uv-\int u'v\dx$}{
+\begin{rcp}
+\item Choose $u$ = the factor that gets \emph{simpler} when differentiated. Priority \hd{LIATE}: \textbf{L}og, \textbf{I}nverse trig, \textbf{A}lgebraic, \textbf{T}rig, \textbf{E}xponential --- earlier in the list becomes $u$.
+\item $v'$ = the rest; integrate it to get $v$ (no $+C$ here).
+\item Apply, repeat if the new integral is still a product ($x^2e^x$: twice).
+\item \hd{$\int\ln x\dx$, $\int\arctan x\dx$:} take $v'=1$ \ra\ $x\ln x-x$, \ $x\arctan x-\frac12\ln(1+x^2)$.
+\end{rcp}
+}
+\R{cycle trick (when the integral comes back)}{
+$I=\int e^x\sin x\dx$: two rounds of parts return $I=-e^x\cos x+e^x\sin x-I$.\\
+Treat $I$ as an unknown and \textbf{solve algebraically}: $2I=e^x(\sin x-\cos x)$ \ra\ $I=\frac{e^x(\sin x-\cos x)}2+C$.\\
+Same for $\int e^{ax}\cos(bx)\dx$ and $\int\sec^3x\dx$.
+}
+\F{reduction formulas}{
+$\displaystyle\int\sin^nx\dx=-\frac{\sin^{n-1}x\cos x}n+\frac{n-1}n\int\sin^{n-2}x\dx$\\
+$\displaystyle\int\cos^nx\dx=\frac{\cos^{n-1}x\sin x}n+\frac{n-1}n\int\cos^{n-2}x\dx$\\
+$\displaystyle\int x^ne^x\dx=x^ne^x-n\int x^{n-1}e^x\dx$;\quad
+$\displaystyle\int(\ln x)^n\dx=x(\ln x)^n-n\int(\ln x)^{n-1}\dx$\\
+Iterate down to $n=0$ or $1$. Definite version on $[0,\frac\pi2]$: $\int_0^{\pi/2}\sin^n=\frac{n-1}n\int_0^{\pi/2}\sin^{n-2}$.
+}
+\E{multiple choice: ``$\int x\ln x\sin x\dx=\dots$''}{
+Do \textbf{not} integrate. \textbf{Differentiate the four options} and compare with the integrand: 20 seconds instead of 5 minutes.\\
+Check of $-x\ln x\cos x+\ln x\sin x+\sin x-\int\frac{\sin x}x\dx$:\\
+$-(\ln x+1)\cos x+x\ln x\sin x\ +\ \frac{\sin x}x+\ln x\cos x\ +\ \cos x\ -\ \frac{\sin x}x=x\ln x\sin x$ \ \checkmark
+}
+
+\subsection{Partial fractions \de{Partialbruchzerlegung}}\label{sub:pfrac}
+\R{$\int\frac{p(x)}{q(x)}\dx$}{
+\begin{rcp}
+\item $\deg p\ge\deg q$ \ra\ polynomial division first.
+\item Factor $q$ completely over $\Rl$: linear factors and irreducible quadratics only (\S\ref{sub:poly}).
+\item Ansatz: $(x-a)\to\frac A{x-a}$;\ $(x-a)^k\to\frac{A_1}{x-a}+\dots+\frac{A_k}{(x-a)^k}$;\ irreducible $x^2+bx+c\to\frac{Ax+B}{x^2+bx+c}$.
+\item Multiply out and compare coefficients, or plug in the roots (\hd{cover-up} is fastest for simple linear factors).
+\item Integrate: $\int\frac A{x-a}=A\ln|x-a|$;\ $\int\frac A{(x-a)^k}=\frac A{(1-k)(x-a)^{k-1}}$;\ for $\frac{Ax+B}{x^2+bx+c}$ split off $\frac A2\cdot\frac{2x+b}{x^2+bx+c}$ (gives $\ln$) and complete the square on the rest (gives $\arctan$).
+\end{rcp}
+\hd{Ex.} $\int\frac{\dx}{x^2-1}=\int\left(\frac{1/2}{x-1}-\frac{1/2}{x+1}\right)\dx=\frac12\ln\left|\frac{x-1}{x+1}\right|+C$.
+}
+
+\subsection{Rational in $\sin$ and $\cos$}\label{sub:trigrat}
+\R{half-angle first, Weierstrass only if needed}{
+\hd{Try first:} $1+\cos x=2\cos^2\frac x2$, \ $1-\cos x=2\sin^2\frac x2$, \ $\sin x=2\sin\frac x2\cos\frac x2$.\\
+\hd{Weierstrass} $t=\tan\frac x2$: $\sin x=\frac{2t}{1+t^2}$, $\cos x=\frac{1-t^2}{1+t^2}$, $\dx=\frac2{1+t^2}\dt$ \ra\ rational in $t$ \ra\ \S\ref{sub:pfrac}.
+}
+\E{$\int\frac{\dx}{1+\cos x}$ (and its twin)}{
+$1+\cos x=2\cos^2\frac x2$ \ra\ $\int\frac{\dx}{2\cos^2\frac x2}\overset{u=x/2}{=}\int\frac{2\du}{2\cos^2u}=\tan u=\boxed{\tan\tfrac x2+C}$.\\
+Check: $\frac d{dx}\tan\frac x2=\frac1{2\cos^2\frac x2}=\frac1{1+\cos x}$ \checkmark\\
+\hd{Twin:} $\int\frac{\dx}{1-\cos x}=-\cot\frac x2+C$.
+}
+
+\subsection{Definite integrals, FTC, symmetry}\label{sub:ftc}\label{sub:riemannsum}
+\F{Fundamental theorem \de{Hauptsatz}}{
+$f$ continuous on $[a,b]$, $F(x):=\int_a^xf(t)\dt$ \ra\ $F$ is differentiable and $F'=f$.\\
+\hd{Newton--Leibniz:} $\int_a^bf=F(b)-F(a)$ for any antiderivative $F$.\\
+\hd{Variable bounds (chain rule!):} $\frac d{dx}\int_{u(x)}^{v(x)}f(t)\dt=f(v(x))v'(x)-f(u(x))u'(x)$.\\
+\hd{MVT for integrals:} $f$ continuous \ra\ $\exists\xi\in[a,b]$ with $\int_a^bf=f(\xi)(b-a)$.
+}
+\F{free simplifications}{
+\begin{bul}
+\item $f$ \hd{odd} on a symmetric interval \ra\ $\int_{-a}^af=0$; \ $f$ \hd{even} \ra\ $=2\int_0^af$.
+\item $\int_a^b=-\int_b^a$; \ $\int_a^b=\int_a^c+\int_c^b$; \ $\left|\int f\right|\le\int|f|$; \ $f\le g\Rightarrow\int f\le\int g$.
+\item $\left|\int_a^bf\right|\le(b-a)\max|f|$ (the standard estimate).
+\item Period $T$: $\int_a^{a+T}f$ does not depend on $a$.
+\item $\int_0^{2\pi}\sin^2=\int_0^{2\pi}\cos^2=\pi$; \ $\int_0^\pi\sin x\dx=2$; \ $\int_0^{\pi/2}\sin^2=\frac\pi4$.
+\end{bul}
+}
+\R{limit of a sum $=$ integral (Riemann sum trick)}{
+A limit of the shape $\displaystyle\lim_{n\to\infty}\frac1n\sum_{k=1}^nf\!\left(\frac kn\right)$ equals $\displaystyle\int_0^1f(x)\dx$.
+\begin{rcp}
+\item Factor out $\frac1n$ (the width). If it is not there, the trick does not apply.
+\item Write the rest as a function of $\frac kn$ alone \ra\ that is $f$.
+\item General interval: $\frac{b-a}n\sum f\!\left(a+k\frac{b-a}n\right)\to\int_a^bf$.
+\end{rcp}
+\hd{Ex.} $\lim\sum_{k=1}^n\frac n{n^2+k^2}=\lim\frac1n\sum\frac1{1+(k/n)^2}=\int_0^1\frac{\dx}{1+x^2}=\frac\pi4$.\\
+\hd{Ex.} $\lim\frac1n\sum_{k=1}^n\ln\frac kn=\int_0^1\ln x\dx=-1$.
+}
+\R{integrals with $|\cdot|$, $\max$, or pieces}{
+\begin{rcp}
+\item Find every point where the sign or the active branch changes (zeros of the inside).
+\item Split there, drop the $|\cdot|$ with the correct sign on each piece.
+\item Add up. \warn Never pull $|\cdot|$ outside the integral.
+\end{rcp}
+\hd{Ex.} $\int_0^2|x-1|\dx=\int_0^1(1-x)\dx+\int_1^2(x-1)\dx=\frac12+\frac12=1$.
+}
+
+\subsection{Riemann integrability \de{Riemann-integrierbar}}\label{sub:riemannint}
+\D{Darboux definition}{
+Partition $P:a=x_0<\dots<x_n=b$; \ $L(f,P)=\sum_i(\inf_{[x_{i-1},x_i]}f)\Delta x_i$, \ $U(f,P)=\sum_i(\sup f)\Delta x_i$.\\
+$f$ (bounded) is integrable $\iff\sup_PL=\inf_PU$ $\iff\forall\eps>0\ \exists P:U(f,P)-L(f,P)<\eps$.\\
+\hd{To compute from the definition:} take the equidistant $P$, evaluate the two sums, let $n\to\infty$.
+}
+\F{criteria --- and the false friends}{
+\begin{bul}
+\item \yes\ continuous on $[a,b]$ \ra\ integrable. \ Monotone on $[a,b]$ \ra\ integrable. \ Differentiable \ra\ continuous \ra\ integrable.
+\item \yes\ bounded with \emph{finitely} (even countably) many discontinuities \ra\ integrable. \ Lebesgue criterion: bounded and the discontinuity set is a null set $\iff$ integrable.
+\item \no\ ``must be continuous everywhere'' --- jumps are fine.
+\item \no\ ``integrable \ra\ differentiable'' --- a step function is integrable and not even continuous.
+\item \no\ ``finitely many function \emph{values} \ra\ integrable'' --- Dirichlet $1_\Q$ takes only $0,1$ and is not integrable.
+\item \warn Riemann integrability requires \textbf{bounded} $f$; unbounded means improper.
+\end{bul}
+}
+
+\subsection{Improper integrals \de{uneigentliche Integrale}}\label{sub:improper}
+\R{does it converge?}{
+\begin{rcp}
+\item \hd{Locate every problem point:} $\pm\infty$ and every point where $f$ is unbounded. \warn Split so each piece has \emph{exactly one} problem; \emph{all} pieces must converge.
+\item Write each as a limit: $\int_a^\infty f=\lim_{R\to\infty}\int_a^Rf$, \ $\int_a^bf=\lim_{\eps\to0^+}\int_a^{b-\eps}f$.
+\item Compare with the benchmark below at that specific point.
+\item \hd{Limit comparison:} $\frac{f(x)}{g(x)}\to c\in(0,\infty)$ \ra\ same behaviour; replace $f$ by its leading behaviour there.
+\item \hd{Sign changes:} test absolute convergence first; if that fails, oscillating integrals may still converge conditionally (parts / Dirichlet).
+\end{rcp}
+}
+\T{benchmarks: the exponent flips meaning at the two ends}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.42\linewidth}>{\raggedright\arraybackslash}p{0.52\linewidth}@{}}
+Integral & Converges iff\\
+\midrule
+$\int_1^\infty x^{-p}\dx$ & $p>1$ \ (needs \emph{fast} decay at $\infty$)\\
+$\int_0^1x^{-p}\dx$ & $p<1$ \ (only a \emph{mild} singularity at $0$)\\
+$\int_2^\infty\frac{\dx}{x\ln^px}$ & $p>1$\\
+$\int_0^{1/2}\frac{\dx}{x\ln^px}$ & $p>1$\\
+$\int_0^\infty e^{-\lambda x}\dx=\frac1\lambda$ & $\lambda>0$\\
+$\int_1^\infty\frac{\sin x}x\dx$ & converges, \emph{conditionally} (parts)\\
+$\int_0^1\ln x\dx=-1$ & converges\\
+\end{tsTabular}}
+}
+\E{inspect both ends before answering}{
+\begin{bul}
+\item $\int_0^\infty\frac{\sin t}{t^3}\dt$: at $t\to0$, $\frac{\sin t}{t^3}\sim\frac1{t^2}$ \ra\ \textbf{diverges}. The problem is at $0$, not at $\infty$.
+\item $\int_0^\infty\frac{\dt}{t^2+t^4}$: at $t\to0$, $\sim\frac1{t^2}$ \ra\ \textbf{diverges}.
+\item $\int_1^\infty\frac{\cos^2t}t\dt$: $\cos^2t=\frac{1+\cos2t}2$ contains $\int\frac{\dt}{2t}$ \ra\ \textbf{diverges}.
+\item $\int_1^\infty\frac{\cos t}t\dt$: parts with $u=\frac1t$ \ra\ \textbf{converges} conditionally.
+\end{bul}
+}
