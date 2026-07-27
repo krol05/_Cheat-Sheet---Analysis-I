@@ -1,0 +1,106 @@
+\subsection{Decision tree: which method?}
+\R{classify the ODE, then jump}{
+\begin{rcp}
+\item \hd{$y'=f(x)g(y)$} (factorises) \ra\ \textbf{separation}, \S7.2.
+\item \hd{$y'+p(x)y=q(x)$} (linear, 1st order) \ra\ \textbf{integrating factor}, \S7.3.
+\item \hd{$y'+p(x)y=q(x)y^\alpha$} \ra\ \textbf{Bernoulli}: $z=y^{1-\alpha}$, \S7.4.
+\item \hd{$y'=f\!\left(\frac yx\right)$} \ra\ substitution $u=\frac yx$, i.e.\ $y=ux$, $y'=u'x+u$ \ra\ separable.
+\item \hd{$y'=f(ax+by+c)$} \ra\ substitution $u=ax+by+c$ \ra\ separable.
+\item \hd{$y^{(n)}+a_{n-1}y^{(n-1)}+\dots+a_0y=g(x)$, constant $a_i$} \ra\ \textbf{characteristic polynomial} \S7.5 $+$ particular solution \S7.6.
+\item \hd{$y'=f(y)$ only (autonomous)} \ra\ separable; constant solutions = zeros of $f$ (check them separately!).
+\end{rcp}
+\hd{Order of work, always:} general solution \ra\ then plug in initial/boundary conditions \ra\ then determine the constants.
+}
+
+\subsection{Separation of variables \de{Trennung der Variablen}}
+\R{$y'=f(x)g(y)$}{
+\begin{rcp}
+\item \warn \hd{First} find all $y_0$ with $g(y_0)=0$: $y\equiv y_0$ are \textbf{constant solutions} (often forgotten, costs points).
+\item For $g(y)\ne0$: $\dfrac{dy}{g(y)}=f(x)\dx$ \ra\ integrate \emph{both} sides, one constant $C$ on the right.
+\item Solve for $y$ (keep $\pm$ / $|\cdot|$ carefully; absorb into $C$: $e^{C}=:\tilde C>0$, sign gives $\tilde C\in\Rl$).
+\item Insert the initial condition, state the interval of existence.
+\end{rcp}
+\hd{Ex.} $y'=xy$: $\frac{dy}{y}=x\dx$ \ra\ $\ln|y|=\frac{x^2}2+C$ \ra\ $y=\tilde Ce^{x^2/2}$ (incl.\ $y\equiv0$ for $\tilde C=0$).
+}
+
+\subsection{First order linear $y'+p(x)y=q(x)$}
+\R{integrating factor (fastest, always works)}{
+\begin{rcp}
+\item Bring to the normal form $y'+p(x)y=q(x)$ (coefficient of $y'$ must be 1!).
+\item $\mu(x):=e^{\int p(x)\dx}$ (no $+C$ needed).
+\item $(\mu y)'=\mu q$ \ra\ $y=\dfrac{1}{\mu(x)}\left(\displaystyle\int\mu(x)q(x)\dx+C\right)$.
+\item Insert the initial condition last.
+\end{rcp}
+\hd{Same thing as "variation of constants":} $y_h=Ce^{-\int p}$, then let $C=C(x)$, insert, get $C'(x)=q e^{\int p}$, integrate.
+}
+\E{$y'-\frac2xy=x^3$}{
+$p=-\frac2x$, $\mu=e^{-2\ln|x|}=x^{-2}$. $(x^{-2}y)'=x$ \ra\ $x^{-2}y=\frac{x^2}2+C$ \ra\ $y=\frac{x^4}2+Cx^2$.
+}
+
+\subsection{Bernoulli / substitutions}
+\R{$y'+p(x)y=q(x)y^{\alpha}$, $\alpha\ne0,1$}{
+\begin{rcp}
+\item Divide by $y^\alpha$: $y^{-\alpha}y'+p\,y^{1-\alpha}=q$.
+\item Set $z:=y^{1-\alpha}$ \ra\ $z'=(1-\alpha)y^{-\alpha}y'$.
+\item \ra\ \textbf{linear} ODE $z'+(1-\alpha)p\,z=(1-\alpha)q$ \ra\ \S7.3.
+\item Back-substitute $y=z^{1/(1-\alpha)}$; check the lost solution $y\equiv0$ separately.
+\end{rcp}
+}
+
+\subsection{Linear, constant coefficients --- homogeneous part}
+\R{$y^{(n)}+a_{n-1}y^{(n-1)}+\dots+a_0y=0$}{
+\begin{rcp}
+\item Ansatz $y=e^{\lambda x}$ \ra\ \hd{characteristic polynomial} $\lambda^n+a_{n-1}\lambda^{n-1}+\dots+a_0=0$.
+\item Find all roots (guess integer roots, then polynomial division).
+\item Build the fundamental system:
+\begin{bul}
+\item simple real root $\lambda$ \ra\ $e^{\lambda x}$
+\item real root of multiplicity $m$ \ra\ $e^{\lambda x},\ xe^{\lambda x},\dots,x^{m-1}e^{\lambda x}$
+\item complex pair $\lambda=\alpha\pm i\beta$ \ra\ $e^{\alpha x}\cos(\beta x),\ e^{\alpha x}\sin(\beta x)$ (multiplicity $m$: multiply by $1,x,\dots,x^{m-1}$)
+\end{bul}
+\item $y_h=C_1y_1+\dots+C_ny_n$ --- exactly $n$ free constants.
+\end{rcp}
+\hd{2nd order quick table} ($y''+by'+cy=0$, $D=b^2-4c$): $D>0$: $C_1e^{\lambda_1x}+C_2e^{\lambda_2x}$; $D=0$: $(C_1+C_2x)e^{\lambda x}$; $D<0$: $e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$.
+}
+
+\subsection{Particular solution: undetermined coefficients \de{Ansatz vom Typ der rechten Seite}}
+\R{$Ly=g(x)$ --- and the resonance rule}{
+\begin{rcp}
+\item Pick the ansatz according to $g$:
+\begin{bul}
+\item $g=$ polynomial of degree $k$ \ra\ $y_p=A_kx^k+\dots+A_0$ (full polynomial!)
+\item $g=Ce^{\mu x}$ \ra\ $y_p=Ae^{\mu x}$
+\item $g=C\cos(\omega x)$ or $C\sin(\omega x)$ \ra\ $y_p=A\cos(\omega x)+B\sin(\omega x)$ (\emph{both} terms)
+\item products \ra\ product of the ansätze, e.g.\ $xe^{2x}$ \ra\ $(Ax+B)e^{2x}$
+\item sum $g=g_1+g_2$ \ra\ solve separately and add (superposition)
+\end{bul}
+\item \warn \hd{RESONANCE CHECK:} is the exponent $\mu$ (resp.\ $\pm i\omega$) a root of the characteristic polynomial with multiplicity $m$? \ra\ \textbf{multiply the whole ansatz by $x^m$}. Forgetting this makes the ansatz collapse to $0=g$.
+\item Differentiate the ansatz, insert into the ODE, compare coefficients, solve for $A,B,\dots$
+\item \hd{General solution $=y_h+y_p$}, then impose the initial conditions on the \emph{sum}.
+\end{rcp}
+}
+\E{$y''-y=e^x$ (textbook resonance case)}{
+\textbf{1)} $\lambda^2-1=0$ \ra\ $\lambda=\pm1$ \ra\ $y_h=C_1e^{x}+C_2e^{-x}$.\\
+\textbf{2)} $g=e^{x}$, $\mu=1$ \emph{is} a simple root \ra\ resonance, $m=1$ \ra\ ansatz $y_p=Axe^{x}$.\\
+\textbf{3)} $y_p'=A(1+x)e^x$, $y_p''=A(2+x)e^x$ \ra\ $y_p''-y_p=2Ae^{x}\overset{!}{=}e^x$ \ra\ $A=\frac12$.\\
+\textbf{4)} $\boxed{y(x)=C_1e^{x}+C_2e^{-x}+\tfrac12xe^{x}}$
+}
+\F{variation of constants (when the ansatz method fails, e.g.\ $g=\frac1x$, $\tan x$)}{
+2nd order, $y_h=C_1y_1+C_2y_2$: set $y_p=c_1(x)y_1+c_2(x)y_2$ with
+$c_1'=-\dfrac{y_2g}{W}$, $c_2'=\dfrac{y_1g}{W}$, Wronskian $W=y_1y_2'-y_1'y_2$; integrate.
+}
+
+\E{three more standard ODEs}{
+\hd{(a) Separable + IVP.} $y'=y^2\cos x$, $y(0)=1$: constant solution $y\equiv0$; else $-\frac1y=\sin x+C$ \ra\ $y=\frac{-1}{\sin x+C}$; $y(0)=1$ \ra\ $C=-1$ \ra\ $y=\frac1{1-\sin x}$.\\
+\hd{(b) Bernoulli.} $y'+y=xy^2$ ($\alpha=2$): $z=y^{-1}$ \ra\ $z'-z=-x$ \ra\ $\mu=e^{-x}$ \ra\ $z=x+1+Ce^{x}$ \ra\ $y=\frac1{x+1+Ce^{x}}$.\\
+\hd{(c) Complex roots + resonant $\cos$.} $y''+y=\cos x$: $\lambda=\pm i$ \ra\ $y_h=C_1\cos x+C_2\sin x$. $\pm i$ \emph{is} a root \ra\ resonance \ra\ ansatz $y_p=x(A\cos x+B\sin x)$ \ra\ $A=0$, $B=\frac12$ \ra\ $y=C_1\cos x+C_2\sin x+\frac x2\sin x$.
+}
+
+\subsection{Initial / boundary conditions, existence}
+\F{IVP vs.\ BVP, Picard--Lindel\"of}{
+\hd{IVP \de{Anfangswertproblem}:} all conditions at one point $x_0$: $y(x_0),y'(x_0),\dots$ --- $n$ conditions for order $n$.
+\hd{BVP \de{Randwertproblem}:} conditions at two points $a,b$ --- may have $0$, $1$ or $\infty$ many solutions.\\
+\hd{Picard--Lindel\"of:} $y'=f(x,y)$, $y(x_0)=y_0$ with $f$ continuous and \emph{Lipschitz in $y$} (e.g.\ $\partial_yf$ continuous \& bounded locally) \ra\ \textbf{unique} solution on a neighbourhood of $x_0$.
+\warn Continuity of $f$ alone gives existence (Peano) but \emph{not} uniqueness: $y'=\sqrt{|y|}$, $y(0)=0$ has $y\equiv0$ and $y=\frac{x^2}4$.
+Linear ODEs with continuous coefficients: unique solution on the whole interval.
+}

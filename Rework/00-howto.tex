@@ -1,0 +1,48 @@
+% ---------------- Front matter: legend + "question -> section" index ----------
+\begingroup
+\fontsize{5.6pt}{6.6pt}\selectfont\sffamily
+\noindent
+{\colorbox{recFrame}{\color{white}\bfseries\,$\blacktriangleright$\,}}\ \textbf{RECIPE} = follow the steps\ \
+{\colorbox{exFrame}{\color{white}\bfseries\,E\,}}\ example\ \
+{\colorbox{thmFrame}{\color{white}\bfseries\,F\,}}\ citable fact\ \
+{\colorbox{defFrame}{\color{white}\bfseries\,D\,}}\ definition\ \
+{\colorbox{trapFrame}{\color{white}\bfseries\,!\,}}\ trap\hfill
+\textbf{Sections:}
+1~Toolbox~(\pageref{sec:1})\,$\bullet$\,
+2~Seq.~(\pageref{sec:2})\,$\bullet$\,
+3~Series~(\pageref{sec:3})\,$\bullet$\,
+4~Funct.~(\pageref{sec:4})\,$\bullet$\,
+5~Deriv.~(\pageref{sec:5})\,$\bullet$\,
+6~Integr.~(\pageref{sec:6})\,$\bullet$\,
+7~ODE~(\pageref{sec:7})\,$\bullet$\,
+8~Proofs~(\pageref{sec:8})\,$\bullet$\,
+9~Tables~(\pageref{sec:9})
+\par\vspace{2pt}
+\endgroup
+
+{\fontsize{5.75pt}{6.75pt}\selectfont
+\renewcommand{\arraystretch}{1.06}
+\setlength{\tabcolsep}{2.5pt}
+\noindent
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.215\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}@{\hspace{5pt}}|@{\hspace{5pt}}>{\raggedright\arraybackslash}p{0.215\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}@{}}
+\textbf{\sffamily The task says\ldots} & \textbf{\sffamily Jump to} & \textbf{\sffamily The task says\ldots} & \textbf{\sffamily Jump to}\\
+\midrule
+``Berechnen Sie den Grenzwert'' ($x\to0$, $0/0$) & \textbf{5.6} Taylor-plug method (faster + safer than l'Hospital) &
+``konvergiert $(f_n)$ gleichm\"assig?'' & \textbf{4.7} sup-norm recipe\\
+``Grenzwert einer Folge'' & \textbf{2.2} limit recipe, \textbf{2.3} recursive $x_{n+1}=f(x_n)$ &
+``punktweiser Grenzwert'' & \textbf{4.6} fix $x$, let $n\to\infty$\\
+``Konvergiert die Reihe?'' & \textbf{3.2} decision tree &
+``gleichm\"assig stetig?'' & \textbf{4.5} recipe + case distinction\\
+``Konvergenzradius / f\"ur welche $x$'' & \textbf{3.3} radius recipe &
+``Riemann-integrierbar?'' & \textbf{6.7} criteria list\\
+``Bestimmen Sie $\int f\dx$'' & \textbf{6.1} integral decision tree &
+``uneigentliches Integral konvergent?'' & \textbf{6.8} $p$-test + comparison\\
+``allgemeine L\"osung der DGL'' & \textbf{7.1} ODE decision tree &
+``Fixpunkt / eindeutige Nullstelle'' & \textbf{4.4} IVT + strict monotonicity\\
+``Kurvendiskussion / Extrema'' & \textbf{5.4} full recipe &
+``Beweisen Sie \dots\ (Vorlesung)'' & \textbf{8} proof skeletons\\
+``H\"aufungspunkt / limsup'' & \textbf{2.4} subsequence split, \textbf{2.5} Cauchy &
+``differenzierbar in $x_0$?'' & \textbf{5.1} + Landau $o/O$ box\\
+\end{tabular}
+\par\vspace{2pt}
+}

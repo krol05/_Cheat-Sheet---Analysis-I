@@ -1,0 +1,99 @@
+\subsection{Definitions you must be able to write}
+\D{convergence / divergence / boundedness}{
+$a_n\to a$ :$\iff$ $\forall\eps>0\ \exists N\in\N\ \forall n\ge N:\ |a_n-a|<\eps$.\\
+$a_n\to\infty$ :$\iff$ $\forall K>0\ \exists N\ \forall n\ge N:\ a_n>K$.\\
+\hd{bounded:} $\exists C:|a_n|\le C\ \forall n$. \hd{monotone incr.:} $a_{n+1}\ge a_n\ \forall n$.\\
+\hd{Chain of implications:} convergent \ra\ Cauchy \ra\ bounded \ra\ has a convergent subsequence (Bolzano--Weierstrass). None of the arrows reverses except Cauchy$\Leftrightarrow$convergent in $\Rl$.
+}
+
+\subsection{Limit of an explicitly given $a_n$}
+\R{compute $\lim a_n$}{
+\begin{rcp}
+\item \hd{Rational in $n$:} divide num.\ \& den.\ by the highest power of $n$ in the \emph{denominator}. Degree top $<$ bottom \ra\ 0; $=$ \ra\ ratio of leading coeff.; $>$ \ra\ $\pm\infty$.
+\item \hd{Roots / $\infty-\infty$:} multiply by conjugate $\frac{\sqrt A+\sqrt B}{\sqrt A+\sqrt B}$.
+\item \hd{$n$-th roots / powers:} write $a_n=e^{\ln a_n}$ and take the limit in the exponent (continuity of $\exp$).
+\item \hd{$(1+\frac cn)^{dn}$ shape:} $\to e^{cd}$.
+\item \hd{Factorials / $n^n$:} use growth order $\ln n\ll n^\alpha\ll b^n\ll n!\ll n^n$ ($\alpha>0,b>1$).
+\item \hd{$\sin/\cos$ or $(-1)^n$ times a null sequence:} squeeze $-|b_n|\le a_n\le|b_n|$.
+\item \hd{Else:} treat $n$ as real $x$, use l'Hospital / Taylor (\S5.5--5.6), transfer back.
+\end{rcp}
+}
+\F{tools with names (cite them!)}{
+\hd{Limit laws:} sums, products, quotients (den.\ $\ne0$) --- only valid if \emph{both} limits exist finitely.
+\hd{Squeeze \de{Sandwich}:} $b_n\le a_n\le c_n$, $b_n,c_n\to L$ \ra\ $a_n\to L$.
+\hd{Monotone convergence \de{Monotoniekriterium}:} monotone + bounded \ra\ convergent, limit $=\sup$ resp.\ $\inf$ of the set of terms.
+\hd{Continuity transfer:} $a_n\to a$, $f$ continuous at $a$ \ra\ $f(a_n)\to f(a)$.
+}
+
+\E{the seven limits that keep coming back}{
+\begin{bul}
+\item $\dfrac{3n^2-n}{2n^2+5}=\dfrac{3-\frac1n}{2+\frac5{n^2}}\to\dfrac32$.
+\item $\sqrt{n^2+n}-n=\dfrac{n}{\sqrt{n^2+n}+n}=\dfrac{1}{\sqrt{1+\frac1n}+1}\to\dfrac12$.
+\item $\sqrt[n]{n}=e^{\frac{\ln n}{n}}\to e^0=1$; likewise $\sqrt[n]{a}\to1$ ($a>0$), $\sqrt[n]{2^n+3^n}\to3$ (pull out the largest).
+\item $\left(1+\frac3n\right)^{2n}=\left[\left(1+\frac3n\right)^{n}\right]^2\to(e^3)^2=e^6$.
+\item $\dfrac{n!}{n^n}\le\dfrac1n\to0$ (each of the other factors is $\le1$).
+\item $\dfrac{2^n}{n!}\to0$: for $n\ge4$ the ratio $\frac{a_{n+1}}{a_n}=\frac2{n+1}\le\frac12$ \ra\ geometric decay.
+\item $a_n=\frac{(-1)^n}{n}$: $|a_n|\le\frac1n\to0$ \ra\ $a_n\to0$ (squeeze; alternating alone means nothing).
+\end{bul}
+}
+
+\R{prove $a_n\to a$ by $\eps$--$N$ (when asked for a proof)}{
+\begin{rcp}
+\item Compute $|a_n-a|$ and simplify to one fraction.
+\item Over-estimate to a clean $\frac{C}{n^k}$ (numerator bigger, denominator smaller).
+\item Solve $\frac{C}{n^k}<\eps$ for $n$ \ra\ choose $N:=\lceil (C/\eps)^{1/k}\rceil+1$.
+\item Write: "Let $\eps>0$, choose $N$ as above, then $\forall n\ge N$: $|a_n-a|\le\frac C{n^k}<\eps$. $\square$"
+\end{rcp}
+}
+
+\subsection{Recursive sequences $x_{n+1}=f(x_n)$}
+\R{full treatment (this is a standard 4--9 point task)}{
+\begin{rcp}
+\item \hd{Candidate limit:} solve the fixed point equation $L=f(L)$. Keep all solutions.
+\item \hd{Bounded:} prove by induction that $x_n$ stays in an interval $I$ containing $x_0$ and $L$ (show $f(I)\subseteq I$).
+\item \hd{Monotone:} compare $x_1$ with $x_0$; then induction: if $f$ is increasing, the sign of $x_{n+1}-x_n$ never changes. Sign of $f(x)-x$ on $I$ tells you the direction.
+\item \hd{Conclude:} monotone + bounded \ra\ converges (Monotone Convergence). Limit $L$ satisfies $L=f(L)$ because $x_{n+1}=f(x_n)$, $f$ continuous, and $\lim x_{n+1}=\lim x_n$. Pick the root of $L=f(L)$ lying in $I$.
+\end{rcp}
+\hd{Alternative (contraction), often shorter:} if $|f'(x)|\le q<1$ on $I$ then by MVT
+$|x_{n+1}-L|=|f(x_n)-f(L)|\le q|x_n-L|$ \ra\ $|x_n-L|\le q^n|x_0-L|\to0$. Converges to the \emph{unique} fixed point for \emph{every} $x_0\in I$.
+}
+
+\E{$x_{n+1}=\frac{\sin x_n}{1+x_n^2}$, $x_0\in(0,1)$}{
+$f(x)=\frac{\sin x}{1+x^2}$. \textbf{1)} Fixed point: $x=0$ works. For $x\ne0$: $|\sin x|<|x|$ and $1+x^2>1$ \ra\ $|f(x)|<|x|$ \ra\ no other fixed point.
+\textbf{2)} $x_0\in(0,1)$ \ra\ $\sin x_0>0$ \ra\ all $x_n>0$; and $x_{n+1}=|f(x_n)|<x_n$ \ra\ strictly decreasing, bounded below by 0.
+\textbf{3)} Monotone + bounded \ra\ converges to some $L\ge0$ with $L=f(L)$ \ra\ $L=0$. \\
+\warn Standard sub-question "show $|f(x)|<|x|$ for $x\ne0$": use $|\sin x|<|x|$ for $x\ne0$ (strict!) and $1+x^2\ge1$.
+}
+
+\subsection{Accumulation points, limsup, liminf}
+\D{accumulation point (H\"aufungspunkt)}{
+$h$ is an accumulation point of $(a_n)$ :$\iff$ every $\eps$-ball around $h$ contains $a_n$ for \emph{infinitely many} $n$ $\iff$ some subsequence converges to $h$.
+\hd{$\limsup a_n$} = largest accumulation point $=\lim_{n\to\infty}\sup_{k\ge n}a_k$; \hd{$\liminf$} = smallest.
+}
+\F{what you may conclude}{
+\begin{bul}
+\item $a_n$ converges $\iff$ bounded and $\liminf=\limsup$ $\iff$ exactly one accumulation point \emph{and} bounded.
+\item \hd{Bolzano--Weierstrass:} bounded \ra\ at least one accumulation point.
+\item \hd{Monotone sequence:} either bounded (\ra\ converges, exactly 1 acc.\ point) or unbounded (\ra\ $\to\pm\infty$, \textbf{no} acc.\ point). So: "a monotone sequence \emph{may have no} accumulation point" is the true statement; it can never have two.
+\item $a_n\le b_n\ \forall n$ \ra\ $\lim a_n\le\lim b_n$ (\warn strict $<$ is \emph{not} preserved).
+\end{bul}
+}
+\R{find all accumulation points}{
+\begin{rcp}
+\item Split by the periodic part: $(-1)^n$ \ra\ two subsequences $n=2k$, $n=2k+1$; $\cos(n\pi/3)$ \ra\ period 6; etc.
+\item Compute the limit of each subsequence. That set = set of accumulation points.
+\item $\limsup=\max$, $\liminf=\min$ of that set.
+\end{rcp}
+Ex.: $a_n=(-1)^n\frac{n}{n+1}$ \ra\ $\{-1,+1\}$, $\limsup=1$, $\liminf=-1$, diverges.
+}
+
+\subsection{Cauchy sequences}
+\D{Cauchy}{
+$\forall\eps>0\ \exists N\ \forall m,n\ge N:\ |a_n-a_m|<\eps$.
+In $\Rl$ (complete): \textbf{Cauchy $\iff$ convergent}. Use it to prove convergence \emph{without knowing the limit}.
+\warn "$|a_{n+1}-a_n|\to0$" is \textbf{not} enough ($a_n=\sqrt n$, $a_n=\sum1/k$). You need control of $|a_n-a_m|$ for \emph{all} $m,n\ge N$.
+}
+\R{show $(a_n)$ is Cauchy}{
+Typical: show $|a_{n+1}-a_n|\le Cq^n$ with $q<1$. Then for $m>n$
+$|a_m-a_n|\le\sum_{k=n}^{m-1}Cq^k\le \frac{Cq^n}{1-q}\to0$ \ra\ Cauchy \ra\ convergent.
+}

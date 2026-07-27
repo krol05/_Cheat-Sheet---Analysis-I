@@ -1,0 +1,92 @@
+\subsection{sup / inf / max / min \de{Supremum, Infimum}}
+
+\D{the four words}{
+$M\subseteq\Rl$ nonempty. \hd{upper bound} $s$: $x\le s\ \forall x\in M$.
+\hd{$\sup M$} = smallest upper bound. \hd{$\max M$} = $\sup M$ \emph{if} $\sup M\in M$.
+Same mirrored for $\inf/\min$.
+\hd{Completeness axiom:} every nonempty $M$ bounded above has a $\sup M\in\Rl$ (this is THE property $\Q$ lacks).
+}
+
+\R{find $\sup/\inf$ and prove it}{
+\begin{rcp}
+\item Guess the value $s$ (largest/smallest value the formula can reach).
+\item \hd{Upper bound:} show $x\le s$ for all $x\in M$ (algebra).
+\item \hd{Least:} $\forall\eps>0$ find $x\in M$ with $x>s-\eps$ (usually pick $n>1/\eps$).
+\item $s\in M$? yes \ra\ $\max=s$; no \ra\ $\max$ does not exist.
+\end{rcp}
+}
+
+\X{sup/inf statements in multiple choice}{
+\begin{bul}
+\item $\sup$ always \emph{exists in} $\Rl\cup\{\pm\infty\}$; as a \emph{real number} only if the set is bounded. Unbounded set \ra\ "$\sup=+\infty$", i.e. no real sup.
+\item $\min M$ is \textbf{not} automatically an accumulation point (it can be attained once, e.g. $x_0=0$, $x_n=1+1/n$).
+\item $\inf M=\sup M$ \ra\ set has exactly one element \ra\ sequence is constant \ra\ converges. \textbf{True.}
+\item monotone \emph{and bounded} \ra\ converges to $\sup$ (incr.) / $\inf$ (decr.). Monotone alone \ra\ may run to $\pm\infty$.
+\end{bul}
+}
+
+\subsection{Induction \de{vollst\"andige Induktion}}
+\R{proof by induction}{
+\begin{rcp}
+\item \hd{Base:} check $n=n_0$ explicitly.
+\item \hd{Hypothesis:} assume $A(n)$ true for a fixed $n\ge n_0$.
+\item \hd{Step:} write the $n{+}1$ statement, isolate the $n$ part, replace it using the hypothesis, then estimate/simplify to the target.
+\end{rcp}
+Standard helpers: $\sum_{k=1}^n k=\frac{n(n+1)}2$, $\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}6$,
+$\sum_{k=0}^n q^k=\frac{1-q^{n+1}}{1-q}$, Bernoulli $(1+x)^n\ge 1+nx$ $(x\ge-1)$.
+}
+
+\subsection{Inequality toolkit \de{Absch\"atzungen}}
+\F{the five you actually use}{
+\begin{bul}
+\item \hd{Triangle:} $|a+b|\le|a|+|b|$; \hd{reverse:} $\big||a|-|b|\big|\le|a-b|$.
+\item \hd{Bernoulli:} $(1+x)^n\ge1+nx$ for $x\ge-1$.
+\item \hd{AM--GM:} $\sqrt{ab}\le\frac{a+b}2$ $(a,b\ge0)$.
+\item \hd{Young:} $ab\le\frac{a^2}2+\frac{b^2}2$, more generally $ab\le\frac{\eps a^2}{2}+\frac{b^2}{2\eps}$.
+\item \hd{Cauchy--Schwarz:} $|\langle x,y\rangle|\le\|x\|\,\|y\|$.
+\end{bul}
+\hd{Always usable:} $|\sin t|\le1$, $|\sin t|\le|t|$, $|\cos t|\le1$, $e^t\ge1+t$, $\ln t\le t-1$.
+}
+
+\X{how to estimate without panic}{
+Goal is always $|\text{expr}|\le(\text{something}\to0)$.
+\begin{bul}
+\item Numerator: make it \emph{bigger} (drop $-$ terms, bound $\sin/\cos$ by 1).
+\item Denominator: make it \emph{smaller} (drop $+$ terms) --- never the other way round.
+\item Roots: multiply by the conjugate
+$\sqrt A-\sqrt B=\frac{A-B}{\sqrt A+\sqrt B}$.
+\end{bul}
+}
+
+\subsection{Complex numbers $\Cx$}
+\D{forms and conversion}{
+$z=a+ib=r e^{i\varphi}=r(\cos\varphi+i\sin\varphi)$, $\bar z=a-ib$, $|z|=r=\sqrt{a^2+b^2}$, $z\bar z=|z|^2$.
+\hd{Cartesian\too polar:} $r=\sqrt{a^2+b^2}$, $\varphi=\operatorname{atan2}(b,a)$ i.e.
+$\arctan(b/a)$ \emph{plus $\pi$ if $a<0$}.\ \warn{}quadrant check!
+\hd{Polar\too Cartesian:} $a=r\cos\varphi$, $b=r\sin\varphi$.
+\hd{Division:} multiply by $\frac{\bar w}{\bar w}$: $\frac zw=\frac{z\bar w}{|w|^2}$.
+\hd{Euler:} $e^{i\varphi}=\cos\varphi+i\sin\varphi$; $\cos x=\frac{e^{ix}+e^{-ix}}2$, $\sin x=\frac{e^{ix}-e^{-ix}}{2i}$.
+}
+
+\R{solve $z^n=w$ ($n$-th roots)}{
+\begin{rcp}
+\item Write $w=\rho e^{i\psi}$ (get $\rho,\psi$ as above).
+\item $z_k=\rho^{1/n}\,e^{i(\psi+2\pi k)/n}$, $k=0,1,\dots,n-1$.
+\item Exactly $n$ roots, all on the circle of radius $\rho^{1/n}$, spaced by $2\pi/n$.
+\end{rcp}
+$\sqrt[n]{1}$: $z_k=e^{2\pi ik/n}$. Sum of all $n$-th roots of unity $=0$ ($n\ge2$).
+}
+
+\F{polynomials --- what is guaranteed}{
+$p$ of degree $n$ with \emph{any} complex coefficients:
+\begin{bul}
+\item has \textbf{exactly $n$ roots in $\Cx$ counted with multiplicity} (Fundamental Thm. of Algebra) --- not necessarily distinct.
+\item \warn Conjugate pairing $\bar z$ root whenever $z$ is --- \textbf{only if all coefficients are real}.
+\item Odd degree \emph{and real} coefficients \ra\ at least one real root (IVT). Degree 5 with complex coefficients: \emph{no} real root guaranteed.
+\end{bul}
+}
+
+\R{quadratic with complex data}{
+$az^2+bz+c=0$ \ra\ $z=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$; for complex $D=b^2-4ac$ compute $\sqrt D$ by the $n$-th-root recipe with $n=2$.
+Real coefficients, $D<0$: $z=\frac{-b}{2a}\pm i\frac{\sqrt{|D|}}{2a}$.
+}

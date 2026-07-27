@@ -1,0 +1,173 @@
+% =====================================================================
+%  Analysis I -- EXAM RECIPE SHEET (Rework)
+%  Design goal: every entry answers "I have THIS question -> do THIS".
+%  Definitions only survive if an exercise needs them.
+% =====================================================================
+\documentclass[8pt, a4paper]{extarticle}
+
+\usepackage{amsmath, amssymb, mathtools, cancel}
+\usepackage[a4paper, left=0.5cm, right=0.5cm, top=0.45cm, bottom=0.5cm, landscape,
+  footskip=0.3cm, headheight=0pt, headsep=0pt]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{refcount}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[stretch=10,shrink=20]{microtype}
+\usepackage{anyfontsize}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\renewcommand{\normalsize}{\fontsize{6.35pt}{7.45pt}\selectfont}
+
+% ---------- Palette ----------
+\definecolor{recFrame}{HTML}{1F7A4D}   % RECIPE  (the important one)
+\definecolor{recBack}{HTML}{E9F6EF}
+\definecolor{defFrame}{HTML}{C96A20}   % definition (only if needed)
+\definecolor{defBack}{HTML}{FFF4E8}
+\definecolor{thmFrame}{HTML}{A67C00}   % fact / theorem you may cite
+\definecolor{thmBack}{HTML}{FFF8D6}
+\definecolor{exFrame}{HTML}{2F6FBF}    % worked example
+\definecolor{exBack}{HTML}{EAF2FC}
+\definecolor{trapFrame}{HTML}{C0392B}  % trap / pitfall
+\definecolor{trapBack}{HTML}{FCECEC}
+\definecolor{tabFrame}{HTML}{5B4B8A}   % lookup table
+\definecolor{tabBack}{HTML}{F1EEF9}
+\definecolor{secRule}{HTML}{27374D}
+\definecolor{subRule}{HTML}{6C7A89}
+\definecolor{subText}{HTML}{27374D}
+
+% ---------- Section banner ----------
+\newcommand{\sectionbanner}[1]{%
+  \par\vspace{1.1ex}%
+  \refstepcounter{section}%
+  \label{sec:\arabic{section}}%
+  \noindent\colorbox{secRule}{\parbox[c][3.0ex][c]{\dimexpr\linewidth-2\fboxsep\relax}{\color{white}\bfseries\sffamily\fontsize{8.6pt}{10.2pt}\selectfont\thesection\quad #1}}%
+  \par\vspace{0.7ex}%
+}
+\renewcommand{\section}{\sectionbanner}
+
+\newcommand{\tsCheckCarry}[2]{\ifnum\getpagerefnumber{sec:#1}<\value{page}\relax\gdef\tsCarry{#1\quad #2}\fi}
+\newcommand{\tsCheckLast}[2]{\ifnum\getpagerefnumber{sec:#1}>\value{page}\relax\else\gdef\tsLast{#1\quad #2}\fi}
+\newcommand{\tsSectionFooter}{%
+  \gdef\tsCarry{0\quad How to use}%
+  \gdef\tsLast{0\quad How to use}%
+  \tsCheckCarry{1}{Toolbox}\tsCheckLast{1}{Toolbox}%
+  \tsCheckCarry{2}{Sequences}\tsCheckLast{2}{Sequences}%
+  \tsCheckCarry{3}{Series}\tsCheckLast{3}{Series}%
+  \tsCheckCarry{4}{Functions}\tsCheckLast{4}{Functions}%
+  \tsCheckCarry{5}{Derivatives}\tsCheckLast{5}{Derivatives}%
+  \tsCheckCarry{6}{Integration}\tsCheckLast{6}{Integration}%
+  \tsCheckCarry{7}{ODEs}\tsCheckLast{7}{ODEs}%
+  \tsCheckCarry{8}{Proofs}\tsCheckLast{8}{Proofs}%
+  \tsCheckCarry{9}{Tables}\tsCheckLast{9}{Tables}%
+  \ifx\tsCarry\tsLast \tsLast\else \tsCarry\ --\ \tsLast\fi
+}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\fancyfootoffset{0pt}
+\fancyfoot[L]{\fontsize{5.2pt}{6.1pt}\selectfont\sffamily\bfseries\color{secRule}\tsSectionFooter}
+\fancyfoot[R]{\fontsize{5.2pt}{6.1pt}\selectfont\sffamily\bfseries\color{secRule}p.\thepage\ /\ \pageref{LastPage}}
+
+% ---------- Sub headings ----------
+\titleformat{\subsection}
+  {\bfseries\sffamily\fontsize{7.2pt}{8.5pt}\selectfont\color{subText}}
+  {\tcbox[enhanced,colback=subRule,colframe=subRule,coltext=white,
+    boxrule=0pt,arc=1.2pt,boxsep=0pt,left=2.4pt,right=2.4pt,top=0.5pt,bottom=0.5pt,
+    fontupper=\bfseries\sffamily\fontsize{6.4pt}{7.4pt}\selectfont]{\thesubsection}}
+  {0.5em}{}
+  [\vspace{0.8pt}{\color{subRule}\titlerule[1.1pt]}\vspace{0.8pt}]
+\titlespacing*{\subsection}{0pt}{0.9ex}{0.4ex}
+
+\linespread{1.06}
+\setlength{\columnsep}{0.38cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\multicolsep}{2pt}
+\raggedcolumns
+\setlist{nosep, leftmargin=1.1em}
+
+% ---------- Boxes ----------
+\tcbset{
+  tsbase/.style={
+    enhanced, unbreakable, sharp corners=southwest, arc=2pt,
+    boxrule=0.5pt, leftrule=2.2pt,
+    left=2.6pt, right=2.6pt, top=1pt, bottom=1pt, boxsep=1pt,
+    before skip=1.8pt plus 1pt, after skip=1.8pt plus 1pt,
+    fonttitle=\sffamily\bfseries\fontsize{6.1pt}{7.2pt}\selectfont,
+    coltitle=white, toptitle=0.7pt, bottomtitle=0.7pt,
+    lefttitle=2pt, righttitle=2pt, titlerule=0pt,
+  }
+}
+\newcommand{\tsEntry}[4]{%
+  \begin{tcolorbox}[unbreakable, tsbase, colback=#3, colframe=#2, colbacktitle=#2, title={#1}]
+  #4
+  \end{tcolorbox}%
+}
+% R = Recipe (step-by-step), D = Definition, F = Fact/Theorem,
+% E = worked Example, X = traP, T = lookup Table
+\newcommand{\R}[2]{\tsEntry{\raisebox{-0.2pt}{\scriptsize$\blacktriangleright$}\ RECIPE: #1}{recFrame}{recBack}{#2}}
+\newcommand{\D}[2]{\tsEntry{DEF: #1}{defFrame}{defBack}{#2}}
+\newcommand{\F}[2]{\tsEntry{FACT: #1}{thmFrame}{thmBack}{#2}}
+\newcommand{\E}[2]{\tsEntry{EXAMPLE: #1}{exFrame}{exBack}{#2}}
+\newcommand{\X}[2]{\tsEntry{TRAP: #1}{trapFrame}{trapBack}{#2}}
+\newcommand{\T}[2]{\tsEntry{TABLE: #1}{tabFrame}{tabBack}{#2}}
+
+% ---------- Step lists ----------
+\newenvironment{rcp}
+  {\begin{enumerate}[leftmargin=1.15em,itemsep=0.2pt,topsep=0.6pt,parsep=0pt,
+     label=\textbf{\color{recFrame}\arabic*.},labelsep=0.28em,align=left]}
+  {\end{enumerate}}
+\newenvironment{bul}
+  {\begin{itemize}[leftmargin=0.85em,itemsep=0.2pt,topsep=0.6pt,parsep=0pt,label=\textbullet]}
+  {\end{itemize}}
+\newcommand{\hd}[1]{\textbf{\color{subText}#1}}
+\newcommand{\de}[1]{{\itshape\color{subRule}(#1)}}   % German exam wording
+\newcommand{\warn}{\textbf{\color{trapFrame}!\,}}
+\newcommand{\ra}{$\Rightarrow$}
+\newcommand{\too}{$\to$}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cx}{\mathbb{C}}
+\newcommand{\Rl}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dx}{\,dx}
+\newcommand{\dt}{\,dt}
+
+\begin{document}
+\normalsize
+\input{00-howto}
+\begin{multicols}{3}
+\allowdisplaybreaks
+\section{Toolbox: numbers, sup/inf, complex, algebra}
+\input{01-toolbox}
+\section{Sequences $(a_n)$}
+\input{02-sequences}
+\section{Series $\sum a_n$ and power series}
+\input{03-series}
+\section{Functions: limits, continuity, function sequences $(f_n)$}
+\input{04-functions}
+\section{Derivatives and their applications}
+\input{05-derivatives}
+\section{Integration}
+\input{06-integration}
+\section{Differential equations (ODE)}
+\input{07-ode}
+\section{Standard proofs from the lecture (Vorlesungsbeweise)}
+\input{08-proofs}
+\end{multicols}
+\clearpage
+\section{Lookup tables}
+\input{09-tables}
+\end{document}

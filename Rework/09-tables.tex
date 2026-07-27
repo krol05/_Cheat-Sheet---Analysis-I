@@ -1,0 +1,360 @@
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.0}
+
+\X{HOW TO USE THE DERIVATIVE / ANTIDERIVATIVE TABLE}{
+{\fontsize{6.6pt}{7.8pt}\selectfont
+Read a row as $\dfrac{d}{dx}F(x)=f(x)$ and $\displaystyle\int f(x)\dx=F(x)+C$. \textbf{The table is written for the bare argument $x$.}
+\hd{(1) Inner function is linear $ax+b$:} $\displaystyle\int f(ax+b)\dx=\frac1a\,F(ax+b)+C$ --- divide by the inner derivative $a$.
+\hd{(2) Inner function is anything else:} you may \emph{not} patch with a factor; substitute $u=g(x)$, $\dx=\frac{du}{g'(x)}$, and only proceed if the leftover $g'(x)$ cancels.
+\hd{(3) Constant prefactors} stay outside: $\int c\,f=c\int f$. Do the substitution factor and the prefactor as \emph{separate} steps and write both down.
+\hd{(4) Always differentiate your answer at the end} --- the chain rule factor must reappear. Example: $\int\frac{1}{2\cos^2(x/2)}\dx=\tan\frac x2+C$ (\emph{not} $2\tan\frac x2$), because $\dx=2\,du$ cancels the $\frac12$.
+}
+}
+
+\begin{multicols}{2}
+{\fontsize{6.2pt}{7.3pt}\selectfont
+\renewcommand{\arraystretch}{1.12}
+\begin{center}
+\textbf{\sffamily\color{subText}Antiderivative $\;\leftarrow\;$ Function $\;\rightarrow\;$ Derivative}\\[1pt]
+\begin{tabular}{@{}l|l|l@{}}
+$F(x)=\int f$ & $f(x)$ & $f'(x)$\\
+\midrule
+$\frac{x^{n+1}}{n+1}\ (n\ne-1)$ & $x^n$ & $nx^{n-1}$\\
+$\ln|x|$ & $\frac1x$ & $-\frac1{x^2}$\\
+$\frac23x^{3/2}$ & $\sqrt x$ & $\frac1{2\sqrt x}$\\
+$\frac{n}{n+1}x^{(n+1)/n}$ & $\sqrt[n]{x}$ & $\frac1nx^{1/n-1}$\\
+$\frac{1}{a(n+1)}(ax+b)^{n+1}$ & $(ax+b)^n$ & $an(ax+b)^{n-1}$\\
+\midrule
+$e^x$ & $e^x$ & $e^x$\\
+$\frac1ae^{ax}$ & $e^{ax}$ & $ae^{ax}$\\
+$\frac{a^x}{\ln a}$ & $a^x$ & $a^x\ln a$\\
+$x(\ln|x|-1)$ & $\ln|x|$ & $\frac1x$\\
+$\frac{x}{\ln a}(\ln|x|-1)$ & $\log_a|x|$ & $\frac1{x\ln a}$\\
+\midrule
+$-\cos x$ & $\sin x$ & $\cos x$\\
+$\sin x$ & $\cos x$ & $-\sin x$\\
+$-\ln|\cos x|$ & $\tan x$ & $\frac1{\cos^2x}=1+\tan^2x$\\
+$\ln|\sin x|$ & $\cot x$ & $-\frac1{\sin^2x}$\\
+$\ln\left|\tan\frac x2\right|$ & $\frac1{\sin x}$ & $-\frac{\cos x}{\sin^2x}$\\
+$\ln\left|\tan\left(\frac x2+\frac\pi4\right)\right|$ & $\frac1{\cos x}$ & $\frac{\sin x}{\cos^2 x}$\\
+$\frac x2-\frac{\sin 2x}{4}$ & $\sin^2x$ & $\sin 2x$\\
+$\frac x2+\frac{\sin 2x}{4}$ & $\cos^2x$ & $-\sin 2x$\\
+\midrule
+$x\arcsin x+\sqrt{1-x^2}$ & $\arcsin x$ & $\frac1{\sqrt{1-x^2}}$\\
+$x\arccos x-\sqrt{1-x^2}$ & $\arccos x$ & $-\frac1{\sqrt{1-x^2}}$\\
+$x\arctan x-\frac12\ln(1+x^2)$ & $\arctan x$ & $\frac1{1+x^2}$\\
+\midrule
+$\cosh x$ & $\sinh x$ & $\cosh x$\\
+$\sinh x$ & $\cosh x$ & $\sinh x$\\
+$\ln\cosh x$ & $\tanh x$ & $\frac1{\cosh^2x}$\\
+$\arsinh x$ & $\frac1{\sqrt{1+x^2}}$ & $\frac{-x}{(1+x^2)^{3/2}}$\\
+\end{tabular}
+\end{center}
+}
+
+\columnbreak
+
+{\fontsize{6.2pt}{7.3pt}\selectfont
+\renewcommand{\arraystretch}{1.12}
+\begin{center}
+\textbf{\sffamily\color{subText}Antiderivatives you will not guess}\\[1pt]
+\begin{tabular}{@{}l|l@{}}
+$f(x)$ & $F(x)=\int f\dx$\\
+\midrule
+$\frac1{ax+b}$ & $\frac1a\ln|ax+b|$\\
+$\frac{f'(x)}{f(x)}$ & $\ln|f(x)|$\\
+$\frac1{a^2+x^2}$ & $\frac1a\arctan\frac xa$\\
+$\frac1{a^2-x^2}$ & $\frac1{2a}\ln\left|\frac{a+x}{a-x}\right|$\\
+$\frac1{\sqrt{a^2-x^2}}$ & $\arcsin\frac{x}{|a|}$\\
+$\frac1{\sqrt{x^2\pm a^2}}$ & $\ln\left|x+\sqrt{x^2\pm a^2}\right|$\\
+$\sqrt{a^2-x^2}$ & $\frac x2\sqrt{a^2-x^2}+\frac{a^2}2\arcsin\frac{x}{|a|}$\\
+$\sqrt{a^2+x^2}$ & $\frac x2\sqrt{a^2+x^2}+\frac{a^2}2\ln\left|x+\sqrt{a^2+x^2}\right|$\\
+$\sqrt{x^2-a^2}$ & $\frac x2\sqrt{x^2-a^2}-\frac{a^2}2\ln\left|x+\sqrt{x^2-a^2}\right|$\\
+$\ln x$ & $x\ln x-x$\\
+$x e^{ax}$ & $\frac{e^{ax}}{a^2}(ax-1)$\\
+$e^{ax}\sin(bx)$ & $\frac{e^{ax}(a\sin bx-b\cos bx)}{a^2+b^2}$\\
+$e^{ax}\cos(bx)$ & $\frac{e^{ax}(a\cos bx+b\sin bx)}{a^2+b^2}$\\
+$\frac1{1+\cos x}$ & $\tan\frac x2$\\
+$\frac1{1-\cos x}$ & $-\cot\frac x2$\\
+$\frac{1}{\sin x\cos x}$ & $\ln|\tan x|$\\
+$x^x$ & no elementary form ($\frac{d}{dx}x^x=x^x(1+\ln x)$)\\
+\end{tabular}
+\end{center}
+
+\textbf{\sffamily\color{subText}Growth hierarchy} ($x\to\infty$, $\alpha>0$, $b>1$):
+$\ \ln x\ \ll\ x^{\alpha}\ \ll\ b^{x}\ \ll\ x!\ \ll\ x^{x}$ --- every ratio of a left to a right term $\to0$. Use it to kill limits instantly.
+
+\vspace{2pt}
+\textbf{\sffamily\color{subText}Standard limits}
+\begin{multicols}{2}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+\item $\lim_{x\to0}\frac{\sin x}{x}=1$
+\item $\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12$
+\item $\lim_{x\to0}\frac{\tan x}{x}=1$
+\item $\lim_{x\to0}\frac{\arctan x}{x}=1$
+\item $\lim_{x\to0}\frac{e^x-1}{x}=1$
+\item $\lim_{x\to0}\frac{a^x-1}{x}=\ln a$
+\item $\lim_{x\to0}\frac{\ln(1+x)}{x}=1$
+\item $\lim_{x\to1}\frac{\ln x}{x-1}=1$
+\item $\lim_{x\to0^+}x\ln x=0$
+\item $\lim_{x\to0^+}x^x=1$
+\item $\lim_{x\to\infty}\frac{\ln x}{x^\alpha}=0$
+\item $\lim_{x\to\infty}\frac{x^m}{e^x}=0$
+\item $\lim_{n\to\infty}\sqrt[n]{n}=1$
+\item $\lim_{n\to\infty}\sqrt[n]{a}=1\,(a>0)$
+\item $\lim_{n\to\infty}\frac{a^n}{n!}=0$
+\item $\lim_{n\to\infty}\sqrt[n]{n!}=\infty$
+\item $\lim_{x\to\pm\infty}(1+\frac kx)^{mx}=e^{km}$
+\item $\lim_{x\to0}(1+x)^{1/x}=e$
+\item $\lim_{x\to\infty}x^\alpha q^x=0\,(0\le q<1)$
+\item $\lim_{x\to\infty}\arctan x=\frac\pi2$
+\end{itemize}
+\end{multicols}
+}
+\end{multicols}
+
+\vspace{1pt}
+\begin{multicols}{3}
+{\fontsize{6.2pt}{7.3pt}\selectfont
+
+\textbf{\sffamily\color{subText}Trigonometry}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+\item $\sin^2x+\cos^2x=1$;\ $1+\tan^2x=\frac1{\cos^2x}$
+\item $\sin(x\pm y)=\sin x\cos y\pm\cos x\sin y$
+\item $\cos(x\pm y)=\cos x\cos y\mp\sin x\sin y$
+\item $\sin2x=2\sin x\cos x$;\ $\cos2x=\cos^2x-\sin^2x=1-2\sin^2x$
+\item $\sin^2x=\frac{1-\cos2x}2$;\ $\cos^2x=\frac{1+\cos2x}2$
+\item $1+\cos x=2\cos^2\frac x2$;\ $1-\cos x=2\sin^2\frac x2$
+\item $\tan\frac x2=\frac{\sin x}{1+\cos x}=\frac{1-\cos x}{\sin x}$
+\item $\sin(-x)=-\sin x$ (odd), $\cos(-x)=\cos x$ (even)
+\item $\sin(\pi-x)=\sin x$, $\cos(\pi-x)=-\cos x$
+\item $\sin(x+\frac\pi2)=\cos x$, $\cos(x+\frac\pi2)=-\sin x$
+\item $\arcsin:[-1,1]\to[-\frac\pi2,\frac\pi2]$, $\arccos:[-1,1]\to[0,\pi]$, $\arctan:\Rl\to(-\frac\pi2,\frac\pi2)$
+\end{itemize}
+
+\vspace{1pt}
+\[
+\begin{array}{c|c|c|c|c}
+\deg & \mathrm{rad} & \sin & \cos & \tan\\
+\hline
+0 & 0 & 0 & 1 & 0\\
+30 & \frac\pi6 & \frac12 & \frac{\sqrt3}2 & \frac{\sqrt3}3\\
+45 & \frac\pi4 & \frac{\sqrt2}2 & \frac{\sqrt2}2 & 1\\
+60 & \frac\pi3 & \frac{\sqrt3}2 & \frac12 & \sqrt3\\
+90 & \frac\pi2 & 1 & 0 & -\\
+120 & \frac{2\pi}3 & \frac{\sqrt3}2 & -\frac12 & -\sqrt3\\
+135 & \frac{3\pi}4 & \frac{\sqrt2}2 & -\frac{\sqrt2}2 & -1\\
+150 & \frac{5\pi}6 & \frac12 & -\frac{\sqrt3}2 & -\frac{\sqrt3}3\\
+180 & \pi & 0 & -1 & 0
+\end{array}
+\qquad
+\begin{array}{c|c|c|c}
+\text{Quad.} & \sin & \cos & \tan\\
+\hline
+\text{I} & + & + & +\\
+\text{II} & + & - & -\\
+\text{III} & - & - & +\\
+\text{IV} & - & + & -
+\end{array}
+\]
+
+\columnbreak
+
+\textbf{\sffamily\color{subText}Logs, powers, hyperbolics}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+\item $\log_a x=\frac{\ln x}{\ln a}$;\ $a^x=e^{x\ln a}$;\ $u^v=e^{v\ln u}$
+\item $\ln(xy)=\ln x+\ln y$;\ $\ln\frac xy=\ln x-\ln y$;\ $\ln(x^y)=y\ln x$
+\item $\ln1=0$, $\ln e=1$; $\ln x$ defined only for $x>0$
+\item $\sinh x=\frac{e^x-e^{-x}}2$, $\cosh x=\frac{e^x+e^{-x}}2$, $\cosh^2-\sinh^2=1$
+\item $\arsinh x=\ln(x+\sqrt{x^2+1})$, $\arcosh x=\ln(x+\sqrt{x^2-1})$, $\artanh x=\frac12\ln\frac{1+x}{1-x}$
+\end{itemize}
+
+\vspace{2pt}
+\textbf{\sffamily\color{subText}Algebra survival kit}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+\item $\sqrt A-\sqrt B=\frac{A-B}{\sqrt A+\sqrt B}$ (conjugate trick, kills $\infty-\infty$)
+\item $a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+\dots+b^{n-1})$
+\item Complete the square: $x^2+bx+c=\left(x+\frac b2\right)^2+c-\frac{b^2}4$
+\item $\binom nk=\frac{n!}{k!(n-k)!}$;\ $(a+b)^n=\sum_k\binom nka^kb^{n-k}$
+\item $\sum_{k=1}^nk=\frac{n(n+1)}2$;\ $\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}6$;\ $\sum_{k=0}^nq^k=\frac{1-q^{n+1}}{1-q}$
+\item Guess a root of a polynomial among the divisors of the constant term, then divide.
+\end{itemize}
+
+\vspace{2pt}
+\textbf{\sffamily\color{subText}Taylor series at $0$ (with radius)}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+\item $e^x=\sum_{n\ge0}\frac{x^n}{n!}$, $R=\infty$
+\item $\sin x=\sum_{n\ge0}\frac{(-1)^nx^{2n+1}}{(2n+1)!}$, $R=\infty$
+\item $\cos x=\sum_{n\ge0}\frac{(-1)^nx^{2n}}{(2n)!}$, $R=\infty$
+\item $\frac1{1-x}=\sum_{n\ge0}x^n$, $R=1$
+\item $\ln(1+x)=\sum_{n\ge1}\frac{(-1)^{n+1}x^n}{n}$, $R=1$
+\item $\arctan x=\sum_{n\ge0}\frac{(-1)^nx^{2n+1}}{2n+1}$, $R=1$
+\item $(1+x)^\alpha=\sum_{n\ge0}\binom\alpha nx^n$, $R=1$
+\item $\sinh x=\sum\frac{x^{2n+1}}{(2n+1)!}$, $\cosh x=\sum\frac{x^{2n}}{(2n)!}$, $R=\infty$
+\end{itemize}
+
+\columnbreak
+
+\textbf{\sffamily\color{subText}I need to\ldots\ \ \ \ $\rightarrow$ use}\par\nobreak\vspace{1pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.48\linewidth}>{\raggedright\arraybackslash}p{0.48\linewidth}@{}}
+\midrule
+show a sequence converges without knowing the limit & monotone+bounded, or Cauchy \\
+show a value is attained & IVT / Weierstrass max-min \\
+show a zero or fixed point exists & IVT on $f(x)-x$ \\
+show it is unique & strict monotonicity ($h'\ne0$) or Rolle \\
+classify a critical point & $f''$ sign; if $f''=0$ use sign change of $f'$ \\
+evaluate $\frac00$ or $\frac\infty\infty$ & Taylor (preferred) or l'Hospital \\
+handle $0\cdot\infty$, $\infty-\infty$, $1^\infty$ & rewrite first, then l'Hospital \\
+decide $\int_a^\infty f$ converges & compare with $x^{-p}$, check \emph{both} ends \\
+integrate a root $\sqrt{a^2\pm x^2}$ & trig substitution \\
+integrate a rational function & partial fractions \\
+integrate rational in $\sin,\cos$ & half-angle, else $t=\tan\frac x2$ \\
+solve a forced linear ODE & $y_h+y_p$, check resonance \\
+solve a 1st order nonlinear ODE & separation / $u=y/x$ / Bernoulli / int.\ factor \\
+show $f_n\rightrightarrows f$ & $\sup|f_n-f|\to0$ \\
+disprove $f_n\rightrightarrows f$ & one sequence $x_n$ with $|f_n(x_n)-f(x_n)|\ge\eps_0$ \\
+swap $\lim$ and $\int$ & needs \emph{uniform} convergence \\
+\end{tabular}
+
+\vspace{2pt}
+\textbf{\sffamily\color{subText}Series looks like\ldots\ $\rightarrow$ take}\par\nobreak\vspace{1pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.48\linewidth}>{\raggedright\arraybackslash}p{0.48\linewidth}@{}}
+\midrule
+$a_n\not\to0$ & divergence test, done \\
+$\sum\frac1{n^p}$, $\sum q^n$ & $p$-series / geometric \\
+factorials & ratio test \\
+$n$-th powers & root test \\
+alternating, $b_n\downarrow0$ & Leibniz \\
+looks like a known series & comparison (leading powers) \\
+$a_n=f(n)$, $f\downarrow$ & integral test \\
+power series & Cauchy--Hadamard $+$ endpoints \\
+\end{tabular}
+}
+\end{multicols}
+
+\vspace{2pt}
+\begin{multicols}{3}
+{\fontsize{6.2pt}{7.3pt}\selectfont
+
+\textbf{\sffamily\color{subText}Counterexample arsenal (kill a false MC option in 5 s)}\par\nobreak\vspace{1pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.5\linewidth}>{\raggedright\arraybackslash}p{0.46\linewidth}@{}}
+\midrule
+"$a_{n+1}-a_n\to0$ \ra\ convergent" & $a_n=\sqrt n$, $a_n=\sum_{k\le n}\frac1k$\\
+"bounded \ra\ convergent" & $a_n=(-1)^n$\\
+"$a_n\to0$ \ra\ $\sum a_n$ conv." & $\sum\frac1n$\\
+"continuous \ra\ differentiable" & $|x|$ at $0$\\
+"differentiable \ra\ $C^1$" & $x^2\sin\frac1x$, $f(0)=0$\\
+"$f'(x_0)=0$ \ra\ extremum" & $x^3$ at $0$\\
+"$f''(x_0)=0$ \ra\ inflection" & $x^4$ at $0$\\
+"pointwise \ra\ uniform" & $x^n$ on $[0,1]$\\
+"pointwise \ra\ limit continuous" & $x^n$ on $[0,1]$\\
+"$f_n\rightrightarrows f$ \ra\ $f_n'\to f'$" & $\frac{\sin(nx)}{n}$\\
+"pointwise \ra\ $\int f_n\to\int f$" & $n^2xe^{-nx}$ on $[0,1]$\\
+"finitely many values \ra\ integrable" & Dirichlet $1_\Q$\\
+"integrable \ra\ continuous" & step function\\
+"IVT applies on any interval" & $\frac1x$ on $[-1,1]$ (not continuous)\\
+"$\sum a_n$, $\sum b_n$ conv.\ \ra\ $\sum a_nb_n$ conv." & $a_n=b_n=\frac{(-1)^n}{\sqrt n}$\\
+"continuous on $\Rl$ \ra\ unif.\ continuous" & $x^2$, $\sin(x^2)$\\
+"$f$ cont.\ \ra\ attains max" & $\frac1x$ on $(0,1]$ (not compact)\\
+"$f>0$, $\int_1^\infty f<\infty$ \ra\ $f\to0$" & thin spikes of height 1\\
+"unique ODE solution always" & $y'=\sqrt{|y|}$, $y(0)=0$\\
+\end{tabular}
+
+\columnbreak
+
+\textbf{\sffamily\color{subText}Negate a definition (exam loves this)}\par\nobreak\vspace{1pt}
+Rule: swap $\forall\leftrightarrow\exists$ from left to right, negate the final inequality ($<$ becomes $\ge$).
+\begin{itemize}[noitemsep,topsep=1pt,leftmargin=*]
+\item \hd{$a_n\not\to a$:} $\exists\eps>0\ \forall N\ \exists n\ge N:\ |a_n-a|\ge\eps$.
+\item \hd{$(a_n)$ not Cauchy:} $\exists\eps>0\ \forall N\ \exists m,n\ge N:\ |a_n-a_m|\ge\eps$.
+\item \hd{$f$ not continuous at $x_0$:} $\exists\eps>0\ \forall\delta>0\ \exists x:\ |x-x_0|<\delta$ and $|f(x)-f(x_0)|\ge\eps$.
+\item \hd{$f$ not uniformly continuous:} $\exists\eps>0\ \forall\delta>0\ \exists x,y:\ |x-y|<\delta$ and $|f(x)-f(y)|\ge\eps$.
+\ra\ in practice: build sequences $x_n,y_n$ with $|x_n-y_n|\to0$, $|f(x_n)-f(y_n)|\ge\eps$.
+\item \hd{$f_n\not\rightrightarrows f$:} $\exists\eps>0\ \forall N\ \exists n\ge N\ \exists x:\ |f_n(x)-f(x)|\ge\eps$.
+\ra\ in practice: one sequence $x_n$ with $|f_n(x_n)-f(x_n)|\ge\eps$.
+\item \hd{$M$ unbounded above:} $\forall K\ \exists x\in M:\ x>K$.
+\end{itemize}
+
+\vspace{2pt}
+\textbf{\sffamily\color{subText}Implication map --- which way the arrow points}\par\nobreak\vspace{1pt}
+\begin{itemize}[noitemsep,topsep=1pt,leftmargin=*]
+\item Sequences: convergent $\Rightarrow$ Cauchy $\Rightarrow$ bounded $\Rightarrow$ has convergent subsequence. In $\Rl$: Cauchy $\Leftrightarrow$ convergent.
+\item Monotone $+$ bounded $\Leftrightarrow$ convergent (for monotone sequences).
+\item Series: abs.\ conv.\ $\Rightarrow$ conv.\ $\Rightarrow$ $a_n\to0$. None reverses.
+\item Functions: $C^1$ $\Rightarrow$ differentiable $\Rightarrow$ continuous $\Rightarrow$ (on compact) uniformly continuous $\Rightarrow$ (bounded) Riemann integrable.
+\item Lipschitz $\Rightarrow$ uniformly continuous $\Rightarrow$ continuous.
+\item $f_n\rightrightarrows f$ $\Rightarrow$ $f_n\to f$ pointwise. Reverse only with extra hypotheses (Dini: monotone $+$ compact $+$ $f$ continuous).
+\item Convex $+$ differentiable $\Rightarrow$ $f'$ increasing $\Rightarrow$ critical point is a global min.
+\end{itemize}
+
+\columnbreak
+
+\textbf{\sffamily\color{subText}Exam-day checklist}\par\nobreak\vspace{1pt}
+\begin{itemize}[noitemsep,topsep=1pt,leftmargin=*]
+\item \hd{Integral asked, answer given?} Differentiate the options instead of integrating.
+\item \hd{Limit $x\to0$?} Taylor beats l'Hospital nearly always.
+\item \hd{Improper integral?} Check \emph{both} endpoints, split first.
+\item \hd{Separable ODE?} Write down the constant solutions $g(y)=0$.
+\item \hd{Forced linear ODE?} Resonance check before the ansatz.
+\item \hd{"Show it converges"?} Name the theorem you use (monotone+bounded / Cauchy / comparison) --- naming earns points.
+\item \hd{"Justify"?} One sentence per step, plus the hypotheses of the theorem you cite ("$f$ continuous on the \emph{compact} $[a,b]$, therefore \dots").
+\item \hd{Substitution done?} Differentiate the result and check the chain-rule factor.
+\item \hd{Uniform convergence?} Compute $\sup|f_n-f|$ explicitly; a maximiser $x_n$ is a complete answer.
+\item \hd{Stuck on a proof?} Write the definitions of everything given and everything to show --- that alone is often half the points.
+\item \hd{Multiple choice, no negative points:} never leave a box empty.
+\end{itemize}
+
+\vspace{2pt}
+\textbf{\sffamily\color{subText}Word list DE $\to$ EN}\par\nobreak\vspace{1pt}
+{\raggedright
+Folge = sequence\ $\bullet$\ Reihe = series\ $\bullet$\ Grenzwert = limit\ $\bullet$\ H\"aufungspunkt = accumulation point\ $\bullet$\ beschr\"ankt = bounded\ $\bullet$\ monoton = monotone\ $\bullet$\ Teilfolge = subsequence\ $\bullet$\ stetig = continuous\ $\bullet$\ gleichm\"assig = uniform(ly)\ $\bullet$\ punktweise = pointwise\ $\bullet$\ differenzierbar = differentiable\ $\bullet$\ Ableitung = derivative\ $\bullet$\ Stammfunktion = antiderivative\ $\bullet$\ Zwischenwertsatz = IVT\ $\bullet$\ Mittelwertsatz = MVT\ $\bullet$\ Umkehrfunktion = inverse\ $\bullet$\ Nullstelle = root/zero\ $\bullet$\ Wendepunkt = inflection point\ $\bullet$\ Kr\"ummung = curvature\ $\bullet$\ Absch\"atzung = estimate\ $\bullet$\ oBdA = w.l.o.g.\ $\bullet$\ Voraussetzung = hypothesis\ $\bullet$\ Behauptung = claim\ $\bullet$\ Widerspruch = contradiction\ $\bullet$\ Anfangswertproblem = IVP\ $\bullet$\ Randwertproblem = BVP\ $\bullet$\ Trennung der Variablen = separation of variables\ $\bullet$\ uneigentlich = improper\ $\bullet$\ Konvergenzradius = radius of convergence.
+\par}
+}
+\end{multicols}
+
+\vspace{2pt}
+\begin{multicols}{3}
+\E{model solution --- "Untersuchen Sie die Funktionenfolge $f_n(x)=\frac{x}{1+nx^2}$ auf $\Rl$" (9 P)}{
+\hd{a) Gleichm\"assige Stetigkeit.}
+For $n=0$ we have $f_0(x)=x$, which is Lipschitz with constant 1, hence uniformly continuous.
+For $n\ge1$, $f_n$ is differentiable on $\Rl$ with
+$f_n'(x)=\frac{1-nx^2}{(1+nx^2)^2}$, so
+$|f_n'(x)|\le\frac{1+nx^2}{(1+nx^2)^2}=\frac1{1+nx^2}\le1$.
+By the mean value theorem $|f_n(x)-f_n(y)|\le|x-y|$ for all $x,y$, so with $\delta:=\eps$ the definition of uniform continuity is satisfied. Hence \emph{all} $f_n$ are uniformly continuous.\\
+\hd{b) Punktweiser Grenzwert.} Fix $x$. For $x=0$: $f_n(0)=0$ for all $n$. For $x\ne0$:
+$|f_n(x)|=\frac{|x|}{1+nx^2}\le\frac{|x|}{nx^2}=\frac1{n|x|}\to0$.
+Hence $f_n\to f\equiv0$ pointwise on $\Rl$.\\
+\hd{c) Gleichm\"assige Konvergenz.} We compute $\|f_n-f\|_\infty=\sup_{x}|f_n(x)|$.
+$f_n'(x)=0\iff x=\pm\frac1{\sqrt n}$, and $f_n\!\left(\frac1{\sqrt n}\right)=\frac1{2\sqrt n}$, $f_n(x)\to0$ for $|x|\to\infty$.
+Therefore $\|f_n\|_\infty=\frac1{2\sqrt n}\to0$, i.e.\ $f_n\rightrightarrows0$ \textbf{uniformly on $\Rl$}. $\square$
+}
+
+\columnbreak
+
+\E{model solution --- "$f(x)=\frac{\sin x}{1+x^2}$: Fixpunkt und Rekursion" (9 P)}{
+\hd{a) Eindeutiger Fixpunkt und $|f(x)|<|x|$ f\"ur $x\ne0$.}
+$f(0)=0$, so $0$ is a fixed point.
+For $x\ne0$ we use the strict inequality $|\sin x|<|x|$ (valid for all $x\ne0$) and $1+x^2\ge1$:
+\[|f(x)|=\frac{|\sin x|}{1+x^2}\le|\sin x|<|x|.\]
+If $x^*$ were a further fixed point, then $|x^*|=|f(x^*)|<|x^*|$ --- contradiction. So $x^*=0$ is the \textbf{unique} fixed point.\\
+\hd{b) Konvergenzverhalten von $x_{n+1}=f(x_n)$, $x_0\in(0,1)$.}
+\emph{Positivity:} for $x\in(0,1)$ we have $\sin x>0$ and $1+x^2>0$, so $f(x)\in(0,x)\subseteq(0,1)$. By induction $x_n\in(0,1)$ for all $n$.
+\emph{Monotonicity:} by a), $x_{n+1}=f(x_n)<x_n$, so $(x_n)$ is strictly decreasing.
+\emph{Conclusion:} $(x_n)$ is decreasing and bounded below by $0$, hence convergent by the monotone convergence theorem; let $L:=\lim x_n\ge0$.
+Since $f$ is continuous, $L=\lim x_{n+1}=\lim f(x_n)=f(L)$, so $L$ is a fixed point, and by a) $L=0$.
+Thus $x_n\to0$ for every $x_0\in(0,1)$. $\square$
+}
+
+\columnbreak
+
+\E{model answers --- box questions (3 P each, only the result counts)}{
+\hd{Limit.} $\lim_{x\to0}\frac{\sin x-x+x^3/6}{x^5}$: insert $\sin x=x-\frac{x^3}6+\frac{x^5}{120}-\dots$ \ra\ numerator $=\frac{x^5}{120}+O(x^7)$ \ra\ result $\frac1{120}$.\\
+\hd{ODE.} $y''-y=e^x$: $\lambda=\pm1$; $\mu=1$ is a simple root \ra\ resonance \ra\ $y_p=Axe^x$, $y_p''-y_p=2Ae^x$ \ra\ $A=\frac12$ \ra\ $y=C_1e^x+C_2e^{-x}+\frac12xe^x$.\\
+\hd{Integral.} $\int\frac{\dx}{1+\cos x}$: $1+\cos x=2\cos^2\frac x2$, substitute $u=\frac x2$, $\dx=2\,du$ \ra\ $\int\frac{du}{\cos^2u}=\tan u$ \ra\ $\tan\frac x2+C$.\\
+\hd{Radius.} $\sum\frac{n^n(x-2)^n}{(2n)!}$: coefficient ratio $\to0$ \ra\ $R=\infty$ \ra\ converges for all $x\in\Rl$.\\
+\hd{Improper.} $\int_1^\infty\frac{\cos t}{t}\dt$ conv.\ (parts); $\int_1^\infty\frac{\cos^2t}{t}\dt$ div.\ ($\cos^2t=\frac{1+\cos2t}2$); $\int_0^\infty\frac{\sin t}{t^3}\dt$ div.\ (at $t=0$).\\
+\hd{Derivative table trap.} $\int\frac{\dx}{2\cos^2(x/2)}=\tan\frac x2+C$, \emph{not} $2\tan\frac x2$.
+}
+\end{multicols}
