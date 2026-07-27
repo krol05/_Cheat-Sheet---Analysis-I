@@ -122,6 +122,7 @@
     \(
         f'(x_0) = 0.
     \)
+    \tsPoint The converse is false: $f'(x_0)=0$ does not imply an extremum, e.g.\ $f(x)=x^3$ at $x_0=0$.
 }
 \tsThe{Characterization of Local Extrema}{
     If $x_0$ is a local extremum, then at least one holds:
@@ -185,6 +186,14 @@
         \lim_{x\to\infty} \frac{f(x)}{g(x)} = L.
     \]
 }
+\tsIdea{Reducing Other Indeterminate Forms to $0/0$ or $\infty/\infty$}{
+    \begin{itemize}[noitemsep]
+        \item $0\cdot\infty$: write $fg=\frac{f}{1/g}$ or $\frac{g}{1/f}$.
+        \item $\infty-\infty$: combine over a common denominator, e.g.\ $f-g=\frac{1/g-1/f}{1/(fg)}$.
+        \item $0^0,\ 1^\infty,\ \infty^0$: write $f^g=e^{g\ln f}$, then find $\lim g\ln f$ (a $0\cdot\infty$ form).
+    \end{itemize}
+    Once reduced to $0/0$ or $\infty/\infty$, apply l'Hospital's Rule.
+}
 \tsThe{Monotonicity Criterion (First Derivative Test)}{
     \(
         f'(x) \ge 0 \iff f \text{ is increasing}
@@ -223,6 +232,10 @@ f''(x_0)<0
 \quad \Rightarrow \quad
 x_0 \text{ is a local maximum}.
 \)
+\tsPoint If $f''(x_0)=0$, the test is inconclusive (e.g.\ $f(x)=x^4$ at $0$ is a minimum, $f(x)=x^3$ at $0$ is neither).
+}
+\tsDef{Inflection Point}{
+$x_0$ is an \emph{inflection point} of $f$ if $f''$ changes sign at $x_0$ (convexity flips to concavity or vice versa). $f''(x_0)=0$ alone is not sufficient, e.g.\ $f(x)=x^4$ has $f''(0)=0$ but no inflection at $0$.
 }
 \subsection{Taylor Approximation and Power Series}
 \tsIdea{Local Approximation by Polynomials}{

@@ -7,6 +7,7 @@
 \begin{multicols}{3}
 
 \subsection*{Important Limits}
+\textbf{Growth hierarchy} ($x\to\infty$, $a>0$, $b>1$): $\ln x \ll x^a \ll b^x \ll x! \ll x^x$ (each ratio of consecutive terms $\to0$).
 % \[
 % \begin{array}{ll}
 % \lim_{x\to\infty}\frac1x=0 &
@@ -131,6 +132,13 @@
 \)
 \end{itemize}
 
+\subsection*{Partial Fraction Decomposition}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
+\item \textbf{Distinct linear factors:} $\dfrac{p(x)}{(x-a)(x-b)}=\dfrac{A}{x-a}+\dfrac{B}{x-b}$
+\item \textbf{Repeated linear factor:} $\dfrac{p(x)}{(x-a)^k}=\dfrac{A_1}{x-a}+\dfrac{A_2}{(x-a)^2}+\cdots+\dfrac{A_k}{(x-a)^k}$
+\item \textbf{Irreducible quadratic:} $\dfrac{p(x)}{x^2+bx+c}=\dfrac{Ax+B}{x^2+bx+c}$ (when $b^2-4c<0$)
+\end{itemize}
+
 \subsection*{Logarithms}
 \begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
 \item \textbf{Change of base:} $\log_a x=\frac{\ln x}{\ln a}$
@@ -150,6 +158,9 @@
 \item \textbf{Angle addition cosine:} $\cos(x+y)=\cos x\cos y-\sin x\sin y$
 \item \textbf{Even/Odd symmetry:} $\cos(x)=\cos(-x)$ and $\sin(-x)=-\sin(x)$
 \item \textbf{Reflection at $\pi/2$:} $\cos(\pi-x)=-\cos(x)$ and $\sin(\pi-x)=\sin(x)$
+\item \textbf{Double-angle tangent:} $\tan(2x)=\dfrac{2\tan x}{1-\tan^2x}$
+\item \textbf{Half-angle:} $\sin^2\!\dfrac x2=\dfrac{1-\cos x}2,\quad \cos^2\!\dfrac x2=\dfrac{1+\cos x}2,\quad \tan\dfrac x2=\dfrac{1-\cos x}{\sin x}=\dfrac{\sin x}{1+\cos x}$
+\item \textbf{Inverse trig domains/ranges:} $\arcsin:[-1,1]\to[-\frac\pi2,\frac\pi2]$, $\arccos:[-1,1]\to[0,\pi]$, $\arctan:\mathbb{R}\to(-\frac\pi2,\frac\pi2)$
 \end{itemize}
 
 \subsection*{Special Trigonometric Values}
@@ -197,6 +208,13 @@
 \frac{ax+b-(cx+d)}
 {\sqrt{ax+b}+\sqrt{cx+d}}
 \]
+
+\subsection*{Trig Substitution (Integration)}
+\begin{itemize}[noitemsep, topsep=0pt, leftmargin=*]
+\item $\sqrt{a^2-x^2}$: substitute $x=a\sin\theta$
+\item $\sqrt{a^2+x^2}$: substitute $x=a\tan\theta$
+\item $\sqrt{x^2-a^2}$: substitute $x=a\sec\theta$
+\end{itemize}
 
 % \subsection*{Integration by parts}
 % Should we get unavoidable cycle, where we have to integrate the same thing again, we may simply add the integral to both sides, and we thus have $2$ times the integral on the left side and then finish the integration by parts on the right hand side and in the end divide by the factor up front to get the result.
@@ -283,3 +301,52 @@ $\operatorname{artanh}(x)$ & $\frac1{1-x^2}$\\
 \end{tabular}
 \end{center}
 }
+
+\vspace{6pt}
+\begin{center}
+\begin{minipage}[t]{0.56\linewidth}
+\centering
+{\bfseries\sffamily\color{subText}\fontsize{7.7pt}{9.14pt}\selectfont Schnellreferenz: Welches Werkzeug f\"ur welche Situation?}\\[3pt]
+{\fontsize{6.3pt}{7.6pt}\selectfont
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.52\linewidth}>{\raggedright\arraybackslash}p{0.42\linewidth}}
+\textbf{Du brauchst\ldots} & \textbf{Greif zu\ldots}\\
+\hline
+Konvergenz einer Folge zeigen, ohne den Grenzwert zu kennen & Monotoniekonvergenzsatz oder Cauchy-Kriterium\\
+Zeigen, dass ein Wert irgendwo angenommen wird & Zwischenwertsatz oder Satz vom Max/Min (Weierstra\ss)\\
+Existenz einer Nullstelle/eines Fixpunkts zeigen & Zwischenwertsatz (Bolzano) auf $f(x)-x$ anwenden\\
+Eindeutigkeit einer Nullstelle zeigen & Strenge Monotonie oder Satz von Rolle\\
+Kritischen Punkt klassifizieren (Min/Max/Sattel) & 2. Ableitungstest; bei $f''=0$ Vorzeichenwechsel pr\"ufen\\
+Kniffligen $0/0$- oder $\infty/\infty$-Grenzwert auswerten & l'Hospital (ggf.\ mehrfach) oder Taylorreihe\\
+Andere unbestimmte Form ($0\cdot\infty,\ \infty-\infty,\ 0^0,\dots$) & Erst umschreiben (s.\ Ideenbox bei l'Hospital), dann l'Hospital\\
+Uneigentliches Integral: konvergiert es? & Vergleich mit $\int x^{-p}\,dx$\\
+Wurzelausdruck integrieren ($\sqrt{a^2\pm x^2}$) & Trigonometrische Substitution\\
+Gebrochen-rationale Funktion integrieren & Partialbruchzerlegung\\
+Erzwungene lineare DGL l\"osen & Homogene + partikul\"are L\"osung, Resonanzfall beachten\\
+Nichtlineare DGL 1.\ Ordnung & Trennung d.\ Var., Substitution ($u=y/x$, linear, Bernoulli) oder int.\ Faktor\\
+\end{tabular}
+}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\linewidth}
+\centering
+{\bfseries\sffamily\color{subText}\fontsize{7.7pt}{9.14pt}\selectfont Reihenkonvergenz: Entscheidungshilfe}\\[3pt]
+{\fontsize{6.3pt}{7.6pt}\selectfont
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.5\linewidth}>{\raggedright\arraybackslash}p{0.44\linewidth}}
+\textbf{Reihe sieht so aus\ldots} & \textbf{Nimm\ldots}\\
+\hline
+$\sum \frac1{n^p}$ oder $\sum r^n$ & p-Reihe / geom.\ Reihe: Bedingung direkt ablesen\\
+$\lim a_n\neq0$ & Trivialkriterium: divergiert sofort\\
+Alternierend, $a_n\downarrow0$ & Leibniz-Kriterium\\
+$a_n$ enth\"alt $n$-te Potenzen ($a_n=b_n^n$) & Wurzelkriterium (Cauchy)\\
+$a_n$ enth\"alt Fakult\"aten & Quotientenkriterium (d'Alembert)\\
+Vergleich mit bekannter Reihe m\"oglich & Majoranten-/Minorantenkriterium\\
+Konvergenzradius einer Potenzreihe gesucht & Cauchy-Hadamard-Formel\\
+Bedingt konvergent, Umordnung gefragt & Riemannscher Umordnungssatz (Reihenfolge z\"ahlt!)\\
+\end{tabular}
+}
+\end{minipage}
+\end{center}
