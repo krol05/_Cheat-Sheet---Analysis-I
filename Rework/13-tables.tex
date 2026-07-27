@@ -1,0 +1,235 @@
+\subsection{How to use the derivative / antiderivative table}\label{sub:tableuse}
+\X{read this before you copy a single row}{
+Every row means $\dfrac d{dx}F(x)=f(x)$ and $\displaystyle\int f(x)\dx=F(x)+C$, written for the \textbf{bare argument $x$}.
+\begin{rcp}
+\item \hd{Inner function linear, $ax+b$:} $\displaystyle\int f(ax+b)\dx=\frac1aF(ax+b)+C$ --- divide by the inner derivative $a$.
+\item \hd{Inner function anything else:} you may \textbf{not} patch with a factor. Substitute $u=g(x)$, $\dx=\frac{\du}{g'(x)}$, and continue only if the leftover $g'(x)$ cancels.
+\item \hd{Constant prefactors} stay outside: $\int cf=c\int f$. Do the prefactor and the substitution factor as \emph{separate written steps}; never patch by feeling.
+\item \hd{Differentiate your answer.} The chain-rule factor must reappear.
+\end{rcp}
+\hd{The trap in full:} $\int\frac{\dx}{2\cos^2(x/2)}$. With $u=\frac x2$, $\dx=2\du$: $\int\frac{2\du}{2\cos^2u}=\tan u=\tan\frac x2+C$ --- the $2$ from $\dx$ cancels the $\frac12$ in front, so the answer is \textbf{not} $2\tan\frac x2$.
+}
+
+\subsection{Derivatives and antiderivatives}\label{sub:dtable}
+\T{powers, roots, exponentials, logarithms}{
+{\fontsize{6.1pt}{7.2pt}\selectfont
+\begin{tsTabular}{@{}l|l|l@{}}
+$F=\int f$ & $f(x)$ & $f'(x)$\\
+\midrule
+$\frac{x^{n+1}}{n+1}\ (n\ne-1)$ & $x^n$ & $nx^{n-1}$\\
+$\ln|x|$ & $\frac1x$ & $-\frac1{x^2}$\\
+$\frac23x^{3/2}$ & $\sqrt x$ & $\frac1{2\sqrt x}$\\
+$\frac n{n+1}x^{(n+1)/n}$ & $\sqrt[n]x$ & $\frac1nx^{1/n-1}$\\
+$\frac{(ax+b)^{n+1}}{a(n+1)}$ & $(ax+b)^n$ & $an(ax+b)^{n-1}$\\
+$e^x$ & $e^x$ & $e^x$\\
+$\frac1ae^{ax}$ & $e^{ax}$ & $ae^{ax}$\\
+$\frac{a^x}{\ln a}$ & $a^x$ & $a^x\ln a$\\
+$x(\ln|x|-1)$ & $\ln|x|$ & $\frac1x$\\
+$\frac x{\ln a}(\ln|x|-1)$ & $\log_a|x|$ & $\frac1{x\ln a}$\\
+\end{tsTabular}}
+}
+\T{trigonometric and inverse trigonometric}{
+{\fontsize{6.1pt}{7.2pt}\selectfont
+\begin{tsTabular}{@{}l|l|l@{}}
+$F=\int f$ & $f(x)$ & $f'(x)$\\
+\midrule
+$-\cos x$ & $\sin x$ & $\cos x$\\
+$\sin x$ & $\cos x$ & $-\sin x$\\
+$-\ln|\cos x|$ & $\tan x$ & $\frac1{\cos^2x}=1+\tan^2x$\\
+$\ln|\sin x|$ & $\cot x$ & $-\frac1{\sin^2x}$\\
+$\ln\left|\tan\frac x2\right|$ & $\frac1{\sin x}$ & $-\frac{\cos x}{\sin^2x}$\\
+$\ln\left|\tan\left(\frac x2+\frac\pi4\right)\right|$ & $\frac1{\cos x}$ & $\frac{\sin x}{\cos^2x}$\\
+$\frac x2-\frac{\sin2x}4$ & $\sin^2x$ & $\sin2x$\\
+$\frac x2+\frac{\sin2x}4$ & $\cos^2x$ & $-\sin2x$\\
+$x\arcsin x+\sqrt{1-x^2}$ & $\arcsin x$ & $\frac1{\sqrt{1-x^2}}$\\
+$x\arccos x-\sqrt{1-x^2}$ & $\arccos x$ & $-\frac1{\sqrt{1-x^2}}$\\
+$x\arctan x-\frac12\ln(1+x^2)$ & $\arctan x$ & $\frac1{1+x^2}$\\
+\end{tsTabular}}
+}
+\T{hyperbolic}{
+{\fontsize{6.1pt}{7.2pt}\selectfont
+\begin{tsTabular}{@{}l|l|l@{}}
+$F=\int f$ & $f(x)$ & $f'(x)$\\
+\midrule
+$\cosh x$ & $\sinh x$ & $\cosh x$\\
+$\sinh x$ & $\cosh x$ & $\sinh x$\\
+$\ln\cosh x$ & $\tanh x$ & $\frac1{\cosh^2x}$\\
+$x\arsinh x-\sqrt{1+x^2}$ & $\arsinh x$ & $\frac1{\sqrt{1+x^2}}$\\
+$x\arcosh x-\sqrt{x^2-1}$ & $\arcosh x$ & $\frac1{\sqrt{x^2-1}}$\\
+$x\artanh x+\frac12\ln(1-x^2)$ & $\artanh x$ & $\frac1{1-x^2}$\\
+\end{tsTabular}}
+$\sinh x=\frac{e^x-e^{-x}}2$, $\cosh x=\frac{e^x+e^{-x}}2$, $\cosh^2-\sinh^2=1$;\\
+$\arsinh x=\ln(x+\sqrt{x^2+1})$, $\arcosh x=\ln(x+\sqrt{x^2-1})$, $\artanh x=\frac12\ln\frac{1+x}{1-x}$.
+}
+\T{antiderivatives you will not guess (1)}{
+{\fontsize{6.1pt}{7.2pt}\selectfont
+\begin{tsTabular}{@{}l|l@{}}
+$f(x)$ & $F(x)=\int f\dx$\\
+\midrule
+$\frac1{ax+b}$ & $\frac1a\ln|ax+b|$\\
+$\frac{f'(x)}{f(x)}$ & $\ln|f(x)|$\\
+$\frac1{a^2+x^2}$ & $\frac1a\arctan\frac xa$\\
+$\frac1{a^2-x^2}$ & $\frac1{2a}\ln\left|\frac{a+x}{a-x}\right|$\\
+$\frac1{\sqrt{a^2-x^2}}$ & $\arcsin\frac x{|a|}$\\
+$\frac1{\sqrt{x^2\pm a^2}}$ & $\ln\left|x+\sqrt{x^2\pm a^2}\right|$\\
+$\ln x$ & $x\ln x-x$\\
+$\frac1{1+\cos x}$ & $\tan\frac x2$\\
+$\frac1{1-\cos x}$ & $-\cot\frac x2$\\
+$\frac1{\sin x\cos x}$ & $\ln|\tan x|$\\
+\end{tsTabular}}
+}
+\T{antiderivatives you will not guess (2)}{
+{\fontsize{6.1pt}{7.2pt}\selectfont
+\begin{tsTabular}{@{}l|l@{}}
+$f(x)$ & $F(x)=\int f\dx$\\
+\midrule
+$\sqrt{a^2-x^2}$ & $\frac x2\sqrt{a^2-x^2}+\frac{a^2}2\arcsin\frac x{|a|}$\\
+$\sqrt{a^2+x^2}$ & $\frac x2\sqrt{a^2+x^2}+\frac{a^2}2\ln\left|x+\sqrt{a^2+x^2}\right|$\\
+$\sqrt{x^2-a^2}$ & $\frac x2\sqrt{x^2-a^2}-\frac{a^2}2\ln\left|x+\sqrt{x^2-a^2}\right|$\\
+$xe^{ax}$ & $\frac{e^{ax}}{a^2}(ax-1)$\\
+$e^{ax}\sin bx$ & $\frac{e^{ax}(a\sin bx-b\cos bx)}{a^2+b^2}$\\
+$e^{ax}\cos bx$ & $\frac{e^{ax}(a\cos bx+b\sin bx)}{a^2+b^2}$\\
+$x\sin x$ & $\sin x-x\cos x$\\
+$x\cos x$ & $\cos x+x\sin x$\\
+$x^x$ & no elementary form; $\frac d{dx}x^x=x^x(1+\ln x)$\\
+\end{tsTabular}}
+}
+
+\subsection{Limits, growth, series}\label{sub:taylorlist}
+\F{growth hierarchy --- kills most limits instantly}{
+As $x\to\infty$, for $\alpha>0$ and $b>1$:
+\[\ln x\ \ll\ x^\alpha\ \ll\ b^x\ \ll\ x!\ \ll\ x^x\]
+Every ratio of a term on the left to one on the right tends to $0$.
+}
+\T{standard limits}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{tsTabular}{@{}ll@{}}
+$\lim_{x\to0}\frac{\sin x}x=1$ & $\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12$\\
+$\lim_{x\to0}\frac{\tan x}x=1$ & $\lim_{x\to0}\frac{\arctan x}x=1$\\
+$\lim_{x\to0}\frac{e^x-1}x=1$ & $\lim_{x\to0}\frac{a^x-1}x=\ln a$\\
+$\lim_{x\to0}\frac{\ln(1+x)}x=1$ & $\lim_{x\to1}\frac{\ln x}{x-1}=1$\\
+$\lim_{x\to0^+}x\ln x=0$ & $\lim_{x\to0^+}x^x=1$\\
+$\lim_{x\to\infty}\frac{\ln x}{x^\alpha}=0$ & $\lim_{x\to\infty}\frac{x^m}{e^x}=0$\\
+$\lim_{n\to\infty}\sqrt[n]n=1$ & $\lim_{n\to\infty}\sqrt[n]a=1\,(a>0)$\\
+$\lim_{n\to\infty}\frac{a^n}{n!}=0$ & $\lim_{n\to\infty}\sqrt[n]{n!}=\infty$\\
+$\lim_{x\to0}(1+x)^{1/x}=e$ & $\lim_{x\to\pm\infty}\left(1+\frac kx\right)^{mx}=e^{km}$\\
+$\lim_{x\to\infty}x^\alpha q^x=0\,(q<1)$ & $\lim_{x\to\infty}\arctan x=\frac\pi2$\\
+\end{tsTabular}}
+}
+\T{Taylor series at $0$, with radius}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+\item $e^x=\sum_{n\ge0}\frac{x^n}{n!}$, $R=\infty$
+\item $\sin x=\sum_{n\ge0}\frac{(-1)^nx^{2n+1}}{(2n+1)!}=x-\frac{x^3}6+\frac{x^5}{120}-\dots$, $R=\infty$
+\item $\cos x=\sum_{n\ge0}\frac{(-1)^nx^{2n}}{(2n)!}=1-\frac{x^2}2+\frac{x^4}{24}-\dots$, $R=\infty$
+\item $\tan x=x+\frac{x^3}3+\frac{2x^5}{15}+\dots$, $R=\frac\pi2$
+\item $\frac1{1-x}=\sum_{n\ge0}x^n$, $R=1$
+\item $\ln(1+x)=\sum_{n\ge1}\frac{(-1)^{n+1}x^n}n$, $R=1$
+\item $\arctan x=\sum_{n\ge0}\frac{(-1)^nx^{2n+1}}{2n+1}$, $R=1$
+\item $(1+x)^\alpha=\sum_{n\ge0}\binom\alpha nx^n$, $R=1$
+\item $\sinh x=\sum\frac{x^{2n+1}}{(2n+1)!}$, $\cosh x=\sum\frac{x^{2n}}{(2n)!}$, $R=\infty$
+\end{itemize}}
+}
+
+\subsection{Trigonometry, logs, algebra}\label{sub:trigtable}
+\T{trigonometric identities}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+\item $\sin^2x+\cos^2x=1$; \ $1+\tan^2x=\frac1{\cos^2x}$
+\item $\sin(x\pm y)=\sin x\cos y\pm\cos x\sin y$
+\item $\cos(x\pm y)=\cos x\cos y\mp\sin x\sin y$
+\item $\sin2x=2\sin x\cos x$; \ $\cos2x=\cos^2x-\sin^2x=1-2\sin^2x$
+\item $\sin^2x=\frac{1-\cos2x}2$; \ $\cos^2x=\frac{1+\cos2x}2$
+\item $1+\cos x=2\cos^2\frac x2$; \ $1-\cos x=2\sin^2\frac x2$
+\item $\tan\frac x2=\frac{\sin x}{1+\cos x}=\frac{1-\cos x}{\sin x}$
+\item $\sin(-x)=-\sin x$ (odd), $\cos(-x)=\cos x$ (even)
+\item $\sin(\pi-x)=\sin x$, $\cos(\pi-x)=-\cos x$
+\item $\sin\!\left(x+\frac\pi2\right)=\cos x$, $\cos\!\left(x+\frac\pi2\right)=-\sin x$
+\item $\arcsin:[-1,1]\to[-\frac\pi2,\frac\pi2]$, $\arccos:[-1,1]\to[0,\pi]$, $\arctan:\Rl\to(-\frac\pi2,\frac\pi2)$
+\end{itemize}}
+\hd{Forgot one?} Derive it from $e^{ix}$ (\S\ref{sub:cxforms}) in ten seconds.
+}
+\T{special values and quadrant signs}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\[\begin{array}{c|c|c|c|c}
+\deg & \mathrm{rad} & \sin & \cos & \tan\\
+\hline
+0 & 0 & 0 & 1 & 0\\
+30 & \frac\pi6 & \frac12 & \frac{\sqrt3}2 & \frac{\sqrt3}3\\
+45 & \frac\pi4 & \frac{\sqrt2}2 & \frac{\sqrt2}2 & 1\\
+60 & \frac\pi3 & \frac{\sqrt3}2 & \frac12 & \sqrt3\\
+90 & \frac\pi2 & 1 & 0 & \text{---}\\
+120 & \frac{2\pi}3 & \frac{\sqrt3}2 & -\frac12 & -\sqrt3\\
+135 & \frac{3\pi}4 & \frac{\sqrt2}2 & -\frac{\sqrt2}2 & -1\\
+150 & \frac{5\pi}6 & \frac12 & -\frac{\sqrt3}2 & -\frac{\sqrt3}3\\
+180 & \pi & 0 & -1 & 0
+\end{array}
+\qquad
+\begin{array}{c|c|c|c}
+\text{Quad.} & \sin & \cos & \tan\\
+\hline
+\text{I} & + & + & +\\
+\text{II} & + & - & -\\
+\text{III} & - & - & +\\
+\text{IV} & - & + & -
+\end{array}\]}
+\hd{Solving $\sin x=c$:} $x=\arcsin c+2k\pi$ \emph{and} $x=\pi-\arcsin c+2k\pi$.\\
+\hd{$\cos x=c$:} $x=\pm\arccos c+2k\pi$. \quad \hd{$\tan x=c$:} $x=\arctan c+k\pi$.
+}
+\T{logs, powers, algebra survival kit}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+\item $\log_ax=\frac{\ln x}{\ln a}$; \ $a^x=e^{x\ln a}$; \ $u^v=e^{v\ln u}$
+\item $\ln(xy)=\ln x+\ln y$; \ $\ln\frac xy=\ln x-\ln y$; \ $\ln(x^y)=y\ln x$
+\item $\ln1=0$, $\ln e=1$; $\ln x$ defined only for $x>0$
+\item $\sqrt A-\sqrt B=\frac{A-B}{\sqrt A+\sqrt B}$ (conjugate trick, kills $\infty-\infty$)
+\item $a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+\dots+b^{n-1})$
+\item complete the square: $x^2+bx+c=\left(x+\frac b2\right)^2+c-\frac{b^2}4$
+\item $\binom nk=\frac{n!}{k!(n-k)!}$; \ $(a+b)^n=\sum_k\binom nka^kb^{n-k}$
+\item $\sum_{k=1}^nk=\frac{n(n+1)}2$; \ $\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}6$; \ $\sum_{k=0}^nq^k=\frac{1-q^{n+1}}{1-q}$
+\item guess a polynomial root among the divisors of the constant term, then divide
+\end{itemize}}
+}
+
+\subsection{Decision tables and glossary}\label{sub:decision}
+\T{I need to\ldots\ \ $\rightarrow$ use}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}>{\raggedright\arraybackslash}p{0.46\linewidth}@{}}
+show a sequence converges without knowing the limit & monotone $+$ bounded, or Cauchy\\
+show a value is attained & IVT, or Weierstrass max/min\\
+show a zero or fixed point exists & IVT applied to $f(x)-x$\\
+show it is unique & strict monotonicity, or Rolle, or contraction\\
+classify a critical point & sign of $f''$; if $f''=0$, sign change of $f'$\\
+evaluate $\frac00$ or $\frac\infty\infty$ & Taylor (preferred) or l'Hospital\\
+handle $0\cdot\infty$, $\infty-\infty$, $1^\infty$ & rewrite first, then l'Hospital\\
+decide $\int_a^\infty f$ converges & compare with $x^{-p}$, check \emph{both} ends\\
+integrate $\sqrt{a^2\pm x^2}$ & trigonometric substitution\\
+integrate a rational function & partial fractions\\
+integrate rational in $\sin,\cos$ & half-angle, else $t=\tan\frac x2$\\
+solve a forced linear ODE & $y_h+y_p$, resonance check\\
+solve a 1st order nonlinear ODE & separation / $u=y/x$ / Bernoulli / int.\ factor\\
+show $f_n\rightrightarrows f$ & $\sup|f_n-f|\to0$\\
+disprove $f_n\rightrightarrows f$ & one $x_n$ with $|f_n(x_n)-f(x_n)|\ge\eps_0$\\
+swap $\lim$ and $\int$ & needs \emph{uniform} convergence\\
+prove an inequality & MVT, convexity/tangent line, or induction\\
+\end{tsTabular}}
+}
+\T{series looks like\ldots\ $\rightarrow$ take}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}>{\raggedright\arraybackslash}p{0.46\linewidth}@{}}
+$a_n\not\to0$ & divergence test, done\\
+$\sum\frac1{n^p}$, $\sum q^n$ & $p$-series / geometric\\
+factorials & ratio test\\
+$n$-th powers & root test\\
+alternating with $b_n\downarrow0$ & Leibniz\\
+resembles a known series & comparison on leading powers\\
+$a_n=f(n)$ with $f\downarrow$ & integral test\\
+$a_nb_n$, $b_n\downarrow0$, $\sum a_n$ bounded & Abel/Dirichlet\\
+power series & Cauchy--Hadamard $+$ endpoints\\
+\end{tsTabular}}
+}
+\T{word list DE $\to$ EN}{
+{\fontsize{6.0pt}{7.1pt}\selectfont\raggedright
+Folge = sequence\ $\bullet$\ Reihe = series\ $\bullet$\ Grenzwert = limit\ $\bullet$\ H\"aufungspunkt = accumulation point\ $\bullet$\ beschr\"ankt = bounded\ $\bullet$\ monoton = monotone\ $\bullet$\ Teilfolge = subsequence\ $\bullet$\ Schranke = bound\ $\bullet$\ stetig = continuous\ $\bullet$\ gleichm\"assig = uniform(ly)\ $\bullet$\ punktweise = pointwise\ $\bullet$\ differenzierbar = differentiable\ $\bullet$\ Ableitung = derivative\ $\bullet$\ Stammfunktion = antiderivative\ $\bullet$\ Zwischenwertsatz = IVT\ $\bullet$\ Mittelwertsatz = MVT\ $\bullet$\ Umkehrfunktion = inverse\ $\bullet$\ Nullstelle = root, zero\ $\bullet$\ Wendepunkt = inflection point\ $\bullet$\ Extremstelle = extremum\ $\bullet$\ Absch\"atzung = estimate\ $\bullet$\ oBdA = w.l.o.g.\ $\bullet$\ Voraussetzung = hypothesis\ $\bullet$\ Behauptung = claim\ $\bullet$\ Widerspruch = contradiction\ $\bullet$\ Anfangswertproblem = IVP\ $\bullet$\ Randwertproblem = BVP\ $\bullet$\ Trennung der Variablen = separation of variables\ $\bullet$\ uneigentlich = improper\ $\bullet$\ Konvergenzradius = radius of convergence\ $\bullet$\ Partialsumme = partial sum\ $\bullet$\ Partialbruchzerlegung = partial fractions\ $\bullet$\ Kettenregel = chain rule\ $\bullet$\ Produktregel = product rule\ $\bullet$\ konvex = convex\ $\bullet$\ Treppenfunktion = step function\ $\bullet$\ Zerlegung = partition\ $\bullet$\ Obersumme/Untersumme = upper/lower sum.
+\par}
+}

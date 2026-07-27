@@ -1,0 +1,110 @@
+\subsection{Basic properties, inverse}\label{sub:funcprops}
+\R{injective / surjective / bijective / inverse}{
+\begin{rcp}
+\item \hd{Injective:} $f(x_1)=f(x_2)\Rightarrow x_1=x_2$. Shortcut: \emph{strictly} monotone \ra\ injective (show $f'>0$ or $f'<0$ throughout).
+\item \hd{Surjective onto $Y$:} solve $f(x)=y$ for arbitrary $y\in Y$, or get $\operatorname{im}f=Y$ from IVT plus the limits at the ends of the domain.
+\item \hd{Bijective} = both \ra\ $f^{-1}$ exists; compute it by solving $y=f(x)$ for $x$, then swap names.
+\item \hd{Regularity of $f^{-1}$:} $f$ continuous and strictly monotone on an interval \ra\ $f^{-1}$ continuous and strictly monotone; and differentiable with $(f^{-1})'(y_0)=\frac1{f'(x_0)}$ whenever $f'(x_0)\ne0$.
+\end{rcp}
+\hd{Also:} even $f(-x)=f(x)$, odd $f(-x)=-f(x)$, periodic $f(x+T)=f(x)$, bounded $|f|\le C$, restriction $f|_A$.
+}
+\F{monotone functions are well behaved}{
+Monotone on an interval \ra\ at most \emph{countably many} discontinuities, all of them \textbf{jumps}; both one-sided limits exist everywhere; Riemann integrable on every $[a,b]$. It can still fail to be continuous, and it is injective only if \emph{strictly} monotone.
+}
+
+\subsection{Limits of functions}\label{sub:funclimit}
+\D{$\eps$--$\delta$, one-sided, at infinity}{
+$\lim_{x\to x_0}f(x)=L:\iff\forall\eps>0\ \exists\delta>0:\ 0<|x-x_0|<\delta\Rightarrow|f(x)-L|<\eps$.\\
+Limit exists $\iff\lim_{x\to x_0^-}f=\lim_{x\to x_0^+}f$, both finite.\\
+$\lim_{x\to\infty}f=L:\iff\forall\eps\ \exists K:\ x>K\Rightarrow|f(x)-L|<\eps$.
+}
+\R{compute $\lim_{x\to x_0}f(x)$}{
+\begin{rcp}
+\item Plug in $x_0$. Nothing breaks \ra\ done, by continuity.
+\item $\frac00$ \ra\ factor and cancel, expand roots by the conjugate, else Taylor (\S\ref{sub:taylorlimit}) or l'Hospital (\S\ref{sub:lhospital}).
+\item $\frac{c\ne0}0$ \ra\ $\pm\infty$; get the sign from each side separately, so the answer may exist only one-sided.
+\item $x\to\pm\infty$ rational \ra\ divide by the highest power in the denominator. \warn for $x\to-\infty$, $\sqrt{x^2}=|x|=-x$.
+\item $|x|$, $\sgn$, floor, piecewise \ra\ \textbf{always} both one-sided limits.
+\item Bounded $\times$ null \ra\ squeeze: $x\sin\frac1x\to0$, while $\sin\frac1x$ has no limit at all.
+\end{rcp}
+}
+
+\subsection{Continuity}\label{sub:continuity}
+\D{continuity and the sequential criterion}{
+$f$ continuous at $x_0:\iff\forall\eps>0\ \exists\delta>0:|x-x_0|<\delta\Rightarrow|f(x)-f(x_0)|<\eps$
+$\iff\lim_{x\to x_0}f(x)=f(x_0)$
+$\iff$ \hd{(Heine)} $x_n\to x_0$ implies $f(x_n)\to f(x_0)$ for \emph{every} such sequence.
+}
+\R{prove or disprove continuity at $x_0$}{
+\hd{Prove:} if $f$ is built from $+,-,\times,\div$ (denominator $\ne0$) and $\circ$ of continuous standard functions, say exactly that --- one line. Otherwise $\eps$--$\delta$: bound $|f(x)-f(x_0)|\le C|x-x_0|$ and take $\delta=\eps/C$.\\
+\hd{Disprove:} give \emph{two} sequences $x_n\to x_0$, $y_n\to x_0$ with $\lim f(x_n)\ne\lim f(y_n)$ (Heine). Classics: $x_n=\frac1{2\pi n}$ vs $y_n=\frac1{\frac\pi2+2\pi n}$ for $\sin\frac1x$; rationals vs irrationals for Dirichlet.
+}
+\F{types of discontinuity (Unstetigkeitsstellen)}{
+\hd{removable} \de{hebbar}: both one-sided limits exist and agree, but $\ne f(x_0)$ --- redefine and it is continuous.\\
+\hd{jump} \de{Sprung}: both exist and differ. This is the monotone-function case.\\
+\hd{essential / oscillating}: at least one one-sided limit fails to exist ($\sin\frac1x$, $\frac1x$).
+}
+\R{fit a parameter: ``determine $a,b$ so that $f$ is continuous / differentiable''}{
+\begin{rcp}
+\item Continuity at the seam $x_0$: $\lim_{x\to x_0^-}f=\lim_{x\to x_0^+}f=f(x_0)$ \ra\ one equation.
+\item Differentiability: additionally $\lim_{x\to x_0^-}f'=\lim_{x\to x_0^+}f'$ \ra\ second equation.
+\item Solve the (usually linear) system. Two unknowns need exactly these two conditions.
+\end{rcp}
+}
+
+\subsection{The three theorems on $[a,b]$ --- and when to reach for which}\label{sub:bigthree}\label{sub:zero}
+\F{cite these verbatim, hypotheses included}{
+$f:[a,b]\to\Rl$ \textbf{continuous}, $[a,b]$ \textbf{compact}:
+\begin{bul}
+\item \hd{IVT \de{Zwischenwertsatz}:} $c$ between $f(a)$ and $f(b)$ \ra\ $\exists x\in[a,b]:f(x)=c$. \emph{For: a zero, a solution, a fixed point exists.}
+\item \hd{Extreme value theorem \de{Satz vom Max/Min, Weierstrass}:} $f$ is bounded and \emph{attains} max and min. \emph{For: ``the maximum is attained'', bounding.}
+\item \hd{Heine:} continuous on a compact interval \ra\ \emph{uniformly} continuous. \emph{For: uniform continuity for free.}
+\end{bul}
+\warn All three fail on open or unbounded intervals: $\frac1x$ on $(0,1]$ is continuous, unbounded, attains no max, is not uniformly continuous.
+}
+\R{show ``$f(x)=g(x)$ has a solution'' / ``$f$ has a zero''}{
+\begin{rcp}
+\item Set $h:=f-g$ (fixed point $f(x)=x$: take $h(x):=f(x)-x$). State: $h$ continuous as a difference of continuous functions.
+\item Find two points of opposite sign --- evaluate at convenient points, or use the signs of $\lim_{x\to\pm\infty}h$ and pick large $|x|$.
+\item IVT \ra\ $\exists x^*$ with $h(x^*)=0$. \hd{Existence done.}
+\item \hd{Uniqueness:} $h$ strictly monotone ($h'>0$ or $h'<0$ everywhere) \ra\ at most one zero. Or Rolle: two zeros would force $h'(\xi)=0$, contradiction.
+\end{rcp}
+}
+\E{$e^x=p(x)$ --- the standard multiple choice}{
+\begin{bul}
+\item ``IVT always gives a solution'' \no: $p\equiv-1$ has none, since $e^x>0$.
+\item $p$ of \emph{odd} degree \ra\ always at least one solution ($e^x-p(x)$ changes sign at $\pm\infty$).
+\item ``at most finitely many solutions for every $p$'' \yes: $e^x-p(x)$ is analytic and not identically $0$, so its zeros are isolated and finite in number on $\Rl$ here.
+\item ``for every $N$ there is a $p_N$ with $\ge N$ solutions'' \yes: take $p_N$ close to $e^x$ on a long interval and let it wobble across.
+\end{bul}
+}
+
+\subsection{Uniform continuity \de{gleichm\"assige Stetigkeit}}\label{sub:unifcont}
+\D{the difference that matters}{
+\hd{continuous:} $\forall x_0\ \forall\eps\ \exists\delta(\eps,x_0)$.\quad
+\hd{uniformly continuous:} $\forall\eps\ \exists\delta(\eps)\ \forall x,y:\ |x-y|<\delta\Rightarrow|f(x)-f(y)|<\eps$.\\
+\textbf{One $\delta$ for the whole domain.} unif.\ cont.\ \ra\ cont., never the converse.\\
+\hd{Chain:} Lipschitz \ra\ uniformly continuous \ra\ continuous.
+}
+\R{``is $f$ uniformly continuous?''}{
+\begin{rcp}
+\item \hd{Compact domain $[a,b]$, $f$ continuous?} \ra\ YES by Heine. One line, done.
+\item \hd{$f'$ bounded, $|f'|\le L$?} \ra\ MVT gives $|f(x)-f(y)|\le L|x-y|$, Lipschitz \ra\ YES with $\delta=\eps/L$. \emph{The workhorse on unbounded domains.}
+\item \hd{Continuous on $\Rl$ with finite limits at $\pm\infty$?} \ra\ YES (compact in the middle, nearly constant outside).
+\item \hd{Suspect NO?} Produce $x_n,y_n$ with $|x_n-y_n|\to0$ but $|f(x_n)-f(y_n)|\ge\eps_0>0$.
+\item \hd{Parameter that can degenerate} (e.g.\ $n=0$ vs $n\ge1$) \ra\ case distinction, treat the degenerate case on its own.
+\end{rcp}
+\warn Unbounded $f'$ does \textbf{not} prove failure: $\sqrt x$ on $[0,1]$ has $f'\to\infty$ and is uniformly continuous (compact).
+}
+\E{uniformly continuous: $f_n(x)=\dfrac x{1+nx^2}$ on $\Rl$}{
+$n=0$: $f_0(x)=x$ is Lipschitz with $L=1$.\\
+$n\ge1$: $f_n'(x)=\dfrac{1-nx^2}{(1+nx^2)^2}$, so
+$|f_n'(x)|\le\dfrac{1+nx^2}{(1+nx^2)^2}=\dfrac1{1+nx^2}\le1$.\\
+Bounded derivative \ra\ Lipschitz with $L=1$ \ra\ \textbf{uniformly continuous for every $n$}, with $\delta=\eps$.
+}
+\E{not uniformly continuous: the two patterns}{
+\hd{$f(x)=x^2$ on $\Rl$:} $x_n=n$, $y_n=n+\frac1n$ \ra\ $|x_n-y_n|=\frac1n\to0$ but
+$|f(y_n)-f(x_n)|=2+\frac1{n^2}\ge2$. \ra\ fails for $\eps=2$.\\
+\hd{$f(x)=\frac1x$ on $(0,1)$:} $x_n=\frac1n$, $y_n=\frac1{2n}$ \ra\ difference $\to0$ but $|f(y_n)-f(x_n)|=n\to\infty$.\\
+\hd{$\sin\frac1x$ on $(0,1)$:} pick $x_n,y_n$ at consecutive max/min of the oscillation \ra\ gap $2$.
+}

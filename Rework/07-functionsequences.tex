@@ -1,0 +1,86 @@
+\subsection{Pointwise limit: always compute this first}\label{sub:ptwise}
+\D{pointwise vs uniform, side by side}{
+\hd{pointwise:} $\forall x\ \forall\eps\ \exists N(\eps,\underline{x})\ \forall n\ge N:|f_n(x)-f(x)|<\eps$ --- $N$ may depend on $x$.\\
+\hd{uniform:} $\forall\eps\ \exists N(\eps)\ \forall n\ge N\ \forall x:|f_n(x)-f(x)|<\eps$, i.e.\
+\[\|f_n-f\|_\infty:=\sup_{x\in D}|f_n(x)-f(x)|\xrightarrow[n\to\infty]{}0.\]
+\textbf{One $N$ for all $x$ at once.} Uniform \ra\ pointwise, never the converse.
+}
+\R{find the pointwise limit $f(x)=\lim_nf_n(x)$}{
+\begin{rcp}
+\item \textbf{Freeze $x$}, treat it as a constant, let $n\to\infty$ with \S\ref{sub:seqlimit}.
+\item \hd{Case distinction in $x$} wherever the answer changes: usually $x=0$ vs $x\ne0$, or $|x|<1$ vs $=1$ vs $>1$.
+\item Write $f$ piecewise. \hd{If $f$ is discontinuous while all $f_n$ are continuous, convergence cannot be uniform} --- that alone answers part (c).
+\end{rcp}
+}
+
+\subsection{Uniform convergence $f_n\rightrightarrows f$}\label{sub:unifconv}
+\R{decide uniform convergence (the standard 3-point task)}{
+\begin{rcp}
+\item Get the pointwise limit $f$ first --- uniform convergence can only be towards it.
+\item Set $g_n(x):=|f_n(x)-f(x)|$ and compute $M_n:=\sup_xg_n(x)$: differentiate in \textbf{$x$} with $n$ fixed, solve $g_n'(x)=0$, substitute the critical point back. Check the boundary and $|x|\to\infty$ too.
+\item $M_n\to0$ \ra\ \textbf{uniform}. \ $M_n\not\to0$ \ra\ \textbf{pointwise only}.
+\end{rcp}
+}
+\R{two shortcuts that give a complete disproof}{
+\begin{bul}
+\item \hd{Exhibit one sequence $x_n$} with $|f_n(x_n)-f(x_n)|\ge\eps_0>0$ (take $x_n=$ the maximiser). One such sequence is a full proof of failure --- you do not need the exact sup.
+\item \hd{All $f_n$ continuous but $f$ is not} \ra\ not uniform, by the contrapositive of the uniform limit theorem.
+\end{bul}
+}
+\E{$f_n(x)=\frac x{1+nx^2}$ on $\Rl$: uniform}{
+Pointwise $f\equiv0$, so $M_n=\sup_x\left|\frac x{1+nx^2}\right|$.\\
+$f_n'(x)=\frac{1-nx^2}{(1+nx^2)^2}=0\Rightarrow x=\pm\frac1{\sqrt n}$, and $f_n\!\left(\frac1{\sqrt n}\right)=\frac{1/\sqrt n}{2}=\frac1{2\sqrt n}$; $f_n\to0$ as $|x|\to\infty$.\\
+So $M_n=\frac1{2\sqrt n}\to0$ \ra\ \textbf{uniformly to $0$ on all of $\Rl$.}
+}
+\X{sup bounds that do and do not block uniformity}{
+\begin{bul}
+\item $\sup_x|f_n(x)|\ge\frac1{2n}$ does \textbf{not} prevent $f_n\rightrightarrows0$ --- $\frac1{2n}\to0$. Only a lower bound that \emph{does not vanish} blocks it.
+\item The max being attained at a \emph{different} point $x_n$ for each $n$ is irrelevant. Only the \emph{value} $M_n$ counts.
+\item $f_n\to f$ pointwise with all $f_n$ and $f$ continuous still need not be uniform ($nxe^{-nx^2}$ on $[0,1]$).
+\end{bul}
+}
+\T{gallery: memorise this table, it answers most $(f_n)$ questions}{
+{\fontsize{5.9pt}{7.0pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.235\linewidth}>{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.16\linewidth}cc@{}}
+$f_n$ (domain) & ptwise $f$ & $\|f_n-f\|_\infty$ & unif.? & $\int$ swaps?\\
+\midrule
+$x^n$ on $[0,1]$ & $0$ on $[0,1)$, $1$ at $1$ & $1$ & \no & \yes\\
+$x^n$ on $[0,r]$, $r<1$ & $0$ & $r^n$ & \yes & \yes\\
+$\frac x{1+nx^2}$ on $\Rl$ & $0$ & $\frac1{2\sqrt n}$ & \yes & \yes\\
+$\frac{\sin(nx)}n$ on $\Rl$ & $0$ & $\frac1n$ & \yes & \yes\\
+$nxe^{-nx^2}$ on $[0,1]$ & $0$ & $\sqrt{\frac n2}e^{-1/2}$ & \no & \no\\
+$n^2xe^{-nx}$ on $[0,1]$ & $0$ & $\frac ne$ & \no & \no\\
+$\arctan(nx)$ on $\Rl$ & $\frac\pi2\sgn x$ & $\frac\pi2$ & \no & n/a\\
+$\frac{x^n}{1+x^n}$ on $[0,1]$ & $0$, $\frac12$ at $1$ & $\frac12$ & \no & \yes\\
+\end{tsTabular}}
+\hd{Read it as:} a discontinuous limit is \emph{never} uniform. Uniformity is sufficient but not necessary for swapping $\int$: row 1 swaps without it ($\int_0^1x^n=\frac1{n+1}\to0$), rows 5--6 do not
+($\int_0^1nxe^{-nx^2}\to\frac12$, \ $\int_0^1n^2xe^{-nx}\to1$, both $\ne0$).
+}
+\F{uniform Cauchy criterion and the $M$-test}{
+\hd{Uniform Cauchy:} $f_n\rightrightarrows$ some limit $\iff\forall\eps\ \exists N\ \forall m,n\ge N:\|f_n-f_m\|_\infty<\eps$. Use it when you do not know $f$.\\
+\hd{Weierstrass $M$-test} (for $\sum f_n$): $|f_n(x)|\le M_n\ \forall x\in D$ and $\sum M_n<\infty$ \ra\ $\sum f_n$ converges \textbf{absolutely and uniformly} on $D$. This is how power series get uniform convergence on $[-r,r]$, $r<R$.\\
+\hd{Dini:} $D$ compact, $f_n$ continuous, $f$ continuous, and $f_n\to f$ pointwise \emph{monotonically} in $n$ \ra\ convergence is automatically uniform. The only cheap converse there is.
+}
+
+\subsection{Interchanging limits with $\int$ and $\frac{d}{dx}$}\label{sub:interchange}
+\T{what you may swap, and the exact price}{
+{\fontsize{5.9pt}{7.0pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.26\linewidth}>{\raggedright\arraybackslash}p{0.34\linewidth}>{\raggedright\arraybackslash}p{0.32\linewidth}@{}}
+Swap & Hypothesis that makes it legal & Counterexample if missing\\
+\midrule
+$\lim_n\int_a^bf_n=\int_a^b\lim_nf_n$ & $f_n\rightrightarrows f$ on the \emph{compact} $[a,b]$ & $n^2xe^{-nx}$ on $[0,1]$: $\to1\ne0$\\
+$\lim_n f_n'=\left(\lim_nf_n\right)'$ & $f_n'\rightrightarrows g$ uniformly \emph{and} $f_n(x_0)$ converges for one $x_0$ & $\frac{\sin(nx)}n\rightrightarrows0$ but $f_n'=\cos(nx)$ diverges\\
+$\sum_n\int f_n=\int\sum_nf_n$ & $\sum f_n$ uniformly conv.\ on $[a,b]$ ($M$-test) & same shape as row 1\\
+$\frac{d}{dx}\sum_nf_n=\sum_nf_n'$ & $\sum f_n'$ uniformly convergent & holds free inside a power series' radius\\
+$\lim_{x\to x_0}\lim_nf_n=\lim_n\lim_{x\to x_0}f_n$ & $f_n\rightrightarrows f$ (then $f$ is continuous) & $x^n$ on $[0,1]$ at $x_0=1$\\
+\end{tsTabular}}
+}
+\F{what uniform convergence buys you}{
+$f_n$ continuous on $D$ and $f_n\rightrightarrows f$:
+\begin{bul}
+\item \hd{$f$ is continuous} --- the \emph{Uniform Limit Theorem}. Pointwise alone gives nothing.
+\item On $[a,b]$: $f$ is Riemann integrable and $\int_a^bf_n\to\int_a^bf$.
+\item $f_n$ bounded uniformly \ra\ $f$ bounded.
+\item \warn \textbf{Derivatives do not follow.} Uniform convergence of $f_n$ says nothing about $f_n'$; you must assume $f_n'$ converges uniformly.
+\end{bul}
+}

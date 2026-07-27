@@ -1,0 +1,64 @@
+\subsection{Forms, conversion, arithmetic}\label{sub:cxforms}
+\D{the two forms}{
+$z=a+ib=re^{i\varphi}=r(\cos\varphi+i\sin\varphi)$; \ $\bar z=a-ib$, \ $|z|=r=\sqrt{a^2+b^2}$, \ $z\bar z=|z|^2$.\\
+$\operatorname{Re}z=\frac{z+\bar z}2$, \ $\operatorname{Im}z=\frac{z-\bar z}{2i}$.
+\hd{Euler:} $e^{i\varphi}=\cos\varphi+i\sin\varphi$, \ $e^{i\pi}=-1$, \ $e^{2\pi i}=1$.
+}
+\R{convert both ways}{
+\begin{rcp}
+\item \hd{Cartesian \too\ polar:} $r=\sqrt{a^2+b^2}$; $\varphi=\arctan\frac ba$ \emph{and then add $\pi$ if $a<0$} (subtract $2\pi$ to land in $(-\pi,\pi]$). \warn always check the quadrant; $\arctan$ alone loses half the plane.
+\item $a=0$: $\varphi=\frac\pi2$ if $b>0$, $-\frac\pi2$ if $b<0$.
+\item \hd{Polar \too\ Cartesian:} $a=r\cos\varphi$, $b=r\sin\varphi$.
+\end{rcp}
+}
+\F{arithmetic rules}{
+\hd{Multiply/divide in polar:} $r_1e^{i\varphi_1}\cdot r_2e^{i\varphi_2}=r_1r_2e^{i(\varphi_1+\varphi_2)}$, \ $\frac{z}{w}=\frac{r_z}{r_w}e^{i(\varphi_z-\varphi_w)}$.\\
+\hd{Divide in Cartesian:} multiply by $\frac{\bar w}{\bar w}$: $\frac zw=\frac{z\bar w}{|w|^2}$.\\
+\hd{Conjugate:} $\overline{z+w}=\bar z+\bar w$, $\overline{zw}=\bar z\bar w$, $\overline{z/w}=\bar z/\bar w$, $\bar{\bar z}=z$, $z\in\Rl\iff z=\bar z$, $|\bar z|=|z|$.\\
+\hd{de Moivre:} $(\cos\varphi+i\sin\varphi)^n=\cos(n\varphi)+i\sin(n\varphi)$.
+}
+\R{use Euler to derive trig identities on the spot}{
+$\cos x=\frac{e^{ix}+e^{-ix}}2$, $\sin x=\frac{e^{ix}-e^{-ix}}{2i}$. Multiply the exponentials, collect. \\
+\hd{Ex.} $\cos^2x=\left(\frac{e^{ix}+e^{-ix}}2\right)^2=\frac{e^{2ix}+2+e^{-2ix}}4=\frac{1+\cos2x}2$. Same trick gives every double/half-angle formula, so you never have to memorise them.
+}
+
+\subsection{Roots and equations}\label{sub:cxroots}
+\R{solve $z^n=w$ ($n$-th roots)}{
+\begin{rcp}
+\item Write $w=\rho e^{i\psi}$.
+\item $z_k=\rho^{1/n}e^{i(\psi+2\pi k)/n}$ for $k=0,1,\dots,n-1$.
+\item Exactly $n$ roots, all on the circle of radius $\rho^{1/n}$, spaced by $\frac{2\pi}n$.
+\end{rcp}
+\hd{Roots of unity:} $z^n=1$ \ra\ $z_k=e^{2\pi ik/n}$; their sum is $0$ for $n\ge2$ and their product is $(-1)^{n+1}$.
+}
+\R{quadratic with complex data}{
+$az^2+bz+c=0\Rightarrow z=\frac{-b\pm\sqrt{D}}{2a}$, $D=b^2-4ac$.
+\begin{bul}
+\item Real coefficients, $D<0$: $z=-\frac b{2a}\pm i\frac{\sqrt{|D|}}{2a}$ (a conjugate pair).
+\item Complex $D$: get $\sqrt D$ with the $n$-th-root recipe at $n=2$ (two roots, take either).
+\end{bul}
+}
+\F{complex log and general powers (if asked)}{
+$\log z=\ln|z|+i(\arg z+2\pi k)$, $k\in\Z$ --- multivalued; the \emph{principal} branch takes $\arg z\in(-\pi,\pi]$.\\
+$z^w:=e^{w\log z}$. \warn $\sqrt{zw}=\sqrt z\sqrt w$ and $\log(zw)=\log z+\log w$ can fail by $2\pi i$ off the principal branch.
+}
+
+\subsection{Polynomials: what is guaranteed}\label{sub:poly}
+\F{Fundamental theorem of algebra}{
+$p$ of degree $n\ge1$ with \emph{any} complex coefficients has \textbf{exactly $n$ roots in $\Cx$ counted with multiplicity}, and factors as $p(z)=a_n\prod_{j}(z-z_j)^{m_j}$ with $\sum m_j=n$.
+}
+\X{the three classic multiple-choice errors}{
+\begin{bul}
+\item ``$n$ roots, all \emph{distinct}'' --- \no, only with multiplicity ($z^5$ has one root of multiplicity 5).
+\item ``complex roots come in conjugate pairs'' --- \no\ in general, \yes\ \textbf{only if all coefficients are real}. Degree 5 with complex coefficients need not have any real root.
+\item ``odd degree \ra\ a real root'' --- \yes\ \textbf{only for real coefficients} (IVT on $p$, which changes sign at $\pm\infty$).
+\end{bul}
+}
+\R{factor a polynomial over $\Rl$ / over $\Cx$}{
+\begin{rcp}
+\item Guess a root among the divisors of the constant term (over $\Z$), or spot $z=\pm1$.
+\item Polynomial division by $(z-z_0)$, repeat on the quotient.
+\item Over $\Cx$: keep going until all factors are linear.
+\item Over $\Rl$: pair each non-real root with its conjugate to get an irreducible quadratic $z^2-2\operatorname{Re}(z_0)z+|z_0|^2$. Real factorisation = linear factors $\times$ irreducible quadratics only.
+\end{rcp}
+}

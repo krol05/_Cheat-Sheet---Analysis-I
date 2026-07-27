@@ -1,0 +1,123 @@
+\subsection{Differentiability}\label{sub:diffable}
+\D{three equivalent formulations}{
+$f'(x_0)=\lim_{h\to0}\frac{f(x_0+h)-f(x_0)}h=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}$ (\textbf{two-sided}, finite)\\
+$\iff\exists K\in\Rl:\ f(x)=f(x_0)+K(x-x_0)+o(|x-x_0|)$ as $x\to x_0$, and then $K=f'(x_0)$.\\
+\hd{diff.\ \ra\ continuous}; continuous $\not\Rightarrow$ diff.\ ($|x|$ at $0$).
+}
+\X{Landau $o$ / $O$ --- the classic multiple-choice trap}{
+$f=O(g)$: $|f|\le C|g|$ near $x_0$ (\emph{same order or smaller}). \quad $f=o(g)$: $f/g\to0$ (\emph{strictly smaller}).
+\begin{bul}
+\item $f(x)-f(x_0)-K(x-x_0)=o(|x-x_0|)$ \ra\ \textbf{differentiable} \yes. Note $(x-x_0)$, \emph{not} $Kx$: written with $Kx$ the statement is meaningless.
+\item $f(x)-f(x_0)=O(|x-x_0|)$ \ra\ only Lipschitz near $x_0$ \ra\ \textbf{not} differentiable \no\ ($|x|$ satisfies it).
+\item only $h\to0^+$ exists \ra\ only \emph{right}-differentiable \ra\ not differentiable \no.
+\item ``for an arbitrary polynomial $p$'' \ra\ useless \no; $p$ must be exactly the linear Taylor part.
+\end{bul}
+\hd{Algebra:} $o(x^n)\pm o(x^n)=o(x^n)$, $x^m\cdot o(x^n)=o(x^{m+n})$, $o(x^n)=O(x^n)$ but not conversely.
+}
+\R{piecewise function: differentiable at the seam $x_0$?}{
+\begin{rcp}
+\item Continuity first: $\lim_{x\to x_0^-}f=\lim_{x\to x_0^+}f=f(x_0)$. Fails \ra\ not differentiable, stop.
+\item Compare the one-sided \emph{difference quotients} (not just $\lim f'$). Equal \ra\ differentiable, with that value.
+\item For $C^1$ additionally $\lim_{x\to x_0^-}f'=\lim_{x\to x_0^+}f'$.
+\end{rcp}
+\hd{Ex.} $f(x)=x^2\sin\frac1x$ ($x\ne0$), $f(0)=0$: $f'(0)=\lim h\sin\frac1h=0$ exists, but $f'$ is not continuous at $0$ \ra\ differentiable, \emph{not} $C^1$.
+}
+
+\subsection{Rules --- and how not to misuse them}\label{sub:rules}
+\F{the rules}{
+$(f\pm g)'=f'\pm g'$;\quad $(fg)'=f'g+fg'$;\quad $\left(\frac fg\right)'=\frac{f'g-fg'}{g^2}$;\\
+\hd{chain} $(g\circ f)'(x)=g'(f(x))f'(x)$;\quad
+\hd{inverse} $(f^{-1})'(y_0)=\frac1{f'(x_0)}$, $y_0=f(x_0)$;\\
+\hd{Leibniz} $(fg)^{(n)}=\sum_{k=0}^n\binom nkf^{(k)}g^{(n-k)}$;\\
+\hd{logarithmic} for $u(x)^{v(x)}$: write $u^v=e^{v\ln u}$ \ra\ $(u^v)'=u^v\left(v'\ln u+\frac{vu'}u\right)$.
+}
+\R{implicit differentiation}{
+Given $F(x,y)=0$ with $y=y(x)$: differentiate both sides in $x$ treating $y$ as a function, so every $y$ contributes a factor $y'$ by the chain rule, then solve for $y'$.\\
+\hd{Ex.} $x^2+y^2=1$ \ra\ $2x+2yy'=0$ \ra\ $y'=-\frac xy$.
+}
+\X{using the derivative/antiderivative table correctly}{
+The table (\S\ref{sub:tableuse}) lists $F(x)$ for the \textbf{bare} argument $x$. If the argument is $ax+b$:
+\[\int f(ax+b)\dx=\tfrac1aF(ax+b)+C\quad\text{(divide by the inner derivative)}\]
+\warn Valid \textbf{only for linear inner functions}. Anything else: substitute properly.\\
+\hd{Worked trap:} $\int\frac1{2\cos^2(\frac12x)}\dx$. Table: $\int\frac{\du}{\cos^2u}=\tan u$. With $u=\frac x2$, $\dx=2\du$:
+$\int\frac{2\du}{2\cos^2u}=\tan u=\tan\frac x2+C$ --- \textbf{not} $2\tan\frac x2$.\\
+\hd{Always differentiate your answer.} Five seconds, catches every chain-rule slip.
+}
+
+\subsection{Mean value theorems \de{Mittelwerts\"atze}}\label{sub:mvt}
+\F{Fermat / Rolle / Lagrange / Cauchy}{
+\begin{bul}
+\item \hd{Fermat:} $x_0$ an \emph{interior} local extremum, $f$ differentiable there \ra\ $f'(x_0)=0$. Converse false ($x^3$).
+\item \hd{Rolle:} $f\in C[a,b]$, diff.\ on $(a,b)$, $f(a)=f(b)$ \ra\ $\exists\xi\in(a,b):f'(\xi)=0$.
+\item \hd{MVT (Lagrange):} same hypotheses \ra\ $\exists\xi\in(a,b):f'(\xi)=\frac{f(b)-f(a)}{b-a}$.
+\item \hd{Cauchy MVT:} $\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}$ --- this is what proves l'Hospital.
+\end{bul}
+}
+\R{the four things MVT is for}{
+\begin{bul}
+\item \hd{Prove $|f(x)-f(y)|\le L|x-y|$:} MVT plus a bound $|f'|\le L$. (Route to Lipschitz \ra\ uniform continuity.)
+\item \hd{Prove $f$ constant:} $f'\equiv0$ on an interval \ra\ constant.
+\item \hd{Count zeros:} $n$ zeros of $f$ \ra\ at least $n-1$ zeros of $f'$ (Rolle between consecutive ones). Contrapositive: $f'$ has $\le k$ zeros \ra\ $f$ has $\le k+1$.
+\item \hd{Compare two functions:} set $g=f-h$, show $g(a)=0$ and $g'>0$ \ra\ $f>h$ on $(a,\infty)$.
+\end{bul}
+}
+
+\subsection{Curve discussion \de{Kurvendiskussion} and extrema}\label{sub:curve}
+\R{find and classify all extrema of $f$ on $I$}{
+\begin{rcp}
+\item \hd{Domain}, plus every point where $f$ is not differentiable (kinks, poles) and the endpoints of $I$ --- all are candidates.
+\item \hd{Critical points:} solve $f'(x)=0$.
+\item \hd{Classify:} $f''(x_0)>0$ \ra\ local \textbf{min}; $f''(x_0)<0$ \ra\ local \textbf{max}; $f''(x_0)=0$ \ra\ inconclusive, use the \emph{sign change of $f'$} ($-\!\to\!+$ min, $+\!\to\!-$ max, no change \ra\ saddle).
+\item \hd{Global on $[a,b]$:} evaluate $f$ at all critical points \emph{and} at $a,b$; largest wins (it exists, by Weierstrass).
+\item \hd{Global on open/unbounded $I$:} also take $\lim_{x\to\partial I}f$; if a limit beats every candidate, the extremum is \emph{not attained}.
+\item \hd{Monotonicity:} sign table of $f'$. \hd{Convexity:} sign table of $f''$; a sign change of $f''$ is an \textbf{inflection point} \de{Wendepunkt}.
+\item \hd{Asymptotes:} $m=\lim\frac{f(x)}x$, $c=\lim(f(x)-mx)$; then $y=mx+c$.
+\end{rcp}
+}
+\E{full discussion of $f(x)=\dfrac x{1+x^2}$}{
+Domain $\Rl$, odd. $f'=\dfrac{1-x^2}{(1+x^2)^2}$ \ra\ critical $x=\pm1$.
+$f''=\dfrac{2x(x^2-3)}{(1+x^2)^3}$ \ra\ $f''(1)<0$: \textbf{max} $f(1)=\frac12$; $f''(-1)>0$: \textbf{min} $f(-1)=-\frac12$.
+Inflection at $x=0,\pm\sqrt3$. Increasing on $[-1,1]$, decreasing outside. $f\to0$ at $\pm\infty$ \ra\ asymptote $y=0$. Global max/min $=\pm\frac12$, both attained.
+}
+\F{convexity (konvex) --- exam favourite}{
+$f$ convex on $I$ $\iff f''\ge0$ $\iff f'$ increasing $\iff f(\lambda x+(1-\lambda)y)\le\lambda f(x)+(1-\lambda)f(y)$ $\iff$ the graph lies \emph{above} every tangent.
+\begin{bul}
+\item Convex and $f'(x_0)=0$ at an interior point \ra\ $x_0$ is a \textbf{global minimum} \yes.
+\item A convex differentiable $f$ cannot have several \emph{isolated} critical points --- the critical set is an interval \no.
+\item Its global \emph{maximum} on $[a,b]$ is always attained at a \textbf{boundary} point \yes.
+\item ``the global minimum can only be on the boundary'' \no\ --- it may well be interior.
+\end{bul}
+}
+\R{prove an inequality with convexity}{
+\begin{bul}
+\item \hd{Tangent-line trick:} $f$ convex \ra\ $f(x)\ge f(a)+f'(a)(x-a)$ for all $x$. Choosing a good $a$ proves most one-variable inequalities in one line, e.g.\ $e^x\ge1+x$ ($a=0$), $\ln x\le x-1$ ($f=-\ln$, $a=1$).
+\item \hd{Jensen:} $f$ convex \ra\ $f\!\left(\frac1n\sum x_i\right)\le\frac1n\sum f(x_i)$. With $f=-\ln$ this is AM--GM.
+\end{bul}
+}
+
+\subsection{l'Hospital \de{Bernoulli--de l'Hospital}}\label{sub:lhospital}
+\R{use it safely}{
+\begin{rcp}
+\item \hd{Check the form first:} only $\frac00$ or $\frac{\pm\infty}{\pm\infty}$. Applying it unchecked loses marks.
+\item Differentiate \emph{numerator and denominator separately} --- \warn not the quotient rule.
+\item Repeat while the form persists.
+\item Verify the new limit exists. If it does not, l'Hospital states \textbf{nothing} about the original.
+\end{rcp}
+\hd{Reduce other forms first:} $0\cdot\infty$ \ra\ $\frac f{1/g}$; \ $\infty-\infty$ \ra\ common denominator or conjugate; \ $1^\infty,0^0,\infty^0$ \ra\ $u^v=e^{v\ln u}$, work in the exponent, exponentiate at the end.
+}
+\X{when l'Hospital fails}{
+\begin{bul}
+\item $\lim_{x\to\infty}\frac{x+\sin x}x=1$, but l'Hospital gives $1+\cos x$, which has no limit \ra\ inapplicable. Divide by $x$ instead.
+\item $\lim_{x\to\infty}\frac x{\sqrt{1+x^2}}$: l'Hospital cycles forever. Divide by $x$.
+\item Repeated use that never resolves ($\frac{e^x}{e^x}$ patterns) \ra\ switch to Taylor or algebra.
+\end{bul}
+\hd{Rule of thumb:} at $x\to0$ prefer Taylor (\S\ref{sub:taylorlimit}); it is faster and cannot mislead you.
+}
+\E{indeterminate forms, one line each}{
+\begin{bul}
+\item $\lim_{x\to0^+}x\ln x=\lim\frac{\ln x}{1/x}\overset{\infty/\infty}{=}\lim\frac{1/x}{-1/x^2}=\lim(-x)=0$.
+\item $\lim_{x\to0^+}x^x=e^{\lim x\ln x}=e^0=1$.
+\item $\lim_{x\to\infty}\left(1+\frac ax\right)^x=e^{\lim x\ln(1+a/x)}=e^a$.
+\item $\lim_{x\to0^+}\frac{\ln x}{\cot x}$: $\frac{-\infty}{\infty}$ \ra\ l'Hospital \ra\ $\lim\frac{1/x}{-1/\sin^2x}=-\lim\frac{\sin^2x}x=0$.
+\end{bul}
+}

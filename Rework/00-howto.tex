@@ -1,48 +1,71 @@
 % ---------------- Front matter: legend + "question -> section" index ----------
+% The ONLY full-width block in the document; everything else lives in the single
+% continuous multicols{3}. Wrapped in a \textwidth minipage so its height is
+% measured as one box -- without that, multicol starts too high and the last
+% table row gets overprinted by the first section banner.
+\noindent\begin{minipage}[b]{\textwidth}
 \begingroup
-\fontsize{5.6pt}{6.6pt}\selectfont\sffamily
+\fontsize{5.6pt}{6.7pt}\selectfont\sffamily
 \noindent
-{\colorbox{recFrame}{\color{white}\bfseries\,$\blacktriangleright$\,}}\ \textbf{RECIPE} = follow the steps\ \
-{\colorbox{exFrame}{\color{white}\bfseries\,E\,}}\ example\ \
-{\colorbox{thmFrame}{\color{white}\bfseries\,F\,}}\ citable fact\ \
-{\colorbox{defFrame}{\color{white}\bfseries\,D\,}}\ definition\ \
-{\colorbox{trapFrame}{\color{white}\bfseries\,!\,}}\ trap\hfill
-\textbf{Sections:}
-1~Toolbox~(\pageref{sec:1})\,$\bullet$\,
-2~Seq.~(\pageref{sec:2})\,$\bullet$\,
-3~Series~(\pageref{sec:3})\,$\bullet$\,
-4~Funct.~(\pageref{sec:4})\,$\bullet$\,
-5~Deriv.~(\pageref{sec:5})\,$\bullet$\,
-6~Integr.~(\pageref{sec:6})\,$\bullet$\,
-7~ODE~(\pageref{sec:7})\,$\bullet$\,
-8~Proofs~(\pageref{sec:8})\,$\bullet$\,
-9~Tables~(\pageref{sec:9})
-\par\vspace{2pt}
+{\colorbox{recFrame}{\color{white}\bfseries\,$\blacktriangleright$\,}}\,\textbf{RECIPE}\ \
+{\colorbox{exFrame}{\color{white}\bfseries\,E\,}}\,example\ \
+{\colorbox{thmFrame}{\color{white}\bfseries\,F\,}}\,fact\ \
+{\colorbox{defFrame}{\color{white}\bfseries\,D\,}}\,definition\ \
+{\colorbox{trapFrame}{\color{white}\bfseries\,!\,}}\,trap\ \
+{\colorbox{tabFrame}{\color{white}\bfseries\,T\,}}\,table
+\hfill
+Coloured \textbf{edge tabs} mark the sections live on each page.
+\hfill
+\textbf{Section starts:}
+1:\pageref{sec:1}\,
+2:\pageref{sec:2}\,
+3:\pageref{sec:3}\,
+4:\pageref{sec:4}\,
+5:\pageref{sec:5}\,
+6:\pageref{sec:6}\,
+7:\pageref{sec:7}\,
+8:\pageref{sec:8}\,
+9:\pageref{sec:9}\,
+10:\pageref{sec:10}\,
+11:\pageref{sec:11}\,
+12:\pageref{sec:12}\,
+13:\pageref{sec:13}
+\par
 \endgroup
+\vspace{2.5pt}
 
-{\fontsize{5.75pt}{6.75pt}\selectfont
-\renewcommand{\arraystretch}{1.06}
-\setlength{\tabcolsep}{2.5pt}
+{\fontsize{5.7pt}{6.8pt}\selectfont
+\renewcommand{\arraystretch}{1.05}
+\setlength{\tabcolsep}{2pt}
 \noindent
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.215\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}@{\hspace{5pt}}|@{\hspace{5pt}}>{\raggedright\arraybackslash}p{0.215\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}@{}}
-\textbf{\sffamily The task says\ldots} & \textbf{\sffamily Jump to} & \textbf{\sffamily The task says\ldots} & \textbf{\sffamily Jump to}\\
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.143\textwidth}>{\raggedright\arraybackslash}p{0.170\textwidth}@{\hspace{3pt}}|@{\hspace{3pt}}>{\raggedright\arraybackslash}p{0.143\textwidth}>{\raggedright\arraybackslash}p{0.170\textwidth}@{\hspace{3pt}}|@{\hspace{3pt}}>{\raggedright\arraybackslash}p{0.140\textwidth}>{\raggedright\arraybackslash}p{0.168\textwidth}@{}}
+\textbf{\sffamily The task says\ldots} & \textbf{\sffamily Jump to} &
+\textbf{\sffamily The task says\ldots} & \textbf{\sffamily Jump to} &
+\textbf{\sffamily The task says\ldots} & \textbf{\sffamily Jump to}\\
 \midrule
-``Berechnen Sie den Grenzwert'' ($x\to0$, $0/0$) & \textbf{5.6} Taylor-plug method (faster + safer than l'Hospital) &
-``konvergiert $(f_n)$ gleichm\"assig?'' & \textbf{4.7} sup-norm recipe\\
-``Grenzwert einer Folge'' & \textbf{2.2} limit recipe, \textbf{2.3} recursive $x_{n+1}=f(x_n)$ &
-``punktweiser Grenzwert'' & \textbf{4.6} fix $x$, let $n\to\infty$\\
-``Konvergiert die Reihe?'' & \textbf{3.2} decision tree &
-``gleichm\"assig stetig?'' & \textbf{4.5} recipe + case distinction\\
-``Konvergenzradius / f\"ur welche $x$'' & \textbf{3.3} radius recipe &
-``Riemann-integrierbar?'' & \textbf{6.7} criteria list\\
-``Bestimmen Sie $\int f\dx$'' & \textbf{6.1} integral decision tree &
-``uneigentliches Integral konvergent?'' & \textbf{6.8} $p$-test + comparison\\
-``allgemeine L\"osung der DGL'' & \textbf{7.1} ODE decision tree &
-``Fixpunkt / eindeutige Nullstelle'' & \textbf{4.4} IVT + strict monotonicity\\
-``Kurvendiskussion / Extrema'' & \textbf{5.4} full recipe &
-``Beweisen Sie \dots\ (Vorlesung)'' & \textbf{8} proof skeletons\\
-``H\"aufungspunkt / limsup'' & \textbf{2.4} subsequence split, \textbf{2.5} Cauchy &
-``differenzierbar in $x_0$?'' & \textbf{5.1} + Landau $o/O$ box\\
+``Berechnen Sie den Grenzwert'' ($0/0$) & \S\ref{sub:taylorlimit} Taylor-plug, beats l'Hospital &
+``konvergiert $(f_n)$ gleichm.?'' & \S\ref{sub:unifconv} sup-norm recipe &
+``Beweisen Sie \dots\ (Vorlesung)'' & \S\ref{sec:11}, ranked by likelihood\\
+``Grenzwert einer Folge'' & \S\ref{sub:seqlimit}, or \S\ref{sub:recursive} if recursive &
+``punktweiser Grenzwert'' & \S\ref{sub:ptwise} freeze $x$, $n\to\infty$ &
+``Welche Aussagen sind korrekt?'' & \S\ref{sub:tfindex} true/false scan index\\
+``Konvergiert die Reihe?'' & \S\ref{sub:seriestree} decision tree &
+``gleichm\"assig stetig?'' & \S\ref{sub:unifcont} recipe $+$ case split &
+``Untersuchen Sie \dots'' (9 P) & \S\ref{sub:model} model write-ups\\
+``Konvergenzradius / welche $x$'' & \S\ref{sub:radius} radius recipe &
+``$\lim$ und $\int$ vertauschen?'' & \S\ref{sub:interchange} interchange table &
+``H\"aufungspunkt / limsup'' & \S\ref{sub:accum} subsequence split\\
+``Bestimmen Sie $\int f\dx$'' & \S\ref{sub:integraltree} which method &
+``Riemann-integrierbar?'' & \S\ref{sub:riemannint} criteria list &
+``differenzierbar in $x_0$?'' & \S\ref{sub:diffable} $+$ Landau $o/O$\\
+``allgemeine L\"osung der DGL'' & \S\ref{sub:odetree} which method &
+``uneigentliches Integral?'' & \S\ref{sub:improper} $p$-test, both ends &
+``Fixpunkt / eind.\ Nullstelle'' & \S\ref{sub:zero} IVT $+$ monotonicity\\
+``Kurvendiskussion / Extrema'' & \S\ref{sub:curve} full recipe &
+``Fehler absch\"atzen (Taylor)'' & \S\ref{sub:taylorerr} remainder bound &
+``Ableitungstabelle benutzen'' & \S\ref{sub:tableuse} \warn read this first\\
+\bottomrule
 \end{tabular}
-\par\vspace{2pt}
-}
+\par}
+\end{minipage}
+\par\vspace{6pt}

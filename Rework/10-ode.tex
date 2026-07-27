@@ -1,0 +1,135 @@
+\subsection{Which method? Classify first}\label{sub:odetree}
+\R{read the shape, then jump}{
+\begin{rcp}
+\item \hd{$y'=f(x)g(y)$} (factorises) \ra\ \textbf{separation}, \S\ref{sub:separation}.
+\item \hd{$y'+p(x)y=q(x)$} (linear, 1st order) \ra\ \textbf{integrating factor}, \S\ref{sub:linear1}.
+\item \hd{$y'+p(x)y=q(x)y^\alpha$} \ra\ \textbf{Bernoulli}, $z=y^{1-\alpha}$, \S\ref{sub:subsode}.
+\item \hd{$y'=f\!\left(\frac yx\right)$} \ra\ $u=\frac yx$, i.e.\ $y=ux$, $y'=u'x+u$ \ra\ separable.
+\item \hd{$y'=f(ax+by+c)$} \ra\ $u=ax+by+c$ \ra\ separable.
+\item \hd{$y^{(n)}+a_{n-1}y^{(n-1)}+\dots+a_0y=g(x)$, constant $a_i$} \ra\ characteristic polynomial (\S\ref{sub:odehom}) $+$ particular solution (\S\ref{sub:odepart}).
+\item \hd{$y'=f(y)$ (autonomous)} \ra\ separable; the constant solutions are the zeros of $f$, and they decide the qualitative picture (\S\ref{sub:autonomous}).
+\end{rcp}
+\hd{Order of work, always:} general solution first \ra\ then insert the initial/boundary conditions \ra\ then solve for the constants.
+}
+
+\subsection{Separation of variables \de{Trennung der Variablen}}\label{sub:separation}
+\R{$y'=f(x)g(y)$}{
+\begin{rcp}
+\item \warn \hd{First} solve $g(y_0)=0$: each root gives a \textbf{constant solution} $y\equiv y_0$. Forgetting these costs marks and they are often the ones the initial condition needs.
+\item For $g(y)\ne0$: $\frac{dy}{g(y)}=f(x)\dx$, integrate both sides, one constant $C$ on the right.
+\item Solve for $y$; handle $|\cdot|$ and $\pm$ by absorbing into $C$ ($e^C=:\tilde C>0$, the sign extends it to $\tilde C\in\Rl$).
+\item Insert the initial condition, then state the interval of existence.
+\end{rcp}
+\hd{Ex.} $y'=xy$: $\frac{dy}y=x\dx$ \ra\ $\ln|y|=\frac{x^2}2+C$ \ra\ $y=\tilde Ce^{x^2/2}$ (which includes $y\equiv0$ at $\tilde C=0$).
+}
+\E{separable with an initial condition}{
+$y'=y^2\cos x$, $y(0)=1$. Constant solution $y\equiv0$ (does not meet $y(0)=1$).\\
+Otherwise $-\frac1y=\sin x+C$ \ra\ $y=\frac{-1}{\sin x+C}$; $y(0)=1$ \ra\ $C=-1$ \ra\ $\boxed{y=\frac1{1-\sin x}}$, valid near $x=0$ until $\sin x=1$.
+}
+
+\subsection{First order linear $y'+p(x)y=q(x)$}\label{sub:linear1}
+\R{integrating factor (fastest, always works)}{
+\begin{rcp}
+\item Normal form $y'+p(x)y=q(x)$ --- the coefficient of $y'$ must be $1$.
+\item $\mu(x):=e^{\int p(x)\dx}$ (no $+C$ needed).
+\item $(\mu y)'=\mu q$ \ra\ $\displaystyle y=\frac1{\mu(x)}\left(\int\mu(x)q(x)\dx+C\right)$.
+\item Insert the initial condition last.
+\end{rcp}
+\hd{Same thing as ``variation of constants'':} $y_h=Ce^{-\int p}$; let $C=C(x)$, insert, get $C'=qe^{\int p}$, integrate.
+}
+\E{$y'-\frac2xy=x^3$}{
+$p=-\frac2x$ \ra\ $\mu=e^{-2\ln|x|}=x^{-2}$. Then $(x^{-2}y)'=x$ \ra\ $x^{-2}y=\frac{x^2}2+C$ \ra\ $\boxed{y=\frac{x^4}2+Cx^2}$.
+}
+
+\subsection{Bernoulli and substitutions}\label{sub:subsode}
+\R{$y'+p(x)y=q(x)y^\alpha$, $\alpha\ne0,1$}{
+\begin{rcp}
+\item Divide by $y^\alpha$: $y^{-\alpha}y'+py^{1-\alpha}=q$.
+\item Set $z:=y^{1-\alpha}$ \ra\ $z'=(1-\alpha)y^{-\alpha}y'$.
+\item \ra\ \textbf{linear} ODE $z'+(1-\alpha)pz=(1-\alpha)q$ \ra\ \S\ref{sub:linear1}.
+\item Back-substitute $y=z^{1/(1-\alpha)}$; check the lost solution $y\equiv0$ separately.
+\end{rcp}
+\hd{Ex.} $y'+y=xy^2$ ($\alpha=2$): $z=y^{-1}$ \ra\ $z'-z=-x$ \ra\ $\mu=e^{-x}$ \ra\ $z=x+1+Ce^x$ \ra\ $y=\frac1{x+1+Ce^x}$.
+}
+
+\subsection{Constant coefficients: homogeneous part}\label{sub:odehom}
+\R{$y^{(n)}+a_{n-1}y^{(n-1)}+\dots+a_0y=0$}{
+\begin{rcp}
+\item Ansatz $y=e^{\lambda x}$ \ra\ \hd{characteristic polynomial} $\lambda^n+a_{n-1}\lambda^{n-1}+\dots+a_0=0$.
+\item Find all roots (guess an integer root, then polynomial division).
+\item Build the fundamental system:
+\begin{bul}
+\item simple real root $\lambda$ \ra\ $e^{\lambda x}$
+\item real root of multiplicity $m$ \ra\ $e^{\lambda x},xe^{\lambda x},\dots,x^{m-1}e^{\lambda x}$
+\item complex pair $\alpha\pm i\beta$ \ra\ $e^{\alpha x}\cos\beta x,\ e^{\alpha x}\sin\beta x$ (multiplicity $m$: also times $x,\dots,x^{m-1}$)
+\end{bul}
+\item $y_h=C_1y_1+\dots+C_ny_n$ --- exactly $n$ free constants, no more, no fewer.
+\end{rcp}
+\hd{2nd order quick table} ($y''+by'+cy=0$, $D=b^2-4c$): $D>0$ \ra\ $C_1e^{\lambda_1x}+C_2e^{\lambda_2x}$; $D=0$ \ra\ $(C_1+C_2x)e^{\lambda x}$; $D<0$ \ra\ $e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$.
+}
+\F{Wronskian: is my fundamental system valid?}{
+$W(x)=\det\begin{pmatrix}y_1&y_2\\y_1'&y_2'\end{pmatrix}=y_1y_2'-y_1'y_2$.\\
+$W(x_0)\ne0$ for one $x_0$ \ra\ $y_1,y_2$ are linearly independent \ra\ they span all solutions.
+For $y''+by'+cy=0$: $W(x)=W(0)e^{-bx}$, so $W$ is either never zero or identically zero (Abel).
+}
+\F{reduction of order (one solution known)}{
+Given one solution $y_1$ of $y''+p y'+q y=0$, set $y_2=v(x)y_1$. Inserting kills the $v$ term and leaves a first-order ODE for $v'$:
+$v'=\frac1{y_1^2}e^{-\int p}$, so $y_2=y_1\int\frac{e^{-\int p}}{y_1^2}\dx$.
+}
+
+\subsection{Particular solution: ansatz by the right-hand side}\label{sub:odepart}
+\T{ansatz table --- $m$ is the resonance multiplicity}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.34\linewidth}>{\raggedright\arraybackslash}p{0.60\linewidth}@{}}
+$g(x)$ & ansatz $y_p$\\
+\midrule
+polynomial, degree $k$ & $x^m(A_kx^k+\dots+A_0)$, full polynomial\\
+$Ce^{\mu x}$ & $x^mAe^{\mu x}$\\
+$C\cos\omega x$ or $C\sin\omega x$ & $x^m(A\cos\omega x+B\sin\omega x)$, \emph{both} terms\\
+$P_k(x)e^{\mu x}$ & $x^me^{\mu x}(A_kx^k+\dots+A_0)$\\
+$e^{\mu x}\cos\omega x$ & $x^me^{\mu x}(A\cos\omega x+B\sin\omega x)$\\
+$g_1+g_2$ & solve separately and add (superposition)\\
+\end{tsTabular}}
+\hd{$m$ =} multiplicity of $\mu$ (resp.\ of $\mu\pm i\omega$) as a root of the characteristic polynomial. No resonance \ra\ $m=0$ \ra\ no extra $x$.
+}
+\R{execute the ansatz}{
+\begin{rcp}
+\item Pick the shape from the table above.
+\item \warn \hd{RESONANCE CHECK:} is the exponent $\mu$ (resp.\ $\pm i\omega$) a root of the characteristic polynomial, and with what multiplicity $m$? \ra\ multiply the whole ansatz by $x^m$. Skipping this makes the ansatz collapse to $0=g$.
+\item Differentiate the ansatz, insert into the ODE, compare coefficients, solve for $A,B,\dots$
+\item \hd{General solution $=y_h+y_p$}; only now impose the initial conditions, on the \emph{sum}.
+\end{rcp}
+}
+\E{$y''-y=e^x$ (textbook resonance)}{
+\textbf{1)} $\lambda^2-1=0$ \ra\ $\lambda=\pm1$ \ra\ $y_h=C_1e^x+C_2e^{-x}$.\\
+\textbf{2)} $\mu=1$ \emph{is} a simple root \ra\ resonance, $m=1$ \ra\ ansatz $y_p=Axe^x$.\\
+\textbf{3)} $y_p'=A(1+x)e^x$, $y_p''=A(2+x)e^x$ \ra\ $y_p''-y_p=2Ae^x\overset!=e^x$ \ra\ $A=\frac12$.\\
+\textbf{4)} $\boxed{y=C_1e^x+C_2e^{-x}+\tfrac12xe^x}$
+}
+\E{resonant $\cos$, and a full 2nd-order IVP}{
+\hd{(a)} $y''+y=\cos x$: $\lambda=\pm i$ \ra\ $y_h=C_1\cos x+C_2\sin x$; $\pm i$ is a root \ra\ $m=1$ \ra\ $y_p=x(A\cos x+B\sin x)$ \ra\ $A=0$, $B=\frac12$ \ra\ $y=C_1\cos x+C_2\sin x+\frac x2\sin x$.\\
+\hd{(b) IVP} $y''-3y'+2y=0$, $y(0)=1$, $y'(0)=0$: $\lambda=1,2$ \ra\ $y=C_1e^x+C_2e^{2x}$.
+$C_1+C_2=1$, $C_1+2C_2=0$ \ra\ $C_2=-1$, $C_1=2$ \ra\ $\boxed{y=2e^x-e^{2x}}$.
+}
+\F{variation of constants (when no ansatz fits, e.g.\ $g=\frac1x$, $\tan x$)}{
+2nd order with $y_h=C_1y_1+C_2y_2$: set $y_p=c_1(x)y_1+c_2(x)y_2$ with
+\[c_1'=-\frac{y_2g}W,\qquad c_2'=\frac{y_1g}W,\qquad W=y_1y_2'-y_1'y_2,\]
+then integrate. Always works; just slower than the ansatz.
+}
+
+\subsection{Conditions, existence, qualitative behaviour}\label{sub:autonomous}
+\F{IVP vs BVP, Picard--Lindel\"of}{
+\hd{IVP \de{Anfangswertproblem}:} all conditions at one point, $y(x_0),y'(x_0),\dots$ --- $n$ of them for order $n$.\\
+\hd{BVP \de{Randwertproblem}:} conditions at two points $a,b$ --- may have $0$, exactly $1$, or infinitely many solutions.\\
+\hd{Picard--Lindel\"of:} $y'=f(x,y)$, $y(x_0)=y_0$ with $f$ continuous and \emph{Lipschitz in $y$} (e.g.\ $\partial_yf$ continuous and locally bounded) \ra\ a \textbf{unique} solution on a neighbourhood of $x_0$. Higher order: same after rewriting as a system.\\
+\warn Continuity of $f$ alone gives existence (Peano) but \textbf{not} uniqueness: $y'=\sqrt{|y|}$, $y(0)=0$ has both $y\equiv0$ and $y=\frac{x^2}4$.\\
+Linear ODEs with continuous coefficients: unique solution on the \emph{whole} interval.
+}
+\R{autonomous $y'=f(y)$: sketch without solving}{
+\begin{rcp}
+\item Equilibria: the roots of $f(y)=0$ --- these are the constant solutions.
+\item Sign of $f$ between consecutive equilibria: $f>0$ \ra\ solutions increase, $f<0$ \ra\ decrease.
+\item An equilibrium $y^*$ is \hd{stable} if $f$ goes $+\to-$ there (equivalently $f'(y^*)<0$), \hd{unstable} if $-\to+$ ($f'(y^*)>0$).
+\item Solutions can never cross an equilibrium (uniqueness), so each one is trapped between two of them and converges monotonically.
+\end{rcp}
+}

@@ -1,0 +1,75 @@
+\subsection{Setup}\label{sub:seriesdef}
+\D{series, absolute vs conditional}{
+$\sum_{n=1}^\infty a_n:=\lim_{N\to\infty}s_N$ with $s_N=\sum_{n=1}^Na_n$ --- a series \emph{is} the sequence of partial sums.\\
+\hd{absolutely convergent:} $\sum|a_n|<\infty$. \ \textbf{abs.\ conv.\ \ra\ conv.}, not conversely ($\sum\frac{(-1)^n}n$).\\
+\hd{conditionally convergent:} converges but not absolutely.\\
+Convergence is unaffected by finitely many terms or by the starting index.
+}
+
+\subsection{Decision tree: does $\sum a_n$ converge?}\label{sub:seriestree}
+\R{run these in order, stop at the first hit}{
+\begin{rcp}
+\item \hd{$a_n\not\to0$?} \ra\ \textbf{diverges}, done \de{Trivialkriterium}. Free, always check first.
+\item \hd{Known shape?} geometric, $p$-series, log-$p$ --- read the answer off the box below.
+\item \hd{Factorials or $c^n$?} \ra\ \textbf{ratio test}.
+\item \hd{$n$-th powers, $n$ in the exponent?} \ra\ \textbf{root test} (stronger than ratio).
+\item \hd{Resembles a known series?} \ra\ \textbf{comparison} on leading powers.
+\item \hd{Alternating?} \ra\ \textbf{Leibniz}.
+\item \hd{$a_n=f(n)$ with $f\ge0$ decreasing?} \ra\ \textbf{integral test}.
+\item \hd{Telescoping?} $a_n=b_n-b_{n+1}$ \ra\ $s_N=b_1-b_{N+1}$.
+\end{rcp}
+}
+\F{the benchmark series (memorise these four lines)}{
+\begin{bul}
+\item $\sum_{n\ge0}q^n$ conv.\ $\iff|q|<1$, value $\frac1{1-q}$; \ $\sum_{n\ge1}nq^{n-1}=\frac1{(1-q)^2}$.
+\item $\sum\frac1{n^p}$ conv.\ $\iff p>1$. \ ($p=1$ harmonic, diverges.)
+\item $\sum_{n\ge2}\frac1{n\ln^pn}$ conv.\ $\iff p>1$.
+\item $\sum\frac1{n!}=e$; \ $\sum_{n\ge1}\frac{(-1)^{n+1}}n=\ln2$; \ $\sum\frac1{n^2}=\frac{\pi^2}6$; \ $\sum\frac1{n(n+1)}=1$.
+\end{bul}
+}
+\F{ratio and root test, stated exactly}{
+\hd{Ratio \de{Quotientenkriterium}:} $q=\lim\left|\frac{a_{n+1}}{a_n}\right|$. \ $q<1$ abs.\ conv.; $q>1$ div.; $q=1$ \textbf{no information}.\\
+\hd{Root \de{Wurzelkriterium}:} $q=\limsup\sqrt[n]{|a_n|}$, same verdicts.\\
+\warn Both give $q=1$ for $\sum\frac1n$ and $\sum\frac1{n^2}$, which behave differently --- at $q=1$ you must switch method.
+}
+\F{comparison, Leibniz, integral test}{
+\hd{Comparison \de{Majorante/Minorante}:} $0\le a_n\le b_n$, $\sum b_n<\infty$ \ra\ $\sum a_n<\infty$; \ $a_n\ge b_n\ge0$, $\sum b_n=\infty$ \ra\ $\sum a_n=\infty$. Compare leading powers only: $\frac{3n^2+n}{n^4-1}\sim\frac3{n^2}$ \ra\ conv.\\
+\hd{Limit comparison:} $\frac{a_n}{b_n}\to c\in(0,\infty)$ \ra\ same behaviour.\\
+\hd{Leibniz:} $a_n=(-1)^nb_n$ with $b_n\ge0$ \textbf{monotonically} decreasing to $0$ \ra\ converges, and $|s-s_N|\le b_{N+1}$.\\
+\hd{Integral test:} $f\ge0$ decreasing \ra\ $\int_1^\infty f\dx\le\sum_{n\ge1}f(n)\le f(1)+\int_1^\infty f\dx$; sum and integral converge together.
+}
+\X{test traps}{
+\begin{bul}
+\item Leibniz needs \emph{monotone} $b_n$: $b_n=\frac{2+(-1)^n}n\to0$ but is not monotone.
+\item Comparison needs $a_n\ge0$; with signs, apply it to $|a_n|$ (that proves \emph{absolute} convergence only).
+\item $\sum a_n$ conv.\ and $\sum b_n$ conv.\ \ra\ $\sum(a_n+b_n)$ conv.\ \yes, \ but $\sum a_nb_n$ conv.\ \no\ ($a_n=b_n=\frac{(-1)^n}{\sqrt n}$).
+\item ``$s_N$ bounded \ra\ converges'' \no\ unless $a_n\ge0$ (then $s_N$ is monotone).
+\end{bul}
+}
+\E{run the tree on five series}{
+\begin{bul}
+\item $\sum\frac{n^2}{2^n}$: $c^n$ \ra\ ratio $\frac{(n+1)^2}{2n^2}\to\frac12<1$ \ra\ \textbf{conv.}
+\item $\sum\frac{n!}{n^n}$: ratio $=\left(\frac n{n+1}\right)^n\to\frac1e<1$ \ra\ \textbf{conv.}
+\item $\sum\left(\frac n{2n+1}\right)^n$: root $=\frac n{2n+1}\to\frac12<1$ \ra\ \textbf{conv.}
+\item $\sum\frac{2n+3}{n^2+7}$: behaves like $\frac2n$ \ra\ \textbf{div.}
+\item $\sum\frac{(-1)^n}{\sqrt n}$: Leibniz \ra\ conv.; $\sum\frac1{\sqrt n}$ div.\ \ra\ \textbf{conditionally conv.}
+\end{bul}
+}
+\E{telescoping via partial fractions}{
+$\sum_{n\ge1}\frac1{n(n+2)}$: split $\frac1{n(n+2)}=\frac12\left(\frac1n-\frac1{n+2}\right)$.
+$s_N=\frac12\left(1+\frac12-\frac1{N+1}-\frac1{N+2}\right)\to\frac34$.\\
+\hd{Recipe:} partial-fraction it, write out the first three and last two terms, see what survives.
+}
+
+\subsection{Rearrangement, products, mixed-sign tests}\label{sub:rearrange}
+\F{rearrangement and Cauchy product}{
+\begin{bul}
+\item \hd{Riemann rearrangement:} conditionally convergent \ra\ a reordering can be made to converge to \emph{any} prescribed value, or to $\pm\infty$. Order matters.
+\item \hd{Dirichlet:} absolutely convergent \ra\ every reordering gives the same sum.
+\item \hd{Cauchy product} $c_n=\sum_{k=0}^na_kb_{n-k}$: if at least one factor converges absolutely then $\sum c_n=(\sum a_n)(\sum b_n)$ (Mertens).
+\end{bul}
+}
+\F{Abel / Dirichlet test (for $\sum a_nb_n$ with signs)}{
+If $b_n\downarrow0$ monotonically and the partial sums of $\sum a_n$ are \emph{bounded}, then $\sum a_nb_n$ converges. \\
+This is what makes $\sum\frac{\sin n}n$ and $\sum\frac{\cos n}n$ converge although neither is absolutely convergent, and it is the discrete twin of the integration-by-parts argument for $\int_1^\infty\frac{\cos t}t\dt$.
+}

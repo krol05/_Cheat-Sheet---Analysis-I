@@ -1,0 +1,117 @@
+\subsection{Definitions you must be able to write}\label{sub:seqdef}
+\D{convergence, divergence, boundedness}{
+$a_n\to a$ :$\iff\forall\eps>0\ \exists N\in\N\ \forall n\ge N:\ |a_n-a|<\eps$.\\
+$a_n\to\infty$ :$\iff\forall K>0\ \exists N\ \forall n\ge N:\ a_n>K$ (\emph{divergence to $\infty$}, not convergence).\\
+\hd{bounded:} $\exists C:|a_n|\le C\ \forall n$. \hd{monotone incr.:} $a_{n+1}\ge a_n\ \forall n$.\\
+\hd{explicit} $a_n=f(n)$ vs \hd{recursive} $a_{n+1}=f(a_n)$ --- the treatment is completely different, see \S\ref{sub:seqlimit} vs \S\ref{sub:recursive}.
+}
+\F{the implication chain (know which arrows reverse)}{
+convergent \ra\ Cauchy \ra\ bounded \ra\ has a convergent subsequence (Bolzano--Weierstrass).\\
+Only reversal that holds: \textbf{Cauchy $\Leftrightarrow$ convergent} in $\Rl$ (completeness). Also monotone $+$ bounded $\Leftrightarrow$ convergent \emph{for monotone sequences}.
+}
+
+\subsection{Limit of an explicitly given $a_n$}\label{sub:seqlimit}
+\R{compute $\lim a_n$: match the shape}{
+\begin{rcp}
+\item \hd{Rational in $n$:} divide top and bottom by the highest power in the \emph{denominator}. $\deg$ top $<$ bottom \ra\ $0$; $=$ \ra\ ratio of leading coefficients; $>$ \ra\ $\pm\infty$.
+\item \hd{Roots, $\infty-\infty$:} multiply by the conjugate.
+\item \hd{$n$-th roots, $n$ in the exponent:} write $a_n=e^{\ln a_n}$ and take the limit in the exponent.
+\item \hd{$(1+\frac cn)^{dn}$:} $\to e^{cd}$.
+\item \hd{Factorials, $n^n$:} use the growth order $\ln n\ll n^\alpha\ll b^n\ll n!\ll n^n$ ($\alpha>0$, $b>1$).
+\item \hd{$(-1)^n$ or $\sin/\cos$ times a null sequence:} squeeze $-|b_n|\le a_n\le|b_n|$.
+\item \hd{$\frac1n\sum_{k\le n}f(k/n)$:} that is a Riemann sum, see \S\ref{sub:riemannsum}.
+\item \hd{Nothing fits:} treat $n$ as a real $x$ and use Taylor / l'Hospital (\S\ref{sub:taylorlimit}, \S\ref{sub:lhospital}).
+\end{rcp}
+}
+\F{tools with names --- cite them, it earns marks}{
+\hd{Limit laws:} sums, products, quotients (denominator $\ne0$) --- only if \emph{both} limits exist finitely.\\
+\hd{Squeeze \de{Sandwich}:} $b_n\le a_n\le c_n$ and $b_n,c_n\to L$ \ra\ $a_n\to L$.\\
+\hd{Monotone convergence \de{Monotoniekriterium}:} monotone $+$ bounded \ra\ convergent, limit $=\sup$ resp.\ $\inf$ of the term set.\\
+\hd{Continuity transfer:} $a_n\to a$ and $f$ continuous at $a$ \ra\ $f(a_n)\to f(a)$.\\
+\hd{Ratio criterion for sequences:} $\left|\frac{a_{n+1}}{a_n}\right|\to q<1$ \ra\ $a_n\to0$ geometrically.
+}
+\E{the limits that keep coming back}{
+\begin{bul}
+\item $\frac{3n^2-n}{2n^2+5}=\frac{3-\frac1n}{2+\frac5{n^2}}\to\frac32$.
+\item $\sqrt{n^2+n}-n=\frac{n}{\sqrt{n^2+n}+n}=\frac1{\sqrt{1+\frac1n}+1}\to\frac12$.
+\item $\sqrt[n]{n}=e^{\frac{\ln n}n}\to1$; $\sqrt[n]{a}\to1$ $(a>0)$; $\sqrt[n]{2^n+3^n}\to3$ (pull out the biggest).
+\item $\left(1+\frac3n\right)^{2n}=\left[\left(1+\frac3n\right)^n\right]^2\to e^6$.
+\item $\frac{n!}{n^n}\le\frac1n\to0$; \ $\frac{2^n}{n!}\to0$ (ratio $\frac2{n+1}\le\frac12$ for $n\ge3$).
+\item $\frac{(-1)^n}{n}$: $|a_n|\le\frac1n\to0$ \ra\ $\to0$. Alternating by itself means nothing.
+\end{bul}
+}
+\R{prove $a_n\to a$ by $\eps$--$N$}{
+\begin{rcp}
+\item Compute $|a_n-a|$, simplify to one fraction.
+\item Over-estimate to a clean $\frac C{n^k}$ (numerator bigger, denominator smaller).
+\item Solve $\frac C{n^k}<\eps$ \ra\ take $N:=\lceil(C/\eps)^{1/k}\rceil+1$.
+\item Write it out: ``Let $\eps>0$, choose $N$ as above; then $\forall n\ge N$: $|a_n-a|\le\frac C{n^k}<\eps$.'' $\square$
+\end{rcp}
+}
+\F{estimates worth remembering}{
+$n!\ge2^{n-1}$; \ $\left(\frac n3\right)^n\le n!\le n^n$; \ \hd{Stirling} $n!\sim\sqrt{2\pi n}\left(\frac ne\right)^n$, so $\sqrt[n]{n!}\sim\frac ne\to\infty$.\\
+$\sum_{k=1}^n\frac1k\approx\ln n+\gamma$ (grows, unbounded); \ $\left(1+\frac1n\right)^n\uparrow e$, $\left(1+\frac1n\right)^{n+1}\downarrow e$.
+}
+
+\subsection{Recursive sequences $x_{n+1}=f(x_n)$}\label{sub:recursive}
+\R{full treatment (a standard 4--9 point task)}{
+\begin{rcp}
+\item \hd{Candidate limit:} solve the fixed-point equation $L=f(L)$. Keep every solution.
+\item \hd{Bounded:} induction --- find an interval $I$ with $x_0\in I$ and $f(I)\subseteq I$, conclude $x_n\in I$ for all $n$.
+\item \hd{Monotone:} the sign of $f(x)-x$ on $I$ gives the direction; if $f$ is increasing, that sign never flips, so $(x_n)$ is monotone.
+\item \hd{Conclude:} monotone $+$ bounded \ra\ converges. Then $L=\lim x_{n+1}=\lim f(x_n)=f(L)$ by continuity of $f$; pick the root of $L=f(L)$ lying in $I$.
+\end{rcp}
+}
+\F{contraction shortcut (often much faster)}{
+If $|f'(x)|\le q<1$ on $I$ then by the MVT
+$|x_{n+1}-L|=|f(x_n)-f(L)|\le q|x_n-L|$, hence $|x_n-L|\le q^n|x_0-L|\to0$.\\
+\ra\ converges to the \textbf{unique} fixed point, for \emph{every} starting point $x_0\in I$. No monotonicity needed.
+}
+\E{$x_{n+1}=\frac{\sin x_n}{1+x_n^2}$, $x_0\in(0,1)$}{
+$f(x)=\frac{\sin x}{1+x^2}$.
+\textbf{1)} $f(0)=0$; for $x\ne0$, $|\sin x|<|x|$ and $1+x^2\ge1$ give $|f(x)|<|x|$ \ra\ no other fixed point.
+\textbf{2)} $x_0\in(0,1)$ \ra\ $\sin x_0>0$ \ra\ all $x_n>0$, and $x_{n+1}<x_n$ \ra\ strictly decreasing, bounded below by $0$.
+\textbf{3)} Monotone $+$ bounded \ra\ converges to $L\ge0$ with $L=f(L)$ \ra\ $L=0$.
+}
+
+\subsection{Accumulation points, limsup, liminf}\label{sub:accum}
+\D{accumulation point (H\"aufungspunkt)}{
+$h$ is an accumulation point of $(a_n)$ :$\iff$ every $\eps$-ball around $h$ contains $a_n$ for \textbf{infinitely many} $n$ $\iff$ some subsequence converges to $h$.\\
+$\limsup a_n=\lim_{n\to\infty}\sup_{k\ge n}a_k=$ largest accumulation point; $\liminf=$ smallest.
+}
+\R{find all accumulation points}{
+\begin{rcp}
+\item Split by the periodic part: $(-1)^n$ \ra\ $n=2k$ and $n=2k+1$; $\cos\frac{n\pi}3$ \ra\ period 6; $\sin n$ \ra\ dense, every point of $[-1,1]$.
+\item Take the limit of each subsequence. That set is exactly the set of accumulation points.
+\item $\limsup=\max$, $\liminf=\min$ of that set.
+\end{rcp}
+\hd{Ex.} $a_n=(-1)^n\frac n{n+1}$ \ra\ $\{-1,+1\}$, $\limsup=1$, $\liminf=-1$, diverges.
+}
+\F{limsup / liminf algebra}{
+Always defined in $[-\infty,\infty]$, no hypotheses needed. $\liminf a_n\le\limsup a_n$.
+\begin{bul}
+\item $a_n$ converges $\iff$ bounded and $\liminf=\limsup$ (then all three coincide).
+\item $\limsup(a_n+b_n)\le\limsup a_n+\limsup b_n$ --- \warn only $\le$, equality can fail ($a_n=(-1)^n$, $b_n=-(-1)^n$).
+\item $\liminf(a_n+b_n)\ge\liminf a_n+\liminf b_n$; \ $\liminf(-a_n)=-\limsup a_n$.
+\item If $b_n\to b$ exists then $\limsup(a_n+b_n)=\limsup a_n+b$ (a convergent summand splits off exactly).
+\end{bul}
+}
+\X{monotone sequences and accumulation points}{
+A monotone sequence is either bounded (\ra\ converges, \textbf{exactly one} accumulation point) or unbounded (\ra\ $\to\pm\infty$, \textbf{no} accumulation point).\\
+So ``a monotone sequence may have no accumulation point'' is \yes, and ``at least one'' / ``at least two'' are both \no. \ Bolzano--Weierstrass only promises one for \emph{bounded} sequences.
+}
+\F{nested intervals \de{Intervallschachtelung}}{
+$I_1\supseteq I_2\supseteq\cdots$ closed, bounded, $|I_n|\to0$ \ra\ $\bigcap I_n$ is exactly one point. Equivalent to completeness; it is the engine of the bisection proof of Bolzano--Weierstrass.
+}
+
+\subsection{Cauchy sequences}\label{sub:cauchy}
+\D{Cauchy}{
+$\forall\eps>0\ \exists N\ \forall m,n\ge N:|a_n-a_m|<\eps$. In $\Rl$: \textbf{Cauchy $\iff$ convergent}, so this proves convergence \emph{without knowing the limit}.
+}
+\X{the near-miss}{
+``$|a_{n+1}-a_n|\to0$'' is \textbf{not} enough: $a_n=\sqrt n$ and $a_n=\sum_{k\le n}\frac1k$ both satisfy it and diverge. You need control of $|a_n-a_m|$ for \emph{all} $m,n\ge N$, not just neighbours.
+}
+\R{show $(a_n)$ is Cauchy}{
+Standard route: show $|a_{n+1}-a_n|\le Cq^n$ with $q<1$. Then for $m>n$
+$|a_m-a_n|\le\sum_{k=n}^{m-1}Cq^k\le\frac{Cq^n}{1-q}\to0$, so Cauchy, so convergent.
+}

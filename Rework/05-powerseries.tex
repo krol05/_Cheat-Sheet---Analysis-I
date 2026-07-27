@@ -1,0 +1,84 @@
+\subsection{Radius of convergence}\label{sub:radius}
+\R{``for which $x$ does $\sum a_n(x-x_0)^n$ converge?''}{
+\begin{rcp}
+\item Read off the \hd{centre} $x_0$ (in $(x-2)^n$: $x_0=2$) and the \hd{coefficient} $a_n$ = everything without $(x-x_0)^n$.
+\item \hd{Radius} (Cauchy--Hadamard): $\frac1R=\lim\left|\frac{a_{n+1}}{a_n}\right|$ for factorials, or $\frac1R=\limsup\sqrt[n]{|a_n|}$ for powers. Limit $0$ \ra\ $R=\infty$; limit $\infty$ \ra\ $R=0$.
+\item Absolute convergence on $|x-x_0|<R$, divergence on $|x-x_0|>R$.
+\item \hd{Endpoints $x=x_0\pm R$ one at a time} --- plug in and use \S\ref{sub:seriestree} (usually Leibniz or $p$-series). The two ends can behave differently.
+\item Answer as an interval, e.g.\ $[x_0-R,\,x_0+R)$.
+\end{rcp}
+}
+\E{$\sum_{n\ge1}\frac{n^n(x-2)^n}{(2n)!}$}{
+$a_n=\frac{n^n}{(2n)!}$; factorial \ra\ ratio test.
+\[\left|\frac{a_{n+1}}{a_n}\right|=\frac{(n+1)^{n+1}}{(2n+2)!}\cdot\frac{(2n)!}{n^n}
+=\frac{(n+1)\left(1+\frac1n\right)^n}{(2n+1)(2n+2)}\longrightarrow0,\]
+since the numerator grows like $e\,n$ and the denominator like $4n^2$. So $\frac1R=0$, $R=\infty$: \textbf{converges for every $x\in\Rl$}.
+}
+\F{what a power series gives you for free}{
+On $|x-x_0|<R$ the sum is $C^\infty$ and you may \textbf{differentiate and integrate termwise}; $R$ is unchanged. Coefficients are unique: $a_n=\frac{f^{(n)}(x_0)}{n!}$.\\
+Convergence is \emph{uniform} on every closed $[x_0-r,x_0+r]$ with $r<R$ (Weierstrass $M$-test), \warn not necessarily on the whole open disc.
+}
+
+\subsection{Taylor formula and error bounds}\label{sub:taylorerr}
+\F{Taylor with Lagrange remainder}{
+$f(x)=\underbrace{\sum_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k}_{T_n(x)}+R_n(x)$, \quad
+$R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$ for some $\xi$ between $x_0$ and $x$; also $R_n=o(|x-x_0|^n)$.\\
+\hd{Error bound:} $|R_n(x)|\le\frac{M}{(n+1)!}|x-x_0|^{n+1}$ with $M=\max|f^{(n+1)}|$ on the interval between $x_0$ and $x$.
+}
+\R{approximate a value and bound the error}{
+\begin{rcp}
+\item Pick $x_0$ near $x$ where $f$ and its derivatives are known exactly ($0$, $1$, $\frac\pi6$, \dots).
+\item Write $T_n$ and evaluate.
+\item Bound $M=\max|f^{(n+1)}|$ on the interval (for $\sin,\cos$: $M=1$ always; for $e^x$: the right endpoint).
+\item If an accuracy $\eps$ is prescribed, solve $\frac{M}{(n+1)!}|x-x_0|^{n+1}<\eps$ for $n$.
+\end{rcp}
+\hd{Ex.} $e^{0.1}$, $n=3$: $T_3=1+0.1+0.005+\frac{0.001}6\approx1.10517$; $M<1.2$ \ra\ $|R_3|\le\frac{1.2}{24}10^{-4}=5\cdot10^{-6}$.
+}
+\D{linear / tangent approximation}{
+$f(x)\approx f(x_0)+f'(x_0)(x-x_0)$ --- the $n=1$ Taylor polynomial, i.e.\ the tangent line. Error $\le\frac{\max|f''|}2(x-x_0)^2$.\\
+This is also the \emph{definition} of differentiability: the tangent is the unique linear function whose error is $o(|x-x_0|)$.
+}
+
+\subsection{Limits by Taylor: the fastest tool you have}\label{sub:taylorlimit}
+\R{limits $x\to0$ by plugging in series}{
+\begin{rcp}
+\item Look at the denominator's power $x^m$. You need every series to order $m$ --- one order further if the leading terms cancel.
+\item Insert the standard series (\S\ref{sub:taylorlist}), expand, cancel.
+\item The surviving lowest-order term is the answer; everything else is $o(x^m)$.
+\end{rcp}
+\hd{Order bookkeeping:} $\sin x=x+O(x^3)$, so $\frac{\sin x}x=1+O(x^2)$. Track $O(x^k)$ explicitly and you cannot lose a term.
+}
+\E{$\displaystyle\lim_{x\to0}\frac{\sin x-x+\frac{x^3}6}{x^5}$}{
+$\sin x=x-\frac{x^3}6+\frac{x^5}{120}-\frac{x^7}{5040}+\dots$\\
+Numerator $=\frac{x^5}{120}+O(x^7)$ \ra\ limit $=\boxed{\dfrac1{120}}$.\\
+l'Hospital would need \textbf{five} differentiations. Don't.
+}
+\E{more Taylor limits, one line each}{
+\begin{bul}
+\item $\frac{1-\cos x}{x^2}=\frac{x^2/2+O(x^4)}{x^2}\to\frac12$.
+\item $\frac{e^x-1-x}{x^2}=\frac{x^2/2+O(x^3)}{x^2}\to\frac12$.
+\item $\frac{\tan x-x}{x^3}\to\frac13$ \ (since $\tan x=x+\frac{x^3}3+O(x^5)$).
+\item $\frac1{\sin x}-\frac1x=\frac{x-\sin x}{x\sin x}=\frac{x^3/6}{x^2}\to0$.
+\item $\frac{\ln(1+x)-x}{x^2}\to-\frac12$.
+\end{bul}
+}
+
+\subsection{Building new series from old ones}\label{sub:seriesops}
+\R{never recompute derivatives --- transform instead}{
+\begin{rcp}
+\item \hd{Substitute:} $e^{-x^2}=\sum\frac{(-1)^nx^{2n}}{n!}$; \ $\frac1{1+x^2}=\sum(-1)^nx^{2n}$.
+\item \hd{Differentiate termwise:} $\frac1{(1-x)^2}=\sum_{n\ge1}nx^{n-1}$.
+\item \hd{Integrate termwise:} $\arctan x=\int\frac{dx}{1+x^2}=\sum\frac{(-1)^nx^{2n+1}}{2n+1}$; \ $\ln(1+x)=\int\frac{dx}{1+x}$.
+\item \hd{Multiply:} collect by total degree (Cauchy product). $e^x\sin x=x+x^2+\frac{x^3}3+O(x^4)$.
+\item \hd{Divide:} long division of the series, or multiply by the geometric expansion of the denominator.
+\item \hd{Shift centre:} to expand at $x_0\ne0$, substitute $t=x-x_0$ and expand in $t$.
+\end{rcp}
+}
+\F{ready-made compositions}{
+$\ln(1+x^2)=x^2-\frac{x^4}2+\frac{x^6}3-\dots$;\quad
+$\sin(x^2)=x^2-\frac{x^6}6+\dots$;\quad
+$e^{-x^2}=1-x^2+\frac{x^4}2-\dots$;\\
+$\frac1{1+x^2}=1-x^2+x^4-\dots$;\quad
+$\sqrt{1+x}=1+\frac x2-\frac{x^2}8+\frac{x^3}{16}-\dots$;\quad
+$\frac1{\sqrt{1-x}}=1+\frac x2+\frac{3x^2}8+\dots$
+}
