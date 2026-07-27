@@ -19,6 +19,7 @@
     \(
         \lim_{n\to\infty} a_n = 0.
     \)
+    \tsPoint The converse is false: the harmonic series $\sum_{n=1}^{\infty}\frac1n$ has $\frac1n\to0$ but diverges ($\sum_{n=1}^\infty\frac1n=\infty$).
 }
 \tsLem{(Linearity of Series)}{
     Let $\sum_{n=0}^{\infty} a_n$ and $\sum_{n=0}^{\infty} b_n$ be convergent series. Then:
@@ -58,6 +59,27 @@
     \)
     is monotonically increasing. If $(s_n)$ is bounded, then the series $\sum_{n=0}^{\infty} a_n$ converges; otherwise, it diverges.
 }
+\tsThe{(Cauchy Criterion for Series)}{
+    The series $\sum_{n=0}^{\infty} a_n$ converges if and only if for every $\varepsilon > 0$ there exists $N$ such that for all $n \ge m \ge N$:
+    \[
+        \left| \sum_{k=m+1}^{n} a_k \right| \le \varepsilon.
+    \]
+}
+\tsDef{(Absolute and Conditional Convergence)}{
+    A series $\sum a_n$ is called \emph{absolutely convergent} if
+    \(
+    \sum |a_n| \text{ converges}.
+    \)
+    \tsPoint It is called \emph{conditionally convergent} if $\sum a_n$ converges but $\sum |a_n|$ does not.
+}
+\tsThe{(Absolute Convergence $\Rightarrow$ Convergence)}{
+    Every absolutely convergent series converges, and
+    \[
+        \left| \sum_{n=0}^{\infty} a_n \right|
+        \le
+        \sum_{n=0}^{\infty} |a_n|.
+    \]
+}
 \tsThe{(Comparison Test / Majorant--Minorant Criterion)}{
     Let $\sum a_n$, $\sum b_n$, $\sum c_n$ be series with non-negative terms and suppose that for some $N$:
     \(
@@ -69,31 +91,47 @@
         \item If $\sum c_n$ diverges, then $\sum b_n$ diverges (minorant test).
     \end{itemize}
 }
-\tsDef{(Absolute and Conditional Convergence)}{
-    A series $\sum a_n$ is called \emph{absolutely convergent} if
+\tsThe{(p-Series and Geometric Series --- Comparison Benchmarks)}{
     \(
-    \sum |a_n| \text{ converges}.
+        \sum_{n=1}^{\infty} \frac{1}{n^p}
     \)
-    \tsPoint It is called \emph{conditionally convergent} if $\sum a_n$ converges but $\sum |a_n|$ does not.
+    converges iff $p>1$ (p-series).
+    \tsPoint
+    \(
+        \sum_{n=0}^{\infty} r^n
+    \)
+    converges iff $|r|<1$, with sum $\frac{1}{1-r}$; more generally $\sum_{n=0}^\infty ar^n=\frac{a}{1-r}$.
+    \tsPoint Finite geometric sum: $\sum_{k=0}^{n} r^k = \frac{1-r^{n+1}}{1-r}$ for $r\neq1$.
 }
-\tsThe{(Riemann Rearrangement Theorem)}{
-    Let $\sum a_n$ be a conditionally convergent series of real numbers, $L \in \mathbb{R}$. 
-    Then there exists a bijection $\varphi : \mathbb{N}_0 \to \mathbb{N}_0$ such that
+\tsThe{(Telescoping Sums)}{
     \(
-        \sum_{n=0}^{\infty} a_{\varphi(n)} = L.
+        \sum_{k=0}^{n} (b_k - b_{k+1}) = b_0 - b_{n+1}.
     \)
+    If $b_n \to L$, then $\sum_{k=0}^{\infty} (b_k-b_{k+1}) = b_0 - L$.
 }
-\tsThe{(Dirichlet's Rearrangement Theorem)}{
-    Let $\sum a_n$ be absolutely convergent and let $\varphi : \mathbb{N}_0 \to \mathbb{N}_0$ be a bijection. Then
+\tsThe{(Cauchy Root Test)}{
+    Let $(a_n)$ be a sequence and define
     \(
-        \sum_{n=0}^{\infty} a_{\varphi(n)}
+        \rho = \limsup_{n\to\infty} |a_n|^{1/n}.
     \)
-    converges absolutely and
+    Then:
+    \begin{itemize}[noitemsep]
+        \item If $\rho < 1$, the series $\sum a_n$ converges absolutely.
+        \item If $\rho > 1$, the series $\sum a_n$ diverges.
+        \item If $\rho = 1$, the test is inconclusive.
+    \end{itemize}
+}
+\tsThe{(d'Alembert Ratio Test)}{
+    Let $(a_n)$ with $a_n \neq 0$ and define
     \(
-        \sum_{n=0}^{\infty} a_n
-        =
-        \sum_{n=0}^{\infty} a_{\varphi(n)}.
+        \rho = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|.
     \)
+    Then:
+    \begin{itemize}[noitemsep]
+        \item If $\rho < 1$, the series $\sum a_n$ converges absolutely.
+        \item If $\rho > 1$, the series $\sum a_n$ diverges.
+        \item If $\rho = 1$, the test is inconclusive.
+    \end{itemize}
 }
 \tsThe{(Leibniz Alternating Series Test)}{
     Let $(a_n)$ be a monotonically decreasing sequence of non-negative real numbers with
@@ -113,41 +151,24 @@
         \sum_{n=0}^{2m} (-1)^n a_n.
     \]
 }
-\tsThe{(Cauchy Criterion for Series)}{
-    The series $\sum_{n=0}^{\infty} a_n$ converges if and only if for every $\varepsilon > 0$ there exists $N$ such that for all $n \ge m \ge N$:
-    \[
-        \left| \sum_{k=m+1}^{n} a_k \right| \le \varepsilon.
-    \]
-}
-\tsThe{(Absolute Convergence $\Rightarrow$ Convergence)}{
-    Every absolutely convergent series converges, and
-    \[
-        \left| \sum_{n=0}^{\infty} a_n \right|
-        \le
-        \sum_{n=0}^{\infty} |a_n|.
-    \]
-}
-\tsThe{(Cauchy Root Test)}{
-    Let $(a_n)$ be a sequence and define
+\tsThe{(Riemann Rearrangement Theorem)}{
+    Let $\sum a_n$ be a conditionally convergent series of real numbers, $L \in \mathbb{R}$.
+    Then there exists a bijection $\varphi : \mathbb{N}_0 \to \mathbb{N}_0$ such that
     \(
-        \rho = \limsup_{n\to\infty} |a_n|^{1/n}.
+        \sum_{n=0}^{\infty} a_{\varphi(n)} = L.
     \)
-    Then:
-    \begin{itemize}[noitemsep]
-        \item If $\rho < 1$, the series $\sum a_n$ converges absolutely.
-        \item If $\rho > 1$, the series $\sum a_n$ diverges.
-    \end{itemize}
 }
-\tsThe{(d'Alembert Ratio Test)}{
-    Let $(a_n)$ with $a_n \neq 0$ and define
+\tsThe{(Dirichlet's Rearrangement Theorem)}{
+    Let $\sum a_n$ be absolutely convergent and let $\varphi : \mathbb{N}_0 \to \mathbb{N}_0$ be a bijection. Then
     \(
-        \rho = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|.
+        \sum_{n=0}^{\infty} a_{\varphi(n)}
     \)
-    Then:
-    \begin{itemize}[noitemsep]
-        \item If $\rho < 1$, the series $\sum a_n$ converges absolutely.
-        \item If $\rho > 1$, the series $\sum a_n$ diverges.
-    \end{itemize}
+    converges absolutely and
+    \(
+        \sum_{n=0}^{\infty} a_n
+        =
+        \sum_{n=0}^{\infty} a_{\varphi(n)}.
+    \)
 }
 \tsThe{(Cauchy Product / Mertens' Theorem)}{
     Let $\sum a_n$ and $\sum b_n$ be absolutely convergent. Then

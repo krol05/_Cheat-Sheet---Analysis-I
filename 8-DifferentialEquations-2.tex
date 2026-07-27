@@ -54,6 +54,13 @@ variables by the substitution
 u=\frac{y}{x}.
 \)
 }
+\tsDef{Bernoulli Differential Equation}{
+An equation of the form
+\(
+y'+p(x)y=q(x)y^n
+\)
+($n\neq0,1$) is called a \emph{Bernoulli equation}. The substitution $u=y^{1-n}$ linearizes it into $u'+(1-n)p(x)u=(1-n)q(x)$.
+}
 \tsDef{Associated Homogeneous Equation}{
 Given an inhomogeneous differential equation
 \[
@@ -87,6 +94,12 @@ equation.
 Consider a first-order linear inhomogeneous differential equation. A particular solution can be obtained by replacing the constant
 appearing in the general solution of the associated homogeneous
 equation by a function of the independent variable. This method is called \emph{variation of constants}.
+}
+\tsThe{Integrating Factor (First-Order Linear ODE)}{
+For $y'+p(x)y=q(x)$, the integrating factor $\mu(x)=e^{\int p(x)\,dx}$ gives
+\[
+y(x)=\frac{1}{\mu(x)}\left(\int \mu(x)q(x)\,dx+C\right).
+\]
 }
 \tsEx{Variation of Constants Example}{
 Given
@@ -148,7 +161,8 @@ has, for sufficiently well-behaved functions $f$, a unique solution
 \(
 x\mapsto y(x),\ x\in I,
 \)
-where the interval $I$ may depend on $x_0$ and $y_0$. 
+where the interval $I$ may depend on $x_0$ and $y_0$.
+\tsPoint ``Sufficiently well-behaved'' means $f$ is continuous and Lipschitz-continuous in $y$ (e.g.\ $f\in C^1$ in $y$ suffices).
 }
 \tsThe{Picard--Lindel\"of Theorem (Existence \& Uniqueness, Higher Order)}{
 The initial value problem
@@ -182,4 +196,5 @@ x\mapsto y(x),
 \)
 where the interval $I$ may depend on $x_0$ and the prescribed
 initial data.
+\tsPoint ``Sufficiently well-behaved'' means $f_{n-1},\dots,f_0,s$ are continuous (Lipschitz in the relevant variables).
 }

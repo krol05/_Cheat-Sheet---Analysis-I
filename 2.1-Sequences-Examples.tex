@@ -1,163 +1,20 @@
-\subsection{Sequences - EXAMPLES}
-\tsEx{Explicit Sequence}{
-    Consider the sequence defined by
-    \[
-        a_n = \frac{1}{n+1}, \quad n\in\mathbb{N}_0.
-    \]
-    The first terms are
-    \[
-        1,\frac12,\frac13,\frac14,\dots
-    \]
-    This sequence converges and
-    \[
-        \lim_{n\to\infty} a_n = 0.
-    \]
+\subsection{Sequences - Examples}
+\tsEx{Explicit \& Recursive Sequences}{
+    Explicit: $a_n=\frac{1}{n+1}$ gives $1,\frac12,\frac13,\frac14,\dots\to0$.
+    \tsPoint Recursive: $a_0=1,\ a_{n+1}=\frac12 a_n \Rightarrow a_n=\left(\frac12\right)^n\to0$.
 }
-\tsEx{Recursive Sequence}{
-    Define a sequence recursively by
-    \[
-        a_0 = 1, \qquad a_{n+1} = \frac{1}{2}a_n.
-    \]
-    Then
-    \[
-        a_1 = \frac12, \quad
-        a_2 = \frac14, \quad
-        a_3 = \frac18, \dots
-    \]
-    Hence
-    \[
-        a_n = \left(\frac12\right)^n
-    \]
-    and
-    \[
-        \lim_{n\to\infty} a_n = 0.
-    \]
+\tsEx{Oscillating vs.\ Divergent Sequences}{
+    $a_n=3+\frac{(-1)^n}{n}$ oscillates around $3$ with shrinking amplitude, so $\lim_{n\to\infty}a_n=3$ (converges).
+    \tsPoint $a_n=n$: for every $M>0$ choose $N>M$, then $n>N\Rightarrow a_n>M$, so $\lim_{n\to\infty}a_n=\infty$ (diverges).
 }
-\tsEx{Oscillating but Convergent Sequence}{
-    Consider
-    \[
-        a_n = 3 + \frac{(-1)^n}{n}.
-    \]
-    The sequence oscillates around $3$:
-    \[
-        4,\; 2.5,\; 3.333,\; 2.75,\dots
-    \]
-    but the oscillation becomes smaller as $n$ increases.
-    Thus
-    \[
-        \lim_{n\to\infty} a_n = 3.
-    \]
+\tsEx{Subsequence \& Accumulation Points}{
+    $a_n=\frac1n$ with even indices $n_k=2k$ gives the subsequence $a_{n_k}=\frac1{2k}\to0$, same limit as $(a_n)$.
+    \tsPoint $a_n=(-1)^n$ diverges but has two accumulation points $\pm1$, via $a_{2k}=1$ and $a_{2k+1}=-1$.
 }
-\tsEx{Divergent Sequence}{
-    Consider
-    \[
-        a_n = n.
-    \]
-    For every $M>0$ we can choose $N>M$ such that for all $n>N$
-    \[
-        a_n = n > M.
-    \]
-    Hence
-    \[
-        \lim_{n\to\infty} a_n = \infty.
-    \]
-}
-\tsEx{Subsequence}{
-    Let
-    \[
-        a_n = \frac{1}{n}.
-    \]
-    A subsequence can be obtained by choosing only even indices:
-    \[
-        n_k = 2k.
-    \]
-    Then
-    \[
-        a_{n_k} = a_{2k} = \frac{1}{2k}.
-    \]
-    Both the original sequence and the subsequence satisfy
-    \[
-        \lim_{n\to\infty} a_n =
-        \lim_{k\to\infty} a_{n_k} = 0.
-    \]
-}
-\tsEx{Accumulation Point}{
-    Consider the sequence
-    \[
-        a_n = (-1)^n.
-    \]
-    The sequence is
-    \[
-        1,-1,1,-1,1,-1,\dots
-    \]
-    It does not converge, but it has two accumulation points:
-    \[
-        A_1 = 1, \qquad A_2 = -1.
-    \]
-    Indeed there exist subsequences
-    \[
-        a_{2k} = 1, \qquad a_{2k+1} = -1.
-    \]
-}
-\tsEx{Limit Laws}{
-    Let
-    \[
-        a_n = \frac{1}{n}, \qquad b_n = 2 + \frac{1}{n}.
-    \]
-    Then
-    \[
-        \lim_{n\to\infty} a_n = 0,
-        \qquad
-        \lim_{n\to\infty} b_n = 2.
-    \]
-    Using the limit rules we obtain
-    \[
-        \lim_{n\to\infty}(a_n + b_n) = 2
-    \]
-    and
-    \[
-        \lim_{n\to\infty}(a_n b_n) = 0.
-    \]
-}
-\tsEx{Sandwich Theorem}{
-    Consider
-    \[
-        b_n = \frac{\sin n}{n}.
-    \]
-    Since
-    \[
-        -1 \le \sin n \le 1
-    \]
-    we obtain
-    \[
-        -\frac{1}{n} \le \frac{\sin n}{n} \le \frac{1}{n}.
-    \]
-    Because
-    \[
-        \lim_{n\to\infty} -\frac{1}{n} =
-        \lim_{n\to\infty} \frac{1}{n} = 0,
-    \]
-    the sandwich theorem implies
-    \[
-        \lim_{n\to\infty} \frac{\sin n}{n} = 0.
-    \]
+\tsEx{Limit Laws \& Sandwich Theorem}{
+    $a_n=\frac1n\to0,\ b_n=2+\frac1n\to2 \Rightarrow a_n+b_n\to2,\ a_nb_n\to0$.
+    \tsPoint $b_n=\frac{\sin n}{n}$: since $-\frac1n\le b_n\le\frac1n\to0$, the sandwich theorem gives $b_n\to0$.
 }
 \tsEx{Monotone Convergence}{
-    Consider
-    \[
-        a_n = 1 - \frac{1}{n}.
-    \]
-    Then
-    \[
-        0 \le a_n < 1
-    \]
-    and
-    \[
-        a_{n+1} > a_n.
-    \]
-    Thus the sequence is monotone increasing and bounded.
-    Therefore it converges and
-    \[
-        \lim_{n\to\infty} a_n = 1.
-    \]
+    $a_n=1-\frac1n$ satisfies $0\le a_n<1$ and $a_{n+1}>a_n$: bounded and monotone increasing, hence convergent with $\lim_{n\to\infty}a_n=1$.
 }

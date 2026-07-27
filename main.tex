@@ -21,6 +21,9 @@
 \usepackage{forest}
 \usepackage[stretch=10,shrink=20]{microtype}
 \usepackage{anyfontsize}
+% extsizes/extarticle only accepts specific pt options (8/9/10/11/12/...);
+% anyfontsize lets us override the actual body size to a non-standard value instead.
+\renewcommand{\normalsize}{\fontsize{7.0pt}{8.4pt}\selectfont}
 \usepackage{titlesec}
 \usepackage{multicol}
 \usepackage{bm}
@@ -66,7 +69,7 @@
   \par\vspace{1.4ex}%
   \refstepcounter{section}%
   \label{sec:\arabic{section}}%
-  \noindent\colorbox{secRule}{\parbox[c][3.2ex][c]{\dimexpr\linewidth-2\fboxsep\relax}{\color{white}\bfseries\sffamily\fontsize{10.5pt}{12.5pt}\selectfont\thesection\quad #1}}%
+  \noindent\colorbox{secRule}{\parbox[c][3.2ex][c]{\dimexpr\linewidth-2\fboxsep\relax}{\color{white}\bfseries\sffamily\fontsize{9.14pt}{10.92pt}\selectfont\thesection\quad #1}}%
   \par\vspace{0.9ex}%
 }
 \renewcommand{\section}{\sectionbanner}
@@ -83,9 +86,9 @@
   \tsCheckCarry{3}{Series}\tsCheckLast{3}{Series}%
   \tsCheckCarry{4}{Functions}\tsCheckLast{4}{Functions}%
   \tsCheckCarry{5}{Derivatives}\tsCheckLast{5}{Derivatives}%
-  \tsCheckCarry{6}{Differential equations}\tsCheckLast{6}{Differential equations}%
-  \tsCheckCarry{7}{Integration Part 1}\tsCheckLast{7}{Integration Part 1}%
-  \tsCheckCarry{8}{Integration Part 2}\tsCheckLast{8}{Integration Part 2}%
+  \tsCheckCarry{6}{Integration Part 1}\tsCheckLast{6}{Integration Part 1}%
+  \tsCheckCarry{7}{Integration Part 2}\tsCheckLast{7}{Integration Part 2}%
+  \tsCheckCarry{8}{Differential equations}\tsCheckLast{8}{Differential equations}%
   \tsCheckCarry{9}{Differential equations 2}\tsCheckLast{9}{Differential equations 2}%
   \tsCheckCarry{10}{Additional}\tsCheckLast{10}{Additional}%
   \ifx\tsCarry\tsLast \tsLast\else \tsCarry\ --\ \tsLast\fi
@@ -95,22 +98,22 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.3pt}
 \fancyfootoffset{0pt}
-\fancyfoot[L]{\fontsize{6pt}{7pt}\selectfont\sffamily\bfseries\color{secRule}\tsSectionFooter}
-\fancyfoot[R]{\fontsize{6pt}{7pt}\selectfont\sffamily\bfseries\color{secRule}p.\thepage\ /\ \pageref{LastPage}}
+\fancyfoot[L]{\fontsize{5.22pt}{6.16pt}\selectfont\sffamily\bfseries\color{secRule}\tsSectionFooter}
+\fancyfoot[R]{\fontsize{5.22pt}{6.16pt}\selectfont\sffamily\bfseries\color{secRule}p.\thepage\ /\ \pageref{LastPage}}
 
 % Compact top-of-document index: section name + page, for quick lookup mid-exam.
 \newcommand{\tsToc}{%
   \begingroup
   \centering
-  \fontsize{6.6pt}{8pt}\selectfont\sffamily\color{secRule}
+  \fontsize{5.78pt}{7.0pt}\selectfont\sffamily\color{secRule}
   1~Fundamentals~(\pageref{sec:1})\quad\textbullet\quad
   2~Sequences~(\pageref{sec:2})\quad\textbullet\quad
   3~Series~(\pageref{sec:3})\quad\textbullet\quad
   4~Functions~(\pageref{sec:4})\quad\textbullet\quad
   5~Derivatives~(\pageref{sec:5})\quad\textbullet\quad
-  6~Diff.\ Equations~(\pageref{sec:6})\quad\textbullet\quad
-  7~Integration~1~(\pageref{sec:7})\quad\textbullet\quad
-  8~Integration~2~(\pageref{sec:8})\quad\textbullet\quad
+  6~Integration~1~(\pageref{sec:6})\quad\textbullet\quad
+  7~Integration~2~(\pageref{sec:7})\quad\textbullet\quad
+  8~Diff.\ Equations~(\pageref{sec:8})\quad\textbullet\quad
   9~Diff.\ Equations~2~(\pageref{sec:9})\quad\textbullet\quad
   10~Additional~(\pageref{sec:10})
   \par
@@ -120,15 +123,15 @@
 
 % Subsection = colored number badge + bold dark text + thick rule: clearly a tier down.
 \titleformat{\subsection}
-  {\bfseries\sffamily\fontsize{8.8pt}{10.5pt}\selectfont\color{subText}}
+  {\bfseries\sffamily\fontsize{7.7pt}{9.14pt}\selectfont\color{subText}}
   {\tcbox[enhanced,colback=subRule,colframe=subRule,coltext=white,
     boxrule=0pt,arc=1.3pt,boxsep=0pt,left=2.6pt,right=2.6pt,top=0.6pt,bottom=0.6pt,
-    fontupper=\bfseries\sffamily\fontsize{7.8pt}{9pt}\selectfont]{\thesubsection}}
+    fontupper=\bfseries\sffamily\fontsize{6.82pt}{7.84pt}\selectfont]{\thesubsection}}
   {0.6em}{}
   [\vspace{1pt}{\color{subRule}\titlerule[1.3pt]}\vspace{1pt}]
 
 \titleformat{\subsubsection}
-  {\bfseries\sffamily\fontsize{8pt}{9.5pt}\selectfont\color{subText}}
+  {\bfseries\sffamily\fontsize{7.0pt}{8.3pt}\selectfont\color{subText}}
   {\thesubsubsection}{0.4em}{}
   [{\color{subRule}\titlerule[0.7pt]}]
 
@@ -160,7 +163,7 @@
     boxsep=1pt,
     before skip=2pt plus 1pt,
     after skip=2pt plus 1pt,
-    fonttitle=\sffamily\bfseries\fontsize{7.2pt}{8.5pt}\selectfont,
+    fonttitle=\sffamily\bfseries\fontsize{6.3pt}{7.46pt}\selectfont,
     coltitle=white,
     toptitle=0.8pt,
     bottomtitle=0.8pt,
@@ -172,7 +175,7 @@
 
 \newcommand{\tsEntry}[4]{%
   \begin{tcolorbox}[
-    unbreakable,		  
+    unbreakable,
     tsbase,
     colback=#3,
     colframe=#2,
@@ -202,7 +205,7 @@
 
 \newcommand{\tsLegend}{%
   \begingroup
-  \fontsize{6.5pt}{8pt}\selectfont
+  \fontsize{5.7pt}{7.0pt}\selectfont
   \noindent
   {\colorbox{defFrame}{\color{white}\tiny\sffamily\bfseries\,D\,}}\ Definition\quad
   {\colorbox{thmFrame}{\color{white}\tiny\sffamily\bfseries\,T\,}}\ Theorem\quad
@@ -216,6 +219,7 @@
 }
 
 \begin{document}
+\normalsize
 \tsToc
 \begin{multicols}{3}
 \allowdisplaybreaks
@@ -224,22 +228,23 @@
     \input{1.1-FieldOfRealNumbers}
     \input{1.2-VectorsVectorSpaces}
     \input{1.3-ComplexNumbers}
-    \columnbreak
     \section{Sequences}
     \input{2-Sequences}
-    \columnbreak
+    \input{2.1-Sequences-Examples}
     \section{Series}
     \input{3-Series}
+    \columnbreak
     \section{Functions}
     \input{4-Functions}
+    \columnbreak
     \section{Derivatives}
     \input{5-Derivatives}
+    \input{7-Integration}
     \section{Differential equations}
     \input{6-DifferentialEquations}
-    \input{7-Integration}
-    \columnbreak
     \section{Differential equations - 2}
     \input{8-DifferentialEquations-2}
 \end{multicols}
+\clearpage
 \input{additional.tex}
 \end{document}

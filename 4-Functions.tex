@@ -206,7 +206,6 @@
               \)
     \end{itemize}
 }
-\columnbreak
 \subsection{Continuity of functions}
 \tsDef{Continuity ($\varepsilon$-$\delta$ definition)}{
     Let $f : D \to \mathbb{R}$ and $x_0 \in D$. The function $f$ is called \emph{continuous at $x_0$} if
@@ -227,6 +226,14 @@
               \(
                   \lim_{x \to x_0^-} f(x) = f(x_0).
               \)
+    \end{itemize}
+}
+\tsDef{Classification of Discontinuities}{
+    At a point $x_0\notin$ continuity, $f$ has:
+    \begin{itemize}[noitemsep]
+        \item a \emph{removable} discontinuity if $\lim_{x\to x_0^-}f(x)=\lim_{x\to x_0^+}f(x)$ exists but $\neq f(x_0)$ (or $f(x_0)$ undefined);
+        \item a \emph{jump} discontinuity if both one-sided limits exist but differ;
+        \item an \emph{essential/infinite} discontinuity if some one-sided limit fails to exist or is $\pm\infty$.
     \end{itemize}
 }
 \tsThe{Sequential Characterization of Continuity (Heine's Theorem)}{
