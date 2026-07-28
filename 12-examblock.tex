@@ -19,6 +19,19 @@ Statement & & Reason / counterexample\\
 \stF{$\sup M$ always exists in $\Rl$} & \no & unbounded set\\
 \end{tsTabular}}
 }
+\T{complex numbers --- the single-choice traps}{
+{\fontsize{5.9pt}{7.0pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}c>{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+Statement & & Reason / counterexample\\
+\midrule
+\stF{$|z+w|=|z|+|w|$} & \no & only $\le$; $=$ iff same ray\\
+\stF{$z^2=|z|^2$} & \no & that is $z\bar z$\\
+\stF{$e^z=1$ \ra\ $z=0$} & \no & $z=2\pi ik$: $e^z$ is $2\pi i$-periodic\\
+\stT{$z^n=w\ (w\ne0)$ has exactly $n$ roots} & \yes & \S\ref{sub:cxroots}, spaced by $\frac{2\pi}n$\\
+\stF{$\operatorname{Arg}(zw)=\operatorname{Arg}z+\operatorname{Arg}w$} & \no & off by $2\pi$ if it leaves $(-\pi,\pi]$\\
+\stT{$z\in\Rl\iff z=\bar z$} & \yes & $\operatorname{Im}z=0$\\
+\end{tsTabular}}
+}
 \T{sequences and series (cont.): series}{
 {\fontsize{5.9pt}{7.0pt}\selectfont
 \begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}c>{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
@@ -69,6 +82,8 @@ Statement & & Reason / counterexample\\
 \stT{$\deg p=5$ \ra\ 5 roots with multiplicity} & \yes & fund.\ thm.\ of algebra\\
 \stF{non-real roots come in conjugate pairs} & \no & only for \emph{real} coefficients\\
 \stF{$\deg p$ odd \ra\ a real root} & \no & only for real coefficients\\
+\stF{$|f|$ continuous \ra\ $f$ continuous} & \no & $f=\operatorname{sgn}$\\
+\stT{$f$ cont.\ $+$ injective on an interval \ra\ strictly monotone} & \yes & IVT forbids a turn\\
 \end{tsTabular}}
 }
 \T{subsequences, monotonicity, sets --- the single-choice favourites}{
