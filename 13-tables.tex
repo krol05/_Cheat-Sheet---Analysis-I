@@ -2,10 +2,10 @@
 \X{read this before you copy a single row}{
 Every row means $\dfrac d{dx}F(x)=f(x)$ and $\displaystyle\int f(x)\dx=F(x)+C$, written for the \textbf{bare argument $x$}.
 \begin{rcp}
-\item \hd{Inner function linear, $ax+b$:} $\displaystyle\int f(ax+b)\dx=\frac1aF(ax+b)+C$ --- divide by the inner derivative $a$.
-\item \hd{Inner function anything else:} you may \textbf{not} patch with a factor. Substitute $u=g(x)$, $\dx=\frac{\du}{g'(x)}$, and continue only if the leftover $g'(x)$ cancels.
+\item \hd{Inner function linear, $ax+b$:} $\displaystyle\int f(ax+b)\dx=\frac1aF(ax+b)+C$ --- \textbf{divide by the inner derivative $a$}.
+\item \hd{Inner function anything else:} you may \textbf{not} patch with a factor. \textbf{Substitute} $u=g(x)$, $\dx=\frac{\du}{g'(x)}$, and continue only if the leftover $g'(x)$ cancels.
 \item \hd{Constant prefactors} stay outside: $\int cf=c\int f$. Do the prefactor and the substitution factor as \emph{separate written steps}; never patch by feeling.
-\item \hd{Differentiate your answer.} The chain-rule factor must reappear.
+\item \hd{Differentiate your answer.} The \textbf{chain-rule factor} must reappear.
 \end{rcp}
 \hd{The trap in full:} $\int\frac{\dx}{2\cos^2(x/2)}$. With $u=\frac x2$, $\dx=2\du$: $\int\frac{2\du}{2\cos^2u}=\tan u=\tan\frac x2+C$ --- the $2$ from $\dx$ cancels the $\frac12$ in front, so the answer is \textbf{not} $2\tan\frac x2$.
 }
@@ -147,7 +147,7 @@ $\lim_{x\to\infty}x^\alpha q^x=0\,(q<1)$ & $\lim_{x\to\infty}\arctan x=\frac\pi2
 \item $\sin\!\left(x+\frac\pi2\right)=\cos x$, $\cos\!\left(x+\frac\pi2\right)=-\sin x$
 \item $\arcsin:[-1,1]\to[-\frac\pi2,\frac\pi2]$, $\arccos:[-1,1]\to[0,\pi]$, $\arctan:\Rl\to(-\frac\pi2,\frac\pi2)$
 \end{itemize}}
-\hd{Forgot one?} Derive it from $e^{ix}$ (\S\ref{sub:cxforms}) in ten seconds.
+\hd{Forgot one?} \textbf{Derive it from $e^{ix}$} (\S\ref{sub:cxforms}) in ten seconds.
 }
 \T{special values and quadrant signs}{
 {\fontsize{6.0pt}{7.1pt}\selectfont
@@ -228,8 +228,52 @@ $a_nb_n$, $b_n\downarrow0$, $\sum a_n$ bounded & Abel/Dirichlet\\
 power series & Cauchy--Hadamard $+$ endpoints\\
 \end{tsTabular}}
 }
+\T{``f\"ur welche $\alpha$?'' --- every parameter threshold in one place}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.42\linewidth}>{\raggedright\arraybackslash}p{0.54\linewidth}@{}}
+Object & Behaves well exactly when\\
+\midrule
+$\sum_{n\ge1}\frac1{n^\alpha}$ & converges $\iff\alpha>1$\\
+$\sum_{n\ge1}\frac{(-1)^n}{n^\alpha}$ & $\alpha>1$ \textbf{absolutely}; $0<\alpha\le1$ \textbf{conditionally} (Leibniz); $\alpha=0$ \textbf{diverges} ($a_n\not\to0$)\\
+$\sum_{n\ge2}\frac1{n(\log n)^\alpha}$ & converges $\iff\alpha>1$ (integral test)\\
+$\frac{(\log n)^\alpha}{n^\beta}$ & $\to0\iff\beta>0$, \emph{for every} $\alpha$ --- any power of $n$ beats any power of $\log$\\
+$\int_0^1x^{-\alpha}\dx$ & converges $\iff\alpha<1$ \de{mild singularity at $0$}\\
+$\int_1^\infty x^{-\alpha}\dx$ & converges $\iff\alpha>1$ \de{fast decay at $\infty$}\\
+$x^\alpha\sin\frac1x$ at $x=0$ & $\to0$ and \textbf{continuous} $\iff\alpha>0$; \textbf{differentiable} $\iff\alpha>1$; $C^1\iff\alpha>2$\\
+$|x|^\alpha$ at $x=0$ & differentiable $\iff\alpha>1$ (or $\alpha=0$)\\
+\end{tsTabular}}
+\warn The two integral rows have \textbf{opposite} thresholds --- that is the single most common sign error. A $\sum$ or $\int$ with \emph{both} a singularity and an infinite end can therefore never converge for a pure power.
+}
 \T{word list DE $\to$ EN}{
 {\fontsize{6.0pt}{7.1pt}\selectfont\raggedright
 Folge = sequence\ $\bullet$\ Reihe = series\ $\bullet$\ Grenzwert = limit\ $\bullet$\ H\"aufungspunkt = accumulation point\ $\bullet$\ beschr\"ankt = bounded\ $\bullet$\ monoton = monotone\ $\bullet$\ Teilfolge = subsequence\ $\bullet$\ Schranke = bound\ $\bullet$\ stetig = continuous\ $\bullet$\ gleichm\"assig = uniform(ly)\ $\bullet$\ punktweise = pointwise\ $\bullet$\ differenzierbar = differentiable\ $\bullet$\ Ableitung = derivative\ $\bullet$\ Stammfunktion = antiderivative\ $\bullet$\ Zwischenwertsatz = IVT\ $\bullet$\ Mittelwertsatz = MVT\ $\bullet$\ Umkehrfunktion = inverse\ $\bullet$\ Nullstelle = root, zero\ $\bullet$\ Wendepunkt = inflection point\ $\bullet$\ Extremstelle = extremum\ $\bullet$\ Absch\"atzung = estimate\ $\bullet$\ oBdA = w.l.o.g.\ $\bullet$\ Voraussetzung = hypothesis\ $\bullet$\ Behauptung = claim\ $\bullet$\ Widerspruch = contradiction\ $\bullet$\ Anfangswertproblem = IVP\ $\bullet$\ Randwertproblem = BVP\ $\bullet$\ Trennung der Variablen = separation of variables\ $\bullet$\ uneigentlich = improper\ $\bullet$\ Konvergenzradius = radius of convergence\ $\bullet$\ Partialsumme = partial sum\ $\bullet$\ Partialbruchzerlegung = partial fractions\ $\bullet$\ Kettenregel = chain rule\ $\bullet$\ Produktregel = product rule\ $\bullet$\ konvex = convex\ $\bullet$\ Treppenfunktion = step function\ $\bullet$\ Zerlegung = partition\ $\bullet$\ Obersumme/Untersumme = upper/lower sum.
 \par}
+}
+
+\F{the implication map --- which arrow reverses, and which never does}{
+Read $\Rightarrow$ as ``always''; a crossed arrow means there is a standard counterexample.
+\begin{bul}
+\item \hd{Sequences:} convergent \ra\ Cauchy \ra\ bounded \ra\ has an accumulation point. \ \warn Only \textbf{Cauchy $\Leftrightarrow$ convergent} reverses (completeness, \S\ref{sub:cauchy}).
+\item \hd{Series:} $\sum|a_n|<\infty$ \ra\ $\sum a_n$ converges \ra\ $a_n\to0$. \ \warn \textbf{Neither reverses}: $\sum\frac{(-1)^n}n$, resp.\ $\sum\frac1n$.
+\item \hd{Functions on an interval:} $C^1$ \ra\ differentiable \ra\ continuous \ra\ Riemann integrable on $[a,b]$. \ \warn \textbf{None reverses}: $x^2\sin\frac1x$, $|x|$, a step function.
+\item \hd{Continuity strength:} Lipschitz \ra\ uniformly continuous \ra\ continuous. \ \warn Reverses only on a \textbf{compact} domain, and only the second arrow (Heine, \S\ref{sub:bigthree}).
+\item \hd{Function sequences:} $f_n\rightrightarrows f$ \ra\ $f_n\to f$ pointwise, and \ra\ $\int f_n\to\int f$ on $[a,b]$. \ \warn Uniform convergence says \textbf{nothing} about $f_n'$ (\S\ref{sub:interchange}).
+\item \hd{Monotone $+$ bounded} is the one hypothesis pair that upgrades ``bounded'' all the way to ``convergent'', and it is the workhorse for every recursive sequence.
+\end{bul}
+}
+\T{writing it in German --- sentences that earn the marks}{
+{\fontsize{6.0pt}{7.1pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.46\linewidth}>{\raggedright\arraybackslash}p{0.50\linewidth}@{}}
+You want to say & Write\\
+\midrule
+start an $\eps$ proof & \emph{Sei $\eps>0$ beliebig.}\\
+choose the index & \emph{W\"ahle $N:=\lceil 1/\eps\rceil$. Dann gilt f\"ur alle $n\ge N$:}\\
+cite a hypothesis & \emph{Nach Voraussetzung ist $f$ auf $[a,b]$ stetig.}\\
+cite a theorem & \emph{Nach dem Zwischenwertsatz existiert ein $x^*\in[a,b]$ mit \dots}\\
+w.l.o.g. & \emph{OBdA sei $a<b$ (sonst vertausche die Rollen).}\\
+contradiction & \emph{Angenommen, \dots\ Widerspruch zu \dots\ Also gilt \dots}\\
+induction & \emph{Induktionsanfang / Induktionsvoraussetzung / Induktionsschritt.}\\
+conclude & \emph{Daraus folgt} / \emph{Somit ist gezeigt, dass \dots} $\square$\\
+\end{tsTabular}}
+\hd{Marks come from naming things:} every theorem you use by name, with its hypotheses quoted, is worth a point on its own (\S\ref{sub:checklist}).
 }

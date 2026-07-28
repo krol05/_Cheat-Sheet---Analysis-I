@@ -1,6 +1,18 @@
-\subsection{Quantifiers: read them, negate them}\label{sub:quant}
+\subsection{Quantifiers, negation, and the standard vocabulary}\label{sub:quant}
+% Defined once, here, at the top of the sheet; every later section \ref's back to this
+% box instead of re-explaining "compact" or "dense" in passing.
+\D{the vocabulary every exercise uses --- defined here, used everywhere}{
+\begin{bul}
+\item \hd{Intervals:} \emph{open} $(a,b)$ (no endpoints), \emph{closed} $[a,b]$ (both), half-open $[a,b)$. \hd{$|I|$} $=$ length.
+\item \hd{Bounded:} $\exists C:|x|\le C$ for all $x$ in the set. Bounded above / below separately.
+\item \hd{Compact} \de{kompakt} in $\Rl$ $\iff$ \textbf{closed and bounded} (Heine--Borel). This one word is the hypothesis of IVT, Weierstrass and Heine (\S\ref{sub:bigthree}); drop it and all three fail.
+\item \hd{Neighbourhood / $\eps$-ball} of $x$: the interval $(x-\eps,x+\eps)$. \hd{interior point:} some $\eps$-ball fits entirely inside the set; \hd{boundary point:} every $\eps$-ball meets the set \emph{and} its complement.
+\item \hd{Null sequence:} $a_n\to0$. \hd{Subsequence} $(a_{n_k})$: indices \textbf{strictly increasing}, $n_1<n_2<\cdots$ (so $n_k\ge k$).
+\item \hd{Dense} in $\Rl$: every interval, however short, contains a point of the set. $\Q$ and $\Rl\setminus\Q$ both are.
+\end{bul}
+}
 \R{negate any definition mechanically}{
-Swap $\forall\leftrightarrow\exists$ left to right, keep the order, negate the final inequality ($<$ becomes $\ge$).
+\hd{Rule:} swap $\forall\leftrightarrow\exists$ left to right, \textbf{keep the order}, negate the final inequality ($<$ becomes $\ge$). \warn The \hd{order} is the whole content: $\forall x\,\exists\delta$ (continuity, $\delta$ may depend on $x$) is a \emph{different theorem} from $\exists\delta\,\forall x$ (uniform, \textbf{one} $\delta$ for all $x$).
 \begin{bul}
 \item \hd{$a_n\not\to a$:} $\exists\eps>0\ \forall N\ \exists n\ge N:\ |a_n-a|\ge\eps$.
 \item \hd{not Cauchy:} $\exists\eps>0\ \forall N\ \exists m,n\ge N:\ |a_n-a_m|\ge\eps$.
@@ -9,9 +21,6 @@ Swap $\forall\leftrightarrow\exists$ left to right, keep the order, negate the f
 \item \hd{$f_n\not\rightrightarrows f$:} $\exists\eps>0\ \forall N\ \exists n\ge N\ \exists x:|f_n(x)-f(x)|\ge\eps$.
 \end{bul}
 \hd{In practice} the last two become: build $x_n,y_n$ resp.\ $x_n$ and show the gap does not vanish.
-}
-\X{order of quantifiers is the whole content}{
-$\forall x\,\exists\delta$ (continuity: $\delta$ may depend on $x$) versus $\exists\delta\,\forall x$ (uniform: one $\delta$ for all $x$). Same words, different theorem. Whenever a statement feels obvious, check whether you read the quantifiers in the right order.
 }
 
 \subsection{sup / inf / max / min \de{Supremum, Infimum}}\label{sub:supinf}
@@ -32,6 +41,19 @@ For a function: $\sup_{x\in D}f(x)$ is the sup of the image set $f(D)$; it is a 
 \item Attained? $s\in M$ \ra\ $\max=s$; otherwise $\max$ does not exist.
 \end{rcp}
 }
+% D-INFK FS25 1.MC2 and 2.A1 were both exactly this, and neither was answerable from
+% the sup/inf recipe alone: they ask about a SET, not a sequence.
+\R{a \emph{set} is given by a formula: open? closed? bounded? $\sup$? $\inf$?}{
+\hd{Open:} every point has an $\eps$-ball still inside $M$. \hd{Closed:} the complement is open $\iff$ every convergent sequence \emph{in} $M$ has its limit in $M$.
+\begin{rcp}
+\item \hd{Given by an inequality on a continuous $g$:} $\{g>c\}$ and $\{g<c\}$ are \textbf{open}; $\{g\ge c\}$, $\{g\le c\}$, $\{g=c\}$ are \textbf{closed}. Solve the inequality into intervals and read it off.
+\item \hd{Given by a sequence formula} $\{a_n:n\in\N\}$: check monotonicity. Monotone decreasing \ra\ $\sup=\max=a_1$ (attained), $\inf=\lim a_n$ (\textbf{not} attained). Increasing \ra\ mirrored. Not monotone \ra\ split by parity first (\S\ref{sub:accum}).
+\item \hd{Bounded?} both $\sup$ and $\inf$ finite. Unbounded above \ra\ write $\sup=+\infty$.
+\end{rcp}
+\warn ``\emph{neither open nor closed}'' is the usual trap answer: $[a,b)$ qualifies, but $\Rl$ and $\emptyset$ are \textbf{both} open and closed, and a finite set is closed.\\
+\hd{Ex.} $A=\{x:|x+1|^3>2\}=\{|x+1|>\sqrt[3]2\}=(-\infty,-1-\sqrt[3]2)\cup(-1+\sqrt[3]2,\infty)$: \textbf{open}, unbounded, $\sup A=+\infty$, $\inf A=-\infty$.\\
+\hd{Ex.} $B=\left\{\frac1{n+1}-\frac1{n+2}\right\}=\left\{\frac1{(n+1)(n+2)}\right\}$: decreasing \ra\ $\max$ at the first index, $\inf=0$ not attained.
+}
 \F{Archimedes and density}{
 \hd{Archimedean:} $\forall x\in\Rl\ \exists n\in\N:n>x$; equivalently $\frac1n\to0$. $\N$ is unbounded in $\Rl$.\\
 \hd{$\Q$ dense:} between any $a<b$ there is a rational \emph{and} an irrational. Used to build the Dirichlet counterexamples.
@@ -40,7 +62,7 @@ For a function: $\sup_{x\in D}f(x)$ is the sup of the image set $f(D)$; it is a 
 \begin{bul}
 \item $\sup$ exists as a \emph{real number} only for a bounded-above set. Unbounded \ra\ write $\sup=+\infty$, i.e.\ no real sup.
 \item $\min M$ need \textbf{not} be an accumulation point of the sequence: $x_0=0$, $x_n=1+\frac1n$ attains its min once.
-\item $\inf M=\sup M$ \ra\ $M$ is a single point \ra\ the sequence is constant \ra\ converges. \yes
+\item \claimT{$\inf M=\sup M$ \ra\ $M$ is a single point \ra\ the sequence is constant \ra\ converges.}
 \item monotone \emph{and bounded} \ra\ converges to $\sup$ (incr.) / $\inf$ (decr.). Monotone alone may run to $\pm\infty$.
 \end{bul}
 }
@@ -67,8 +89,20 @@ Target is always $|\text{expr}|\le(\text{something}\to0)$.
 \item Numerator: make it \emph{bigger} (drop negative terms, bound $\sin/\cos$ by 1).
 \item Denominator: make it \emph{smaller} (drop positive terms). Never the reverse.
 \item Roots: conjugate, $\sqrt A-\sqrt B=\frac{A-B}{\sqrt A+\sqrt B}$.
-\item Sums: bound every term by the largest, then multiply by the count.
+\item \hd{Sums:} bound every term by the largest, then multiply by the count.
 \end{bul}
+}
+\F{small-$x$ behaviour: the six approximations, and the inequalities that prove them}{
+For $x\to0$ \de{and only then}, each function may be replaced by its first Taylor term; the error is one order higher (full list \S\ref{sub:seriesops}, \S\ref{sub:taylorlist}).
+\begin{tsTabular}{@{}l@{\ \ }l@{\quad}l@{}}
+\hd{$\sin x\approx x$} & $x-\frac{x^3}6+O(x^5)$ & \hd{exact:} $|\sin x|\le|x|$ always\\
+\hd{$\tan x\approx x$} & $x+\frac{x^3}3+O(x^5)$ & $\tan x\ge x$ on $[0,\frac\pi2)$\\
+\hd{$1-\cos x\approx\frac{x^2}2$} & $\frac{x^2}2-\frac{x^4}{24}+O(x^6)$ & $0\le1-\cos x\le\frac{x^2}2$\\
+\hd{$e^x\approx1+x$} & $1+x+\frac{x^2}2+O(x^3)$ & \hd{exact:} $e^x\ge1+x$ for \emph{all} $x$\\
+\hd{$\ln(1+x)\approx x$} & $x-\frac{x^2}2+O(x^3)$ & $\frac x{1+x}\le\ln(1+x)\le x$\\
+\hd{$(1+x)^\alpha\approx1+\alpha x$} & $1+\alpha x+O(x^2)$ & \hd{Bernoulli:} $\ge$ for $\alpha\ge1$
+\end{tsTabular}
+\warn Use the \hd{exact} column when you must \emph{prove} an estimate; the $\approx$ column only inside a limit. Substituting $x=\frac1n$ turns every row into a sequence estimate, e.g. $n\sin\frac1n\to1$.
 }
 
 \subsection{Induction \de{vollst\"andige Induktion}}\label{sub:induction}

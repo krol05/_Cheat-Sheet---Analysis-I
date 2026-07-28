@@ -1,250 +1,325 @@
+% =====================================================================
+%  Analysis I (ETHZ, D-INFK) -- EXAM RECIPE SHEET
+%
+%  Hard limit: 10 pages. Build with `latexmk -pdf main.tex`.
+%
+%  Design rules, do not break them:
+%   * every entry answers "I have THIS question -> do THIS"
+%   * definitions survive only where an exercise needs them, and each
+%     concept is defined exactly ONCE; everywhere else use \ref
+%   * ONE continuous multicols{3} for the whole body: no \clearpage, no
+%     nested multicols. That is what keeps the columns packed with no
+%     seams and no orphan gaps.
+%   * \raggedcolumns is load-bearing: multicol's default \flushcolumns
+%     forces every column to \textheight by inflating the glue between
+%     boxes, which scatters holes through the page (and \vbadness=10000
+%     inside multicol hides the warnings).
+%   * every box must stay well under 1/3 of a column: multicol cannot
+%     split an unbreakable tcolorbox, so a tall box punches a hole.
+%     Do NOT switch the boxes to `breakable' to fix that -- the break
+%     decorations cost more space than the holes (tested: +2 pages).
+%   * cross-references go through \label/\ref, never hard-coded numbers.
+% =====================================================================
 \documentclass[8pt, a4paper]{extarticle}
 
-\usepackage{enumerate, amsmath, amsthm, amssymb, cancel, mathtools}
+\usepackage{amsmath, amssymb, mathtools, cancel}
 
-\usepackage{lscape}
-
-\usepackage[a4paper, left=0.65cm, right=0.65cm, top=0.6cm, bottom=0.6cm, landscape,
-  footskip=0.34cm, headheight=0pt, headsep=0pt]{geometry}
+% ---------- Fonts ----------
+% Computer Modern has thin, high-contrast strokes and washes out at 6pt. XCharter
+% has thick stems and a large x-height, so it stays crisp; newtxmath[charter] is the
+% matching math font; Fira Sans carries every title, banner and tab.
+\usepackage[T1]{fontenc}
+\usepackage{XCharter}
+\usepackage[charter,vvarbb]{newtxmath}
+\usepackage[scaled=0.88]{FiraSans}
+% right margin cannot go below ~0.60cm: the edge tabs occupy 0.56cm from the paper edge.
+\usepackage[a4paper, left=0.40cm, right=0.60cm, top=0.40cm, bottom=0.40cm, landscape,
+  footskip=0.26cm, headheight=0pt, headsep=0pt]{geometry}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{refcount}
-
-\usepackage{algorithm}
 \usepackage{booktabs}
-\usepackage{hyperref}
 \usepackage{array}
-\usepackage{svg}
-\usepackage{algpseudocode}
 \usepackage{tikz}
-\usetikzlibrary{matrix}
-\usepackage{forest}
 \usepackage[stretch=10,shrink=20]{microtype}
 \usepackage{anyfontsize}
-% extsizes/extarticle only accepts specific pt options (8/9/10/11/12/...);
-% anyfontsize lets us override the actual body size to a non-standard value instead.
-\renewcommand{\normalsize}{\fontsize{7.0pt}{8.4pt}\selectfont}
 \usepackage{titlesec}
 \usepackage{multicol}
-\usepackage{bm}
 \usepackage{xcolor}
 \usepackage{enumitem}
-\usepackage{mathrsfs}
-\usepackage{soul}
-\usepackage{amsmath}
 \usepackage{tcolorbox}
 \tcbuselibrary{skins,breakable}
 
+\renewcommand{\normalsize}{\fontsize{6.15pt}{7.20pt}\selectfont}
+
 % ---------- Palette ----------
-\definecolor{defFrame}{HTML}{C96A20}
-\definecolor{defBack}{HTML}{FFF4E8}
-\definecolor{thmFrame}{HTML}{A67C00}
-\definecolor{thmBack}{HTML}{FFF8D6}
-\definecolor{lemFrame}{HTML}{2F6FBF}
-\definecolor{lemBack}{HTML}{EAF2FC}
-\definecolor{corFrame}{HTML}{2E8B57}
-\definecolor{corBack}{HTML}{E8F6EE}
-\definecolor{propFrame}{HTML}{2E7C93}
-\definecolor{propBack}{HTML}{E7F5F8}
-\definecolor{ideaFrame}{HTML}{C04545}
-\definecolor{ideaBack}{HTML}{FCECEC}
-\definecolor{exFrame}{HTML}{5B6BC0}
-\definecolor{exBack}{HTML}{EEF0FA}
-\definecolor{secRule}{HTML}{3D4F66}
-\definecolor{subRule}{HTML}{7A8B9E}
-\definecolor{subText}{HTML}{2E4759}
+% Frames are saturated and dark, fills are deep enough to read as a block from arm's
+% length. Anything paler than this went grey when printed.
+\definecolor{recFrame}{HTML}{176B42}   % RECIPE  (the important one)
+\definecolor{recBack}{HTML}{DCEFE4}
+\definecolor{defFrame}{HTML}{B85C13}   % definition (only if needed)
+\definecolor{defBack}{HTML}{FCEBD8}
+\definecolor{thmFrame}{HTML}{8F6A00}   % fact / theorem you may cite
+\definecolor{thmBack}{HTML}{FBF1C4}
+\definecolor{exFrame}{HTML}{2A62AC}    % worked example
+\definecolor{exBack}{HTML}{DFEAF9}
+\definecolor{trapFrame}{HTML}{AE2E21}  % trap / pitfall
+\definecolor{trapBack}{HTML}{FADFDD}
+\definecolor{tabFrame}{HTML}{4E3F7D}   % lookup table
+\definecolor{tabBack}{HTML}{E7E1F4}
+\definecolor{secRule}{HTML}{1B2838}
+\definecolor{subRule}{HTML}{4A5A69}
+\definecolor{subText}{HTML}{1B2838}
+\definecolor{tabDim}{HTML}{C9CFD6}     % inactive edge tab
+\definecolor{tocDim}{HTML}{9AA4AE}     % inactive entry in the top TOC strip
 
-\newenvironment{tables}[2]{%
-\begin{tabular}{#1}
-#2\\
-}{%
-\end{tabular}
-}
-
-% Section = full-width solid banner: the strongest, unmistakable "new topic" cue.
-% (Implemented as a standalone command rather than \titleformat, so the
-%  colored banner can safely span the whole title without brace-splitting
-%  tricks against titlesec's internals.)
+% ---------- Section banner ----------
+% Hard black slab, number in a knocked-out box, thick rule underneath: a section start
+% has to be findable from across the desk.
 \newcommand{\sectionbanner}[1]{%
-  \par\vspace{1.4ex}%
+  \par\tsNeed{6\baselineskip}\vspace{1.0ex}%
   \refstepcounter{section}%
   \label{sec:\arabic{section}}%
-  \noindent\colorbox{secRule}{\parbox[c][3.2ex][c]{\dimexpr\linewidth-2\fboxsep\relax}{\color{white}\bfseries\sffamily\fontsize{9.14pt}{10.92pt}\selectfont\thesection\quad #1}}%
-  \par\vspace{0.9ex}%
+  \noindent{\color{secRule}\rule{\linewidth}{1.5pt}}\par\nointerlineskip
+  \noindent\colorbox{secRule}{\parbox[c][3.0ex][c]{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \color{white}\bfseries\sffamily\fontsize{8.4pt}{10.0pt}\selectfont
+    \colorbox{white}{\color{secRule}\,\thesection\,}\quad #1}}%
+  \par\nointerlineskip\noindent{\color{secRule}\rule{\linewidth}{1.5pt}}%
+  \par\vspace{0.6ex}%
 }
 \renewcommand{\section}{\sectionbanner}
 
-% Running footer: current section (left) + page number (right) for fast wayfinding.
-% Built from \pageref, not TeX marks: multicol's column-splitting delivers marks
-% out of page order, so \leftmark/\rightmark cannot be trusted here.
-\newcommand{\tsCheckCarry}[2]{\ifnum\getpagerefnumber{sec:#1}<\value{page}\relax\gdef\tsCarry{#1\quad #2}\fi}
-\newcommand{\tsCheckLast}[2]{\ifnum\getpagerefnumber{sec:#1}>\value{page}\relax\else\gdef\tsLast{#1\quad #2}\fi}
-\newcommand{\tsSectionFooter}{%
-  \gdef\tsCarry{1\quad Fundamentals}%
-  \gdef\tsLast{1\quad Fundamentals}%
-  \tsCheckCarry{2}{Sequences}\tsCheckLast{2}{Sequences}%
-  \tsCheckCarry{3}{Series}\tsCheckLast{3}{Series}%
-  \tsCheckCarry{4}{Functions}\tsCheckLast{4}{Functions}%
-  \tsCheckCarry{5}{Derivatives}\tsCheckLast{5}{Derivatives}%
-  \tsCheckCarry{6}{Integration Part 1}\tsCheckLast{6}{Integration Part 1}%
-  \tsCheckCarry{7}{Integration Part 2}\tsCheckLast{7}{Integration Part 2}%
-  \tsCheckCarry{8}{Differential equations}\tsCheckLast{8}{Differential equations}%
-  \tsCheckCarry{9}{Differential equations 2}\tsCheckLast{9}{Differential equations 2}%
-  \tsCheckCarry{10}{Additional}\tsCheckLast{10}{Additional}%
-  \ifx\tsCarry\tsLast \tsLast\else \tsCarry\ --\ \tsLast\fi
+% ---------- Which sections are live on this page? ----------
+% Lo = last section that started strictly before this page (it carries over),
+% Hi = last section that has started by this page. Live range = Lo..Hi.
+% Built from \pageref, not TeX marks: multicol delivers marks out of page order.
+\newcounter{tsSecLo}
+\newcounter{tsSecHi}
+\newcommand{\tsChkLo}[1]{\ifnum\getpagerefnumber{sec:#1}<\value{page}\relax\setcounter{tsSecLo}{#1}\fi}
+\newcommand{\tsChkHi}[1]{\ifnum\getpagerefnumber{sec:#1}>\value{page}\relax\else\setcounter{tsSecHi}{#1}\fi}
+\newcommand{\tsScanSections}{%
+  \setcounter{tsSecLo}{0}\setcounter{tsSecHi}{0}%
+  \tsChkLo{1}\tsChkHi{1}\tsChkLo{2}\tsChkHi{2}\tsChkLo{3}\tsChkHi{3}%
+  \tsChkLo{4}\tsChkHi{4}\tsChkLo{5}\tsChkHi{5}\tsChkLo{6}\tsChkHi{6}%
+  \tsChkLo{7}\tsChkHi{7}\tsChkLo{8}\tsChkHi{8}\tsChkLo{9}\tsChkHi{9}%
+  \tsChkLo{10}\tsChkHi{10}\tsChkLo{11}\tsChkHi{11}\tsChkLo{12}\tsChkHi{12}%
+  \tsChkLo{13}\tsChkHi{13}%
 }
+
+% ---------- Footer breadcrumb ----------
+\newcommand{\tsName}[1]{%
+  \ifcase#1 How to use\or Foundations\or Complex\or Sequences\or Series\or
+  Power series\or Functions\or Function seq.\or Derivatives\or Integration\or
+  ODE\or Proofs\or Exam block\or Tables\fi}
+\newcommand{\tsSectionFooter}{%
+  \tsScanSections
+  \ifnum\value{tsSecLo}=\value{tsSecHi}\relax
+    \arabic{tsSecHi}\quad\tsName{\value{tsSecHi}}%
+  \else
+    \arabic{tsSecLo}\quad\tsName{\value{tsSecLo}}\ --\ \arabic{tsSecHi}\quad\tsName{\value{tsSecHi}}%
+  \fi}
+
+% ---------- Coloured edge tabs (outer margin, one segment per section) ----------
+\newcommand{\tsTabOne}[2]{%
+  \node[anchor=north east, inner sep=0pt, fill=#2, rounded corners=0.6pt,
+        minimum width=0.50cm, minimum height=1.38cm, text=white,
+        font=\sffamily\bfseries\fontsize{6.6pt}{6.6pt}\selectfont]
+    at ([xshift=-0.06cm, yshift={-1.05cm-(#1-1)*1.42cm}]current page.north east) {#1};}
+\newcommand{\tsTab}[1]{%
+  \ifnum#1<\value{tsSecLo}\relax\tsTabOne{#1}{tabDim}\else
+  \ifnum#1>\value{tsSecHi}\relax\tsTabOne{#1}{tabDim}\else
+  \tsTabOne{#1}{secRule}\fi\fi}
+\newcommand{\tsTabStrip}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \tsTab{1}\tsTab{2}\tsTab{3}\tsTab{4}\tsTab{5}\tsTab{6}\tsTab{7}%
+    \tsTab{8}\tsTab{9}\tsTab{10}\tsTab{11}\tsTab{12}\tsTab{13}%
+  \end{tikzpicture}%
+}
+
+% ---------- Top-of-page contents strip ----------
+% "Which section is number 7, and what page is it on?" answered on every page without
+% flipping back to p.1. Drawn as a TikZ overlay into the top margin, exactly like
+% \tsTabStrip, so \textheight is untouched and nothing in the body moves.
+% Sections live on this page are dark; the rest are grey.
+\newcommand{\tsTocLive}[1]{%
+  {\setlength{\fboxsep}{0.7pt}\colorbox{secRule}{\color{white}\bfseries#1}}%
+  \,{\color{secRule}\bfseries\tsName{#1}}%
+  \,{\color{secRule}\bfseries p\pageref{sec:#1}}}
+\newcommand{\tsTocDim}[1]{%
+  {\setlength{\fboxsep}{0.7pt}\colorbox{tocDim}{\color{white}\bfseries#1}}%
+  \,{\color{tocDim}\bfseries\tsName{#1}}%
+  \,{\color{tocDim}\bfseries p\pageref{sec:#1}}}
+\newcommand{\tsTocEntry}[1]{%
+  \ifnum#1<\value{tsSecLo}\relax\tsTocDim{#1}\else
+  \ifnum#1>\value{tsSecHi}\relax\tsTocDim{#1}\else
+  \tsTocLive{#1}\fi\fi}
+\newcommand{\tsTocSep}{\hfill{\color{tocDim}\rule[-0.7pt]{0.5pt}{5.2pt}}\hfill}
+\newcommand{\tsTocStrip}{%
+  \tsScanSections
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north west, inner sep=0pt, outer sep=0pt]
+      at ([xshift=0.40cm, yshift=-1.5pt]current page.north west)
+      {\parbox{\textwidth}{\sffamily\fontsize{5.4pt}{6.2pt}\selectfont
+        % without this the trailing \parfillskip eats a share of every \hfill and the
+        % strip stops short of the right margin
+        \setlength{\parfillskip}{0pt}%
+        \tsTocEntry{1}\tsTocSep\tsTocEntry{2}\tsTocSep\tsTocEntry{3}\tsTocSep
+        \tsTocEntry{4}\tsTocSep\tsTocEntry{5}\tsTocSep\tsTocEntry{6}\tsTocSep
+        \tsTocEntry{7}\tsTocSep\tsTocEntry{8}\tsTocSep\tsTocEntry{9}\tsTocSep
+        \tsTocEntry{10}\tsTocSep\tsTocEntry{11}\tsTocSep\tsTocEntry{12}\tsTocSep
+        \tsTocEntry{13}}};
+  \end{tikzpicture}%
+}
+
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.3pt}
 \fancyfootoffset{0pt}
-\fancyfoot[L]{\fontsize{5.22pt}{6.16pt}\selectfont\sffamily\bfseries\color{secRule}\tsSectionFooter}
-\fancyfoot[R]{\fontsize{5.22pt}{6.16pt}\selectfont\sffamily\bfseries\color{secRule}p.\thepage\ /\ \pageref{LastPage}}
+\fancyfoot[L]{\tsTocStrip\fontsize{5.2pt}{6.1pt}\selectfont\sffamily\bfseries\color{secRule}\tsSectionFooter}
+\fancyfoot[R]{\tsTabStrip\fontsize{5.2pt}{6.1pt}\selectfont\sffamily\bfseries\color{secRule}p.\thepage\ /\ \pageref{LastPage}}
 
-% Compact top-of-document index: section name + page, for quick lookup mid-exam.
-\newcommand{\tsToc}{%
-  \begingroup
-  \centering
-  \fontsize{5.78pt}{7.0pt}\selectfont\sffamily\color{secRule}
-  1~Fundamentals~(\pageref{sec:1})\quad\textbullet\quad
-  2~Sequences~(\pageref{sec:2})\quad\textbullet\quad
-  3~Series~(\pageref{sec:3})\quad\textbullet\quad
-  4~Functions~(\pageref{sec:4})\quad\textbullet\quad
-  5~Derivatives~(\pageref{sec:5})\quad\textbullet\quad
-  6~Integration~1~(\pageref{sec:6})\quad\textbullet\quad
-  7~Integration~2~(\pageref{sec:7})\quad\textbullet\quad
-  8~Diff.\ Equations~(\pageref{sec:8})\quad\textbullet\quad
-  9~Diff.\ Equations~2~(\pageref{sec:9})\quad\textbullet\quad
-  10~Additional~(\pageref{sec:10})
-  \par
-  \endgroup
-  \vspace{1pt}
-}
-
-% Subsection = colored number badge + bold dark text + thick rule: clearly a tier down.
+% ---------- Sub headings ----------
 \titleformat{\subsection}
-  {\bfseries\sffamily\fontsize{7.7pt}{9.14pt}\selectfont\color{subText}}
+  {\bfseries\sffamily\fontsize{7.2pt}{8.5pt}\selectfont\color{subText}}
   {\tcbox[enhanced,colback=subRule,colframe=subRule,coltext=white,
-    boxrule=0pt,arc=1.3pt,boxsep=0pt,left=2.6pt,right=2.6pt,top=0.6pt,bottom=0.6pt,
-    fontupper=\bfseries\sffamily\fontsize{6.82pt}{7.84pt}\selectfont]{\thesubsection}}
-  {0.6em}{}
-  [\vspace{1pt}{\color{subRule}\titlerule[1.3pt]}\vspace{1pt}]
+    boxrule=0pt,arc=0pt,sharp corners,boxsep=0pt,left=2.4pt,right=2.4pt,top=0.5pt,bottom=0.5pt,
+    fontupper=\bfseries\sffamily\fontsize{6.4pt}{7.4pt}\selectfont]{\thesubsection}}
+  {0.5em}{}
+  [\vspace{0.8pt}{\color{subRule}\titlerule[1.5pt]}\vspace{0.8pt}]
+\titlespacing*{\subsection}{0pt}{0.8ex}{0.35ex}
 
-\titleformat{\subsubsection}
-  {\bfseries\sffamily\fontsize{7.0pt}{8.3pt}\selectfont\color{subText}}
-  {\thesubsubsection}{0.4em}{}
-  [{\color{subRule}\titlerule[0.7pt]}]
+% A subsection heading alone at the foot of a column is worse than a small gap: it
+% promises content that is not there. Demand room for the heading plus a few lines,
+% otherwise push the whole thing to the next column. Penalty-based, so it survives
+% multicol's \vsplit (\needspace does not reliably).
+\newcommand{\tsNeed}[1]{%
+  \par\begingroup\dimen0=#1\relax
+  \vskip 0pt plus \dimen0\penalty-100\vskip 0pt plus -\dimen0\relax
+  \endgroup}
+\let\tsOrigSubsection\subsection
+\renewcommand{\subsection}[1]{\tsNeed{4\baselineskip}\tsOrigSubsection{#1}}
 
-\titlespacing*{\subsection}{0pt}{1.1ex}{0.5ex}
-
-\author{Timofey Shatnyy}
-
-\linespread{1.12}
-\setlength{\columnsep}{0.45cm}
+\linespread{1.06}
+\setlength{\columnsep}{0.30cm}
+% Vertical rules between the columns: the cheapest way to stop the page reading as a
+% soft cloud of pastel boxes.
+\setlength{\columnseprule}{0.4pt}
+\renewcommand{\columnseprulecolor}{\color{subRule}}
+% Booktabs rules, thickened to match the box frames.
+\setlength{\heavyrulewidth}{0.9pt}
+\setlength{\lightrulewidth}{0.5pt}
 \setlength{\parskip}{0pt}
 \setlength{\parindent}{0pt}
-\setlength{\multicolsep}{2pt}
-\raggedcolumns
-\setlist{nosep, leftmargin=1.2em}
+\setlength{\multicolsep}{1.5pt}
+\setlist{nosep, leftmargin=1.1em}
 
-% Compact entry box style
+% ---------- Boxes ----------
 \tcbset{
   tsbase/.style={
-    enhanced,
-    unbreakable,
-    sharp corners=southwest,
-    arc=2.2pt,
-    boxrule=0.55pt,
-    leftrule=2.4pt,
-    left=3pt,
-    right=3pt,
-    top=1.2pt,
-    bottom=1.2pt,
-    boxsep=1pt,
-    before skip=2pt plus 1pt,
-    after skip=2pt plus 1pt,
-    fonttitle=\sffamily\bfseries\fontsize{6.3pt}{7.46pt}\selectfont,
-    coltitle=white,
-    toptitle=0.8pt,
-    bottomtitle=0.8pt,
-    lefttitle=2pt,
-    righttitle=2pt,
-    titlerule=0pt,
+    enhanced, unbreakable, sharp corners, arc=0pt,
+    boxrule=0.7pt, leftrule=3.2pt,
+    left=2.6pt, right=2.6pt, top=1pt, bottom=1pt, boxsep=1pt,
+    before skip=1.3pt plus 0.6pt, after skip=1.3pt plus 0.6pt,
+    fonttitle=\sffamily\bfseries\fontsize{6.1pt}{7.2pt}\selectfont,
+    coltitle=white, toptitle=0.7pt, bottomtitle=0.7pt,
+    lefttitle=2pt, righttitle=2pt, titlerule=0pt,
   }
 }
-
 \newcommand{\tsEntry}[4]{%
-  \begin{tcolorbox}[
-    unbreakable,
-    tsbase,
-    colback=#3,
-    colframe=#2,
-    colbacktitle=#2,
-    title={#1}
-  ]
+  \begin{tcolorbox}[unbreakable, tsbase, colback=#3, colframe=#2, colbacktitle=#2, title={#1}]
   #4
   \end{tcolorbox}%
 }
+% R = Recipe (step-by-step), D = Definition, F = Fact/Theorem,
+% E = worked Example, X = traP, T = lookup Table
+\newcommand{\R}[2]{\tsEntry{\raisebox{-0.2pt}{\scriptsize$\blacktriangleright$}\ RECIPE: #1}{recFrame}{recBack}{#2}}
+\newcommand{\D}[2]{\tsEntry{DEF: #1}{defFrame}{defBack}{#2}}
+\newcommand{\F}[2]{\tsEntry{FACT: #1}{thmFrame}{thmBack}{#2}}
+\newcommand{\E}[2]{\tsEntry{EXAMPLE: #1}{exFrame}{exBack}{#2}}
+\newcommand{\X}[2]{\tsEntry{TRAP: #1}{trapFrame}{trapBack}{#2}}
+\newcommand{\T}[2]{\tsEntry{TABLE: #1}{tabFrame}{tabBack}{#2}}
 
-\newcommand{\tsV}[1]{\mathbf{#1}}
-\newcommand{\tsVec}[1]{\mathbf{#1}}
-\newcommand{\tsB}[1]{\{#1\}}
-\newcommand{\tsS}[1]{\mathbb{#1}}
+% ---------- Step lists ----------
+\newenvironment{rcp}
+  {\begin{enumerate}[leftmargin=1.32em,itemsep=0.2pt,topsep=0.6pt,parsep=0pt,
+     label=\textbf{\color{recFrame}\arabic*.},labelsep=0.28em,align=right]}
+  {\end{enumerate}}
+\newenvironment{bul}
+  {\begin{itemize}[leftmargin=0.85em,itemsep=0.2pt,topsep=0.6pt,parsep=0pt,label=\textbullet]}
+  {\end{itemize}}
+\newcommand{\hd}[1]{\textbf{\color{subText}#1}}
+% German exam wording. Inherits the surrounding colour on purpose: a fixed grey
+% is unreadable as white-on-saturated box titles, where \de is also used.
+\newcommand{\de}[1]{{\itshape(#1)}}
+\newcommand{\warn}{\textbf{\color{trapFrame}!\,}}
+\newcommand{\ra}{$\Rightarrow$}
+\newcommand{\too}{$\to$}
+% Compact in-box tabular: kills the "heading detached from its table" bug by
+% never letting a heading start a paragraph that the tabular then joins.
+\newenvironment{tsTabular}[1]
+  {\par\nobreak\vspace{0.6pt}\renewcommand{\arraystretch}{1.1}%
+   \setlength{\tabcolsep}{2pt}\begin{tabular}{#1}}
+  {\end{tabular}\par}
+\newcommand{\yes}{{\color{recFrame}\bfseries T}}
+\newcommand{\no}{{\color{trapFrame}\bfseries F}}
+% A verdict is worthless if you cannot see which claim it judges. \claimT / \claimF
+% colour the statement itself and keep the T / F marker where it was.
+\newcommand{\claimT}[1]{{\color{recFrame}#1}\ \yes}
+\newcommand{\claimF}[1]{{\color{trapFrame}#1}\ \no}
+% Same thing for a true/false table: colour the statement cell, leave the verdict
+% column and the reason column alone.
+\newcommand{\stT}[1]{{\color{recFrame}#1}}
+\newcommand{\stF}[1]{{\color{trapFrame}#1}}
 
-\newcommand{\tsPoint}{%
-  \par\vspace{0.6pt}\noindent\(\bullet\)\hspace{0.3em}\ignorespaces
-}
-
-\newcommand{\tsEx}[2]{\tsEntry{Ex.\ #1}{exFrame}{exBack}{#2}}
-\newcommand{\tsIdea}[2]{\tsEntry{#1}{ideaFrame}{ideaBack}{#2}}
-\newcommand{\tsThe}[2]{\tsEntry{T\ #1}{thmFrame}{thmBack}{#2}}
-\newcommand{\tsDef}[2]{\tsEntry{D\ #1}{defFrame}{defBack}{#2}}
-\newcommand{\tsLem}[2]{\tsEntry{L\ #1}{lemFrame}{lemBack}{#2}}
-\newcommand{\tsCor}[2]{\tsEntry{C\ #1}{corFrame}{corBack}{#2}}
-\newcommand{\tsProp}[2]{\tsEntry{P\ #1}{propFrame}{propBack}{#2}}
-
-\newcommand{\tsLegend}{%
-  \begingroup
-  \fontsize{5.7pt}{7.0pt}\selectfont
-  \noindent
-  {\colorbox{defFrame}{\color{white}\tiny\sffamily\bfseries\,D\,}}\ Definition\quad
-  {\colorbox{thmFrame}{\color{white}\tiny\sffamily\bfseries\,T\,}}\ Theorem\quad
-  {\colorbox{lemFrame}{\color{white}\tiny\sffamily\bfseries\,L\,}}\ Lemma\quad
-  {\colorbox{corFrame}{\color{white}\tiny\sffamily\bfseries\,C\,}}\ Corollary\quad
-  {\colorbox{propFrame}{\color{white}\tiny\sffamily\bfseries\,P\,}}\ Prop.\quad
-  {\colorbox{exFrame}{\color{white}\tiny\sffamily\bfseries\,Ex\,}}\ Example\quad
-  {\colorbox{ideaFrame}{\color{white}\tiny\sffamily\bfseries\,!\,}}\ Idea/Remark
-  \par\vspace{2pt}
-  \endgroup
-}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cx}{\mathbb{C}}
+\newcommand{\Rl}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dx}{\,dx}
+\newcommand{\dt}{\,dt}
+\newcommand{\du}{\,du}
 
 \begin{document}
 \normalsize
-\tsToc
+\input{00-howto}
 \begin{multicols}{3}
+% Without this, multicol forces every column to exactly \textheight by inflating the
+% inter-box glue far past its stretch limit, which scatters holes through the page.
+% Ragged bottoms collect the slack where it is visible and can be filled on purpose.
+\raggedcolumns
 \allowdisplaybreaks
-    \tsLegend
-    \section{Fundamentals: Logic, sets, numbers and vectors}
-    \input{1.1-FieldOfRealNumbers}
-    \input{1.2-VectorsVectorSpaces}
-    \input{1.3-ComplexNumbers}
-    \section{Sequences}
-    \input{2-Sequences}
-    \input{2.1-Sequences-Examples}
-    \section{Series}
-    \input{3-Series}
-    \columnbreak
-    \section{Functions}
-    \input{4-Functions}
-    \columnbreak
-    \section{Derivatives}
-    \input{5-Derivatives}
-    \input{7-Integration}
-    \section{Differential equations}
-    \input{6-DifferentialEquations}
-    \section{Differential equations - 2}
-    \input{8-DifferentialEquations-2}
+\section{Foundations: sup/inf, induction, estimates, vectors}
+\input{01-foundations}
+\section{Complex numbers and polynomials}
+\input{02-complex}
+\section{Sequences $(a_n)$}
+\input{03-sequences}
+\section{Series $\sum a_n$}
+\input{04-series}
+\section{Power series and Taylor series}
+\input{05-powerseries}
+\section{Functions: limits, continuity, IVT/EVT}
+\input{06-functions}
+\section{Sequences of functions $(f_n)$}
+\input{07-functionsequences}
+\section{Derivatives and their applications}
+\input{08-derivatives}
+\section{Integration}
+\input{09-integration}
+\section{Differential equations (ODE)}
+\input{10-ode}
+\section{Standard proofs from the lecture (Vorlesungsbeweise)}
+\input{11-proofs}
+\section{Exam block: true/false index and model solutions}
+\input{12-examblock}
+\section{Lookup tables}
+\input{13-tables}
 \end{multicols}
-\clearpage
-\input{additional.tex}
 \end{document}

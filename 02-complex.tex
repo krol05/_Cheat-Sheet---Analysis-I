@@ -4,12 +4,17 @@ $z=a+ib=re^{i\varphi}=r(\cos\varphi+i\sin\varphi)$; \ $\bar z=a-ib$, \ $|z|=r=\s
 $\operatorname{Re}z=\frac{z+\bar z}2$, \ $\operatorname{Im}z=\frac{z-\bar z}{2i}$.
 \hd{Euler:} $e^{i\varphi}=\cos\varphi+i\sin\varphi$, \ $e^{i\pi}=-1$, \ $e^{2\pi i}=1$.
 }
-\R{convert both ways}{
-\begin{rcp}
-\item \hd{Cartesian \too\ polar:} $r=\sqrt{a^2+b^2}$; $\varphi=\arctan\frac ba$ \emph{and then add $\pi$ if $a<0$} (subtract $2\pi$ to land in $(-\pi,\pi]$). \warn always check the quadrant; $\arctan$ alone loses half the plane.
-\item $a=0$: $\varphi=\frac\pi2$ if $b>0$, $-\frac\pi2$ if $b<0$.
-\item \hd{Polar \too\ Cartesian:} $a=r\cos\varphi$, $b=r\sin\varphi$.
-\end{rcp}
+\R{convert both ways --- the quadrant table settles it}{
+\hd{Polar \too\ Cartesian} (never ambiguous): $a=r\cos\varphi$, \ $b=r\sin\varphi$.\\
+\hd{Cartesian \too\ polar:} $r=\sqrt{a^2+b^2}$, and read $\varphi$ off the sign of $a,b$ --- \textbf{do not think, look it up}:
+\begin{tsTabular}{@{}l@{\quad}l@{\quad}l@{}}
+\hd{$a>0$} (right half) & $\varphi=\arctan\frac ba$ & quadrant I / IV\\
+\hd{$a<0$, $b\ge0$} & $\varphi=\arctan\frac ba+\pi$ & quadrant II\\
+\hd{$a<0$, $b<0$} & $\varphi=\arctan\frac ba-\pi$ & quadrant III\\
+\hd{$a=0$} & $\varphi=+\frac\pi2$ if $b>0$, $-\frac\pi2$ if $b<0$ & $\varphi$ undefined at $z=0$
+\end{tsTabular}
+\hd{Why:} $\arctan$ only ever returns a value in $(-\frac\pi2,\frac\pi2)$, i.e.\ it always answers in the \emph{right} half-plane; for $a<0$ you must rotate by $\pi$ to reach the correct half. The \textbf{sign} of that $\pi$ is chosen so the answer stays in the principal range $(-\pi,\pi]$ --- $+\pi$ would overshoot past $\pi$ when $b<0$. \warn A $\varphi$ outside $(-\pi,\pi]$ is not wrong, just not principal: add or subtract $2\pi$ to bring it back.\\
+\hd{Ex.} $z=-1-i$: $r=\sqrt2$, $\arctan\frac{-1}{-1}=\frac\pi4$, third quadrant \ra\ $\varphi=\frac\pi4-\pi=-\frac{3\pi}4$. \ ($+\pi$ would give $\frac{5\pi}4>\pi$.)
 }
 \F{arithmetic rules}{
 \hd{Multiply/divide in polar:} $r_1e^{i\varphi_1}\cdot r_2e^{i\varphi_2}=r_1r_2e^{i(\varphi_1+\varphi_2)}$, \ $\frac{z}{w}=\frac{r_z}{r_w}e^{i(\varphi_z-\varphi_w)}$.\\
@@ -38,9 +43,12 @@ $az^2+bz+c=0\Rightarrow z=\frac{-b\pm\sqrt{D}}{2a}$, $D=b^2-4ac$.
 \item Complex $D$: get $\sqrt D$ with the $n$-th-root recipe at $n=2$ (two roots, take either).
 \end{bul}
 }
-\F{complex log and general powers (if asked)}{
-$\log z=\ln|z|+i(\arg z+2\pi k)$, $k\in\Z$ --- multivalued; the \emph{principal} branch takes $\arg z\in(-\pi,\pi]$.\\
-$z^w:=e^{w\log z}$. \warn $\sqrt{zw}=\sqrt z\sqrt w$ and $\log(zw)=\log z+\log w$ can fail by $2\pi i$ off the principal branch.
+\F{complex log and general powers $+$ DEF: what a \emph{branch} is}{
+\hd{The problem:} $e^{i\varphi}=e^{i(\varphi+2\pi k)}$, so $\arg z$ is only fixed \textbf{mod $2\pi$} and ``$\log$'' has \emph{infinitely many} values $\log z=\ln|z|+i(\arg z+2\pi k)$, $k\in\Z$. That is not a function.\\
+\hd{A branch} $=$ one consistent choice of $k$. The \hd{principal branch} is the choice $\operatorname{Arg}z\in(-\pi,\pi]$ (the same range as the quadrant table above), giving the genuine function
+\[\operatorname{Log}z=\ln|z|+i\operatorname{Arg}z,\qquad z^w:=e^{w\operatorname{Log}z}.\]
+\hd{Ex.} $\operatorname{Log}(-1)=\ln1+i\pi=i\pi$. \ $i^i=e^{i\operatorname{Log}i}=e^{i\cdot i\pi/2}=e^{-\pi/2}$ --- \emph{real}.\\
+\warn Only $\operatorname{Log}$ is a function; $\sqrt{zw}=\sqrt z\sqrt w$ and $\log(zw)=\log z+\log w$ hold for the multivalued $\log$ but can be off by $2\pi i$ once you pin down the principal branch. Counterexample $z=w=-1$: $\sqrt{zw}=1$ but $\sqrt z\sqrt w=i\cdot i=-1$.
 }
 
 \subsection{Polynomials: what is guaranteed}\label{sub:poly}
@@ -49,9 +57,9 @@ $p$ of degree $n\ge1$ with \emph{any} complex coefficients has \textbf{exactly $
 }
 \X{the three classic multiple-choice errors}{
 \begin{bul}
-\item ``$n$ roots, all \emph{distinct}'' --- \no, only with multiplicity ($z^5$ has one root of multiplicity 5).
-\item ``complex roots come in conjugate pairs'' --- \no\ in general, \yes\ \textbf{only if all coefficients are real}. Degree 5 with complex coefficients need not have any real root.
-\item ``odd degree \ra\ a real root'' --- \yes\ \textbf{only for real coefficients} (IVT on $p$, which changes sign at $\pm\infty$).
+\item \claimF{``$n$ roots, all \emph{distinct}''} --- only \emph{with multiplicity} ($z^5$ has one root of multiplicity 5).
+\item \claimF{``complex roots come in conjugate pairs'' \emph{in general}} --- \yes\ \textbf{only if all coefficients are real}. Degree 5 with complex coefficients need not have any real root.
+\item \claimT{``odd degree \ra\ a real root''} --- \textbf{only for real coefficients} (IVT on $p$, which changes sign at $\pm\infty$).
 \end{bul}
 }
 \R{factor a polynomial over $\Rl$ / over $\Cx$}{

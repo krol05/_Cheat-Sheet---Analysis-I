@@ -16,7 +16,7 @@
 \subsection{Uniform convergence $f_n\rightrightarrows f$}\label{sub:unifconv}
 \R{decide uniform convergence (the standard 3-point task)}{
 \begin{rcp}
-\item Get the pointwise limit $f$ first --- uniform convergence can only be towards it.
+\item \textbf{Get the pointwise limit $f$ first} --- uniform convergence can only be towards it.
 \item Set $g_n(x):=|f_n(x)-f(x)|$ and compute $M_n:=\sup_xg_n(x)$: differentiate in \textbf{$x$} with $n$ fixed, solve $g_n'(x)=0$, substitute the critical point back. Check the boundary and $|x|\to\infty$ too.
 \item $M_n\to0$ \ra\ \textbf{uniform}. \ $M_n\not\to0$ \ra\ \textbf{pointwise only}.
 \end{rcp}
@@ -35,8 +35,8 @@ So $M_n=\frac1{2\sqrt n}\to0$ \ra\ \textbf{uniformly to $0$ on all of $\Rl$.}
 \X{sup bounds that do and do not block uniformity}{
 \begin{bul}
 \item $\sup_x|f_n(x)|\ge\frac1{2n}$ does \textbf{not} prevent $f_n\rightrightarrows0$ --- $\frac1{2n}\to0$. Only a lower bound that \emph{does not vanish} blocks it.
-\item The max being attained at a \emph{different} point $x_n$ for each $n$ is irrelevant. Only the \emph{value} $M_n$ counts.
-\item $f_n\to f$ pointwise with all $f_n$ and $f$ continuous still need not be uniform ($nxe^{-nx^2}$ on $[0,1]$).
+\item The max being attained at a \emph{different} point $x_n$ for each $n$ is \textbf{irrelevant}. Only the \emph{value} $M_n$ counts.
+\item $f_n\to f$ pointwise with all $f_n$ and $f$ continuous \textbf{still need not be uniform} ($nxe^{-nx^2}$ on $[0,1]$).
 \end{bul}
 }
 \T{gallery: memorise this table, it answers most $(f_n)$ questions}{
@@ -79,8 +79,8 @@ $\lim_{x\to x_0}\lim_nf_n=\lim_n\lim_{x\to x_0}f_n$ & $f_n\rightrightarrows f$ (
 $f_n$ continuous on $D$ and $f_n\rightrightarrows f$:
 \begin{bul}
 \item \hd{$f$ is continuous} --- the \emph{Uniform Limit Theorem}. Pointwise alone gives nothing.
-\item On $[a,b]$: $f$ is Riemann integrable and $\int_a^bf_n\to\int_a^bf$.
-\item $f_n$ bounded uniformly \ra\ $f$ bounded.
+\item On $[a,b]$: $f$ is \textbf{Riemann integrable} and $\int_a^bf_n\to\int_a^bf$.
+\item $f_n$ \textbf{bounded uniformly} \ra\ $f$ bounded.
 \item \warn \textbf{Derivatives do not follow.} Uniform convergence of $f_n$ says nothing about $f_n'$; you must assume $f_n'$ converges uniformly.
 \end{bul}
 }

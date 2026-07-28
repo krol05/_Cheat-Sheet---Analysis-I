@@ -7,10 +7,10 @@ $\iff\exists K\in\Rl:\ f(x)=f(x_0)+K(x-x_0)+o(|x-x_0|)$ as $x\to x_0$, and then 
 \X{Landau $o$ / $O$ --- the classic multiple-choice trap}{
 $f=O(g)$: $|f|\le C|g|$ near $x_0$ (\emph{same order or smaller}). \quad $f=o(g)$: $f/g\to0$ (\emph{strictly smaller}).
 \begin{bul}
-\item $f(x)-f(x_0)-K(x-x_0)=o(|x-x_0|)$ \ra\ \textbf{differentiable} \yes. Note $(x-x_0)$, \emph{not} $Kx$: written with $Kx$ the statement is meaningless.
-\item $f(x)-f(x_0)=O(|x-x_0|)$ \ra\ only Lipschitz near $x_0$ \ra\ \textbf{not} differentiable \no\ ($|x|$ satisfies it).
-\item only $h\to0^+$ exists \ra\ only \emph{right}-differentiable \ra\ not differentiable \no.
-\item ``for an arbitrary polynomial $p$'' \ra\ useless \no; $p$ must be exactly the linear Taylor part.
+\item \claimT{$f(x)-f(x_0)-K(x-x_0)=o(|x-x_0|)$ \ra\ \textbf{differentiable}} --- note $(x-x_0)$, \emph{not} $Kx$: written with $Kx$ the statement is meaningless.
+\item \claimF{$f(x)-f(x_0)=O(|x-x_0|)$ \ra\ differentiable} --- that is only Lipschitz near $x_0$; $|x|$ satisfies it.
+\item \claimF{only $h\to0^+$ exists \ra\ differentiable} --- that is only \emph{right}-differentiability.
+\item \claimF{``$f(x)=f(x_0)+p(x-x_0)+o(|x-x_0|)$ for an arbitrary polynomial $p$''} --- useless; $p$ must be exactly the linear Taylor part.
 \end{bul}
 \hd{Algebra:} $o(x^n)\pm o(x^n)=o(x^n)$, $x^m\cdot o(x^n)=o(x^{m+n})$, $o(x^n)=O(x^n)$ but not conversely.
 }
@@ -61,6 +61,17 @@ $\int\frac{2\du}{2\cos^2u}=\tan u=\tan\frac x2+C$ --- \textbf{not} $2\tan\frac x
 \item \hd{Compare two functions:} set $g=f-h$, show $g(a)=0$ and $g'>0$ \ra\ $f>h$ on $(a,\infty)$.
 \end{bul}
 }
+% D-INFK FS25 Aufgabe 5 was three of these in a row, 6 points, and nothing else on the
+% sheet answers "find a point where the derivative equals this specific number".
+\R{``show there is a $c$ with $f'(c)=k$'' / ``with $f(c)=v$'' --- pick the sub-interval}{
+You are given a few values of $f$ and asked for a point with a \emph{prescribed} derivative or a \emph{prescribed} value. Do \textbf{not} try to find $c$; produce it from a theorem.
+\begin{rcp}
+\item \hd{Prescribed $f'(c)=k$} \ra\ \textbf{MVT}. Find the sub-interval $[p,q]$ whose \emph{secant slope} already equals $k$: solve $\frac{f(q)-f(p)}{q-p}=k$ among the given points. Then MVT on $[p,q]$ hands you $c\in(p,q)$. Check $f$ is continuous on $[p,q]$ and differentiable on $(p,q)$ --- say it.
+\item \hd{Prescribed $f(c)=v$} \ra\ \textbf{IVT}. Find a sub-interval whose two endpoint \emph{values} straddle $v$.
+\item \hd{Prescribed $f'(c)=0$} \ra\ \textbf{Rolle}: find two points with equal values.
+\end{rcp}
+\hd{Ex.} $f$ cont.\ on $[0,2]$, diff.\ on $(0,2)$, $f(0)=f(2)=0$, $f(1)=1$. \ $c_1\in(0,1)$ with $f'(c_1)=1$: slope on $[0,1]$ is $\frac{1-0}{1-0}=1$ \ra\ MVT. \ $c_2\in(1,2)$ with $f'(c_2)=-1$: slope on $[1,2]$ is $\frac{0-1}{2-1}=-1$ \ra\ MVT. \ $c_3\in(1,2)$ with $f(c_3)=\frac12$: $f(1)=1>\frac12>0=f(2)$ \ra\ IVT.
+}
 
 \subsection{Curve discussion \de{Kurvendiskussion} and extrema}\label{sub:curve}
 \R{find and classify all extrema of $f$ on $I$}{
@@ -82,10 +93,11 @@ Inflection at $x=0,\pm\sqrt3$. Increasing on $[-1,1]$, decreasing outside. $f\to
 \F{convexity (konvex) --- exam favourite}{
 $f$ convex on $I$ $\iff f''\ge0$ $\iff f'$ increasing $\iff f(\lambda x+(1-\lambda)y)\le\lambda f(x)+(1-\lambda)f(y)$ $\iff$ the graph lies \emph{above} every tangent.
 \begin{bul}
-\item Convex and $f'(x_0)=0$ at an interior point \ra\ $x_0$ is a \textbf{global minimum} \yes.
-\item A convex differentiable $f$ cannot have several \emph{isolated} critical points --- the critical set is an interval \no.
-\item Its global \emph{maximum} on $[a,b]$ is always attained at a \textbf{boundary} point \yes.
-\item ``the global minimum can only be on the boundary'' \no\ --- it may well be interior.
+\item \claimF{convex \emph{and} concave \ra\ $f$ is constant} --- it is \textbf{affine}, $f(x)=ax+b$ ($f''\equiv0$, not $f'\equiv0$).
+\item \claimT{Convex and $f'(x_0)=0$ at an interior point \ra\ $x_0$ is a \textbf{global minimum}.}
+\item \claimF{A convex differentiable $f$ can have several \emph{isolated} critical points} --- the critical set is always an \textbf{interval}.
+\item \claimT{Its global \emph{maximum} on $[a,b]$ is always attained at a \textbf{boundary} point.}
+\item \claimF{``the global minimum can only be on the boundary''} --- it may well be interior.
 \end{bul}
 }
 \R{prove an inequality with convexity}{

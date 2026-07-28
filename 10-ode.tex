@@ -35,7 +35,7 @@ Otherwise $-\frac1y=\sin x+C$ \ra\ $y=\frac{-1}{\sin x+C}$; $y(0)=1$ \ra\ $C=-1$
 \item $(\mu y)'=\mu q$ \ra\ $\displaystyle y=\frac1{\mu(x)}\left(\int\mu(x)q(x)\dx+C\right)$.
 \item Insert the initial condition last.
 \end{rcp}
-\hd{Same thing as ``variation of constants'':} $y_h=Ce^{-\int p}$; let $C=C(x)$, insert, get $C'=qe^{\int p}$, integrate.
+\hd{``Variation of constants'' \de{Variation der Konstanten} is the same method, spelled out:} solve the homogeneous problem first, $y_h=Ce^{-\int p}$; then \textbf{promote the constant to a function} $C=C(x)$ and insert $y=C(x)e^{-\int p}$ into the ODE. Everything cancels except $C'=q\,e^{\int p}$, which you integrate. Use the name if the exam asks for it; the integrating factor gets you there faster.
 }
 \E{$y'-\frac2xy=x^3$}{
 $p=-\frac2x$ \ra\ $\mu=e^{-2\ln|x|}=x^{-2}$. Then $(x^{-2}y)'=x$ \ra\ $x^{-2}y=\frac{x^2}2+C$ \ra\ $\boxed{y=\frac{x^4}2+Cx^2}$.
@@ -56,7 +56,7 @@ $p=-\frac2x$ \ra\ $\mu=e^{-2\ln|x|}=x^{-2}$. Then $(x^{-2}y)'=x$ \ra\ $x^{-2}y=\
 \R{$y^{(n)}+a_{n-1}y^{(n-1)}+\dots+a_0y=0$}{
 \begin{rcp}
 \item Ansatz $y=e^{\lambda x}$ \ra\ \hd{characteristic polynomial} $\lambda^n+a_{n-1}\lambda^{n-1}+\dots+a_0=0$.
-\item Find all roots (guess an integer root, then polynomial division).
+\item \textbf{Find all roots} (guess an integer root, then polynomial division).
 \item Build the fundamental system:
 \begin{bul}
 \item simple real root $\lambda$ \ra\ $e^{\lambda x}$
@@ -69,11 +69,11 @@ $p=-\frac2x$ \ra\ $\mu=e^{-2\ln|x|}=x^{-2}$. Then $(x^{-2}y)'=x$ \ra\ $x^{-2}y=\
 }
 \F{Wronskian: is my fundamental system valid?}{
 $W(x)=\det\begin{pmatrix}y_1&y_2\\y_1'&y_2'\end{pmatrix}=y_1y_2'-y_1'y_2$.\\
-$W(x_0)\ne0$ for one $x_0$ \ra\ $y_1,y_2$ are linearly independent \ra\ they span all solutions.
+$W(x_0)\ne0$ for one $x_0$ \ra\ $y_1,y_2$ are \textbf{linearly independent} \ra\ they span all solutions.
 For $y''+by'+cy=0$: $W(x)=W(0)e^{-bx}$, so $W$ is either never zero or identically zero (Abel).
 }
 \F{reduction of order (one solution known)}{
-Given one solution $y_1$ of $y''+p y'+q y=0$, set $y_2=v(x)y_1$. Inserting kills the $v$ term and leaves a first-order ODE for $v'$:
+\textbf{Given one solution $y_1$} of $y''+p y'+q y=0$, set $y_2=v(x)y_1$. Inserting kills the $v$ term and leaves a \textbf{first-order ODE for $v'$}:
 $v'=\frac1{y_1^2}e^{-\int p}$, so $y_2=y_1\int\frac{e^{-\int p}}{y_1^2}\dx$.
 }
 
@@ -94,9 +94,9 @@ $g_1+g_2$ & solve separately and add (superposition)\\
 }
 \R{execute the ansatz}{
 \begin{rcp}
-\item Pick the shape from the table above.
+\item \textbf{Pick the shape} from the table above.
 \item \warn \hd{RESONANCE CHECK:} is the exponent $\mu$ (resp.\ $\pm i\omega$) a root of the characteristic polynomial, and with what multiplicity $m$? \ra\ multiply the whole ansatz by $x^m$. Skipping this makes the ansatz collapse to $0=g$.
-\item Differentiate the ansatz, insert into the ODE, compare coefficients, solve for $A,B,\dots$
+\item \textbf{Differentiate the ansatz}, insert into the ODE, compare coefficients, solve for $A,B,\dots$
 \item \hd{General solution $=y_h+y_p$}; only now impose the initial conditions, on the \emph{sum}.
 \end{rcp}
 }
@@ -114,7 +114,7 @@ $C_1+C_2=1$, $C_1+2C_2=0$ \ra\ $C_2=-1$, $C_1=2$ \ra\ $\boxed{y=2e^x-e^{2x}}$.
 \F{variation of constants (when no ansatz fits, e.g.\ $g=\frac1x$, $\tan x$)}{
 2nd order with $y_h=C_1y_1+C_2y_2$: set $y_p=c_1(x)y_1+c_2(x)y_2$ with
 \[c_1'=-\frac{y_2g}W,\qquad c_2'=\frac{y_1g}W,\qquad W=y_1y_2'-y_1'y_2,\]
-then integrate. Always works; just slower than the ansatz.
+then integrate. \textbf{Always works}; just slower than the ansatz.
 }
 
 \subsection{Conditions, existence, qualitative behaviour}\label{sub:autonomous}
@@ -130,6 +130,6 @@ Linear ODEs with continuous coefficients: unique solution on the \emph{whole} in
 \item Equilibria: the roots of $f(y)=0$ --- these are the constant solutions.
 \item Sign of $f$ between consecutive equilibria: $f>0$ \ra\ solutions increase, $f<0$ \ra\ decrease.
 \item An equilibrium $y^*$ is \hd{stable} if $f$ goes $+\to-$ there (equivalently $f'(y^*)<0$), \hd{unstable} if $-\to+$ ($f'(y^*)>0$).
-\item Solutions can never cross an equilibrium (uniqueness), so each one is trapped between two of them and converges monotonically.
+\item Solutions \textbf{can never cross an equilibrium} (uniqueness), so each one is trapped between two of them and converges monotonically.
 \end{rcp}
 }

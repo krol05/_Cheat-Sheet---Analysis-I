@@ -29,7 +29,7 @@
 \F{the three substitution patterns worth memorising}{
 $\displaystyle\int\frac{f'}f\dx=\ln|f|+C$;\quad
 $\displaystyle\int f^nf'\dx=\frac{f^{n+1}}{n+1}+C$;\quad
-$\displaystyle\int f'e^f\dx=e^f+C$.\\
+$\displaystyle\int f'e^f\dx=e^f+C$;\quad $\displaystyle\int\frac{f'}{1+f^2}\dx=\arctan f+C$.\\
 \hd{Ex.} $\int\frac x{1+x^2}\dx$: $u=1+x^2$, $\du=2x\dx$ \ra\ $\frac12\int\frac{\du}u=\frac12\ln(1+x^2)+C$.
 }
 \E{trig substitution done properly}{
@@ -44,7 +44,7 @@ Back-substitute with $\theta=\arcsin x$ \emph{and} $\sin2\theta=2\sin\theta\cos\
 \begin{rcp}
 \item Choose $u$ = the factor that gets \emph{simpler} when differentiated. Priority \hd{LIATE}: \textbf{L}og, \textbf{I}nverse trig, \textbf{A}lgebraic, \textbf{T}rig, \textbf{E}xponential --- earlier in the list becomes $u$.
 \item $v'$ = the rest; integrate it to get $v$ (no $+C$ here).
-\item Apply, repeat if the new integral is still a product ($x^2e^x$: twice).
+\item Apply, \textbf{repeat if the new integral is still a product} ($x^2e^x$: twice).
 \item \hd{$\int\ln x\dx$, $\int\arctan x\dx$:} take $v'=1$ \ra\ $x\ln x-x$, \ $x\arctan x-\frac12\ln(1+x^2)$.
 \end{rcp}
 }
@@ -72,7 +72,7 @@ $-(\ln x+1)\cos x+x\ln x\sin x\ +\ \frac{\sin x}x+\ln x\cos x\ +\ \cos x\ -\ \fr
 \item $\deg p\ge\deg q$ \ra\ polynomial division first.
 \item Factor $q$ completely over $\Rl$: linear factors and irreducible quadratics only (\S\ref{sub:poly}).
 \item Ansatz: $(x-a)\to\frac A{x-a}$;\ $(x-a)^k\to\frac{A_1}{x-a}+\dots+\frac{A_k}{(x-a)^k}$;\ irreducible $x^2+bx+c\to\frac{Ax+B}{x^2+bx+c}$.
-\item Multiply out and compare coefficients, or plug in the roots (\hd{cover-up} is fastest for simple linear factors).
+\item Multiply out and compare coefficients, or use the \hd{cover-up rule} --- fastest for simple linear factors: to get the $A$ belonging to $\frac A{x-a}$, \textbf{cover up} the factor $(x-a)$ in $q$ and evaluate what is left at $x=a$, i.e.\ $A=\frac{p(a)}{q'(a)}$. \hd{Ex.} $\frac1{x^2-1}=\frac{A}{x-1}+\frac B{x+1}$: $A=\frac1{1+1}=\frac12$, $B=\frac1{-1-1}=-\frac12$.
 \item Integrate: $\int\frac A{x-a}=A\ln|x-a|$;\ $\int\frac A{(x-a)^k}=\frac A{(1-k)(x-a)^{k-1}}$;\ for $\frac{Ax+B}{x^2+bx+c}$ split off $\frac A2\cdot\frac{2x+b}{x^2+bx+c}$ (gives $\ln$) and complete the square on the rest (gives $\arctan$).
 \end{rcp}
 \hd{Ex.} $\int\frac{\dx}{x^2-1}=\int\left(\frac{1/2}{x-1}-\frac{1/2}{x+1}\right)\dx=\frac12\ln\left|\frac{x-1}{x+1}\right|+C$.
@@ -100,25 +100,25 @@ $f$ continuous on $[a,b]$, $F(x):=\int_a^xf(t)\dt$ \ra\ $F$ is differentiable an
 \begin{bul}
 \item $f$ \hd{odd} on a symmetric interval \ra\ $\int_{-a}^af=0$; \ $f$ \hd{even} \ra\ $=2\int_0^af$.
 \item $\int_a^b=-\int_b^a$; \ $\int_a^b=\int_a^c+\int_c^b$; \ $\left|\int f\right|\le\int|f|$; \ $f\le g\Rightarrow\int f\le\int g$.
-\item $\left|\int_a^bf\right|\le(b-a)\max|f|$ (the standard estimate).
-\item Period $T$: $\int_a^{a+T}f$ does not depend on $a$.
+\item $\left|\int_a^bf\right|\le(b-a)\max|f|$ (the \textbf{standard estimate}).
+\item \textbf{Period} $T$: $\int_a^{a+T}f$ does not depend on $a$.
 \item $\int_0^{2\pi}\sin^2=\int_0^{2\pi}\cos^2=\pi$; \ $\int_0^\pi\sin x\dx=2$; \ $\int_0^{\pi/2}\sin^2=\frac\pi4$.
 \end{bul}
 }
 \R{limit of a sum $=$ integral (Riemann sum trick)}{
 A limit of the shape $\displaystyle\lim_{n\to\infty}\frac1n\sum_{k=1}^nf\!\left(\frac kn\right)$ equals $\displaystyle\int_0^1f(x)\dx$.
 \begin{rcp}
-\item Factor out $\frac1n$ (the width). If it is not there, the trick does not apply.
+\item \textbf{Factor out $\frac1n$} (the width). If it is not there, the trick does not apply.
 \item Write the rest as a function of $\frac kn$ alone \ra\ that is $f$.
-\item General interval: $\frac{b-a}n\sum f\!\left(a+k\frac{b-a}n\right)\to\int_a^bf$.
+\item \textbf{General interval}: $\frac{b-a}n\sum f\!\left(a+k\frac{b-a}n\right)\to\int_a^bf$.
 \end{rcp}
 \hd{Ex.} $\lim\sum_{k=1}^n\frac n{n^2+k^2}=\lim\frac1n\sum\frac1{1+(k/n)^2}=\int_0^1\frac{\dx}{1+x^2}=\frac\pi4$.\\
 \hd{Ex.} $\lim\frac1n\sum_{k=1}^n\ln\frac kn=\int_0^1\ln x\dx=-1$.
 }
 \R{integrals with $|\cdot|$, $\max$, or pieces}{
 \begin{rcp}
-\item Find every point where the sign or the active branch changes (zeros of the inside).
-\item Split there, drop the $|\cdot|$ with the correct sign on each piece.
+\item \textbf{Find every point} where the sign or the active branch changes (zeros of the inside).
+\item \textbf{Split there}, drop the $|\cdot|$ with the correct sign on each piece.
 \item Add up. \warn Never pull $|\cdot|$ outside the integral.
 \end{rcp}
 \hd{Ex.} $\int_0^2|x-1|\dx=\int_0^1(1-x)\dx+\int_1^2(x-1)\dx=\frac12+\frac12=1$.
@@ -127,16 +127,16 @@ A limit of the shape $\displaystyle\lim_{n\to\infty}\frac1n\sum_{k=1}^nf\!\left(
 \subsection{Riemann integrability \de{Riemann-integrierbar}}\label{sub:riemannint}
 \D{Darboux definition}{
 Partition $P:a=x_0<\dots<x_n=b$; \ $L(f,P)=\sum_i(\inf_{[x_{i-1},x_i]}f)\Delta x_i$, \ $U(f,P)=\sum_i(\sup f)\Delta x_i$.\\
-$f$ (bounded) is integrable $\iff\sup_PL=\inf_PU$ $\iff\forall\eps>0\ \exists P:U(f,P)-L(f,P)<\eps$.\\
+$f$ (bounded) is \textbf{integrable} $\iff\sup_PL=\inf_PU$ $\iff\forall\eps>0\ \exists P:U(f,P)-L(f,P)<\eps$.\\
 \hd{To compute from the definition:} take the equidistant $P$, evaluate the two sums, let $n\to\infty$.
 }
 \F{criteria --- and the false friends}{
 \begin{bul}
-\item \yes\ continuous on $[a,b]$ \ra\ integrable. \ Monotone on $[a,b]$ \ra\ integrable. \ Differentiable \ra\ continuous \ra\ integrable.
-\item \yes\ bounded with \emph{finitely} (even countably) many discontinuities \ra\ integrable. \ Lebesgue criterion: bounded and the discontinuity set is a null set $\iff$ integrable.
-\item \no\ ``must be continuous everywhere'' --- jumps are fine.
-\item \no\ ``integrable \ra\ differentiable'' --- a step function is integrable and not even continuous.
-\item \no\ ``finitely many function \emph{values} \ra\ integrable'' --- Dirichlet $1_\Q$ takes only $0,1$ and is not integrable.
+\item \claimT{continuous on $[a,b]$ \ra\ integrable.} \ \textbf{Monotone} on $[a,b]$ \ra\ integrable. \ \textbf{Differentiable} \ra\ continuous \ra\ integrable.
+\item \claimT{bounded with \emph{finitely} (even countably) many discontinuities \ra\ integrable.} \ \textbf{Lebesgue criterion}: bounded and the discontinuity set is a null set $\iff$ integrable.
+\item \claimF{``must be continuous everywhere''} --- jumps are fine.
+\item \claimF{``integrable \ra\ differentiable''} --- a step function is integrable and not even continuous.
+\item \claimF{``finitely many function \emph{values} \ra\ integrable''} --- Dirichlet $1_\Q$ takes only $0,1$ and is not integrable.
 \item \warn Riemann integrability requires \textbf{bounded} $f$; unbounded means improper.
 \end{bul}
 }
@@ -145,10 +145,11 @@ $f$ (bounded) is integrable $\iff\sup_PL=\inf_PU$ $\iff\forall\eps>0\ \exists P:
 \R{does it converge?}{
 \begin{rcp}
 \item \hd{Locate every problem point:} $\pm\infty$ and every point where $f$ is unbounded. \warn Split so each piece has \emph{exactly one} problem; \emph{all} pieces must converge.
-\item Write each as a limit: $\int_a^\infty f=\lim_{R\to\infty}\int_a^Rf$, \ $\int_a^bf=\lim_{\eps\to0^+}\int_a^{b-\eps}f$.
-\item Compare with the benchmark below at that specific point.
+\item \hd{Write each as a limit:} $\int_a^\infty f=\lim_{R\to\infty}\int_a^Rf$, \ $\int_a^bf=\lim_{\eps\to0^+}\int_a^{b-\eps}f$.
+\item \hd{Compare with the benchmark} below at that specific point.
 \item \hd{Limit comparison:} $\frac{f(x)}{g(x)}\to c\in(0,\infty)$ \ra\ same behaviour; replace $f$ by its leading behaviour there.
 \item \hd{Sign changes:} test absolute convergence first; if that fails, oscillating integrals may still converge conditionally (parts / Dirichlet).
+\item \warn An \hd{interior} singularity does \textbf{not} cancel by symmetry: $\int_{-1}^1\frac{\dx}x$ \textbf{diverges}, because $\int_0^1\frac{\dx}x$ already does. Both halves must converge \emph{separately} --- there is no principal value in this course.
 \end{rcp}
 }
 \T{benchmarks: the exponent flips meaning at the two ends}{

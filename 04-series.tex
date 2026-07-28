@@ -16,7 +16,7 @@ Convergence is unaffected by finitely many terms or by the starting index.
 \item \hd{Resembles a known series?} \ra\ \textbf{comparison} on leading powers.
 \item \hd{Alternating?} \ra\ \textbf{Leibniz}.
 \item \hd{$a_n=f(n)$ with $f\ge0$ decreasing?} \ra\ \textbf{integral test}.
-\item \hd{Telescoping?} $a_n=b_n-b_{n+1}$ \ra\ $s_N=b_1-b_{N+1}$.
+\item \hd{Telescoping?} $a_n=b_n-b_{n+1}$ \ra\ $s_N=b_1-b_{N+1}$. \warn With a \emph{shift of $k$} ($a_n=b_n-b_{n+k}$) exactly $k$ terms survive at each end: $\sum_{n\ge2}\left(\frac1{n+1}-\frac1{n-1}\right)$ leaves $-\frac11-\frac12$.
 \end{rcp}
 }
 \F{the benchmark series (memorise these four lines)}{
@@ -40,10 +40,10 @@ Convergence is unaffected by finitely many terms or by the starting index.
 }
 \X{test traps}{
 \begin{bul}
-\item Leibniz needs \emph{monotone} $b_n$: $b_n=\frac{2+(-1)^n}n\to0$ but is not monotone.
-\item Comparison needs $a_n\ge0$; with signs, apply it to $|a_n|$ (that proves \emph{absolute} convergence only).
-\item $\sum a_n$ conv.\ and $\sum b_n$ conv.\ \ra\ $\sum(a_n+b_n)$ conv.\ \yes, \ but $\sum a_nb_n$ conv.\ \no\ ($a_n=b_n=\frac{(-1)^n}{\sqrt n}$).
-\item ``$s_N$ bounded \ra\ converges'' \no\ unless $a_n\ge0$ (then $s_N$ is monotone).
+\item \textbf{Leibniz} needs \emph{monotone} $b_n$: $b_n=\frac{2+(-1)^n}n\to0$ but is not monotone.
+\item \textbf{Comparison} needs $a_n\ge0$; with signs, apply it to $|a_n|$ (that proves \emph{absolute} convergence only).
+\item \claimT{$\sum a_n$ conv.\ and $\sum b_n$ conv.\ \ra\ $\sum(a_n+b_n)$ conv.}, \ but \claimF{$\sum a_nb_n$ conv.} ($a_n=b_n=\frac{(-1)^n}{\sqrt n}$).
+\item \claimF{``$s_N$ bounded \ra\ converges''} unless $a_n\ge0$ (then $s_N$ is monotone).
 \end{bul}
 }
 \E{run the tree on five series}{
@@ -58,7 +58,7 @@ Convergence is unaffected by finitely many terms or by the starting index.
 \E{telescoping via partial fractions}{
 $\sum_{n\ge1}\frac1{n(n+2)}$: split $\frac1{n(n+2)}=\frac12\left(\frac1n-\frac1{n+2}\right)$.
 $s_N=\frac12\left(1+\frac12-\frac1{N+1}-\frac1{N+2}\right)\to\frac34$.\\
-\hd{Recipe:} partial-fraction it, write out the first three and last two terms, see what survives.
+\hd{Recipe:} \textbf{partial-fraction} it (how: \S\ref{sub:pfrac}), write out the first three and last two terms, see what survives.
 }
 
 \subsection{Rearrangement, products, mixed-sign tests}\label{sub:rearrange}

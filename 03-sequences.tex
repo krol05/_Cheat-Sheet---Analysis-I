@@ -1,0 +1,140 @@
+\subsection{Definitions you must be able to write}\label{sub:seqdef}
+\D{convergence, divergence, boundedness}{
+$a_n\to a$ :$\iff\forall\eps>0\ \exists N\in\N\ \forall n\ge N:\ |a_n-a|<\eps$.\\
+$a_n\to\infty$ :$\iff\forall K>0\ \exists N\ \forall n\ge N:\ a_n>K$ (\emph{divergence to $\infty$}, not convergence).\\
+\hd{bounded:} $\exists C:|a_n|\le C\ \forall n$. \hd{monotone incr.:} $a_{n+1}\ge a_n\ \forall n$.\\
+\hd{explicit} $a_n=f(n)$ vs \hd{recursive} $a_{n+1}=f(a_n)$ --- the treatment is completely different, see \S\ref{sub:seqlimit} vs \S\ref{sub:recursive}.
+}
+\F{the implication chain (know which arrows reverse)}{
+convergent \ra\ Cauchy \ra\ bounded \ra\ has a convergent subsequence (Bolzano--Weierstrass).\\
+Only reversal that holds: \textbf{Cauchy $\Leftrightarrow$ convergent} in $\Rl$ (completeness). Also monotone $+$ bounded $\Leftrightarrow$ convergent \emph{for monotone sequences}.
+}
+
+\subsection{Limit of an explicitly given $a_n$}\label{sub:seqlimit}
+\R{compute $\lim a_n$: match the shape}{
+\begin{rcp}
+\item \hd{Rational in $n$:} divide top and bottom by the highest power in the \emph{denominator}. $\deg$ top $<$ bottom \ra\ $0$; $=$ \ra\ ratio of leading coefficients; $>$ \ra\ $\pm\infty$.
+\item \hd{Roots, $\infty-\infty$:} \textbf{multiply by the conjugate} --- multiply and divide by $\sqrt A+\sqrt B$ so that $\sqrt A-\sqrt B=\frac{A-B}{\sqrt A+\sqrt B}$; the roots cancel upstairs and the answer falls out. Worked out in full in the EXAMPLE box below, line 2.
+\item \hd{$n$-th roots, $n$ in the exponent:} write $a_n=e^{\ln a_n}$ and take the limit in the exponent. EXAMPLE box below, lines 3--4.
+\item \hd{$(1+\frac cn)^{dn}$:} $\to e^{cd}$.
+\item \hd{Factorials, $n^n$:} use the growth order $\ln n\ll n^\alpha\ll b^n\ll n!\ll n^n$ ($\alpha>0$, $b>1$): the \emph{smaller} one over the bigger one $\to0$. EXAMPLE box below, line 5.
+\item \hd{$\log$ or root of a \emph{sum}:} factor out the dominant term first. $\log(n+e^{n^2})=\log\!\left(e^{n^2}(1+ne^{-n^2})\right)=n^2+\log(1+ne^{-n^2})\sim n^2$.
+\item \hd{$(-1)^n$ or $\sin/\cos$ times a null sequence:} squeeze $-|b_n|\le a_n\le|b_n|$.
+\item \hd{$\frac1n\sum_{k\le n}f(k/n)$:} that is a Riemann sum, see \S\ref{sub:riemannsum}.
+\item \hd{Nothing fits:} treat $n$ as a real $x$ and use Taylor / l'Hospital (\S\ref{sub:taylorlimit}, \S\ref{sub:lhospital}).
+\end{rcp}
+}
+\F{tools with names --- cite them, it earns marks}{
+\hd{Limit laws:} sums, products, quotients (denominator $\ne0$) --- only if \emph{both} limits exist finitely.\\
+\hd{Squeeze \de{Sandwich}:} $b_n\le a_n\le c_n$ and $b_n,c_n\to L$ \ra\ $a_n\to L$.\\
+\hd{Monotone convergence \de{Monotoniekriterium}:} monotone $+$ bounded \ra\ convergent, limit $=\sup$ resp.\ $\inf$ of the term set.\\
+\hd{Continuity transfer:} $a_n\to a$ and $f$ continuous at $a$ \ra\ $f(a_n)\to f(a)$.\\
+\hd{Ratio criterion for sequences:} $\left|\frac{a_{n+1}}{a_n}\right|\to q<1$ \ra\ $a_n\to0$ geometrically.\\
+\warn Do not look for Leibniz / Quotienten- / Wurzel- / Majorantenkriterium here: those decide whether a \emph{series} $\sum a_n$ converges, and they all live in \S\ref{sub:seriestree}--\S\ref{sub:rearrange}.
+}
+\E{the limits that keep coming back}{%
+\begin{bul}
+\item $\frac{3n^2-n}{2n^2+5}=\frac{3-\frac1n}{2+\frac5{n^2}}\to\frac32$ \ \de{divide by $n^2$}.
+\item \hd{Conjugate, in full:} $\sqrt{n^2+n}-n=\frac{(\sqrt{n^2+n}-n)(\sqrt{n^2+n}+n)}{\sqrt{n^2+n}+n}=\frac{(n^2+n)-n^2}{\sqrt{n^2+n}+n}=\frac{n}{\sqrt{n^2+n}+n}=\frac1{\sqrt{1+\frac1n}+1}\to\frac12$. \ \de{last step: divide by $n$.}
+\item $\sqrt[n]{n}=e^{\frac{\ln n}n}\to1$; $\sqrt[n]{a}\to1$ $(a>0)$; $\sqrt[n]{2^n+3^n}\to3$ (pull out the biggest).
+\item $\left(1+\frac3n\right)^{2n}=\left[\left(1+\frac3n\right)^n\right]^2\to e^6$.
+\item $\frac{n!}{n^n}\le\frac1n\to0$; \ $\frac{2^n}{n!}\to0$ (ratio $\frac2{n+1}\le\frac12$ for $n\ge3$).
+\item $\frac{(-1)^n}{n}$: $|a_n|\le\frac1n\to0$ \ra\ $\to0$. Alternating by itself means nothing.
+\end{bul}
+}
+\E{two exam-style limits (D-INFK FS25 2.A2)}{
+\hd{Bounded inside a continuous function:} $a_n=\tan\!\left(\frac{\sin n}{4\sqrt n}\right)$. \ $|\sin n|\le1$ \ra\ $\left|\frac{\sin n}{4\sqrt n}\right|\le\frac1{4\sqrt n}\to0$ (squeeze); $\tan$ is continuous at $0$ \ra\ $a_n\to\tan0=\mathbf0$.\\
+\hd{$\log$ of a sum:} $b_n=\frac{\log(n+e^{n^2})}{2n^2}$. Factor out the dominant term:
+$\log\!\left(e^{n^2}\!\left(1+ne^{-n^2}\right)\right)=n^2+\underbrace{\log(1+ne^{-n^2})}_{\to0}$ \ra\ $b_n\to\frac{n^2}{2n^2}=\mathbf{\frac12}$.
+}
+\R{prove $a_n\to a$ by $\eps$--$N$}{
+\begin{rcp}
+\item Compute $|a_n-a|$, simplify to one fraction.
+\item Over-estimate to a clean $\frac C{n^k}$ (numerator bigger, denominator smaller).
+\item Solve $\frac C{n^k}<\eps$ \ra\ take $N:=\lceil(C/\eps)^{1/k}\rceil+1$.
+\item Write it out: ``Let $\eps>0$, choose $N$ as above; then $\forall n\ge N$: $|a_n-a|\le\frac C{n^k}<\eps$.'' $\square$
+\end{rcp}
+}
+\F{estimates worth remembering}{
+$n!\ge2^{n-1}$; \ $\left(\frac n3\right)^n\le n!\le n^n$; \ \hd{Stirling} $n!\sim\sqrt{2\pi n}\left(\frac ne\right)^n$, so $\sqrt[n]{n!}\sim\frac ne\to\infty$.\\
+$\sum_{k=1}^n\frac1k\approx\ln n+\gamma$ (grows, unbounded); \ $\left(1+\frac1n\right)^n\uparrow e$, $\left(1+\frac1n\right)^{n+1}\downarrow e$.
+}
+
+\subsection{Recursive sequences $x_{n+1}=f(x_n)$}\label{sub:recursive}
+\R{``konvergiert $(x_n)$, und wogegen?'' --- the full treatment (4--9 P)}{
+\hd{The task:} you are given $x_0$ and a rule $x_{n+1}=f(x_n)$, never a formula for $x_n$. \warn You may \textbf{not} just solve $L=f(L)$: that equation only says \emph{if} the limit exists, it is one of these roots. Steps 2--3 are what earn you the right to take the limit at all.
+\begin{rcp}
+\item \hd{Candidate limits:} solve $L=f(L)$. Keep \emph{every} root --- step 4 decides which one.
+\item \hd{Bounded:} find an interval $I$ with $x_0\in I$ and $f(I)\subseteq I$ (``$I$ is invariant''); induction then gives $x_n\in I$ for all $n$.
+\item \hd{Monotone:} look at the sign of $f(x)-x$ on $I$ --- positive means $x_{n+1}>x_n$, so increasing; negative means decreasing. If $f$ is increasing, that sign can never flip, so the direction holds for \emph{all} $n$.
+\item \hd{Conclude:} monotone $+$ bounded \ra\ converges (\S\ref{sub:seqlimit}). Only now write $L=\lim x_{n+1}=\lim f(x_n)=f(L)$, using continuity of $f$; pick the root of $L=f(L)$ that lies in $I$.
+\end{rcp}
+}
+\F{contraction shortcut $+$ DEF: what $q$ is (often much faster)}{
+\hd{$q$ is a contraction factor:} \emph{any} constant with $|f'(x)|\le q<\mathbf1$ for \textbf{all} $x\in I$ --- so $f$ shrinks every distance by at least the factor $q$. Get it by maximising $|f'|$ on $I$. \warn $|f'|<1$ pointwise is not enough; you need one $q$ bounded away from 1.\\
+Then by the MVT $|x_{n+1}-L|=|f(x_n)-f(L)|\le q|x_n-L|$, so
+\[|x_n-L|\le q^n|x_0-L|\longrightarrow0\quad\text{geometrically.}\]
+\ra\ exactly \textbf{one} fixed point in $I$, and $x_n$ converges to it from \emph{every} start $x_0\in I$. \hd{No monotonicity and no boundedness argument needed} --- this replaces steps 2--4 above.
+}
+\E{$x_{n+1}=\frac{\sin x_n}{1+x_n^2}$, $x_0\in(0,1)$}{
+$f(x)=\frac{\sin x}{1+x^2}$.
+\textbf{1)} $f(0)=0$; for $x\ne0$, $|\sin x|<|x|$ and $1+x^2\ge1$ give $|f(x)|<|x|$ \ra\ no other fixed point.
+\textbf{2)} $x_0\in(0,1)$ \ra\ $\sin x_0>0$ \ra\ all $x_n>0$, and $x_{n+1}<x_n$ \ra\ strictly decreasing, bounded below by $0$.
+\textbf{3)} Monotone $+$ bounded \ra\ converges to $L\ge0$ with $L=f(L)$ \ra\ $L=0$.
+}
+
+\subsection{Accumulation points, limsup, liminf}\label{sub:accum}
+\D{accumulation point \de{H\"aufungspunkt}}{
+$h$ is an \hd{accumulation point} of $(a_n)$ :$\iff$ every $\eps$-ball around $h$ contains $a_n$ for \textbf{infinitely many} $n$ $\iff$ \textbf{some subsequence converges to $h$}. The second form is the one you use.\\
+\warn A \emph{limit} is where the whole sequence goes; an \emph{accumulation point} is where some part of it keeps returning. A sequence has at most one limit but may have many accumulation points.
+}
+\R{find all accumulation points}{
+\hd{Idea:} the sequence has one ingredient that \textbf{repeats}. Split $n$ along its period; each residue class is a subsequence with an honest limit, and those limits are the answer.
+\begin{rcp}
+\item \hd{Find the repeating ingredient and split $n$ accordingly:}
+\begin{bul}
+\item $(-1)^n$ has \hd{period 2} \ra\ two cases $n=2k$ (gives $+1$) and $n=2k+1$ (gives $-1$).
+\item $\cos\frac{n\pi}3$ has \hd{period 6} \ra\ six cases $n\equiv0,\dots,5\ (\mathrm{mod}\ 6)$.
+\item $\sin n$ \hd{never repeats} (as $\pi$ is irrational) \ra\ the values are \emph{dense}, so \textbf{every} point of $[-1,1]$ is an accumulation point.
+\end{bul}
+\item Take the limit of each subsequence separately. That set of limits is \textbf{exactly} the set of accumulation points.
+\item $\limsup=\max$ of that set, $\liminf=\min$ of that set.
+\end{rcp}
+\hd{Ex.} $a_n=(-1)^n\frac n{n+1}$: $n=2k$ \ra\ $\frac{2k}{2k+1}\to+1$; $n=2k+1$ \ra\ $-\frac{2k+1}{2k+2}\to-1$. Set $\{-1,+1\}$, so $\limsup=1$, $\liminf=-1$, and since they differ the sequence \textbf{diverges}.
+}
+\F{limsup / liminf algebra $+$ DEF and intuition}{
+\hd{Intuition:} $\limsup a_n$ is the \textbf{largest accumulation point} --- the highest level the sequence keeps climbing back to; $\liminf a_n$ is the \textbf{smallest}. Formally $\limsup a_n=\lim_{n\to\infty}\sup_{k\ge n}a_k$ (the running sup can only fall, so the limit exists), $\liminf=\lim_n\inf_{k\ge n}a_k$.\\
+Always defined in $[-\infty,\infty]$, no hypotheses needed. $\liminf a_n\le\limsup a_n$.
+\begin{bul}
+\item $a_n$ converges $\iff$ bounded and $\liminf=\limsup$ (then all three coincide).
+\item $\limsup(a_n+b_n)\le\limsup a_n+\limsup b_n$ --- \warn only $\le$, equality can fail ($a_n=(-1)^n$, $b_n=-(-1)^n$).
+\item $\liminf(a_n+b_n)\ge\liminf a_n+\liminf b_n$; \ $\liminf(-a_n)=-\limsup a_n$.
+\item If $b_n\to b$ exists then $\limsup(a_n+b_n)=\limsup a_n+b$ (a convergent summand splits off exactly).
+\end{bul}
+}
+\X{monotone sequences and accumulation points}{
+A monotone sequence is either bounded (\ra\ converges, \textbf{exactly one} accumulation point) or unbounded (\ra\ $\to\pm\infty$, \textbf{no} accumulation point).\\
+So \claimT{``a monotone sequence may have no accumulation point''}, while \claimF{``at least one''} and \claimF{``at least two''}. \ Bolzano--Weierstrass only promises one for \emph{bounded} sequences.
+}
+\F{nested intervals \de{Intervallschachtelung} $+$ DEF}{
+A \hd{nested interval sequence} is a chain $I_1\supseteq I_2\supseteq\cdots$ of \textbf{closed, bounded} intervals whose lengths satisfy $|I_n|\to0$.\\
+\ra\ $\bigcap_n I_n$ is \textbf{exactly one point}. \warn All three hypotheses are needed: $(0,\frac1n)$ (not closed) and $[n,\infty)$ (not bounded) both have empty intersection.\\
+Equivalent to completeness; it is the engine of the bisection proof of Bolzano--Weierstrass (\S\ref{sec:11}).
+}
+
+\subsection{Cauchy sequences}\label{sub:cauchy}
+\D{Cauchy}{
+$\forall\eps>0\ \exists N\ \forall m,n\ge N:|a_n-a_m|<\eps$. In $\Rl$: \textbf{Cauchy $\iff$ convergent}, so this proves convergence \emph{without knowing the limit}.
+}
+\X{the near-miss}{
+``$|a_{n+1}-a_n|\to0$'' is \textbf{not} enough: $a_n=\sqrt n$ and $a_n=\sum_{k\le n}\frac1k$ both satisfy it and diverge. You need control of $|a_n-a_m|$ for \emph{all} $m,n\ge N$, not just neighbours.
+}
+\R{show $(a_n)$ is Cauchy $+$ DEF of the two constants}{
+\hd{Goal:} bound the gap between \emph{consecutive} terms by a geometric sequence, then sum it.
+\begin{rcp}
+\item Find constants \hd{$C>0$} (any prefactor --- whatever the first estimate throws up) and \hd{$0<q<1$} (the geometric \emph{rate}) with
+$|a_{n+1}-a_n|\le C\,q^{\,n}$ for all $n$. A recursion with a contraction factor $q$ (\S\ref{sub:recursive}) hands you exactly this.
+\item Telescope for $m>n$: $|a_m-a_n|\le\sum_{k=n}^{m-1}|a_{k+1}-a_k|\le\sum_{k=n}^{m-1}Cq^k\le\frac{Cq^{\,n}}{1-q}$ \ \de{geometric series, \S\ref{sub:seriestree}}.
+\item That bound depends on $n$ alone and $\to0$, so given $\eps$ choose $N$ with $\frac{Cq^N}{1-q}<\eps$ \ra\ \textbf{Cauchy} \ra\ convergent, without ever naming the limit.
+\end{rcp}
+}

@@ -54,7 +54,7 @@ $\iff$ \hd{(Heine)} $x_n\to x_0$ implies $f(x_n)\to f(x_0)$ for \emph{every} suc
 
 \subsection{The three theorems on $[a,b]$ --- and when to reach for which}\label{sub:bigthree}\label{sub:zero}
 \F{cite these verbatim, hypotheses included}{
-$f:[a,b]\to\Rl$ \textbf{continuous}, $[a,b]$ \textbf{compact}:
+$f:[a,b]\to\Rl$ \textbf{continuous}, $[a,b]$ \textbf{compact} \de{closed and bounded, \S\ref{sub:quant}}:
 \begin{bul}
 \item \hd{IVT \de{Zwischenwertsatz}:} $c$ between $f(a)$ and $f(b)$ \ra\ $\exists x\in[a,b]:f(x)=c$. \emph{For: a zero, a solution, a fixed point exists.}
 \item \hd{Extreme value theorem \de{Satz vom Max/Min, Weierstrass}:} $f$ is bounded and \emph{attains} max and min. \emph{For: ``the maximum is attained'', bounding.}
@@ -72,10 +72,10 @@ $f:[a,b]\to\Rl$ \textbf{continuous}, $[a,b]$ \textbf{compact}:
 }
 \E{$e^x=p(x)$ --- the standard multiple choice}{
 \begin{bul}
-\item ``IVT always gives a solution'' \no: $p\equiv-1$ has none, since $e^x>0$.
-\item $p$ of \emph{odd} degree \ra\ always at least one solution ($e^x-p(x)$ changes sign at $\pm\infty$).
-\item ``at most finitely many solutions for every $p$'' \yes: $e^x-p(x)$ is analytic and not identically $0$, so its zeros are isolated and finite in number on $\Rl$ here.
-\item ``for every $N$ there is a $p_N$ with $\ge N$ solutions'' \yes: take $p_N$ close to $e^x$ on a long interval and let it wobble across.
+\item \claimF{``IVT always gives a solution''} --- $p\equiv-1$ has none, since $e^x>0$.
+\item \claimT{``$p$ of \emph{odd} degree \ra\ always at least one solution''} --- $e^x-p(x)$ changes sign at $\pm\infty$.
+\item \claimT{``at most finitely many solutions for every $p$''} --- $e^x-p(x)$ is analytic and not identically $0$, so its zeros are isolated and finite in number on $\Rl$ here.
+\item \claimT{``for every $N$ there is a $p_N$ with $\ge N$ solutions''} --- take $p_N$ close to $e^x$ on a long interval and let it wobble across.
 \end{bul}
 }
 
