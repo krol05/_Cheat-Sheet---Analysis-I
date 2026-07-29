@@ -84,3 +84,22 @@ $f_n$ continuous on $D$ and $f_n\rightrightarrows f$:
 \item \warn \textbf{Derivatives do not follow.} Uniform convergence of $f_n$ says nothing about $f_n'$; you must assume $f_n'$ converges uniformly.
 \end{bul}
 }
+
+\subsection{Uniform convergence on a smaller domain}\label{sub:unifsub}
+\R{the standard part (c): ``and on $[\delta,1]$?''}{
+\begin{rcp}
+\item \hd{Failure is always local.} Locate the bad point $x^*$: the limit of the maximisers $x_n$, the jump of $f$, or $\pm\infty$.
+\item \hd{Cut it out.} On $D'$ with $x^*\notin\overline{D'}$ recompute $M_n=\sup_{D'}|f_n-f|$: for $n\ge N_0$ the critical point has left $D'$, so $f_n$ is \emph{monotone} there and the sup sits at an \textbf{endpoint}.
+\item Evaluate it: $M_n\to0$ \ra\ uniform. Saying ``for $n\ge N_0$ the sup is attained at the endpoint'' is what earns the point.
+\end{rcp}
+}
+\E{$nxe^{-nx^2}$ on $[0,1]$ vs on $[\delta,1]$}{
+Maximiser $x_n=\frac1{\sqrt{2n}}\to0=x^*$, $M_n=\sqrt{\frac n2}e^{-1/2}\to\infty$ \ra\ \textbf{not} uniform on $[0,1]$.\\
+On $[\delta,1]$: once $\frac1{\sqrt{2n}}<\delta$, $f_n$ is decreasing, so $M_n=n\delta e^{-n\delta^2}\to0$ \ra\ \textbf{uniform on every $[\delta,1]$}, $\delta>0$.
+}
+\X{uniform on each piece $\ne$ uniform on the union}{
+\begin{bul}
+\item \hd{Finitely many: fine} --- uniform on $[0,a]$ and $[a,1]$ \ra\ uniform on $[0,1]$ ($\max$ of the two $N$'s). \warn\ \hd{Infinitely many: false} --- $x^n$ is uniform on every $[0,r]$, $r<1$, but \textbf{not} on $[0,1)=\bigcup_r[0,r]$, since $N(\eps,r)\to\infty$.
+\item That is ``\hd{locally uniform}'': still enough for $f$ continuous and $\int_Kf_n\to\int_Kf$ on compact $K$ --- where power series live (\S\ref{sub:radius}).
+\end{bul}
+}
