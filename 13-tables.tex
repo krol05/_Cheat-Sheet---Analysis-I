@@ -191,89 +191,20 @@ $\lim_{x\to\infty}x^\alpha q^x=0\,(q<1)$ & $\lim_{x\to\infty}\arctan x=\frac\pi2
 \end{itemize}}
 }
 
-\subsection{Decision tables and glossary}\label{sub:decision}
-\T{I need to\ldots\ \ $\rightarrow$ use}{
-{\fontsize{6.0pt}{7.1pt}\selectfont
-\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}>{\raggedright\arraybackslash}p{0.46\linewidth}@{}}
-show a sequence converges without knowing the limit & monotone $+$ bounded, or Cauchy\\
-show a value is attained & IVT, or Weierstrass max/min\\
-show a zero or fixed point exists & IVT applied to $f(x)-x$\\
-show it is unique & strict monotonicity, or Rolle, or contraction\\
-classify a critical point & sign of $f''$; if $f''=0$, sign change of $f'$\\
-evaluate $\frac00$ or $\frac\infty\infty$ & Taylor (preferred) or l'Hospital\\
-handle $0\cdot\infty$, $\infty-\infty$, $1^\infty$ & rewrite first, then l'Hospital\\
-decide $\int_a^\infty f$ converges & compare with $x^{-p}$, check \emph{both} ends\\
-integrate $\sqrt{a^2\pm x^2}$ & trigonometric substitution\\
-integrate a rational function & partial fractions\\
-integrate rational in $\sin,\cos$ & half-angle, else $t=\tan\frac x2$\\
-solve a forced linear ODE & $y_h+y_p$, resonance check\\
-solve a 1st order nonlinear ODE & separation / $u=y/x$ / Bernoulli / int.\ factor\\
-show $f_n\rightrightarrows f$ & $\sup|f_n-f|\to0$\\
-disprove $f_n\rightrightarrows f$ & one $x_n$ with $|f_n(x_n)-f(x_n)|\ge\eps_0$\\
-swap $\lim$ and $\int$ & needs \emph{uniform} convergence\\
-prove an inequality & MVT, convexity/tangent line, or induction\\
-\end{tsTabular}}
-}
-\T{series looks like\ldots\ $\rightarrow$ take}{
-{\fontsize{6.0pt}{7.1pt}\selectfont
-\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}>{\raggedright\arraybackslash}p{0.46\linewidth}@{}}
-$a_n\not\to0$ & divergence test, done\\
-$\sum\frac1{n^p}$, $\sum q^n$ & $p$-series / geometric\\
-factorials & ratio test\\
-$n$-th powers & root test\\
-alternating with $b_n\downarrow0$ & Leibniz\\
-resembles a known series & comparison on leading powers\\
-$a_n=f(n)$ with $f\downarrow$ & integral test\\
-$a_nb_n$, $b_n\downarrow0$, $\sum a_n$ bounded & Abel/Dirichlet\\
-power series & Cauchy--Hadamard $+$ endpoints\\
-\end{tsTabular}}
-}
+\subsection{Parameter thresholds}\label{sub:decision}
 \T{``f\"ur welche $\alpha$?'' --- every parameter threshold in one place}{
-{\fontsize{6.0pt}{7.1pt}\selectfont
-\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.42\linewidth}>{\raggedright\arraybackslash}p{0.54\linewidth}@{}}
+{\fontsize{5.9pt}{7.0pt}\selectfont
+\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.30\linewidth}>{\raggedright\arraybackslash}p{0.66\linewidth}@{}}
 Object & Behaves well exactly when\\
 \midrule
 $\sum_{n\ge1}\frac1{n^\alpha}$ & converges $\iff\alpha>1$\\
-$\sum_{n\ge1}\frac{(-1)^n}{n^\alpha}$ & $\alpha>1$ \textbf{absolutely}; $0<\alpha\le1$ \textbf{conditionally} (Leibniz); $\alpha=0$ \textbf{diverges} ($a_n\not\to0$)\\
+$\sum_{n\ge1}\frac{(-1)^n}{n^\alpha}$ & abs.\ $\alpha>1$; cond.\ $0<\alpha\le1$ (Leibniz); div.\ $\alpha=0$\\
 $\sum_{n\ge2}\frac1{n(\log n)^\alpha}$ & converges $\iff\alpha>1$ (integral test)\\
-$\frac{(\log n)^\alpha}{n^\beta}$ & $\to0\iff\beta>0$, \emph{for every} $\alpha$ --- any power of $n$ beats any power of $\log$\\
+$\frac{(\log n)^\alpha}{n^\beta}$ & $\to0\iff\beta>0$, for \emph{every} $\alpha$\\
 $\int_0^1x^{-\alpha}\dx$ & converges $\iff\alpha<1$ \de{mild singularity at $0$}\\
 $\int_1^\infty x^{-\alpha}\dx$ & converges $\iff\alpha>1$ \de{fast decay at $\infty$}\\
-$x^\alpha\sin\frac1x$ at $x=0$ & $\to0$ and \textbf{continuous} $\iff\alpha>0$; \textbf{differentiable} $\iff\alpha>1$; $C^1\iff\alpha>2$\\
-$|x|^\alpha$ at $x=0$ & differentiable $\iff\alpha>1$ (or $\alpha=0$)\\
+$x^\alpha\sin\frac1x$ at $0$ & cont.\ $\iff\alpha>0$; diff.\ $\iff\alpha>1$; $C^1\iff\alpha>2$\\
+$|x|^\alpha$ at $0$ & differentiable $\iff\alpha>1$ (or $\alpha=0$)\\
 \end{tsTabular}}
-\warn The two integral rows have \textbf{opposite} thresholds --- that is the single most common sign error. A $\sum$ or $\int$ with \emph{both} a singularity and an infinite end can therefore never converge for a pure power.
-}
-\T{word list DE $\to$ EN}{
-{\fontsize{6.0pt}{7.1pt}\selectfont\raggedright
-Folge = sequence\ $\bullet$\ Reihe = series\ $\bullet$\ Grenzwert = limit\ $\bullet$\ H\"aufungspunkt = accumulation point\ $\bullet$\ beschr\"ankt = bounded\ $\bullet$\ monoton = monotone\ $\bullet$\ Teilfolge = subsequence\ $\bullet$\ Schranke = bound\ $\bullet$\ stetig = continuous\ $\bullet$\ gleichm\"assig = uniform(ly)\ $\bullet$\ punktweise = pointwise\ $\bullet$\ differenzierbar = differentiable\ $\bullet$\ Ableitung = derivative\ $\bullet$\ Stammfunktion = antiderivative\ $\bullet$\ Zwischenwertsatz = IVT\ $\bullet$\ Mittelwertsatz = MVT\ $\bullet$\ Umkehrfunktion = inverse\ $\bullet$\ Nullstelle = root, zero\ $\bullet$\ Wendepunkt = inflection point\ $\bullet$\ Extremstelle = extremum\ $\bullet$\ Absch\"atzung = estimate\ $\bullet$\ oBdA = w.l.o.g.\ $\bullet$\ Voraussetzung = hypothesis\ $\bullet$\ Behauptung = claim\ $\bullet$\ Widerspruch = contradiction\ $\bullet$\ Anfangswertproblem = IVP\ $\bullet$\ Randwertproblem = BVP\ $\bullet$\ Trennung der Variablen = separation of variables\ $\bullet$\ uneigentlich = improper\ $\bullet$\ Konvergenzradius = radius of convergence\ $\bullet$\ Partialsumme = partial sum\ $\bullet$\ Partialbruchzerlegung = partial fractions\ $\bullet$\ Kettenregel = chain rule\ $\bullet$\ Produktregel = product rule\ $\bullet$\ konvex = convex\ $\bullet$\ Treppenfunktion = step function\ $\bullet$\ Zerlegung = partition\ $\bullet$\ Obersumme/Untersumme = upper/lower sum.
-\par}
-}
-
-\F{the implication map --- which arrow reverses, and which never does}{
-Read $\Rightarrow$ as ``always''; a crossed arrow means there is a standard counterexample.
-\begin{bul}
-\item \hd{Sequences:} convergent \ra\ Cauchy \ra\ bounded \ra\ has an accumulation point. \ \warn Only \textbf{Cauchy $\Leftrightarrow$ convergent} reverses (completeness, \S\ref{sub:cauchy}).
-\item \hd{Series:} $\sum|a_n|<\infty$ \ra\ $\sum a_n$ converges \ra\ $a_n\to0$. \ \warn \textbf{Neither reverses}: $\sum\frac{(-1)^n}n$, resp.\ $\sum\frac1n$.
-\item \hd{Functions on an interval:} $C^1$ \ra\ differentiable \ra\ continuous \ra\ Riemann integrable on $[a,b]$. \ \warn \textbf{None reverses}: $x^2\sin\frac1x$, $|x|$, a step function.
-\item \hd{Continuity strength:} Lipschitz \ra\ uniformly continuous \ra\ continuous. \ \warn Reverses only on a \textbf{compact} domain, and only the second arrow (Heine, \S\ref{sub:bigthree}).
-\item \hd{Function sequences:} $f_n\rightrightarrows f$ \ra\ $f_n\to f$ pointwise, and \ra\ $\int f_n\to\int f$ on $[a,b]$. \ \warn Uniform convergence says \textbf{nothing} about $f_n'$ (\S\ref{sub:interchange}).
-\item \hd{Monotone $+$ bounded} is the one hypothesis pair that upgrades ``bounded'' all the way to ``convergent'', and it is the workhorse for every recursive sequence.
-\end{bul}
-}
-\T{writing it in German --- sentences that earn the marks}{
-{\fontsize{6.0pt}{7.1pt}\selectfont
-\begin{tsTabular}{@{}>{\raggedright\arraybackslash}p{0.46\linewidth}>{\raggedright\arraybackslash}p{0.50\linewidth}@{}}
-You want to say & Write\\
-\midrule
-start an $\eps$ proof & \emph{Sei $\eps>0$ beliebig.}\\
-choose the index & \emph{W\"ahle $N:=\lceil 1/\eps\rceil$. Dann gilt f\"ur alle $n\ge N$:}\\
-cite a hypothesis & \emph{Nach Voraussetzung ist $f$ auf $[a,b]$ stetig.}\\
-cite a theorem & \emph{Nach dem Zwischenwertsatz existiert ein $x^*\in[a,b]$ mit \dots}\\
-w.l.o.g. & \emph{OBdA sei $a<b$ (sonst vertausche die Rollen).}\\
-contradiction & \emph{Angenommen, \dots\ Widerspruch zu \dots\ Also gilt \dots}\\
-induction & \emph{Induktionsanfang / Induktionsvoraussetzung / Induktionsschritt.}\\
-conclude & \emph{Daraus folgt} / \emph{Somit ist gezeigt, dass \dots} $\square$\\
-\end{tsTabular}}
-\hd{Marks come from naming things:} every theorem you use by name, with its hypotheses quoted, is worth a point on its own (\S\ref{sub:checklist}).
+\warn The two integral rows have \textbf{opposite} thresholds --- the most common sign error; a $\sum$/$\int$ with \emph{both} a singularity and an infinite end never converges for a pure power.
 }

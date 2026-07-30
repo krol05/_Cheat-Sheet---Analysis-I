@@ -43,6 +43,25 @@ $R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}$ for some $\xi$ between $x_0$
 \hd{Ex.} $e^{0.1}$, $n=3$: $T_3=1+0.1+0.005+\frac{0.001}6\approx1.10517$; $M<1.2$ \ra\ $|R_3|\le\frac{1.2}{24}10^{-4}=5\cdot10^{-6}$.
 }
 
+\subsection{Expanding $f$ into its Taylor series \de{Taylorentwicklung}}\label{sub:taylorexp}
+\R{``Entwickeln Sie $f$ um $x_0$'' --- route (B) unless the exercise forbids it}{
+\begin{rcp}
+\item \hd{(A) By derivatives} --- only for a $T_n$ of \emph{fixed, low} degree, or for an $f$ that is in no table. Compute $f,f',\dots,f^{(n)}$, evaluate at $x_0$, insert into $T_n(x)=\sum_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$. Stop at $n$ --- do not hunt for a pattern.
+\item \hd{(B) By transforming a known series} (\S\ref{sub:taylorlist}) --- the only sane route to the \emph{full} series with a general term: substitute, factor, differentiate, integrate, multiply (\S\ref{sub:seriesops}).
+\item \hd{Centre $x_0\ne0$: substitute $t:=x-x_0$ first}, rewrite $f$ as a function of $t$, expand in $t$, and only then write $t=x-x_0$ back. Expanding in $x$ and ``shifting afterwards'' is wrong.
+\item \hd{Radius, then state the domain} $|x-x_0|<R$ (a separate mark): $R=$ distance from $x_0$ to the nearest death of $f$ (pole, $\ln0$, branch), $\infty$ for $e^x,\sin,\cos$; \warn a substitution $u=cx$ \textbf{rescales} it.
+\end{rcp}
+\hd{The two follow-up questions:} $f^{(n)}(x_0)=n!\,a_n$ --- read the coefficient off the series, never differentiate $17$ times; and $T_n=$ the series cut after $(x-x_0)^n$, remainder bound in \S\ref{sub:taylorerr}.
+}
+\E{the two centres, side by side}{
+\hd{(a) $x_0=0$, $f(x)=\ln(1+2x)$.} Table: $\ln(1+u)=\sum_{n\ge1}\frac{(-1)^{n+1}}nu^n$, $|u|<1$; substitute $u=2x$:
+\[\ln(1+2x)=\sum_{n\ge1}\frac{(-1)^{n+1}2^n}{n}x^n=2x-2x^2+\tfrac83x^3-\dots\]
+\warn Radius $|2x|<1\iff|x|<\frac12$, \textbf{not} $1$ (distance to the singularity at $-\frac12$). \ $T_3=2x-2x^2+\frac83x^3$; \ $f'''(0)=3!\,a_3=16$.\\
+\hd{(b) $x_0=2$, $f(x)=\frac1x$.} Put $t:=x-2$, then pull the constant out to build a $\frac1{1\pm u}$:
+\[\frac1x=\frac1{2+t}=\frac12\cdot\frac1{1+\frac t2}=\sum_{n\ge0}\frac{(-1)^n}{2^{n+1}}(x-2)^n,\quad|x-2|<2,\]
+$R=2=$ distance from the centre to the pole at $0$. \hd{Every rational $f$}: shift, then force the denominator into $1\pm u$.
+}
+
 \subsection{Limits by Taylor: the fastest tool you have}\label{sub:taylorlimit}
 \R{limits $x\to0$ by plugging in series}{
 \begin{rcp}
@@ -59,11 +78,9 @@ l'Hospital would need \textbf{five} differentiations. Don't.
 }
 \E{more Taylor limits, one line each}{
 \begin{bul}
-\item $\frac{1-\cos x}{x^2}=\frac{x^2/2+O(x^4)}{x^2}\to\frac12$.
 \item $\frac{e^x-1-x}{x^2}=\frac{x^2/2+O(x^3)}{x^2}\to\frac12$.
 \item $\frac{\tan x-x}{x^3}\to\frac13$ \ (since $\tan x=x+\frac{x^3}3+O(x^5)$).
 \item $\frac1{\sin x}-\frac1x=\frac{x-\sin x}{x\sin x}=\frac{x^3/6}{x^2}\to0$.
-\item $\frac{\ln(1+x)-x}{x^2}\to-\frac12$.
 \end{bul}
 }
 
@@ -77,12 +94,4 @@ l'Hospital would need \textbf{five} differentiations. Don't.
 \item \hd{Divide:} never do long division. Write the denominator as $1-u$ (pull out its constant term first) and use $\frac1{1-u}=1+u+u^2+\dots$, then multiply. \hd{Ex.} $\tan x=\frac{\sin x}{\cos x}$: $\cos x=1-\underbrace{\left(\frac{x^2}2+O(x^4)\right)}_{u}$, so $\frac1{\cos x}=1+\frac{x^2}2+O(x^4)$, and $\tan x=\left(x-\frac{x^3}6\right)\left(1+\frac{x^2}2\right)+O(x^5)=x+\frac{x^3}3+O(x^5)$.
 \item \hd{Shift centre:} to expand at $x_0\ne0$, substitute $t=x-x_0$ and expand in $t$.
 \end{rcp}
-}
-\F{ready-made compositions}{
-$\ln(1+x^2)=x^2-\frac{x^4}2+\frac{x^6}3-\dots$;\quad
-$\sin(x^2)=x^2-\frac{x^6}6+\dots$;\quad
-$e^{-x^2}=1-x^2+\frac{x^4}2-\dots$;\\
-$\frac1{1+x^2}=1-x^2+x^4-\dots$;\quad
-$\sqrt{1+x}=1+\frac x2-\frac{x^2}8+\frac{x^3}{16}-\dots$;\quad
-$\frac1{\sqrt{1-x}}=1+\frac x2+\frac{3x^2}8+\dots$
 }

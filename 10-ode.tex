@@ -35,10 +35,16 @@ Otherwise $-\frac1y=\sin x+C$ \ra\ $y=\frac{-1}{\sin x+C}$; $y(0)=1$ \ra\ $C=-1$
 \item $(\mu y)'=\mu q$ \ra\ $\displaystyle y=\frac1{\mu(x)}\left(\int\mu(x)q(x)\dx+C\right)$.
 \item Insert the initial condition last.
 \end{rcp}
-\hd{``Variation of constants'' \de{Variation der Konstanten} is the same method, spelled out:} solve the homogeneous problem first, $y_h=Ce^{-\int p}$; then \textbf{promote the constant to a function} $C=C(x)$ and insert $y=C(x)e^{-\int p}$ into the ODE. Everything cancels except $C'=q\,e^{\int p}$, which you integrate. Use the name if the exam asks for it; the integrating factor gets you there faster.
+\hd{``Variation of constants'' \de{Variation der Konstanten}} is the same method spelled out --- promote $C\rightsquigarrow C(x)$ in $y_h$; full recipe in \S\ref{sub:varconst}. Use the name if the exam asks for it; the integrating factor gets you there faster.
 }
 \E{$y'-\frac2xy=x^3$}{
 $p=-\frac2x$ \ra\ $\mu=e^{-2\ln|x|}=x^{-2}$. Then $(x^{-2}y)'=x$ \ra\ $x^{-2}y=\frac{x^2}2+C$ \ra\ $\boxed{y=\frac{x^4}2+Cx^2}$.
+}
+
+\F{variation of constants \de{Variation der Konstanten} --- \textbf{1st order}, $y'+p(x)y=q(x)$}{
+\label{sub:varconst}One constant, so \textbf{one} function: solve the homogeneous equation, $y_h=Ce^{-\int p}$; promote $C\rightsquigarrow C(x)$ and insert $y=C(x)e^{-\int p}$. Everything cancels except
+\[C'(x)=q(x)e^{\int p},\qquad\text{so}\qquad y=e^{-\int p}\left(\int q\,e^{\int p}\dx+C\right),\]
+which is exactly the integrating factor above --- use that unless the exam demands the name.
 }
 
 \subsection{Bernoulli and substitutions}\label{sub:subsode}
@@ -67,16 +73,6 @@ $p=-\frac2x$ \ra\ $\mu=e^{-2\ln|x|}=x^{-2}$. Then $(x^{-2}y)'=x$ \ra\ $x^{-2}y=\
 \end{rcp}
 \hd{2nd order quick table} ($y''+by'+cy=0$, $D=b^2-4c$): $D>0$ \ra\ $C_1e^{\lambda_1x}+C_2e^{\lambda_2x}$; $D=0$ \ra\ $(C_1+C_2x)e^{\lambda x}$; $D<0$ \ra\ $e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$.
 }
-\F{Wronskian: is my fundamental system valid?}{
-$W(x)=\det\begin{pmatrix}y_1&y_2\\y_1'&y_2'\end{pmatrix}=y_1y_2'-y_1'y_2$.\\
-$W(x_0)\ne0$ for one $x_0$ \ra\ $y_1,y_2$ are \textbf{linearly independent} \ra\ they span all solutions.
-For $y''+by'+cy=0$: $W(x)=W(0)e^{-bx}$, so $W$ is either never zero or identically zero (Abel).
-}
-\F{reduction of order (one solution known)}{
-\textbf{Given one solution $y_1$} of $y''+p y'+q y=0$, set $y_2=v(x)y_1$. Inserting kills the $v$ term and leaves a \textbf{first-order ODE for $v'$}:
-$v'=\frac1{y_1^2}e^{-\int p}$, so $y_2=y_1\int\frac{e^{-\int p}}{y_1^2}\dx$.
-}
-
 \subsection{Particular solution: ansatz by the right-hand side}\label{sub:odepart}
 \T{ansatz table --- $m$ is the resonance multiplicity}{
 {\fontsize{6.0pt}{7.1pt}\selectfont
@@ -111,12 +107,6 @@ $g_1+g_2$ & solve separately and add (superposition)\\
 \hd{(b) IVP} $y''-3y'+2y=0$, $y(0)=1$, $y'(0)=0$: $\lambda=1,2$ \ra\ $y=C_1e^x+C_2e^{2x}$.
 $C_1+C_2=1$, $C_1+2C_2=0$ \ra\ $C_2=-1$, $C_1=2$ \ra\ $\boxed{y=2e^x-e^{2x}}$.
 }
-\F{variation of constants (when no ansatz fits, e.g.\ $g=\frac1x$, $\tan x$)}{
-2nd order with $y_h=C_1y_1+C_2y_2$: set $y_p=c_1(x)y_1+c_2(x)y_2$ with
-\[c_1'=-\frac{y_2g}W,\qquad c_2'=\frac{y_1g}W,\qquad W=y_1y_2'-y_1'y_2,\]
-then integrate. \textbf{Always works}; just slower than the ansatz.
-}
-
 \subsection{Conditions, existence, qualitative behaviour}\label{sub:autonomous}
 \F{IVP vs BVP, Picard--Lindel\"of}{
 \hd{IVP \de{Anfangswertproblem}:} all conditions at one point, $y(x_0),y'(x_0),\dots$ --- $n$ of them for order $n$.\\
